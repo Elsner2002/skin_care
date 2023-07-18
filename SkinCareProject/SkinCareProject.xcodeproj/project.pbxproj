@@ -11,6 +11,10 @@
 		7CB66FC92A66F2D7006DFFB2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB66FC82A66F2D7006DFFB2 /* ContentView.swift */; };
 		7CB66FCB2A66F2D7006DFFB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CB66FCA2A66F2D7006DFFB2 /* Assets.xcassets */; };
 		7CB66FCE2A66F2D7006DFFB2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CB66FCD2A66F2D7006DFFB2 /* Preview Assets.xcassets */; };
+		7CB66FDC2A670122006DFFB2 /* PlaceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB66FDB2A670122006DFFB2 /* PlaceHolder.swift */; };
+		7CB66FDE2A670132006DFFB2 /* PlaceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB66FDD2A670132006DFFB2 /* PlaceHolder.swift */; };
+		7CB66FE02A67013F006DFFB2 /* PlaceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB66FDF2A67013F006DFFB2 /* PlaceHolder.swift */; };
+		7CB66FE22A67014F006DFFB2 /* PlaceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB66FE12A67014F006DFFB2 /* PlaceHolder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,10 @@
 		7CB66FC82A66F2D7006DFFB2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7CB66FCA2A66F2D7006DFFB2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CB66FCD2A66F2D7006DFFB2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7CB66FDB2A670122006DFFB2 /* PlaceHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolder.swift; sourceTree = "<group>"; };
+		7CB66FDD2A670132006DFFB2 /* PlaceHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolder.swift; sourceTree = "<group>"; };
+		7CB66FDF2A67013F006DFFB2 /* PlaceHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolder.swift; sourceTree = "<group>"; };
+		7CB66FE12A67014F006DFFB2 /* PlaceHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +79,7 @@
 		7CB66FD42A66F348006DFFB2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7CB66FE12A67014F006DFFB2 /* PlaceHolder.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -86,6 +95,7 @@
 		7CB66FD62A66F368006DFFB2 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				7CB66FDF2A67013F006DFFB2 /* PlaceHolder.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -112,6 +122,7 @@
 		7CB66FD92A66F497006DFFB2 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				7CB66FDD2A670132006DFFB2 /* PlaceHolder.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -119,6 +130,7 @@
 		7CB66FDA2A66F4C7006DFFB2 /* Structs */ = {
 			isa = PBXGroup;
 			children = (
+				7CB66FDB2A670122006DFFB2 /* PlaceHolder.swift */,
 			);
 			path = Structs;
 			sourceTree = "<group>";
@@ -195,6 +207,10 @@
 			files = (
 				7CB66FC92A66F2D7006DFFB2 /* ContentView.swift in Sources */,
 				7CB66FC72A66F2D7006DFFB2 /* SkinCareProjectApp.swift in Sources */,
+				7CB66FDC2A670122006DFFB2 /* PlaceHolder.swift in Sources */,
+				7CB66FE02A67013F006DFFB2 /* PlaceHolder.swift in Sources */,
+				7CB66FDE2A670132006DFFB2 /* PlaceHolder.swift in Sources */,
+				7CB66FE22A67014F006DFFB2 /* PlaceHolder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
