@@ -8,6 +8,7 @@
 import Foundation
 
 enum Phototype: String {
+    case zero = "Tipo 0"
     case one = "Tipo 1"
     case two = "Tipo 2"
     case three = "Tipo 3"
@@ -17,6 +18,8 @@ enum Phototype: String {
     
     func typeNumber() -> Int{
         switch self{
+        case .zero:
+            return 0
         case .one:
             return 1
         case .two:
