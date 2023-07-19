@@ -9,9 +9,25 @@ import SwiftUI
 
 @main
 struct SkinCareProjectApp: App {
+    @State private var isActive = false
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ZStack {
+                if self.isActive {
+                    ContentView()
+                }
+                else {
+                    Splashscreen()
+                }
+            }
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    withAnimation {
+                        self.isActive = true
+                    }
+                }
+            }
         }
     }
 }
