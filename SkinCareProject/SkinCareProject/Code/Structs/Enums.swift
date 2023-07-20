@@ -7,32 +7,17 @@
 
 import Foundation
 
-enum Phototype: String {
-    case zero = "Tipo 0"
-    case one = "Tipo 1"
-    case two = "Tipo 2"
-    case three = "Tipo 3"
-    case four = "Tipo 4"
-    case five = "Tipo 5"
-    case six = "Tipo 6"
+enum Phototype: Int {
+    case zero = 0
+    case one
+    case two
+    case three
+    case four
+    case five
+    case six
     
-    func typeNumber() -> Int{
-        switch self{
-        case .zero:
-            return 0
-        case .one:
-            return 1
-        case .two:
-            return 2
-        case .three:
-            return 3
-        case .four:
-            return 4
-        case .five:
-            return 5
-        case .six:
-            return 6
-        }
+    var title: String {
+        return "Tipo \(self.rawValue)"
     }
 }
 
