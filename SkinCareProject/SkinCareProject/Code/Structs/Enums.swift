@@ -28,3 +28,21 @@ enum SkinType: String {
     case combination = "Mista"
     case sensitive = "Sensível"
 }
+
+enum Condition {
+    
+}
+
+enum Warning {
+    
+}
+
+enum Category: String {
+    case moisturizer = "Hidratante"
+    case cleanser = "Cleanser"
+    case sunscreen = "Protetor Solar"
+    case serun = "Serun"
+    case mask = "Máscara"
+    case antiaging = "Anti-envelhecimento"
+    case treatment = "Tratamento"
+}
