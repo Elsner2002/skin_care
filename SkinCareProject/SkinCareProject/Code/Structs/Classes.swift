@@ -10,11 +10,11 @@ import SwiftUI
 
 class User {
     var name: String
+    var profileImage: Image
+    var vegan: Bool
     var phototype: Phototype
     var skinType: SkinType
-    var profileImage: Image
     var conditions: [Condition]
-    var vegan: Bool
     
     init(name: String, phototype: Phototype, skinType: SkinType, profileImage: Image, conditions: [Condition], vegan: Bool) {
         self.name = name
@@ -61,16 +61,18 @@ class RoutineProduct {
     var name: String
     var isCompleted: Bool
     var barcode: Int
-    var categories: [Category]
+    var timesDay: Int
     var frequency: [Int]
+    var categories: [Category]
     
-    init(image: Image, name: String, isCompleted: Bool, barcode: Int, categories: [Category], frequency: [Int]) {
+    init(image: Image, name: String, isCompleted: Bool, barcode: Int, categories: [Category], timesDay: Int, frequency: [Int]) {
         self.image = image
         self.name = name
         self.isCompleted = isCompleted
         self.barcode = barcode
         self.categories = categories
         self.frequency = frequency
+        self.timesDay = timesDay
     }
 }
 
@@ -88,10 +90,10 @@ class Tip {
 
 class Routine {
     var name: String
-    var completition: Bool//Int
+    var completition: Int
     var categories: [Category: [RoutineProduct]?]
     
-    init(name: String, completition: Bool, categories: [Category : [RoutineProduct]?]) {
+    init(name: String, completition: Int, categories: [Category : [RoutineProduct]?]) {
         self.name = name
         self.completition = completition
         self.categories = categories
