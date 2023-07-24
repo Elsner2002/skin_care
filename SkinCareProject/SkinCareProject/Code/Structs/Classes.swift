@@ -15,13 +15,15 @@ class User {
     var phototype: Phototype
     var skinType: SkinType
     var conditions: [Condition]
+    var concerns: [Concern]
     
-    init(name: String, phototype: Phototype, skinType: SkinType, profileImage: Image, conditions: [Condition], vegan: Bool) {
+    init(name: String, phototype: Phototype, skinType: SkinType, profileImage: Image, vegan: Bool, conditions: [Condition], concerns: [Concern]) {
         self.name = name
         self.phototype = phototype
         self.skinType = skinType
         self.profileImage = profileImage
         self.conditions = conditions
+        self.concerns = concerns
         self.vegan = vegan
     }
 }
@@ -39,12 +41,13 @@ class ListProduct {
     var texture: Texture
     var ingredients: [String]
     var categories: [Category]
+    var concerns: [Concern]
     var warnings: [Warning]?
     var phototypes: [Phototype]?
     var skintypes: [SkinType]?
     var conditions: [Condition]?
     
-    init(image: Image, name: String, explanation: String, brand: String, recomendedTime: [String], vegan: Bool, barcode: Int, priceRange: Int, SPF: Int, texture: Texture, ingredients: [String], categories: [Category], warnings: [Warning]? = nil, phototypes: [Phototype]? = nil, skintypes: [SkinType]? = nil, conditions: [Condition]? = nil) {
+    init(image: Image, name: String, explanation: String, brand: String, recomendedTime: [String], vegan: Bool, barcode: Int, priceRange: Int, SPF: Int, texture: Texture, ingredients: [String], categories: [Category], concerns: [Concern], warnings: [Warning]? = nil, phototypes: [Phototype]? = nil, skintypes: [SkinType]? = nil, conditions: [Condition]? = nil) {
         self.image = image
         self.name = name
         self.explanation = explanation
@@ -57,6 +60,7 @@ class ListProduct {
         self.texture = texture
         self.ingredients = ingredients
         self.categories = categories
+        self.concerns = concerns
         self.warnings = warnings
         self.phototypes = phototypes
         self.skintypes = skintypes
