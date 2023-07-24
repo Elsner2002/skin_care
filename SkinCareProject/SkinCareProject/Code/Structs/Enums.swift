@@ -41,8 +41,15 @@ enum Category: String {
     case moisturizer = "Hidratante"
     case cleanser = "Cleanser"
     case sunscreen = "Protetor Solar"
-    case serun = "Serun"
+    case serum = "Sérum"
     case mask = "Máscara"
     case antiaging = "Anti-envelhecimento"
     case treatment = "Tratamento"
+}
+
+enum Texture: String {
+    case serum = "Sérum"
+    case cream = "Creme"
+    case oil = "Óleo"
+    case spray = "Spray"
 }
