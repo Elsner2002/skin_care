@@ -31,8 +31,12 @@ class ListProduct {
     var name: String
     var explanation: String
     var brand: String
+    var recomendedTime: [String]
     var vegan: Bool
     var barcode: Int
+    var priceRange: Int
+    var SPF: Int
+    var texture: Texture
     var ingredients: [String]
     var categories: [Category]
     var warnings: [Warning]?
@@ -40,13 +44,17 @@ class ListProduct {
     var skintypes: [SkinType]?
     var conditions: [Condition]?
     
-    init(image: Image, name: String, explanation: String, brand: String, vegan: Bool, barcode: Int, ingredients: [String], categories: [Category], warnings: [Warning]? = nil, phototypes: [Phototype]? = nil, skintypes: [SkinType]? = nil, conditions: [Condition]? = nil) {
+    init(image: Image, name: String, explanation: String, brand: String, recomendedTime: [String], vegan: Bool, barcode: Int, priceRange: Int, SPF: Int, texture: Texture, ingredients: [String], categories: [Category], warnings: [Warning]? = nil, phototypes: [Phototype]? = nil, skintypes: [SkinType]? = nil, conditions: [Condition]? = nil) {
         self.image = image
         self.name = name
         self.explanation = explanation
         self.brand = brand
+        self.recomendedTime = recomendedTime
         self.vegan = vegan
         self.barcode = barcode
+        self.priceRange = priceRange
+        self.SPF = SPF
+        self.texture = texture
         self.ingredients = ingredients
         self.categories = categories
         self.warnings = warnings
