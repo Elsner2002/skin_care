@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct HomeView: View {
+    
     var body: some View {
-        Text("Home")
+        VStack{
+            Text("Home")
+            TipsView(title: Constants.shared.randomTip!.title, text: Constants.shared.randomTip!.text)
+        }
     }
 }
 

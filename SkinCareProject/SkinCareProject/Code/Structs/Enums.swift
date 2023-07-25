@@ -46,8 +46,8 @@ enum Concern: String {
     case blackHeads = "Cravos"
     case redness = "Vermelhidão"
     case darkCircles = "Olheiras"
-    case wrinkles = "Rugas"
-    case scarring = "Estrias/Cicatrizes"
+//    case wrinkles = "Rugas"
+//    case scarring = "Estrias/Cicatrizes"
 }
 
 enum Warning {
