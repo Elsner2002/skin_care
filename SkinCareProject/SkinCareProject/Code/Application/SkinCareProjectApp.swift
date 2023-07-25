@@ -22,6 +22,7 @@ struct SkinCareProjectApp: App {
                 }
             }
             .onAppear {
+                Constants.shared.randomTipGenerator()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     withAnimation {
                         self.isActive = true

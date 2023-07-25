@@ -88,16 +88,17 @@ class RoutineProduct {
     }
 }
 
-class Tip {
+struct Tip: Codable, Identifiable {
+    enum CodingKeys: CodingKey {
+        case title
+        case text
+        case image
+    }
+    
+    var id = UUID()
     var title: String
     var text: String
-    var image: Image
-    
-    init(title: String, text: String, image: Image) {
-        self.title = title
-        self.text = text
-        self.image = image
-    }
+    var image: String
 }
 
 class Routine {
