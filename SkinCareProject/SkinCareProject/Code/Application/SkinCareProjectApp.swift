@@ -9,13 +9,19 @@ import SwiftUI
 
 @main
 struct SkinCareProjectApp: App {
+    @State var firstTimeHere: Bool = UserDefaults.standard.value(forKey: "firstTimeHere") as? Bool ?? true
     @State private var isActive = false
     
     var body: some Scene {
         WindowGroup {
             ZStack {
                 if self.isActive {
-                    ContentView()
+                    if firstTimeHere {
+                        TabBarOnb()
+                    }
+                    else {
+                        ContentView()
+                    }
                 }
                 else {
                     Splashscreen()
