@@ -11,7 +11,46 @@ import SwiftUI
 class Constants: ObservableObject {
     static let shared: Constants = Constants()
     
-    //create here variables
+    //MARK: create variables here
+    //tips variables
+    @ObservedObject var tipsData = TipsService()
+    var randomTip: Tip?
+    func randomTipGenerator(){
+        if !compareDay(){
+            randomTip = tipsData.tips.randomElement()
+            let encodedTip = try? JSONEncoder().encode(randomTip)
+            UserDefaults.standard.set(encodedTip, forKey: "randomTip")
+        }
+        else{
+            randomTip = try? JSONDecoder().decode(Tip.self, from: UserDefaults.standard.data(forKey: "randomTip")!)
+        }
+        lastDay = Date.now
+    }
     
+    //days variables
+    var dayBefore: Date {
+        return Calendar.current.date(byAdding: .day, value: -1, to: Date())!
+    }
+    @Published var lastDay = UserDefaults.standard.value(forKey: "lastDay") as? Date {
+        didSet{
+            UserDefaults.standard.set(lastDay, forKey: "lastDay")
+        }
+    }
+    func compareDay() -> Bool {
+        guard let dayBefore = lastDay else {
+            return false
+        }
+        let componentsLast = Calendar.current.dateComponents([.day], from: dayBefore).day
+        let componentsToday = Calendar.current.dateComponents([.day], from: Date.now).day
+        
+        return componentsLast == componentsToday
+    }
+    
+    init() {
+        if lastDay == nil {
+            lastDay = dayBefore
+        }
+        randomTipGenerator()
+    }
     
 }
