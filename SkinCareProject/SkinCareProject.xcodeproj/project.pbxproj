@@ -27,6 +27,7 @@
 		A55E88C12A703268005E5AC5 /* Questionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55E88C02A703268005E5AC5 /* Questionnaire.swift */; };
 		A55E88C32A703374005E5AC5 /* Ob2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55E88C22A703374005E5AC5 /* Ob2.swift */; };
 		A55E88C52A703404005E5AC5 /* Ob3.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55E88C42A703404005E5AC5 /* Ob3.swift */; };
+		A55E88CC2A718721005E5AC5 /* CloudKitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55E88CB2A718721005E5AC5 /* CloudKitUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,8 @@
 		A55E88C02A703268005E5AC5 /* Questionnaire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questionnaire.swift; sourceTree = "<group>"; };
 		A55E88C22A703374005E5AC5 /* Ob2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ob2.swift; sourceTree = "<group>"; };
 		A55E88C42A703404005E5AC5 /* Ob3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ob3.swift; sourceTree = "<group>"; };
+		A55E88CA2A70606D005E5AC5 /* SkinCareProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SkinCareProject.entitlements; sourceTree = "<group>"; };
+		A55E88CB2A718721005E5AC5 /* CloudKitUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +86,7 @@
 		7CB66FC52A66F2D7006DFFB2 /* SkinCareProject */ = {
 			isa = PBXGroup;
 			children = (
+				A55E88CD2A718729005E5AC5 /* CloudKit */,
 				7CB66FD72A66F37F006DFFB2 /* Code */,
 				7CB66FD62A66F368006DFFB2 /* Service */,
 				7CB66FD42A66F348006DFFB2 /* Model */,
@@ -179,6 +183,15 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		A55E88CD2A718729005E5AC5 /* CloudKit */ = {
+			isa = PBXGroup;
+			children = (
+				A55E88CA2A70606D005E5AC5 /* SkinCareProject.entitlements */,
+				A55E88CB2A718721005E5AC5 /* CloudKitUser.swift */,
+			);
+			path = CloudKit;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -253,6 +266,7 @@
 				7CDF2E732A6B17E70028CA84 /* ProfileView.swift in Sources */,
 				7CB66FC92A66F2D7006DFFB2 /* ContentView.swift in Sources */,
 				7CB66FE42A6723CE006DFFB2 /* Classes.swift in Sources */,
+				A55E88CC2A718721005E5AC5 /* CloudKitUser.swift in Sources */,
 				7CB66FC72A66F2D7006DFFB2 /* SkinCareProjectApp.swift in Sources */,
 				A55E88C12A703268005E5AC5 /* Questionnaire.swift in Sources */,
 				7CDF2E6D2A6B17C00028CA84 /* HomeView.swift in Sources */,
@@ -392,17 +406,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SkinCareProject/CloudKit/SkinCareProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SkinCareProject/Preview Content\"";
-				DEVELOPMENT_TEAM = 856F4M2786;
+				DEVELOPMENT_TEAM = 3MS8Y2RCJZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -421,17 +436,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SkinCareProject/CloudKit/SkinCareProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SkinCareProject/Preview Content\"";
-				DEVELOPMENT_TEAM = 856F4M2786;
+				DEVELOPMENT_TEAM = 3MS8Y2RCJZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
