@@ -8,8 +8,27 @@
 import SwiftUI
 
 struct ProductListView: View {
+    
+    @StateObject private var cameraVM = CameraViewModel()
+    @State private var path: [Int] = []
+    
     var body: some View {
-        Text("Products")
+        NavigationStack(path: $path) {
+            VStack{
+                Text("Products")
+                
+                Button("Camera") {
+                    path.append(1)
+                }
+                .navigationDestination(for: Int.self) { int in
+                    CameraView(path: $path, count: int)
+                        .environmentObject(cameraVM)
+                        .task {
+                            await cameraVM.requestDataScannerAccessStatus()
+                        }
+                }
+            }
+        }
     }
 }
 
