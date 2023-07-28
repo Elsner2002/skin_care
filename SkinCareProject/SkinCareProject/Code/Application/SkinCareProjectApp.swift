@@ -20,8 +20,8 @@ struct SkinCareProjectApp: App {
                         TabBarOnb()
                     }
                     else {
-                        //ContentView()
-                        CloudKitViewModel()
+                        ContentView()
+                        //CloudKitViewModel()
                     }
                 }
                 else {
