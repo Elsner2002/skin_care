@@ -29,15 +29,32 @@ enum SkinType: String {
     case sensitive = "Sensível"
 }
 
-enum Condition {
-    
+enum Condition: String {
+    case acne = "Acne"
+    case rosacea = "Rosácea"
+    case melasma = "Melasma"
+    case psoriasis = "Psoríase"
+    case dermatitis = "Dermatite"
+    case vitiligo = "Vitiligo"
+    case foliculitis = "Foliculite"
+}
+
+enum Concern: String {
+    case pimples = "Espinhas"
+    case aging = "Envelhecimento"
+    case darkSpots = "Manchas"
+    case blackHeads = "Cravos"
+    case redness = "Vermelhidão"
+    case darkCircles = "Olheiras"
+//    case wrinkles = "Rugas"
+//    case scarring = "Estrias/Cicatrizes"
 }
 
 enum Warning {
     
 }
 
-enum Category: String {
+enum ProductCategory: String {
     case moisturizer = "Hidratante"
     case cleanser = "Cleanser"
     case sunscreen = "Protetor Solar"
