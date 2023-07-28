@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import CloudKit
 
 class User {
     var name: String
@@ -29,7 +30,7 @@ class User {
 }
 
 class ListProduct {
-    var image: Image
+    var image: URL
     var name: String
     var explanation: String
     var brand: String
@@ -40,14 +41,15 @@ class ListProduct {
     var SPF: Int
     var texture: Texture
     var ingredients: [String]
-    var categories: [Category]
+    var categories: [ProductCategory]
     var concerns: [Concern]
     var warnings: [Warning]?
     var phototypes: [Phototype]?
     var skintypes: [SkinType]?
     var conditions: [Condition]?
+    let record: CKRecord?
     
-    init(image: Image, name: String, explanation: String, brand: String, recomendedTime: [String], vegan: Bool, barcode: Int, priceRange: Int, SPF: Int, texture: Texture, ingredients: [String], categories: [Category], concerns: [Concern], warnings: [Warning]? = nil, phototypes: [Phototype]? = nil, skintypes: [SkinType]? = nil, conditions: [Condition]? = nil) {
+    init(image: URL, name: String, explanation: String, brand: String, recomendedTime: [String], vegan: Bool, barcode: Int, priceRange: Int, SPF: Int, texture: Texture, ingredients: [String], categories: [ProductCategory], concerns: [Concern], warnings: [Warning]? = nil, phototypes: [Phototype]? = nil, skintypes: [SkinType]? = nil, conditions: [Condition]? = nil, record: CKRecord? = nil) {
         self.image = image
         self.name = name
         self.explanation = explanation
@@ -65,27 +67,63 @@ class ListProduct {
         self.phototypes = phototypes
         self.skintypes = skintypes
         self.conditions = conditions
+        self.record = record
     }
 }
 
-class RoutineProduct {
-    var image: Image
+class RoutineProduct: CloudKitProtocol {
+    var image: URL?
     var name: String
     var isCompleted: Bool
     var barcode: Int
     var timesDay: Int
     var frequency: [Int]
-    var categories: [Category]
+    var categories: [String]
+    var record: CKRecord
     
-    init(image: Image, name: String, isCompleted: Bool, barcode: Int, categories: [Category], timesDay: Int, frequency: [Int]) {
-        self.image = image
+    required init?(record: CKRecord) {
+        let imageAsset = record["image"] as? CKAsset
+        self.image = imageAsset?.fileURL
+        guard let name = record["name"] as? String else {return nil}
         self.name = name
+        guard let isCompleted = record["isCompleted"] as? Bool else {return nil}
         self.isCompleted = isCompleted
+        guard let barcode = record["barcode"] as? Int else {return nil}
         self.barcode = barcode
-        self.categories = categories
+        guard let frequency = record["frequency"] as? [Int] else {return nil}
         self.frequency = frequency
+        guard let timesDay = record["timesDay"] as? Int else {return nil}
         self.timesDay = timesDay
+        guard let categories = record["categories"] as? [String] else {return nil}
+        self.categories = categories
+        self.record = record
     }
+    
+    required convenience init?(image: URL?, name: String, isCompleted: Bool, barcode: Int, frequency: [Int], timesDay: Int, categories: [String]) {
+        
+        let record = CKRecord(recordType: "RoutineProduct")
+        record["name"] = name
+        
+        if let url = image {
+            let asset = CKAsset(fileURL: url)
+            record["image"] = asset
+        }
+        record["isCompleted"] = isCompleted
+        record["barcode"] = barcode
+        record["frequency"] = frequency
+        record["timesDay"] = timesDay
+        record["categories"] = categories
+        
+        self.init(record: record)
+    }
+    
+    //do this for every parameter
+    func updateName(newName: String) -> RoutineProduct? {
+        let newRecord = record
+        newRecord["name"] = newName
+        return RoutineProduct(record: newRecord)
+    }
+    
 }
 
 struct Tip: Codable, Identifiable {
