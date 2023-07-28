@@ -36,7 +36,7 @@ struct CameraView: View {
                 Text("Request camera access")
             }
             
-            Image("Leitor codigo de barras").resizable()
+            Image("BarcodeReader").resizable()
         }
     }
     

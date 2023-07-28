@@ -10,6 +10,7 @@
 		7CA88CA02A7063EF00E58ABA /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA88C9F2A7063EF00E58ABA /* CameraView.swift */; };
 		7CA88CA22A717B4600E58ABA /* DataScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA88CA12A717B4600E58ABA /* DataScannerView.swift */; };
 		7CA88CA42A718C4F00E58ABA /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA88CA32A718C4F00E58ABA /* ProductView.swift */; };
+		7CA88CA82A72DFDF00E58ABA /* ImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA88CA72A72DFDF00E58ABA /* ImageViewModel.swift */; };
 		7CB66FC72A66F2D7006DFFB2 /* SkinCareProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB66FC62A66F2D7006DFFB2 /* SkinCareProjectApp.swift */; };
 		7CB66FC92A66F2D7006DFFB2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB66FC82A66F2D7006DFFB2 /* ContentView.swift */; };
 		7CB66FCB2A66F2D7006DFFB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CB66FCA2A66F2D7006DFFB2 /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 		7CA88C9F2A7063EF00E58ABA /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		7CA88CA12A717B4600E58ABA /* DataScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScannerView.swift; sourceTree = "<group>"; };
 		7CA88CA32A718C4F00E58ABA /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
+		7CA88CA72A72DFDF00E58ABA /* ImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModel.swift; sourceTree = "<group>"; };
 		7CB66FC32A66F2D7006DFFB2 /* SkinCareProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkinCareProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CB66FC62A66F2D7006DFFB2 /* SkinCareProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinCareProjectApp.swift; sourceTree = "<group>"; };
 		7CB66FC82A66F2D7006DFFB2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 		7CB66FD92A66F497006DFFB2 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				7CA88CA72A72DFDF00E58ABA /* ImageViewModel.swift */,
 				7CB66FDD2A670132006DFFB2 /* CameraViewModel.swift */,
 			);
 			path = ViewModels;
@@ -295,6 +298,7 @@
 				7CB66FDE2A670132006DFFB2 /* CameraViewModel.swift in Sources */,
 				A55E88BA2A686ECB005E5AC5 /* Splashscreen.swift in Sources */,
 				7CA88CA42A718C4F00E58ABA /* ProductView.swift in Sources */,
+				7CA88CA82A72DFDF00E58ABA /* ImageViewModel.swift in Sources */,
 				7CB66FE62A67289A006DFFB2 /* Constants.swift in Sources */,
 				A55E88BD2A7031FE005E5AC5 /* TabBarOnb.swift in Sources */,
 			);
