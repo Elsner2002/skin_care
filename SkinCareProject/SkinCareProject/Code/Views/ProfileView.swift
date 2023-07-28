@@ -21,6 +21,7 @@ struct ProfileView: View {
             if changeProfileImage {
                 Image(uiImage: image)
                     .resizable()
+                    .scaledToFill()
                     .frame(width: 120, height: 120)
                     .clipShape(Circle())
             }
