@@ -22,17 +22,14 @@ struct OnboardingView: View, Hashable {
             
             VStack{
                 Text(title)
+                    .font(.largeTitle)
                     .bold()
-                    .font(.system(size: 34))
-                    .multilineTextAlignment(.leading)
                     .frame(width: 347, alignment: .topLeading)
                     .padding(EdgeInsets(top: 70, leading: 0, bottom: 20, trailing: 0))
 
                 Text(subtitle)
-                    .multilineTextAlignment(.leading)
-                    .font(.system(size: 16))
+                    .font(.callout)
                     .frame(width: 347, alignment: .topLeading)
-                    .padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0))
 
 
                 
@@ -41,7 +38,7 @@ struct OnboardingView: View, Hashable {
         }
     }
 }
-    
+   
     struct Onboarding_Previews: PreviewProvider {
         static var previews: some View {
             OnboardingView(image: "logo",
