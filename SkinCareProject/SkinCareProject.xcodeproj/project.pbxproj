@@ -113,8 +113,6 @@
 		7CB66FC52A66F2D7006DFFB2 /* SkinCareProject */ = {
 			isa = PBXGroup;
 			children = (
-				7C30D1432A79959B009F93D7 /* CircleDayButton.swift */,
-				7C30D1452A799A20009F93D7 /* RectangleCategoryButton.swift */,
 				D82F35132A79740000E7A8B1 /* DesignSystem */,
 				A55E88CD2A718729005E5AC5 /* CloudKit */,
 				7CB66FD72A66F37F006DFFB2 /* Code */,
@@ -263,6 +261,8 @@
 			isa = PBXGroup;
 			children = (
 				D82F351B2A797E5D00E7A8B1 /* ButtonPrimary.swift */,
+				7C30D1432A79959B009F93D7 /* CircleDayButton.swift */,
+				7C30D1452A799A20009F93D7 /* RectangleCategoryButton.swift */,
 			);
 			path = ButtonStyles;
 			sourceTree = "<group>";
