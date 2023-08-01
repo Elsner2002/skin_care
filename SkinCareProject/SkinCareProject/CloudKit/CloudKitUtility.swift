@@ -229,7 +229,7 @@ extension CloudKitUtility {
     }
     
     static private func deleteItem(record: CKRecord, completion: @escaping (Result<Bool, Error>) -> ()) {
-        CKContainer.default().privateCloudDatabase.delete(withRecordID: record.recordID) {retunedRecordId, returnedError in
+        CKContainer.default().publicCloudDatabase.delete(withRecordID: record.recordID) {retunedRecordId, returnedError in
             if let error = returnedError {
                 completion (.failure(error))
             } else {
@@ -237,6 +237,5 @@ extension CloudKitUtility {
             }
         }
     }
-    
     
 }
