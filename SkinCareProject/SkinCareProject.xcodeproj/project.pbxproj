@@ -37,6 +37,7 @@
 		A55E88D52A7403BE005E5AC5 /* CloudKitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55E88D42A7403BE005E5AC5 /* CloudKitViewModel.swift */; };
 		D82F35152A79747800E7A8B1 /* DesignColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82F35142A79747800E7A8B1 /* DesignColors.swift */; };
 		D82F351C2A797E5D00E7A8B1 /* ButtonPrimary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82F351B2A797E5D00E7A8B1 /* ButtonPrimary.swift */; };
+		D82F351F2A79922900E7A8B1 /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82F351E2A79922900E7A8B1 /* ButtonExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		A55E88D42A7403BE005E5AC5 /* CloudKitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitViewModel.swift; sourceTree = "<group>"; };
 		D82F35142A79747800E7A8B1 /* DesignColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignColors.swift; sourceTree = "<group>"; };
 		D82F351B2A797E5D00E7A8B1 /* ButtonPrimary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPrimary.swift; sourceTree = "<group>"; };
+		D82F351E2A79922900E7A8B1 /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 		7CB66FC52A66F2D7006DFFB2 /* SkinCareProject */ = {
 			isa = PBXGroup;
 			children = (
+				D82F351D2A79921800E7A8B1 /* Extensions */,
 				D82F35132A79740000E7A8B1 /* DesignSystem */,
 				A55E88CD2A718729005E5AC5 /* CloudKit */,
 				7CB66FD72A66F37F006DFFB2 /* Code */,
@@ -267,6 +270,14 @@
 			path = ButtonStyles;
 			sourceTree = "<group>";
 		};
+		D82F351D2A79921800E7A8B1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D82F351E2A79922900E7A8B1 /* ButtonExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -358,6 +369,7 @@
 				7CB66FE02A67013F006DFFB2 /* TipsService.swift in Sources */,
 				7CA88CA02A7063EF00E58ABA /* CameraView.swift in Sources */,
 				7CA88CA22A717B4600E58ABA /* DataScannerView.swift in Sources */,
+				D82F351F2A79922900E7A8B1 /* ButtonExtension.swift in Sources */,
 				7CB66FDE2A670132006DFFB2 /* CameraViewModel.swift in Sources */,
 				A55E88BA2A686ECB005E5AC5 /* Splashscreen.swift in Sources */,
 				7CA88CA42A718C4F00E58ABA /* ProductView.swift in Sources */,
