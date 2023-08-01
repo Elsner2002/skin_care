@@ -21,7 +21,6 @@ struct SkinCareProjectApp: App {
                     }
                     else {
                         ContentView()
-                        //CloudKitViewModel()
                     }
                 }
                 else {
