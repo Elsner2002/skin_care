@@ -20,10 +20,19 @@ struct QuestionnaireView: View {
                 .font(.body)
                 .padding(EdgeInsets(top: 13, leading: 33, bottom: 35, trailing: 33))
             
+         
+            VStack {
+                Button(action: {
+                                print("hi")
+                            }) {
+                                Text("Click Here")
+                            }
+                            .buttonPrimary()
+                            .padding(EdgeInsets(top: 0, leading: 33, bottom: 0, trailing: 33))
+            }
             
-
-          
             
+                        
             
         }
         
