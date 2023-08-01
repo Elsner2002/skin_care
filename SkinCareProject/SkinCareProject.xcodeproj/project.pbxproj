@@ -32,8 +32,8 @@
 		A55E88C92A7057CD005E5AC5 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55E88C82A7057CD005E5AC5 /* OnboardingView.swift */; };
 		A55E88D12A72E58A005E5AC5 /* CloudKitUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55E88D02A72E58A005E5AC5 /* CloudKitUtility.swift */; };
 		A55E88D52A7403BE005E5AC5 /* CloudKitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55E88D42A7403BE005E5AC5 /* CloudKitViewModel.swift */; };
-		D82F35122A78421400E7A8B1 /* SingleSelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82F35112A78421400E7A8B1 /* SingleSelectionButton.swift */; };
 		D82F35152A79747800E7A8B1 /* DesignColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82F35142A79747800E7A8B1 /* DesignColors.swift */; };
+		D82F351C2A797E5D00E7A8B1 /* ButtonPrimary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82F351B2A797E5D00E7A8B1 /* ButtonPrimary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,8 +64,8 @@
 		A55E88CA2A70606D005E5AC5 /* SkinCareProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SkinCareProject.entitlements; sourceTree = "<group>"; };
 		A55E88D02A72E58A005E5AC5 /* CloudKitUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitUtility.swift; sourceTree = "<group>"; };
 		A55E88D42A7403BE005E5AC5 /* CloudKitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitViewModel.swift; sourceTree = "<group>"; };
-		D82F35112A78421400E7A8B1 /* SingleSelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSelectionButton.swift; sourceTree = "<group>"; };
 		D82F35142A79747800E7A8B1 /* DesignColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignColors.swift; sourceTree = "<group>"; };
+		D82F351B2A797E5D00E7A8B1 /* ButtonPrimary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPrimary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,7 +179,6 @@
 				A55E88BC2A7031FE005E5AC5 /* TabBarOnb.swift */,
 				A55E88C82A7057CD005E5AC5 /* OnboardingView.swift */,
 				A55E88C02A703268005E5AC5 /* QuestionnaireView.swift */,
-				D82F35112A78421400E7A8B1 /* SingleSelectionButton.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -246,8 +245,17 @@
 			isa = PBXGroup;
 			children = (
 				D82F35142A79747800E7A8B1 /* DesignColors.swift */,
+				D82F351A2A797E3200E7A8B1 /* ButtonStyles */,
 			);
 			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		D82F351A2A797E3200E7A8B1 /* ButtonStyles */ = {
+			isa = PBXGroup;
+			children = (
+				D82F351B2A797E5D00E7A8B1 /* ButtonPrimary.swift */,
+			);
+			path = ButtonStyles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -327,6 +335,7 @@
 				7CB66FE42A6723CE006DFFB2 /* Classes.swift in Sources */,
 				7CDF2E7E2A6EF8920028CA84 /* TipsView.swift in Sources */,
 				7CB66FC72A66F2D7006DFFB2 /* SkinCareProjectApp.swift in Sources */,
+				D82F351C2A797E5D00E7A8B1 /* ButtonPrimary.swift in Sources */,
 				A55E88D52A7403BE005E5AC5 /* CloudKitViewModel.swift in Sources */,
 				A55E88C92A7057CD005E5AC5 /* OnboardingView.swift in Sources */,
 				A55E88C12A703268005E5AC5 /* QuestionnaireView.swift in Sources */,
@@ -338,7 +347,6 @@
 				7CA88CA02A7063EF00E58ABA /* CameraView.swift in Sources */,
 				7CA88CA22A717B4600E58ABA /* DataScannerView.swift in Sources */,
 				7CB66FDE2A670132006DFFB2 /* CameraViewModel.swift in Sources */,
-				D82F35122A78421400E7A8B1 /* SingleSelectionButton.swift in Sources */,
 				A55E88BA2A686ECB005E5AC5 /* Splashscreen.swift in Sources */,
 				7CA88CA42A718C4F00E58ABA /* ProductView.swift in Sources */,
 				7CA88CA82A72DFDF00E58ABA /* ImageViewModel.swift in Sources */,
