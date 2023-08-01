@@ -46,7 +46,7 @@ struct TabBarOnb: View {
                 .tabViewStyle(.page)
             }
             .onAppear {
-                UIPageControl.appearance().currentPageIndicatorTintColor = .red
+                UIPageControl.appearance().currentPageIndicatorTintColor = .black
                 UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
             }
         }
