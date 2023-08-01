@@ -19,7 +19,11 @@ struct CircleDayButton: View {
             ZStack{
                 if selectedButton {
                     Circle()
-                        .foregroundColor(.blue)
+                        .foregroundColor(Color.systemButton)
+                        .frame(width: 40, height: 40)
+                    Circle()
+                        .stroke()
+                        .foregroundColor(.black)
                         .frame(width: 40, height: 40)
                 }
                 else{

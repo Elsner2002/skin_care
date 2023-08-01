@@ -24,17 +24,15 @@ struct CreateProductView: View {
     var categoriesChoose = [false, false, false, false]
     
     var body: some View {
-        ZStack{
-            Color.gray
-                .ignoresSafeArea()
-            VStack {
+        VStack {
+            VStack{
                 ZStack {
                     Button {
                         chosePhoto.toggle()
                         
                     } label: {
                         ZStack{
-                            Color.black
+                            Color.systemBG
                             if changeProductImage {
                                 Image(uiImage: image)
                                     .resizable()
@@ -48,7 +46,7 @@ struct CreateProductView: View {
                                     .scaledToFit()
                                     .frame(width: 50, height: 50)
                                     .clipShape(Rectangle())
-                                    .foregroundColor(.white)
+                                    .foregroundColor(.brandGray)
                             }
                         }
                         .padding(0)
@@ -70,57 +68,60 @@ struct CreateProductView: View {
                         }
                     }
                 }
-                    .sheet(isPresented: $openCameraRoll) {
-                        ImagePicker(selectedImage: $image, changeImage: $changeProductImage, sourceType: sourceType)
-                    }
+                .sheet(isPresented: $openCameraRoll) {
+                    ImagePicker(selectedImage: $image, changeImage: $changeProductImage, sourceType: sourceType)
+                }
                 Text("adicionar foto")
                     .font(Font.custom("SF Pro", size: 12))
                     .multilineTextAlignment(.center)
-                
-                VStack{
-                    Text("ADICIONAR DETALHES DO PRODUTO")
-                        .font(Font.custom("SF Pro", size: 13))
-                        .foregroundColor(Color(red: 0.24, green: 0.24, blue: 0.26).opacity(0.6))
-                        .multilineTextAlignment(.leading)
-                    HStack(alignment: .top, spacing: 0) {
-                        Text("Nome ")
+            }
+            .padding(.all, 8)
+            
+            VStack{
+                Text("ADICIONAR DETALHES DO PRODUTO")
+                    .font(Font.custom("SF Pro", size: 13))
+                    .foregroundColor(Color.systemLabelSecondary)
+                    .multilineTextAlignment(.leading)
+                HStack(alignment: .top, spacing: 0) {
+                    Text("Nome ")
                         .font(Font.custom("SF Pro", size: 17))
                         .foregroundColor(.black)
                         .frame(width: 100, height: 42, alignment: .center)
-                        TextField("Nome do produto", text: $productName)
-                            .frame(maxWidth: .infinity, minHeight: 44, maxHeight: 44, alignment: .center)
-                    }
-                    .background(.white)
-                    .cornerRadius(10)
-                    HStack(alignment: .top, spacing: 0) {
-                        Text("Marca ")
+                    TextField("Nome do produto", text: $productName)
+                        .frame(maxWidth: .infinity, minHeight: 44, maxHeight: 44, alignment: .center)
+                }
+                .background(.white)
+                .cornerRadius(10)
+                HStack(alignment: .top, spacing: 0) {
+                    Text("Marca ")
                         .font(Font.custom("SF Pro", size: 17))
                         .foregroundColor(.black)
                         .frame(width: 100, height: 42, alignment: .center)
-                        TextField("Marca do produto", text: $productBrand)
-                            .frame(maxWidth: .infinity, minHeight: 44, maxHeight: 44, alignment: .center)
-                    }
-                    .background(.white)
-                    .cornerRadius(10)
+                    TextField("Marca do produto", text: $productBrand)
+                        .frame(maxWidth: .infinity, minHeight: 44, maxHeight: 44, alignment: .center)
                 }
-                .padding(.all, 16)
-                
-                VStack{
-                    Text("DIAS DA SEMANA QUE EU USO")
-                        .font(Font.custom("SF Pro", size: 13))
-                        .foregroundColor(Color(red: 0.24, green: 0.24, blue: 0.26).opacity(0.6))
-                    HStack{
-                        ForEach(0..<7) { position in
-                            CircleDayButton(dayString: daysWeek[position], selectedButton: daysWeekChoose[position])
-                        }
+                .background(Color.white)
+                .cornerRadius(10)
+            }
+            .padding(.all, 8)
+            
+            VStack{
+                Text("DIAS DA SEMANA QUE EU USO")
+                    .font(Font.custom("SF Pro", size: 13))
+                    .foregroundColor(Color.systemLabelSecondary)
+                HStack{
+                    ForEach(0..<7) { position in
+                        CircleDayButton(dayString: daysWeek[position], selectedButton: daysWeekChoose[position])
                     }
-                    
                 }
-                .padding(.all, 16)
                 
+            }
+            .padding(.all, 8)
+            
+            VStack{
                 Text("CATEGORIA")
                     .font(Font.custom("SF Pro", size: 13))
-                    .foregroundColor(Color(red: 0.24, green: 0.24, blue: 0.26).opacity(0.6))
+                    .foregroundColor(Color.systemLabelSecondary)
                 HStack{
                     RectangleCategoryButton(categoryString: categories[0], selectedButton: categoriesChoose[0])
                     RectangleCategoryButton(categoryString: categories[1], selectedButton: categoriesChoose[1])
@@ -129,14 +130,32 @@ struct CreateProductView: View {
                     RectangleCategoryButton(categoryString: categories[2], selectedButton: categoriesChoose[2])
                     RectangleCategoryButton(categoryString: categories[3], selectedButton: categoriesChoose[3])
                 }
-
             }
+            .padding(.all, 8)
+            
+            VStack{
+                Button {
+                    print("salvar")
+                } label: {
+                    Text("Salvar")
+                }
+                .buttonStyle(ButtonPrimary())
+                
+                Button {
+                    print("excluir")
+                } label: {
+                    Text("Excluir")
+                }
+                .buttonStyle(ButtonPrimary())
+                .padding(.top, 10)
+            }
+            .padding(.top, 8)
         }
         
     }
     
     init() {
-      UITextField.appearance().clearButtonMode = .whileEditing
+        UITextField.appearance().clearButtonMode = .whileEditing
     }
 }
 

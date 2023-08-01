@@ -19,7 +19,11 @@ struct RectangleCategoryButton: View {
             ZStack{
                 if selectedButton {
                     RoundedRectangle(cornerSize: CGSize(width: 8, height: 8))
-                        .foregroundColor(.blue)
+                        .foregroundColor(Color.systemButton)
+                        .frame(width: 175, height: 73)
+                    RoundedRectangle(cornerSize: CGSize(width: 8, height: 8))
+                        .stroke()
+                        .foregroundColor(.black)
                         .frame(width: 175, height: 73)
                 }
                 else{
