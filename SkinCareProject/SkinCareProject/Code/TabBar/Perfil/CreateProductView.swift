@@ -20,8 +20,7 @@ struct CreateProductView: View {
     var daysWeek = ["S", "T", "Q", "Q", "S", "S", "D"]
     var daysWeekChoose = [false, false, false, false, false, false, false]
     
-    var categories = ["Hidratante", "Protetor Solar", "Sabonete", "Tratamento"]
-    var categoriesChoose = [false, false, false, false]
+    var categories = [("Hidratante", false), ("Protetor Solar", false), ("Sabonete", false), ("Tratamento", false)]
     
     var body: some View {
         VStack {
@@ -82,26 +81,10 @@ struct CreateProductView: View {
                     .font(Font.custom("SF Pro", size: 13))
                     .foregroundColor(Color.systemLabelSecondary)
                     .multilineTextAlignment(.leading)
-                HStack(alignment: .top, spacing: 0) {
-                    Text("Nome ")
-                        .font(Font.custom("SF Pro", size: 17))
-                        .foregroundColor(.black)
-                        .frame(width: 100, height: 42, alignment: .center)
-                    TextField("Nome do produto", text: $productName)
-                        .frame(maxWidth: .infinity, minHeight: 44, maxHeight: 44, alignment: .center)
-                }
-                .background(.white)
-                .cornerRadius(10)
-                HStack(alignment: .top, spacing: 0) {
-                    Text("Marca ")
-                        .font(Font.custom("SF Pro", size: 17))
-                        .foregroundColor(.black)
-                        .frame(width: 100, height: 42, alignment: .center)
-                    TextField("Marca do produto", text: $productBrand)
-                        .frame(maxWidth: .infinity, minHeight: 44, maxHeight: 44, alignment: .center)
-                }
-                .background(Color.white)
-                .cornerRadius(10)
+                
+                CreateProductTextField(productName: $productName, title: "Nome", subTitle: "Nome do produto")
+                
+                CreateProductTextField(productName: $productBrand, title: "Marca", subTitle: "Marca do produto")
             }
             .padding(.all, 8)
             
@@ -123,12 +106,12 @@ struct CreateProductView: View {
                     .font(Font.custom("SF Pro", size: 13))
                     .foregroundColor(Color.systemLabelSecondary)
                 HStack{
-                    RectangleCategoryButton(categoryString: categories[0], selectedButton: categoriesChoose[0])
-                    RectangleCategoryButton(categoryString: categories[1], selectedButton: categoriesChoose[1])
+                    RectangleCategoryButton(categoryString: categories[0].0, selectedButton: categories[0].1)
+                    RectangleCategoryButton(categoryString: categories[1].0, selectedButton: categories[1].1)
                 }
                 HStack{
-                    RectangleCategoryButton(categoryString: categories[2], selectedButton: categoriesChoose[2])
-                    RectangleCategoryButton(categoryString: categories[3], selectedButton: categoriesChoose[3])
+                    RectangleCategoryButton(categoryString: categories[2].0, selectedButton: categories[2].1)
+                    RectangleCategoryButton(categoryString: categories[3].0, selectedButton: categories[3].1)
                 }
             }
             .padding(.all, 8)
