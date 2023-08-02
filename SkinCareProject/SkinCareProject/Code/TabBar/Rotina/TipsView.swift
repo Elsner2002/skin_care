@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TipsView: View {
+    //Ver onde fica a imagem, o titulo e o subtitulo da tip
     
     var title: String
     var text: String
