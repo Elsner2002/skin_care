@@ -12,11 +12,11 @@ struct ProductListView: View {
     @StateObject private var cameraVM = CameraViewModel()
     @State private var path: [Int] = []
     @State private var searchText = ""
-    @State var categoryButtons: [(ProductCategory, Bool)] = [
-            (.moisturizer, false),
-            (.cleanser, false),
-            (.sunscreen, false),
-            (.treatment, false)
+    @State var categoryButtons: [(String, Bool)] = [
+            (ProductCategory.moisturizer.rawValue, false),
+            (ProductCategory.cleanser.rawValue, false),
+            (ProductCategory.sunscreen.rawValue, false),
+            (ProductCategory.treatment.rawValue, false)
     ]
     
     var body: some View {
@@ -53,8 +53,8 @@ struct ProductListView: View {
                             ForEach(0..<categoryButtons.count) { position in
                                 CategoryButton(
                                     selectedButton: categoryButtons[position].1,
-                                    image: Image("ProfileDefault"),
-                                    label: categoryButtons[position].0.rawValue)
+                                    image: Image(categoryButtons[position].0),
+                                    label: categoryButtons[position].0)
                             }
                             .padding(.trailing)
                         }
@@ -87,8 +87,8 @@ struct ProductListView: View {
                         Text("Conheça Mais")
                             .bold()
                         Spacer()
-                        Button {
-                            //AllProductsListView
+                        NavigationLink {
+                            AllProductsListView()
                         } label: {
                             Text("Ver Todos")
                                 .foregroundColor(Color.brandGreen)
