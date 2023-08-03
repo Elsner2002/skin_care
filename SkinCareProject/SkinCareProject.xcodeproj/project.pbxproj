@@ -18,6 +18,9 @@
 		7C30D1532A7ACECC009F93D7 /* CategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C30D1522A7ACECC009F93D7 /* CategoryButton.swift */; };
 		7C30D1552A7AD8F3009F93D7 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C30D1542A7AD8F3009F93D7 /* ViewExtension.swift */; };
 		7C30D1582A7AEE79009F93D7 /* TipSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C30D1572A7AEE79009F93D7 /* TipSheetView.swift */; };
+		7C30D15A2A7C168B009F93D7 /* AddProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C30D1592A7C168B009F93D7 /* AddProductView.swift */; };
+		7C30D15C2A7C1B21009F93D7 /* ButtonProductList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C30D15B2A7C1B21009F93D7 /* ButtonProductList.swift */; };
+		7C5FA0FA2A7C42AE000D43BD /* RoutineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5FA0F92A7C42AE000D43BD /* RoutineButton.swift */; };
 		7CA88CA02A7063EF00E58ABA /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA88C9F2A7063EF00E58ABA /* CameraView.swift */; };
 		7CA88CA22A717B4600E58ABA /* DataScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA88CA12A717B4600E58ABA /* DataScannerView.swift */; };
 		7CA88CA42A718C4F00E58ABA /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA88CA32A718C4F00E58ABA /* ProductView.swift */; };
@@ -60,6 +63,9 @@
 		7C30D1522A7ACECC009F93D7 /* CategoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButton.swift; sourceTree = "<group>"; };
 		7C30D1542A7AD8F3009F93D7 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		7C30D1572A7AEE79009F93D7 /* TipSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipSheetView.swift; sourceTree = "<group>"; };
+		7C30D1592A7C168B009F93D7 /* AddProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductView.swift; sourceTree = "<group>"; };
+		7C30D15B2A7C1B21009F93D7 /* ButtonProductList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonProductList.swift; sourceTree = "<group>"; };
+		7C5FA0F92A7C42AE000D43BD /* RoutineButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineButton.swift; sourceTree = "<group>"; };
 		7CA88C9F2A7063EF00E58ABA /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		7CA88CA12A717B4600E58ABA /* DataScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScannerView.swift; sourceTree = "<group>"; };
 		7CA88CA32A718C4F00E58ABA /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
@@ -252,6 +258,8 @@
 			isa = PBXGroup;
 			children = (
 				7CDF2E6C2A6B17C00028CA84 /* HomeView.swift */,
+				7C30D1592A7C168B009F93D7 /* AddProductView.swift */,
+				7C30D13D2A79764B009F93D7 /* CreateProductView.swift */,
 			);
 			path = Rotina;
 			sourceTree = "<group>";
@@ -260,7 +268,6 @@
 			isa = PBXGroup;
 			children = (
 				7CDF2E722A6B17E70028CA84 /* ProfileView.swift */,
-				7C30D13D2A79764B009F93D7 /* CreateProductView.swift */,
 			);
 			path = Perfil;
 			sourceTree = "<group>";
@@ -304,6 +311,8 @@
 				7C30D1452A799A20009F93D7 /* RectangleCategoryButton.swift */,
 				7C30D1492A7AA5D9009F93D7 /* ProductButton.swift */,
 				7C30D1522A7ACECC009F93D7 /* CategoryButton.swift */,
+				7C30D15B2A7C1B21009F93D7 /* ButtonProductList.swift */,
+				7C5FA0F92A7C42AE000D43BD /* RoutineButton.swift */,
 			);
 			path = ButtonStyles;
 			sourceTree = "<group>";
@@ -402,6 +411,7 @@
 				D82F351C2A797E5D00E7A8B1 /* ButtonPrimary.swift in Sources */,
 				A55E88D52A7403BE005E5AC5 /* CloudKitViewModel.swift in Sources */,
 				A55E88C92A7057CD005E5AC5 /* OnboardingView.swift in Sources */,
+				7C30D15A2A7C168B009F93D7 /* AddProductView.swift in Sources */,
 				A55E88C12A703268005E5AC5 /* QuestionnaireView.swift in Sources */,
 				7C30D1532A7ACECC009F93D7 /* CategoryButton.swift in Sources */,
 				D82F35152A79747800E7A8B1 /* DesignColors.swift in Sources */,
@@ -409,11 +419,13 @@
 				7C30D13E2A79764B009F93D7 /* CreateProductView.swift in Sources */,
 				7C30D1442A79959B009F93D7 /* CircleDayButton.swift in Sources */,
 				7CB66FDC2A670122006DFFB2 /* Enums.swift in Sources */,
+				7C30D15C2A7C1B21009F93D7 /* ButtonProductList.swift in Sources */,
 				7C30D14C2A7AA627009F93D7 /* AllProductsListView.swift in Sources */,
 				7CDF2E712A6B17DC0028CA84 /* JournalView.swift in Sources */,
 				7CB66FE02A67013F006DFFB2 /* TipsService.swift in Sources */,
 				7CA88CA02A7063EF00E58ABA /* CameraView.swift in Sources */,
 				7C30D14E2A7ABC7A009F93D7 /* CreateProductTextField.swift in Sources */,
+				7C5FA0FA2A7C42AE000D43BD /* RoutineButton.swift in Sources */,
 				7C30D1552A7AD8F3009F93D7 /* ViewExtension.swift in Sources */,
 				7CA88CA22A717B4600E58ABA /* DataScannerView.swift in Sources */,
 				D82F351F2A79922900E7A8B1 /* ButtonExtension.swift in Sources */,

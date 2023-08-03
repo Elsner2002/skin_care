@@ -9,7 +9,6 @@ import SwiftUI
 
 struct Searchbar: View {
     
-    @StateObject private var cameraVM = CameraViewModel()
     @Binding var searchText: String
     var textPlaceHolder: String = ""
 
