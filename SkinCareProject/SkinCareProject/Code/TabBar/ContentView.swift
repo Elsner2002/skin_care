@@ -10,25 +10,29 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         TabView{
-            HomeView()
+            ProfileView()
                 .tabItem {
-                    Label("Home", systemImage: "house")
+                    Label("Perfil", systemImage: "person.crop.circle")
                 }
             
             ProductListView()
                 .tabItem {
-                    Label("Produtos", systemImage: "list.bullet")
+                    Image("productSymbol")
+                    Text("Produtos")
+                }
+            
+            HomeView()
+                .tabItem {
+                    Image("routinesSymbol")
+                    Text("Rotinas")
                 }
             
             JournalView()
                 .tabItem {
-                    Label("Diario", systemImage: "text.book.closed")
-                }
-            ProfileView()
-                .tabItem {
-                    Label("Perfil", systemImage: "person")
+                    Label("Diario", systemImage: "note.text")
                 }
         }
+        .accentColor(Color.brandGreen)
     }
 }
 

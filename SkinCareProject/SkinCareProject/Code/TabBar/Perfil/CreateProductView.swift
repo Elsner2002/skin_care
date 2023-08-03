@@ -20,7 +20,7 @@ struct CreateProductView: View {
     var daysWeek = ["S", "T", "Q", "Q", "S", "S", "D"]
     var daysWeekChoose = [false, false, false, false, false, false, false]
     
-    var categories = [("Hidratante", false), ("Protetor Solar", false), ("Sabonete", false), ("Tratamento", false)]
+    var categories = [("Hidratante", false), ("Protetor Solar", false), ("Limpeza", false), ("Tratamento", false)]
     
     var body: some View {
         VStack {

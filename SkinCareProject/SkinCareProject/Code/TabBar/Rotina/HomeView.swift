@@ -12,7 +12,7 @@ struct HomeView: View {
     var body: some View {
         VStack{
             Text("Home")
-            TipsView(title: Constants.shared.randomTip!.title, text: Constants.shared.randomTip!.text)
+            TipsView(tip: Constants.shared.randomTip!)
         } .onAppear{
             UserDefaults.standard.set(false, forKey: "firstTimeHere")
           }

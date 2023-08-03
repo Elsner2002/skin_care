@@ -14,6 +14,10 @@
 		7C30D14A2A7AA5D9009F93D7 /* ProductButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C30D1492A7AA5D9009F93D7 /* ProductButton.swift */; };
 		7C30D14C2A7AA627009F93D7 /* AllProductsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C30D14B2A7AA627009F93D7 /* AllProductsListView.swift */; };
 		7C30D14E2A7ABC7A009F93D7 /* CreateProductTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C30D14D2A7ABC7A009F93D7 /* CreateProductTextField.swift */; };
+		7C30D1512A7ACBEB009F93D7 /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C30D1502A7ACBEB009F93D7 /* UIApplicationExtension.swift */; };
+		7C30D1532A7ACECC009F93D7 /* CategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C30D1522A7ACECC009F93D7 /* CategoryButton.swift */; };
+		7C30D1552A7AD8F3009F93D7 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C30D1542A7AD8F3009F93D7 /* ViewExtension.swift */; };
+		7C30D1582A7AEE79009F93D7 /* TipSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C30D1572A7AEE79009F93D7 /* TipSheetView.swift */; };
 		7CA88CA02A7063EF00E58ABA /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA88C9F2A7063EF00E58ABA /* CameraView.swift */; };
 		7CA88CA22A717B4600E58ABA /* DataScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA88CA12A717B4600E58ABA /* DataScannerView.swift */; };
 		7CA88CA42A718C4F00E58ABA /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA88CA32A718C4F00E58ABA /* ProductView.swift */; };
@@ -52,6 +56,10 @@
 		7C30D1492A7AA5D9009F93D7 /* ProductButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductButton.swift; sourceTree = "<group>"; };
 		7C30D14B2A7AA627009F93D7 /* AllProductsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllProductsListView.swift; sourceTree = "<group>"; };
 		7C30D14D2A7ABC7A009F93D7 /* CreateProductTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProductTextField.swift; sourceTree = "<group>"; };
+		7C30D1502A7ACBEB009F93D7 /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
+		7C30D1522A7ACECC009F93D7 /* CategoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButton.swift; sourceTree = "<group>"; };
+		7C30D1542A7AD8F3009F93D7 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		7C30D1572A7AEE79009F93D7 /* TipSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipSheetView.swift; sourceTree = "<group>"; };
 		7CA88C9F2A7063EF00E58ABA /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		7CA88CA12A717B4600E58ABA /* DataScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScannerView.swift; sourceTree = "<group>"; };
 		7CA88CA32A718C4F00E58ABA /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
@@ -101,6 +109,15 @@
 				7C30D14D2A7ABC7A009F93D7 /* CreateProductTextField.swift */,
 			);
 			path = TextFieldStyles;
+			sourceTree = "<group>";
+		};
+		7C30D1562A7AEE5B009F93D7 /* Tips */ = {
+			isa = PBXGroup;
+			children = (
+				7CDF2E7D2A6EF8920028CA84 /* TipsView.swift */,
+				7C30D1572A7AEE79009F93D7 /* TipSheetView.swift */,
+			);
+			path = Tips;
 			sourceTree = "<group>";
 		};
 		7CA88C9E2A7063B500E58ABA /* Camera */ = {
@@ -174,6 +191,7 @@
 				7CB66FD82A66F3BD006DFFB2 /* Application */,
 				7CB66FDA2A66F4C7006DFFB2 /* Structs */,
 				A55E88B92A686ECB005E5AC5 /* Splashscreen.swift */,
+				7C30D1562A7AEE5B009F93D7 /* Tips */,
 				7CA88C9E2A7063B500E58ABA /* Camera */,
 				A55E88BB2A7031EE005E5AC5 /* Onboarding */,
 				A586F5C12A74587B002AA9B9 /* TabBar */,
@@ -234,7 +252,6 @@
 			isa = PBXGroup;
 			children = (
 				7CDF2E6C2A6B17C00028CA84 /* HomeView.swift */,
-				7CDF2E7D2A6EF8920028CA84 /* TipsView.swift */,
 			);
 			path = Rotina;
 			sourceTree = "<group>";
@@ -286,6 +303,7 @@
 				7C30D1432A79959B009F93D7 /* CircleDayButton.swift */,
 				7C30D1452A799A20009F93D7 /* RectangleCategoryButton.swift */,
 				7C30D1492A7AA5D9009F93D7 /* ProductButton.swift */,
+				7C30D1522A7ACECC009F93D7 /* CategoryButton.swift */,
 			);
 			path = ButtonStyles;
 			sourceTree = "<group>";
@@ -294,6 +312,8 @@
 			isa = PBXGroup;
 			children = (
 				D82F351E2A79922900E7A8B1 /* ButtonExtension.swift */,
+				7C30D1502A7ACBEB009F93D7 /* UIApplicationExtension.swift */,
+				7C30D1542A7AD8F3009F93D7 /* ViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -371,16 +391,19 @@
 			files = (
 				7C30D1462A799A20009F93D7 /* RectangleCategoryButton.swift in Sources */,
 				7CDF2E6F2A6B17CE0028CA84 /* ProductListView.swift in Sources */,
+				7C30D1582A7AEE79009F93D7 /* TipSheetView.swift in Sources */,
 				7CDF2E732A6B17E70028CA84 /* ProfileView.swift in Sources */,
 				7C30D14A2A7AA5D9009F93D7 /* ProductButton.swift in Sources */,
 				7CB66FC92A66F2D7006DFFB2 /* ContentView.swift in Sources */,
 				7CB66FE42A6723CE006DFFB2 /* Classes.swift in Sources */,
+				7C30D1512A7ACBEB009F93D7 /* UIApplicationExtension.swift in Sources */,
 				7CDF2E7E2A6EF8920028CA84 /* TipsView.swift in Sources */,
 				7CB66FC72A66F2D7006DFFB2 /* SkinCareProjectApp.swift in Sources */,
 				D82F351C2A797E5D00E7A8B1 /* ButtonPrimary.swift in Sources */,
 				A55E88D52A7403BE005E5AC5 /* CloudKitViewModel.swift in Sources */,
 				A55E88C92A7057CD005E5AC5 /* OnboardingView.swift in Sources */,
 				A55E88C12A703268005E5AC5 /* QuestionnaireView.swift in Sources */,
+				7C30D1532A7ACECC009F93D7 /* CategoryButton.swift in Sources */,
 				D82F35152A79747800E7A8B1 /* DesignColors.swift in Sources */,
 				7CDF2E6D2A6B17C00028CA84 /* HomeView.swift in Sources */,
 				7C30D13E2A79764B009F93D7 /* CreateProductView.swift in Sources */,
@@ -391,6 +414,7 @@
 				7CB66FE02A67013F006DFFB2 /* TipsService.swift in Sources */,
 				7CA88CA02A7063EF00E58ABA /* CameraView.swift in Sources */,
 				7C30D14E2A7ABC7A009F93D7 /* CreateProductTextField.swift in Sources */,
+				7C30D1552A7AD8F3009F93D7 /* ViewExtension.swift in Sources */,
 				7CA88CA22A717B4600E58ABA /* DataScannerView.swift in Sources */,
 				D82F351F2A79922900E7A8B1 /* ButtonExtension.swift in Sources */,
 				7CB66FDE2A670132006DFFB2 /* CameraViewModel.swift in Sources */,
