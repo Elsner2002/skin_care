@@ -52,7 +52,59 @@ class Constants: ObservableObject {
         }
         randomTipGenerator()
     }
+    //MARK: Notifications
     
+    @Published var notification: Bool = UserDefaults.standard.value(forKey: "notification") as? Bool ?? false {
+        didSet {
+            NotificationService.intance.requestAutorization()
+            if !notification {
+                morningNotification = false
+                nightNotification = false
+            } else if notification {
+                morningNotification = true
+                nightNotification = true
+            }
+            UserDefaults.standard.set(notification, forKey: "notification")
+        }
+    }
+    
+    @Published var morningTime: Date = UserDefaults.standard.value(forKey: "morningTime") as? Date ?? Date() {
+        didSet {
+            let componentsMorning = Calendar.current.dateComponents([.hour, .minute], from: morningTime)
+            let morningHour = componentsMorning.hour ?? 0
+            let morningMinute = componentsMorning.minute ?? 0
+            if morningNotification {
+                NotificationService.intance.scheduleNotification(hour: morningHour, minute: morningMinute)
+                notification = true
+            }
+            UserDefaults.standard.set(morningTime, forKey: "morningTime")
+        }
+    }
+    
+    @Published var morningNotification: Bool = UserDefaults.standard.value(forKey: "morningNotification") as? Bool ?? false {
+        didSet {
+            UserDefaults.standard.set(morningNotification, forKey: "morningNotification")
+        }
+    }
+    
+    @Published var nightTime: Date = UserDefaults.standard.value(forKey: "nightTime") as? Date ?? Date() {
+        didSet {
+            let componentsNight = Calendar.current.dateComponents([.hour, .minute], from: nightTime)
+            let nightHour = componentsNight.hour ?? 0
+            let nightMinute = componentsNight.minute ?? 0
+            if nightNotification {
+                NotificationService.intance.scheduleNotification(hour: nightHour, minute: nightMinute)
+                notification = true
+            }
+            UserDefaults.standard.set(nightTime, forKey: "nightTime")
+        }
+    }
+    
+    @Published var nightNotification: Bool = UserDefaults.standard.value(forKey: "nightNotification") as? Bool ?? false {
+        didSet {
+            UserDefaults.standard.set(nightNotification, forKey: "nightNotification")
+        }
+      
     //price range
     func priceRange(price: Int) -> String {
         switch price {

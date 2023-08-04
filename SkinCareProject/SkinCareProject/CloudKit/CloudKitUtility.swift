@@ -8,6 +8,7 @@
 import Foundation
 import CloudKit
 import Combine
+import UIKit
 
 protocol CloudKitProtocol {
     init?(record: CKRecord)
@@ -236,6 +237,47 @@ extension CloudKitUtility {
                 completion(.success(true))
             }
         }
+    }
+}
+
+//MARK: Images
+
+extension CloudKitUtility {
+    func image(url: URL?) -> UIImage? {
+        if let url = url{
+            if let data = try? Data(contentsOf: url),  let image = UIImage(data: data){
+                return image
+            }
+        }
+        return nil
+    }
+    
+    static func makeURLJPG(image: String) -> URL {
+        guard
+            let image = UIImage(named: image),
+            let url = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("\(image).jpg"),
+            let data = image.jpegData(compressionQuality: 1.0) else {return URL(string: "")!}
+        
+        do {
+            try data.write(to: url)
+        } catch {
+            print(error)
+        }
+        return url
+    }
+    
+    static func makeURLPNG(image: String) -> URL {
+        guard
+            let image = UIImage(named: image),
+            let url = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("\(image).png"),
+            let data = image.pngData() else {return URL(string: "")!}
+        
+        do {
+            try data.write(to: url)
+        } catch {
+            print(error)
+        }
+        return url
     }
     
 }

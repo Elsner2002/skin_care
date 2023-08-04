@@ -15,7 +15,7 @@ class CloudKitModel: ObservableObject {
     @Published var permissionStatus: Bool = false
     @Published var error: String = ""
     @Published var userName: String = ""
-    @Published var routineProducts: [ListProduct] = []
+    @Published var routineProducts: [RoutineProduct] = []
     var cancellables = Set<AnyCancellable>()
    
     init() {
@@ -82,8 +82,7 @@ class CloudKitModel: ObservableObject {
         
         do {
             try data.write(to: url)
-            guard let newProduct = ListProduct(image: url, name: "test", explanation: "test", brand: "test", recomendedTime: ["1"], vegan: true, barcode: 0, priceRange: 0, SPF: 50, texture: "test", ingredients: ["test"], categories: ["test"], warnings: ["test"], phototypes: ["1"], skintypes: ["2"], conditions: ["1", "2"]) else {return}
-//            guard let newProduct = RoutineProduct(image: url, name: "test", isCompleted: false, barcode: 123, frequency: [1,2,3], timesDay: 1, categories: ["Cleanser"]) else {return}
+            guard let newProduct = RoutineProduct(image: url, name: "test", isCompleted: false, barcode: 12345, frequency: [1], timesDay: 1, categories: ["Limpeza", "Tônicos & Tratamentos",  "Hidratante"]) else {return}
             
             CloudKitUtility.add(item: newProduct) { result in
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -99,7 +98,7 @@ class CloudKitModel: ObservableObject {
     //READ
     func fetchItems() {
         let predicate = NSPredicate(value: true)
-        let recordType = "ListProduct"
+        let recordType = "RoutineProduct"
         
         CloudKitUtility.fetch(predicate: predicate, recordType: recordType)
             .receive(on: DispatchQueue.main)
@@ -146,6 +145,9 @@ class CloudKitModel: ObservableObject {
 
 struct CloudKitViewModel: View {
     @StateObject private var vm = CloudKitModel()
+    
+    
+    @State var product: RoutineProduct = RoutineProduct(image: nil, name: "teste", isCompleted: false, barcode: 123, frequency: [1], timesDay: 0, categories: ["teste"])!
 
     var body: some View {
         VStack {
@@ -159,22 +161,18 @@ struct CloudKitViewModel: View {
                 Text("Add")
                     .font(.headline)
             }
+            
+            ListProductComponent(product: product)
 
             List {
                 ForEach(vm.routineProducts, id: \.self) { product in
-                    HStack {
-                        Text("1")
-                        Text(product.name)
-
-                        if let url = product.image, let data = try? Data(contentsOf: url),  let image = UIImage(data: data) {
-                            Image(uiImage: image)
-                                .resizable()
-                                .frame(width: 50, height: 50)
-                        }
-                    }
-                }
+                    ListProductComponent(product: product)
+                } .onDelete(perform: vm.deleteItem(indexSet:))
             }
         }
+        .onChange(of: self.vm.routineProducts, perform: { _ in
+            self.product = vm.routineProducts[0]
+        })
     }
 }
 

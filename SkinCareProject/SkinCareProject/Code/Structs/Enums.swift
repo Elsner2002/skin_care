@@ -46,8 +46,6 @@ enum Concern: String {
     case blackHeads = "Cravos"
     case redness = "Vermelhidão"
     case darkCircles = "Olheiras"
-//    case wrinkles = "Rugas"
-//    case scarring = "Estrias/Cicatrizes"
 }
 
 enum Warning {
@@ -56,11 +54,8 @@ enum Warning {
 
 enum ProductCategory: String {
     case moisturizer = "Hidratante"
-    case cleanser = "Cleanser"
+    case cleanser = "Limpeza"
     case sunscreen = "Protetor Solar"
-    case serum = "Sérum"
-    case mask = "Máscara"
-    case antiaging = "Anti-envelhecimento"
     case treatment = "Tratamento"
 }
 

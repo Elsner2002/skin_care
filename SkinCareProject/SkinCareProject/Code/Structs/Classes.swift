@@ -261,12 +261,19 @@ struct Tip: Codable, Identifiable {
 class Routine {
     var name: String
     var completition: Int
-    var categories: [Category: [RoutineProduct]?]
+    //var categories: [ProductCategory: [RoutineProduct]?]
+    var categoryLimpeza: [RoutineProduct]
+    var categoryTratamentos: [RoutineProduct]
+    var categoryHidratante: [RoutineProduct]
+    var categoryProtetor: [RoutineProduct]
     
-    init(name: String, completition: Int, categories: [Category : [RoutineProduct]?]) {
+    init(name: String, completition: Int, categoryLimpeza: [RoutineProduct], categoryTratamentos: [RoutineProduct], categoryHidratante: [RoutineProduct], categoryProtetor: [RoutineProduct]) {
         self.name = name
         self.completition = completition
-        self.categories = categories
+        self.categoryLimpeza = categoryLimpeza
+        self.categoryTratamentos = categoryTratamentos
+        self.categoryHidratante = categoryHidratante
+        self.categoryProtetor = categoryProtetor
     }
 }
 
