@@ -71,7 +71,7 @@ struct HomeView: View {
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack{
-                            ProductButton(image: Image("ProfileDefault"), brand: "AAAAA", name: "aaaaaa")
+                            ProductButton(image: Image("Tratamento"), brand: "Simple Organic", name: "Niacinamida")
                         }
                         .padding()
                     }

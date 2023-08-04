@@ -1,30 +1,29 @@
 //
-//  ButtonPrimary.swift
+//  ButtonTerciary.swift
 //  SkinCareProject
 //
-//  Created by Natalia Dal Pizzol on 01/08/23.
+//  Created by Natalia Dal Pizzol on 03/08/23.
 //
 
 import Foundation
 import SwiftUI
 import UIKit
 
-struct ButtonPrimary: ButtonStyle {
-    
-    var backgroundColor: Color = .brandGray
+struct ButtonTerciary: ButtonStyle {
+    let unpressedColor = Color.buttonColor
+    let pressedColor = Color.systemButton
     
     func makeBody(configuration: Configuration) -> some View {
         configuration
             .label
-            .font(.body)
             .padding()
-            .background(self.backgroundColor)
+            .background(configuration.isPressed ? pressedColor : unpressedColor)
             .cornerRadius(12)
-    
+
     }
 }
 
-struct ButtonPrimary_Preview: PreviewProvider {
+struct ButtonTerciary_Preview: PreviewProvider {
     static var previews: some View {
         VStack {
             Button {
@@ -32,7 +31,8 @@ struct ButtonPrimary_Preview: PreviewProvider {
                       } label: {
                           Text("Button label")
                       }
-                      .buttonStyle(ButtonPrimary(backgroundColor: .buttonColor))
+                      .buttonStyle(ButtonTerciary())
         }
     }
 }
+
