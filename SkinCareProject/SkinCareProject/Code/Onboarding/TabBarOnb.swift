@@ -32,7 +32,7 @@ struct TabBarOnb: View {
             VStack {
                 HStack {
                     Spacer()
-                    NavigationLink(destination: ContentView().navigationBarBackButtonHidden(true), label: {
+                    NavigationLink(destination: TabBarQuest().navigationBarBackButtonHidden(true), label: {
                         Text("Pular")
                             .font(.system(size: 20))
                             .foregroundColor(Color(uiColor: .black))

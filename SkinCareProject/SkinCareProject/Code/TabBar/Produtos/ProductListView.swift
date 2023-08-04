@@ -70,7 +70,7 @@ struct ProductListView: View {
                     .padding(.leading, 15)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack{
-                            ProductButton(image: Image("ProfileDefault"), brand: "AAAAA", name: "aaaaaa")
+                            ProductButton(image: Image("Hidratante"), brand: "Neutrogena", name: "Hydroboost")
                         }
                         .padding()
                     }
@@ -99,7 +99,7 @@ struct ProductListView: View {
                     
                     ScrollView(.horizontal, showsIndicators: false){
                         HStack{
-                            ProductButton(image: Image("ProfileDefault"), brand: "AAAAA", name: "aaaaaa")
+                            ProductButton(image: Image("Hidratante"), brand: "Epidrate", name: "Calm")
                         }
                         .padding()
                     }
