@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum Phototype: Int {
     case zero = 0
@@ -21,12 +22,18 @@ enum Phototype: Int {
     }
 }
 
-enum SkinType: String {
+enum SkinType: String, CaseIterable {
     case oily = "Oleosa"
     case dry = "Seca"
     case normal = "Normal"
     case combination = "Mista"
     case sensitive = "Sensível"
+}
+
+enum Gender: String, CaseIterable {
+    case female = "Feminino"
+    case male = "Masculino"
+    case other = "Outro"
 }
 
 enum Condition: String {
@@ -64,4 +71,39 @@ enum Texture: String {
     case cream = "Creme"
     case oil = "Óleo"
     case spray = "Spray"
+    
+}
+
+enum ButtonType: String {
+    case primary
+    case secondary
+    case tertiary
+    
+    
+    //computed properties
+//    var color: Color {
+//        switch self {
+//        case .primary: return Color.brandGray
+//
+//        }
+//    }
+    
+}
+
+enum PhototypeQuestions: String, CaseIterable {
+    case one = "Queima facilmente, não bronzeia"
+    case two = "Queima facilmente, bronzeia pouco"
+    case three = "Queima pouco, bronzeia gradualmente"
+    case four = "Raramente queima, bronzeia fácil"
+    case five = "Não queima e bronzeia"
+    case six = "Bronzeia facilmente"
+    
+}
+
+enum SkinConditionQuestions: String, CaseIterable {
+    case rosacea = "Rosácea"
+    case vitiligo = "Vitiligo"
+    case acne = "Acne"
+    case melasma = "Melasma"
+    
 }
