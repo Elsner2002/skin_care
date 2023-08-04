@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct HomeView: View {
     
-    var routineImages: [String] = ["ProfileDefault", "ProfileDefault"]
+    var routineImages: [String] = ["sun.max.fill", "moon.stars.fill"]
+    var routineColor: [Color] = [Color.brandPink, Color.brandGreen]
+    var routineList: [Routine] = [Routine(name: "Rotina Diurna", completition: 0, categoryLimpeza: [], categoryTratamentos: [], categoryHidratante: [], categoryProtetor: []), Routine(name: "Rotina Noturna", completition: 0, categoryLimpeza: [], categoryTratamentos: [], categoryHidratante: [], categoryProtetor: [])]
     
     var body: some View {
         NavigationStack{
@@ -29,7 +32,7 @@ struct HomeView: View {
                                 Spacer()
                             }
                             HStack{
-                                Text("Nome")
+                                Text("Bruna!")
                                     .font( Font.custom("SF Pro", size: 34)
                                         .weight(.bold))
                                 Spacer()
@@ -48,8 +51,12 @@ struct HomeView: View {
                     .padding(.leading, 28)
                     
                     HStack{
-                        ForEach(routineImages, id: \.self) { imageName in
-                            RoutineButton(image: Image(imageName))
+                        ForEach(0..<routineImages.count) { position in
+                            NavigationLink {
+                                RoutineView(routine: routineList[position])
+                            } label: {
+                                RoutineButton(image: Image(systemName: routineImages[position]), color: routineColor[position])
+                            }
                         }
                     }
                     .padding()

@@ -246,12 +246,6 @@ class RoutineProduct: CloudKitProtocol, Hashable {
 }
 
 struct Tip: Codable, Identifiable {
-    enum CodingKeys: CodingKey {
-        case title
-        case text
-        case image
-    }
-    
     var id = UUID()
     var title: String
     var text: String

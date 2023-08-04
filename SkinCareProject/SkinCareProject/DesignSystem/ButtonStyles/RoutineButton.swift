@@ -10,13 +10,14 @@ import SwiftUI
 struct RoutineButton: View {
     
     var image: Image
+    var color: Color
     
     var body: some View {
         HStack{
             image
                 .resizable()
                 .frame(width: 104, height: 104)
-                .clipShape(Circle())
+                .foregroundColor(color)
         }
         .font(.headline)
         .padding()
@@ -33,6 +34,6 @@ struct RoutineButton: View {
 
 struct RoutineButton_Previews: PreviewProvider {
     static var previews: some View {
-        RoutineButton(image: Image("ProfileDefault"))
+        RoutineButton(image: Image("ProfileDefault"), color: Color.red)
     }
 }

@@ -75,27 +75,27 @@ struct ListView: View {
     }
     
     var body: some View {
-        VStack (alignment: .leading, spacing: 10) {
-            ListTitle(category: category)
-            
-            if list.isEmpty {
-                ListDescription(description: description)
-            }
-            else {
-                List {
-                    Section{
-                        ForEach(list, id: \.self) { product in
-                            ListProductComponent(product: product)
-                        } .onDelete(perform: deleteItem)
-                    } header: {
-                        ListTitle(category: category)
-                    }
+        NavigationStack {
+            VStack (alignment: .leading, spacing: 10) {
+                ListTitle(category: category)
+                
+                if list.isEmpty {
+                    ListDescription(description: description)
                 }
-                .padding(.leading, 3)
-                .padding(.trailing, 10)
-                .padding(.vertical, 10)
-            }
-        } .padding()
+                else {
+                    List {
+                        Section{
+                            ForEach(list, id: \.self) { product in
+                                ListProductComponent(product: product)
+                            } .onDelete(perform: deleteItem)
+                        }
+                    }
+                    .padding(.leading, 3)
+                    .padding(.trailing, 10)
+                    .padding(.vertical, 10)
+                }
+            } .padding()
+        }
     }
 }
 
@@ -104,6 +104,6 @@ struct ListView_Previews: PreviewProvider {
     static let array: [RoutineProduct] = [RoutineProduct(image: url, name: "test", isCompleted: false, barcode: 12345, frequency: [1], timesDay: 1, categories: ["Limpeza", "Tônicos & Tratamentos",  "Hidratante"])!, RoutineProduct(image: url, name: "test", isCompleted: false, barcode: 12345, frequency: [1], timesDay: 1, categories: ["Limpeza", "Tônicos & Tratamentos",  "Hidratante"])!]
     
     static var previews: some View {
-        ListView(description: "Primeiro passo: Comece higienizando seu rosto e retirando impurezas", category: "Limpeza",  routine: Routine(name: "Noite", completition: 0, categoryLimpeza: array, categoryTratamentos: [], categoryHidratante: [], categoryProtetor: []) )
+        ListView(description: "Primeiro passo: Comece higienizando seu rosto e retirando impurezas", category: "Limpeza",  routine: Routine(name: "Noite", completition: 0, categoryLimpeza: [], categoryTratamentos: [], categoryHidratante: [], categoryProtetor: []) )
     }
 }
