@@ -9,17 +9,20 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
+        @State var downloadAmount = 80.0
+        
+        
         TabView{
             HomeView()
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
-            
+
             ProductListView()
                 .tabItem {
                     Label("Produtos", systemImage: "list.bullet")
                 }
-            
+
             JournalView()
                 .tabItem {
                     Label("Diario", systemImage: "text.book.closed")
@@ -30,7 +33,9 @@ struct ContentView: View {
                 }
         }
     }
-}
+        
+    }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

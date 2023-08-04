@@ -18,9 +18,10 @@ struct QuestionCard<T: RawRepresentable & CaseIterable & Hashable>: View where T
         VStack(alignment: .center) {
             VStack(alignment: .leading, spacing: 21) {
                 Text(questionLabel)
+                    .multilineTextAlignment(.leading)
+                    .frame(height: 48)
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 30, trailing: 33))
-                
-                //For each will control how many buttons a screen needs based on the enum cases
+
                 ForEach(buttonLabels.allCases, id: \.self) { label in
                     PrimaryButton(label: label.rawValue , description: "implement this", action: {
                         self.buttonPressed = label.rawValue
@@ -33,6 +34,6 @@ struct QuestionCard<T: RawRepresentable & CaseIterable & Hashable>: View where T
 
 struct Components_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionCard(questionLabel: "pergunta", buttonLabels: Gender.self, button: ButtonType.primary)
+        QuestionCard(questionLabel: "pergunta", buttonLabels: SkinType.self, button: ButtonType.primary)
     }
 }

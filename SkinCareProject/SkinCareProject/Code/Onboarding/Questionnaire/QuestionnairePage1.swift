@@ -24,9 +24,13 @@ struct QuestionnairePage1: View, Hashable {
             VStack(spacing: 50) {
                 WheelPicker(questionLabel: "Qual sua idade?")
                     .frame(height: 220)
+                
+                NavigationLink(destination: QuestionnairePage2(), label: { Text("Próximo") })
+                
                 HStack(alignment: .center){
-                    TerciaryButton(label: "Responder Depois", description: "implement this")
-                    TerciaryButton(label: "Próximo", description: "implement this")
+                    
+                    //                    TerciaryButton(label: "Responder Depois", description: "implement this", action: {})
+                    //                    TerciaryButton(label: "Próximo", description: "implement this", action: {})
                 }
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 77, trailing: 0))
             }

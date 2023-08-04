@@ -11,20 +11,20 @@ import UIKit
 
 struct ButtonPrimary: ButtonStyle {
     
-    
-    let unpressedColor = Color.systemMaterial
-    let pressedColor = Color.systemButton
+    var backgroundColor: Color = .brandGray
     
     func makeBody(configuration: Configuration) -> some View {
         configuration
             .label
-            .background(configuration.isPressed ? pressedColor : unpressedColor)
+            .font(.body)
+            .padding()
+            .background(self.backgroundColor)
             .cornerRadius(12)
     
     }
 }
 
-struct ButtonPrimary_Previews: PreviewProvider {
+struct ButtonPrimary_Preview: PreviewProvider {
     static var previews: some View {
         VStack {
             Button {
@@ -32,7 +32,7 @@ struct ButtonPrimary_Previews: PreviewProvider {
                       } label: {
                           Text("Button label")
                       }
-                      .buttonStyle(ButtonPrimary())
+                      .buttonStyle(ButtonPrimary(backgroundColor: .buttonColor))
         }
     }
 }

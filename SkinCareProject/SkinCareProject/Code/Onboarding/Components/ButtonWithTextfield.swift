@@ -7,7 +7,7 @@
 import SwiftUI
 
 
-struct ButtonWithText: View {
+struct ButtonWithTextfield: View {
     var label: String
     var description: String
 
@@ -41,6 +41,6 @@ struct ButtonWithText: View {
 
 struct ButtonWithText_Previews: PreviewProvider {
     static var previews: some View {
-        ButtonWithText(label: "Pele Normal", description: "texto sobre como a pele normal se categoriza linha linha linha linahakbf")
+        ButtonWithTextfield(label: "Pele Normal", description: "texto sobre como a pele normal se categoriza linha linha linha linahakbf")
     }
 }
