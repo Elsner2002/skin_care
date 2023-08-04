@@ -26,6 +26,16 @@
 		7CDF2E732A6B17E70028CA84 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF2E722A6B17E70028CA84 /* ProfileView.swift */; };
 		7CDF2E7E2A6EF8920028CA84 /* TipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF2E7D2A6EF8920028CA84 /* TipsView.swift */; };
 		7CDF2E822A6F142E0028CA84 /* TipsData.json in Resources */ = {isa = PBXBuildFile; fileRef = 7CDF2E7F2A6EFAE20028CA84 /* TipsData.json */; };
+		A544A6EE2A797A1A006E1747 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A544A6ED2A797A1A006E1747 /* NotificationService.swift */; };
+		A544A6F02A797A65006E1747 /* HapticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A544A6EF2A797A65006E1747 /* HapticsService.swift */; };
+		A544A6F32A797D1E006E1747 /* RoutineProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = A544A6F22A797D1E006E1747 /* RoutineProgress.swift */; };
+		A544A6F52A797F2C006E1747 /* RoutineProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A544A6F42A797F2C006E1747 /* RoutineProgressBar.swift */; };
+		A544A6F72A79840B006E1747 /* RoutineAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A544A6F62A79840B006E1747 /* RoutineAlarm.swift */; };
+		A544A6FB2A799AD5006E1747 /* RoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A544A6FA2A799AD5006E1747 /* RoutineView.swift */; };
+		A544A6FF2A7AC3A3006E1747 /* ListTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A544A6FE2A7AC3A3006E1747 /* ListTitle.swift */; };
+		A544A7012A7AC4ED006E1747 /* ListDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = A544A7002A7AC4ED006E1747 /* ListDescription.swift */; };
+		A544A7032A7AC67C006E1747 /* ListProductComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A544A7022A7AC67C006E1747 /* ListProductComponent.swift */; };
+		A544A7052A7ADB15006E1747 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A544A7042A7ADB15006E1747 /* ListView.swift */; };
 		A55E88BA2A686ECB005E5AC5 /* Splashscreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55E88B92A686ECB005E5AC5 /* Splashscreen.swift */; };
 		A55E88BD2A7031FE005E5AC5 /* TabBarOnb.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55E88BC2A7031FE005E5AC5 /* TabBarOnb.swift */; };
 		A55E88C12A703268005E5AC5 /* QuestionnaireView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55E88C02A703268005E5AC5 /* QuestionnaireView.swift */; };
@@ -57,6 +67,16 @@
 		7CDF2E722A6B17E70028CA84 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		7CDF2E7D2A6EF8920028CA84 /* TipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsView.swift; sourceTree = "<group>"; };
 		7CDF2E7F2A6EFAE20028CA84 /* TipsData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TipsData.json; sourceTree = "<group>"; };
+		A544A6ED2A797A1A006E1747 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		A544A6EF2A797A65006E1747 /* HapticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsService.swift; sourceTree = "<group>"; };
+		A544A6F22A797D1E006E1747 /* RoutineProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineProgress.swift; sourceTree = "<group>"; };
+		A544A6F42A797F2C006E1747 /* RoutineProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineProgressBar.swift; sourceTree = "<group>"; };
+		A544A6F62A79840B006E1747 /* RoutineAlarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineAlarm.swift; sourceTree = "<group>"; };
+		A544A6FA2A799AD5006E1747 /* RoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineView.swift; sourceTree = "<group>"; };
+		A544A6FE2A7AC3A3006E1747 /* ListTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTitle.swift; sourceTree = "<group>"; };
+		A544A7002A7AC4ED006E1747 /* ListDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDescription.swift; sourceTree = "<group>"; };
+		A544A7022A7AC67C006E1747 /* ListProductComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListProductComponent.swift; sourceTree = "<group>"; };
+		A544A7042A7ADB15006E1747 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		A55E88B92A686ECB005E5AC5 /* Splashscreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Splashscreen.swift; sourceTree = "<group>"; };
 		A55E88BC2A7031FE005E5AC5 /* TabBarOnb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarOnb.swift; sourceTree = "<group>"; };
 		A55E88C02A703268005E5AC5 /* QuestionnaireView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireView.swift; sourceTree = "<group>"; };
@@ -138,6 +158,8 @@
 			isa = PBXGroup;
 			children = (
 				7CB66FDF2A67013F006DFFB2 /* TipsService.swift */,
+				A544A6ED2A797A1A006E1747 /* NotificationService.swift */,
+				A544A6EF2A797A65006E1747 /* HapticsService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -171,6 +193,20 @@
 				7CB66FE32A6723CE006DFFB2 /* Classes.swift */,
 			);
 			path = Structs;
+			sourceTree = "<group>";
+		};
+		A544A6F12A797CEC006E1747 /* RoutineComponents */ = {
+			isa = PBXGroup;
+			children = (
+				A544A6F22A797D1E006E1747 /* RoutineProgress.swift */,
+				A544A6F42A797F2C006E1747 /* RoutineProgressBar.swift */,
+				A544A6F62A79840B006E1747 /* RoutineAlarm.swift */,
+				A544A6FE2A7AC3A3006E1747 /* ListTitle.swift */,
+				A544A7002A7AC4ED006E1747 /* ListDescription.swift */,
+				A544A7022A7AC67C006E1747 /* ListProductComponent.swift */,
+				A544A7042A7ADB15006E1747 /* ListView.swift */,
+			);
+			path = RoutineComponents;
 			sourceTree = "<group>";
 		};
 		A55E88BB2A7031EE005E5AC5 /* Onboarding */ = {
@@ -208,8 +244,10 @@
 		A586F5C22A7458B3002AA9B9 /* Rotina */ = {
 			isa = PBXGroup;
 			children = (
+				A544A6F12A797CEC006E1747 /* RoutineComponents */,
 				7CDF2E6C2A6B17C00028CA84 /* HomeView.swift */,
 				7CDF2E7D2A6EF8920028CA84 /* TipsView.swift */,
+				A544A6FA2A799AD5006E1747 /* RoutineView.swift */,
 			);
 			path = Rotina;
 			sourceTree = "<group>";
@@ -333,12 +371,17 @@
 				7CDF2E732A6B17E70028CA84 /* ProfileView.swift in Sources */,
 				7CB66FC92A66F2D7006DFFB2 /* ContentView.swift in Sources */,
 				7CB66FE42A6723CE006DFFB2 /* Classes.swift in Sources */,
+				A544A6F02A797A65006E1747 /* HapticsService.swift in Sources */,
 				7CDF2E7E2A6EF8920028CA84 /* TipsView.swift in Sources */,
 				7CB66FC72A66F2D7006DFFB2 /* SkinCareProjectApp.swift in Sources */,
 				D82F351C2A797E5D00E7A8B1 /* ButtonPrimary.swift in Sources */,
+				A544A7052A7ADB15006E1747 /* ListView.swift in Sources */,
 				A55E88D52A7403BE005E5AC5 /* CloudKitViewModel.swift in Sources */,
+				A544A6F32A797D1E006E1747 /* RoutineProgress.swift in Sources */,
+				A544A6FB2A799AD5006E1747 /* RoutineView.swift in Sources */,
 				A55E88C92A7057CD005E5AC5 /* OnboardingView.swift in Sources */,
 				A55E88C12A703268005E5AC5 /* QuestionnaireView.swift in Sources */,
+				A544A6F52A797F2C006E1747 /* RoutineProgressBar.swift in Sources */,
 				D82F35152A79747800E7A8B1 /* DesignColors.swift in Sources */,
 				7CDF2E6D2A6B17C00028CA84 /* HomeView.swift in Sources */,
 				7CB66FDC2A670122006DFFB2 /* Enums.swift in Sources */,
@@ -347,10 +390,15 @@
 				7CA88CA02A7063EF00E58ABA /* CameraView.swift in Sources */,
 				7CA88CA22A717B4600E58ABA /* DataScannerView.swift in Sources */,
 				7CB66FDE2A670132006DFFB2 /* CameraViewModel.swift in Sources */,
+				A544A6EE2A797A1A006E1747 /* NotificationService.swift in Sources */,
 				A55E88BA2A686ECB005E5AC5 /* Splashscreen.swift in Sources */,
+				A544A7012A7AC4ED006E1747 /* ListDescription.swift in Sources */,
+				A544A7032A7AC67C006E1747 /* ListProductComponent.swift in Sources */,
 				7CA88CA42A718C4F00E58ABA /* ProductView.swift in Sources */,
+				A544A6FF2A7AC3A3006E1747 /* ListTitle.swift in Sources */,
 				7CA88CA82A72DFDF00E58ABA /* ImageViewModel.swift in Sources */,
 				7CB66FE62A67289A006DFFB2 /* Constants.swift in Sources */,
+				A544A6F72A79840B006E1747 /* RoutineAlarm.swift in Sources */,
 				A55E88D12A72E58A005E5AC5 /* CloudKitUtility.swift in Sources */,
 				A55E88BD2A7031FE005E5AC5 /* TabBarOnb.swift in Sources */,
 			);
