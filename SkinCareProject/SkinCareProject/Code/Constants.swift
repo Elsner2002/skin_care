@@ -22,7 +22,8 @@ class Constants: ObservableObject {
             UserDefaults.standard.set(encodedTip, forKey: "randomTip")
         }
         else{
-            randomTip = try? JSONDecoder().decode(Tip.self, from: UserDefaults.standard.data(forKey: "randomTip")!)
+            //randomTip = try? JSONDecoder().decode(Tip.self, from: UserDefaults.standard.data(forKey: "randomTip")!)
+            randomTip = Tip(title: "Tip 1", text: "Skin care é bom", image: "tipImage")
         }
         lastDay = Date.now
     }
