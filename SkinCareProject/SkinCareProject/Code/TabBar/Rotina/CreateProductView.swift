@@ -128,14 +128,14 @@ struct CreateProductView: View {
                     } label: {
                         Text("Salvar")
                     }
-                    .buttonStyle(ButtonPrimary())
+                    .buttonStyle(ButtonPrimary(backgroundColor: .brandGreen, cornerRadius: 12))
                     
                     Button {
                         dismiss()
                     } label: {
                         Text("Excluir")
                     }
-                    .buttonStyle(ButtonPrimary())
+                    .buttonStyle(ButtonPrimary(backgroundColor: .buttonColor, cornerRadius: 12))
                     .padding(.top, 10)
                 }
                 .padding(.top, 8)

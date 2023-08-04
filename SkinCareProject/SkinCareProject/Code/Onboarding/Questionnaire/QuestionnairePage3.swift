@@ -15,7 +15,7 @@ struct QuestionnairePage3: View {
                 .frame(width: 243, height: 80, alignment: .center)
                 .padding(EdgeInsets(top: 70, leading: 0, bottom: 35, trailing: 0))
             
-            QuestionCard(questionLabel: "Como sua pele fica após horas de exposição ao sol sem proteção solar?", buttonLabels: PhototypeQuestions.self, button: .primary)
+            QuestionCard(questionLabel: "Como sua pele fica após horas de exposição ao sol sem proteção solar?", buttonLabels: PhototypeQuestions.self)
             
             HStack {
                 NavigationLink(destination: QuestionnairePage4(), label: { Text("Próximo") })

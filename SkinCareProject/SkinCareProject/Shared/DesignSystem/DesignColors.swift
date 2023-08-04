@@ -23,7 +23,7 @@ extension Color {
     static let systemLabelTeciary = Color("systemLabelTerciary")
     static let templateFillsTertiary = Color("templateFillsTertiary")
     static let primaryButtonColor = Color("primaryButton")
-    static let buttonColor = Color("buttonColor")
+    static let buttonColor = Color("ButtonColor")
 
 
 

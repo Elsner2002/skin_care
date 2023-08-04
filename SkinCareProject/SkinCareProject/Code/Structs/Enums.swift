@@ -74,22 +74,6 @@ enum Texture: String {
     
 }
 
-enum ButtonType: String {
-    case primary
-    case secondary
-    case tertiary
-    
-    
-    //computed properties
-//    var color: Color {
-//        switch self {
-//        case .primary: return Color.brandGray
-//
-//        }
-//    }
-    
-}
-
 enum PhototypeQuestions: String, CaseIterable {
     case one = "Queima facilmente, não bronzeia"
     case two = "Queima facilmente, bronzeia pouco"
