@@ -53,4 +53,23 @@ class Constants: ObservableObject {
         randomTipGenerator()
     }
     
+    //price range
+    func priceRange(price: Int) -> String {
+        switch price {
+        case 0...30:
+            return "$"
+        case 31...50:
+            return "$$"
+        case 51...80:
+            return "$$$"
+        case 81...120:
+            return "$$$$"
+        case _ where price > 121:
+            return "$$$$$"
+        default:
+            return ""
+        }
+        
+    }
+    
 }
