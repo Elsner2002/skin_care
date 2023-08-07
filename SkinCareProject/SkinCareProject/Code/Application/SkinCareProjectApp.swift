@@ -16,12 +16,13 @@ struct SkinCareProjectApp: App {
         WindowGroup {
             ZStack {
                 if self.isActive {
-                    if firstTimeHere {
-                        TabBarOnb()
-                    }
-                    else {
-                        ContentView()
-                    }
+                    ContentView()
+//                    if firstTimeHere {
+//                        TabBarOnb()
+//                    }
+//                    else {
+//                        ContentView()
+//                    }
                 }
                 else {
                     Splashscreen()
