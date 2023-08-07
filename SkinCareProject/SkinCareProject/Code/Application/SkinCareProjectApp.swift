@@ -17,6 +17,7 @@ struct SkinCareProjectApp: App {
             ZStack {
                 if self.isActive {
                     ContentView()
+                    //CloudKitViewModel()
 //                    if firstTimeHere {
 //                        TabBarOnb()
 //                    }
@@ -29,10 +30,13 @@ struct SkinCareProjectApp: App {
                 }
             }
             .onAppear {
-                Constants.shared.randomTipGenerator()
+                //Constants.shared.randomTipGenerator()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     withAnimation {
                         self.isActive = true
+                    }
+                    if firstTimeHere {
+                        @StateObject var vm = CloudKitModel()
                     }
                 }
             }

@@ -118,7 +118,7 @@ struct ProductListView: View {
                         Spacer()
                     }
                     .padding(.leading, 15)
-                    TipsView(tip: Constants.shared.randomTip!)
+                    //TipsView(tip: Constants.shared.randomTip!)
                 }
             }
         }
