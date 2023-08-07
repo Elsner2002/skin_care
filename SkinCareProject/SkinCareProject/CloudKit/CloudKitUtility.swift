@@ -27,6 +27,13 @@ class CloudKitUtility {
         case iCloudCouldNotDiscoverUser
     }
     
+    enum CloudKitTypes: String {
+        case ListProduct = "ListProduct"
+        case RoutineProduct = "RoutineProduct"
+        case AppUser = "AppUser"
+        case Tips = "Tips"
+    }
+    
 }
 
 //MARK: iCloud User Functions
@@ -126,15 +133,15 @@ extension CloudKitUtility {
 //MARK: CRUD Functions
 extension CloudKitUtility {
     
-    static func fetch<Type: CloudKitProtocol>(predicate: NSPredicate, recordType: CKRecord.RecordType, sortDescription: [NSSortDescriptor]? = nil, resultsLimit: Int? = nil) -> Future<[Type], Error> {
+    static func fetch<Type: CloudKitProtocol>(publicDb: Bool, predicate: NSPredicate, recordType: CKRecord.RecordType, sortDescription: [NSSortDescriptor]? = nil, resultsLimit: Int? = nil) -> Future<[Type], Error> {
         Future { promise in
-            CloudKitUtility.fetch(predicate: predicate, recordType: recordType, sortDescription: sortDescription, resultsLimit: resultsLimit) { (items: [Type]) in
+            CloudKitUtility.fetch(publicDb: publicDb, predicate: predicate, recordType: recordType, sortDescription: sortDescription, resultsLimit: resultsLimit) { (items: [Type]) in
                 promise(.success(items))
             }
         }
     }
     
-    static private func fetch<Type: CloudKitProtocol>(predicate: NSPredicate, recordType: CKRecord.RecordType, sortDescription: [NSSortDescriptor]? = nil, resultsLimit: Int? = nil, completion: @escaping (_ items: [Type]) -> ()) {
+    static private func fetch<Type: CloudKitProtocol>(publicDb: Bool, predicate: NSPredicate, recordType: CKRecord.RecordType, sortDescription: [NSSortDescriptor]? = nil, resultsLimit: Int? = nil, completion: @escaping (_ items: [Type]) -> ()) {
        
         //Create Operation
         let operation = createOperation(predicate: predicate, recordType: recordType, sortDescription: sortDescription,  resultsLimit: resultsLimit)
@@ -151,7 +158,7 @@ extension CloudKitUtility {
         }
         
         //Execute operation
-        addOperation(operation: operation)
+        addOperation(publicDb: publicDb, operation: operation)
     }
     
     //change the way of sorting the products
@@ -193,55 +200,82 @@ extension CloudKitUtility {
         }
     }
     
-    static private func addOperation(operation: CKDatabaseOperation) {
-        CKContainer.default().publicCloudDatabase.add(operation)
+    static private func addOperation(publicDb: Bool, operation: CKDatabaseOperation) {
+        if publicDb {
+            CKContainer.default().publicCloudDatabase.add(operation)
+            
+        } else {
+            CKContainer.default().privateCloudDatabase.add(operation)
+        }
     }
     
-    static func add<Type: CloudKitProtocol>(item: Type, completion: @escaping (Result<Bool, Error>) -> ()) {
+    static func add<Type: CloudKitProtocol>(publicDb: Bool, item: Type, completion: @escaping (Result<Bool, Error>) -> ()) {
         //Get item record
         let record = item.record
 
         //Save to CloudKit
-        save(record: record, completion: completion)
+        save(publicDb: publicDb, record: record, completion: completion)
     }
     
-    static func update<Type: CloudKitProtocol>(item: Type, completion: @escaping (Result<Bool, Error>) -> ()) {
-        add(item: item, completion: completion)
+    static func update<Type: CloudKitProtocol>(publicDb: Bool, item: Type, completion: @escaping (Result<Bool, Error>) -> ()) {
+        add(publicDb: publicDb, item: item, completion: completion)
     }
 
-    static private func save(record: CKRecord, completion: @escaping (Result<Bool, Error>) -> ()) {
-        CKContainer.default().publicCloudDatabase.save(record){ returnedRecord, returnedError in
-            if let error = returnedError {
-                completion(.failure(error))
-            } else {
-                completion(.success(true))
+    static private func save(publicDb: Bool, record: CKRecord, completion: @escaping (Result<Bool, Error>) -> ()) {
+        if publicDb {
+            CKContainer.default().publicCloudDatabase.save(record){ returnedRecord, returnedError in
+                if let error = returnedError {
+                    completion(.failure(error))
+                } else {
+                    completion(.success(true))
+                }
+            }
+        } else {
+            CKContainer.default().privateCloudDatabase.save(record){ returnedRecord, returnedError in
+                if let error = returnedError {
+                    completion(.failure(error))
+                } else {
+                    completion(.success(true))
+                }
             }
         }
+        
     }
     
-    static func delete<Type: CloudKitProtocol>(item: Type) -> Future<Bool, Error> {
+    static func delete<Type: CloudKitProtocol>(publicDb: Bool, item: Type) -> Future<Bool, Error> {
         Future { promise in
-            CloudKitUtility.delete(item: item, completion: promise)
+            CloudKitUtility.delete(publicDb: publicDb, item: item, completion: promise)
         }
     }
     
-    static private func delete<Type: CloudKitProtocol>(item: Type, completion: @escaping (Result<Bool, Error>) -> ()) {
-        CloudKitUtility.deleteItem(record: item.record, completion: completion)
+    static private func delete<Type: CloudKitProtocol>(publicDb: Bool, item: Type, completion: @escaping (Result<Bool, Error>) -> ()) {
+        CloudKitUtility.deleteItem(publicDb: publicDb, record: item.record, completion: completion)
     }
     
-    static private func deleteItem(record: CKRecord, completion: @escaping (Result<Bool, Error>) -> ()) {
-        CKContainer.default().publicCloudDatabase.delete(withRecordID: record.recordID) {retunedRecordId, returnedError in
-            if let error = returnedError {
-                completion (.failure(error))
-            } else {
-                completion(.success(true))
+    static private func deleteItem(publicDb: Bool, record: CKRecord, completion: @escaping (Result<Bool, Error>) -> ()) {
+        
+        if publicDb {
+            CKContainer.default().publicCloudDatabase.delete(withRecordID: record.recordID) {retunedRecordId, returnedError in
+                if let error = returnedError {
+                    completion (.failure(error))
+                } else {
+                    completion(.success(true))
+                }
+            }
+        }
+        else {
+            CKContainer.default().privateCloudDatabase.delete(withRecordID: record.recordID) {retunedRecordId, returnedError in
+                if let error = returnedError {
+                    completion (.failure(error))
+                } else {
+                    completion(.success(true))
+                }
             }
         }
     }
 }
 
 //MARK: Images
-
 extension CloudKitUtility {
     func image(url: URL?) -> UIImage? {
         if let url = url{
