@@ -12,7 +12,6 @@ struct QuestionCard<T: RawRepresentable & CaseIterable & Hashable>: View where T
     @State var buttonPressed: String = ""
     var questionLabel: String
     var buttonLabels: T.Type
-    var button: ButtonType
     
     var body: some View {
         VStack(alignment: .center) {
@@ -34,6 +33,6 @@ struct QuestionCard<T: RawRepresentable & CaseIterable & Hashable>: View where T
 
 struct Components_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionCard(questionLabel: "pergunta", buttonLabels: SkinType.self, button: ButtonType.primary)
+        QuestionCard(questionLabel: "pergunta", buttonLabels: SkinType.self)
     }
 }

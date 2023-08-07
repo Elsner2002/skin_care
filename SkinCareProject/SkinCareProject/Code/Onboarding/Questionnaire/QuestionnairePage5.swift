@@ -13,15 +13,7 @@ import SwiftUI
 
 struct QuestionnairePage5: View, Hashable {
     
-    enum ConcernsQuestion: String, CaseIterable {
-        case acne = "Espinhas e Cravos"
-        case pigmentation = "Manchas"
-        case aging = "Rugas e Linhas de expressão"
-        case darkCircles = "Olheiras"
-        case redness = "Vermelhidão"
-        case scars = "Estrias e Cicatrizes"
-        
-    }
+
     var body: some View {
         
         VStack{
@@ -30,7 +22,7 @@ struct QuestionnairePage5: View, Hashable {
                 .frame(width: 243, height: 44, alignment: .center)
                 .padding(EdgeInsets(top: 70, leading: 0, bottom: 51, trailing: 0))
             
-            QuestionCard(questionLabel: "Qual seu tipo de pele?", buttonLabels: ConcernsQuestion.self, button: .primary)
+            QuestionCard(questionLabel: "Qual seu tipo de pele?", buttonLabels: ConcernsQuestion.self)
             
             HStack {
                 NavigationLink(destination: QuestionnairePage6(), label: { Text("Próximo") })

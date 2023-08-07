@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct QuestionnairePage7: View {
-    enum PreferenceQuestions: String, CaseIterable {
-        case vegan = "Produtos Veganos"
-        case none = "Não tenho preferência"
-    }
-    
+
     var body: some View {
         VStack{
             ProgressView("", value: 20, total: 100)
@@ -20,7 +16,7 @@ struct QuestionnairePage7: View {
                 .frame(width: 243, height: 44, alignment: .center)
                 .padding(EdgeInsets(top: 70, leading: 0, bottom: 51, trailing: 0))
             
-            QuestionCard(questionLabel: "Qual seu tipo de pele?", buttonLabels: PreferenceQuestions.self, button: .primary)
+            QuestionCard(questionLabel: "Qual seu tipo de pele?", buttonLabels: PreferenceQuestions.self)
             
             HStack {
                 NavigationLink(destination: ContentView(), label: { Text("Próximo") })

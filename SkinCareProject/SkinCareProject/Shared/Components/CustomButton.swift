@@ -21,9 +21,10 @@ struct CustomButton: View {
                 Text(label)
                     .frame(maxWidth: .infinity)
             }
-            .buttonPrimary(backgroundColor: self.isPressed ? .brandGreen : .buttonColor)
-        }
+            .customButtonStyle(buttonType: .largeRounded)
     
+
+        }
 }
 
 struct CustomButton_Previews: PreviewProvider {

@@ -22,7 +22,7 @@ struct QuestionnairePage2: View, Hashable {
                 .frame(width: 243, height: 44, alignment: .center)
                 .padding(EdgeInsets(top: 70, leading: 0, bottom: 51, trailing: 0))
             
-            QuestionCard(questionLabel: "Qual seu tipo de pele?", buttonLabels: SkinType.self, button: .primary)
+            QuestionCard(questionLabel: "Qual seu tipo de pele?", buttonLabels: SkinType.self)
             HStack {
                 NavigationLink(destination: QuestionnairePage3(), label: { Text("Próximo") })
             }

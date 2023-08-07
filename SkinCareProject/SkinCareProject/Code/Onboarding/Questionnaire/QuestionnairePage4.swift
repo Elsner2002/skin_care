@@ -15,7 +15,7 @@ struct QuestionnairePage4: View {
                 .frame(width: 243, height: 44, alignment: .center)
                 .padding(EdgeInsets(top: 70, leading: 0, bottom: 51, trailing: 0))
             
-            QuestionCard(questionLabel: "Qual seu tipo de pele?", buttonLabels: SkinConditionQuestions.self, button: .primary)
+            QuestionCard(questionLabel: "Qual seu tipo de pele?", buttonLabels: SkinConditionQuestions.self)
             
             HStack {
                 NavigationLink(destination: QuestionnairePage5(), label: { Text("Próximo") })

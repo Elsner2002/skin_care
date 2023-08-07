@@ -11,7 +11,8 @@ import UIKit
 
 struct ButtonPrimary: ButtonStyle {
     
-    var backgroundColor: Color = .brandGray
+    var backgroundColor: Color
+    var cornerRadius: CGFloat
     
     func makeBody(configuration: Configuration) -> some View {
         configuration
@@ -32,7 +33,7 @@ struct ButtonPrimary_Preview: PreviewProvider {
                       } label: {
                           Text("Button label")
                       }
-                      .buttonStyle(ButtonPrimary(backgroundColor: .buttonColor))
+                      .buttonStyle(ButtonPrimary(backgroundColor: .buttonColor, cornerRadius: 12))
         }
     }
 }
