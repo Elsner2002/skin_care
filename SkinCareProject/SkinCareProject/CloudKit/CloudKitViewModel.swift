@@ -30,6 +30,10 @@ class CloudKitModel: ObservableObject {
         getiCloudStatus()
         requestPermission()
         getCurrentUserName()
+        fetchItems(publicDb: true, recordType: CloudKitUtility.CloudKitTypes.ListProduct)
+        fetchItems(publicDb: true, recordType: CloudKitUtility.CloudKitTypes.Tips)
+        fetchItems(publicDb: false, recordType: CloudKitUtility.CloudKitTypes.RoutineProduct)
+        fetchItems(publicDb: false, recordType: CloudKitUtility.CloudKitTypes.AppUser)
     }
     
     func addButtonPressed() {
