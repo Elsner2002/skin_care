@@ -33,3 +33,10 @@ struct ProductView: View {
         }
     }
 }
+
+//struct ProductView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ProductView()
+//    }
+//}
+

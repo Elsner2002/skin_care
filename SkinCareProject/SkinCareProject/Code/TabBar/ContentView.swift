@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
+
         @State var downloadAmount = 80.0
         
         
@@ -34,7 +35,7 @@ struct ContentView: View {
                 }
         }
         .accentColor(Color.brandGreen)
-        .toolbarBackground(Color.yellow, for: .tabBar)
+
     }
     
 }

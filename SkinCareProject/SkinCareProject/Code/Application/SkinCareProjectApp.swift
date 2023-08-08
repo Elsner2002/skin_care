@@ -11,6 +11,7 @@ import SwiftUI
 struct SkinCareProjectApp: App {
     @State var firstTimeHere: Bool = UserDefaults.standard.value(forKey: "firstTimeHere") as? Bool ?? true
     @State private var isActive = false
+    @StateObject private var vm = CloudKitModel()
     
     var body: some Scene {
         WindowGroup {
@@ -30,13 +31,11 @@ struct SkinCareProjectApp: App {
                 }
             }
             .onAppear {
+                @StateObject var vm = CloudKitModel()
                 //Constants.shared.randomTipGenerator()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     withAnimation {
                         self.isActive = true
-                    }
-                    if firstTimeHere {
-                        @StateObject var vm = CloudKitModel()
                     }
                 }
             }

@@ -31,7 +31,7 @@ struct ProductButton: View {
                         .bold()
                         .foregroundColor(.black)
                 }
-                .scaledToFill()
+                .scaledToFit()
                 .frame(width: 96, alignment: .leading)
                 .background(Color.brandWhite)
                 .cornerRadius(15, corners: [.topLeft, .bottomRight])
