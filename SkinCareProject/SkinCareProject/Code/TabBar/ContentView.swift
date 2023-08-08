@@ -30,7 +30,7 @@ struct ContentView: View {
                     Text("Rotinas")
                 }
 
-            JournalView()
+            DiaryView()
                 .tabItem {
                     Label("Diario", systemImage: "note.text")
                 }

@@ -39,7 +39,7 @@ enum ButtonType: String {
     
     var labelColor: Color {
         switch self {
-        case .smallRounded: return .systemLabelSecondary
+        case .smallRounded: return .systemLabelPrimary
         case .largeRounded: return .systemLabelPrimary
         case .largeRoundedOverlay: return .systemLabelSecondary
         }
@@ -50,6 +50,14 @@ enum ButtonType: String {
         case .smallRounded: return false
         case .largeRounded: return false
         case .largeRoundedOverlay: return true
+        }
+    }
+    
+    var frame: Bool {
+        switch self {
+        case .smallRounded: return true
+        case .largeRounded: return true
+        case .largeRoundedOverlay: return false
         }
     }
 }
