@@ -30,6 +30,7 @@ struct ProductListView: View {
                     HStack{
                         Spacer()
                         Button {
+                            path = []
                             path.append(1)
                         } label: {
                             Image("scanSymbol")

@@ -12,13 +12,13 @@ struct AddProductView: View {
     @Environment(\.dismiss) var dismiss
     
     @StateObject private var cameraVM = CameraViewModel()
-    
+    @State private var path: [Int] = []
     @State private var searchText = ""
     
     @State var listTest: [(String, String, String, Int)] = [("A", "a", "ProfileDefault", 10), ("B", "b", "ProfileDefault", 100), ("C", "c", "ProfileDefault", 50), ("D", "d", "ProfileDefault", 70), ("E", "e", "ProfileDefault", 1000), ("A", "a", "ProfileDefault", 10), ("B", "b", "ProfileDefault", 100), ("C", "c", "ProfileDefault", 50), ("D", "d", "ProfileDefault", 70), ("E", "e", "ProfileDefault", 1000)]
     
     var body: some View {
-        NavigationStack{
+        NavigationStack(path: $path){
             VStack{
                 HStack{
                     Button {
@@ -44,10 +44,22 @@ struct AddProductView: View {
                     Searchbar(searchText: $searchText, textPlaceHolder: "Busque produtos")
                     HStack{
                         Spacer()
-                        Image("scanSymbol")
-                            .padding(.trailing, 24)
-                            .offset(x: 10)
-                            .foregroundColor(Color.brandGray)
+                        Button {
+                            path = []
+                            path.append(1)
+                        } label: {
+                            Image("scanSymbol")
+                                .padding(.trailing, 24)
+                                .offset(x: 10)
+                                .foregroundColor(Color.brandGray)
+                        }
+                        .navigationDestination(for: Int.self) { int in
+                            CameraView(path: $path, count: int)
+                                .environmentObject(cameraVM)
+                                .task {
+                                    await cameraVM.requestDataScannerAccessStatus()
+                                }
+                        }
                     }
                     .padding()
                     .opacity(searchText.isEmpty ? 1.0 : 0.0)
