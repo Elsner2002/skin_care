@@ -10,11 +10,13 @@ import SwiftUI
 struct ProductView: View {
     @StateObject private var vm = CloudKitModel()
 
-    let product: ListProduct
+    let product: ListProduct?
     
     var body: some View {
         VStack {
-            Text(String(product.barcode))
+            if let product{
+                Text(String(product.barcode))
+            }
         }
 //        .navigationBarBackButtonHidden(true)
 //        .toolbar {

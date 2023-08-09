@@ -30,7 +30,7 @@ class CloudKitModel: ObservableObject {
         getiCloudStatus()
         requestPermission()
         getCurrentUserName()
-        fetchItems(publicDb: true, recordType: CloudKitUtility.CloudKitTypes.ListProduct, limit: 10)
+        fetchItems(publicDb: true, recordType: CloudKitUtility.CloudKitTypes.ListProduct)//, limit: 10)
         fetchItems(publicDb: true, recordType: CloudKitUtility.CloudKitTypes.Tips)
         fetchItems(publicDb: false, recordType: CloudKitUtility.CloudKitTypes.RoutineProduct)
         fetchItems(publicDb: false, recordType: CloudKitUtility.CloudKitTypes.AppUser)
