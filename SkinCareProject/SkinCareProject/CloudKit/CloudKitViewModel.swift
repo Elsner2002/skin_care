@@ -30,7 +30,7 @@ class CloudKitModel: ObservableObject {
         getiCloudStatus()
         requestPermission()
         getCurrentUserName()
-        fetchItems(publicDb: true, recordType: CloudKitUtility.CloudKitTypes.ListProduct)
+        fetchItems(publicDb: true, recordType: CloudKitUtility.CloudKitTypes.ListProduct, limit: 10)
         fetchItems(publicDb: true, recordType: CloudKitUtility.CloudKitTypes.Tips)
         fetchItems(publicDb: false, recordType: CloudKitUtility.CloudKitTypes.RoutineProduct)
         fetchItems(publicDb: false, recordType: CloudKitUtility.CloudKitTypes.AppUser)
@@ -38,6 +38,16 @@ class CloudKitModel: ObservableObject {
     
     func addButtonPressed() {
         addTip(publicDb: true, name: "Tip1", recordType: CloudKitUtility.CloudKitTypes.Tips, newTip: Tip(title: "Test", text: "Test Desc.", image: CloudKitUtility.makeURLJPG(image: "gato-cinza"))!)
+    }
+    
+    func getProductBarcode(barcode: Int) -> ListProduct?{
+        var productBarcode: ListProduct?
+        self.listProducts.forEach { product in
+            if product.barcode == barcode {
+                productBarcode = product
+            }
+        }
+        return productBarcode
     }
     
     
@@ -113,14 +123,14 @@ class CloudKitModel: ObservableObject {
 
     
     //READ
-    func fetchItems(publicDb: Bool, recordType: CloudKitUtility.CloudKitTypes) {
+    func fetchItems(publicDb: Bool, recordType: CloudKitUtility.CloudKitTypes, limit: Int? = nil) {
         let predicate = NSPredicate(value: true)
         let cloudType = recordType
         let recordType = recordType.rawValue
         
         switch cloudType {
         case .ListProduct:
-            CloudKitUtility.fetch(publicDb: publicDb, predicate: predicate, recordType: recordType)
+            CloudKitUtility.fetch(publicDb: publicDb, predicate: predicate, recordType: recordType, resultsLimit: limit)
                 .receive(on: DispatchQueue.main)
                 .sink { _ in
                     

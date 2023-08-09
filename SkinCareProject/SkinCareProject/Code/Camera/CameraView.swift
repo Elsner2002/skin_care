@@ -8,13 +8,11 @@
 import SwiftUI
 
 struct CameraView: View {
-    
+    @StateObject private var vm = CloudKitModel()
+
     @EnvironmentObject var cameraVM: CameraViewModel
     @State var isProductViewShowing: Bool = false
-    @State var barcodeString: String = ""
-    
-    @Binding var path: [Int]
-    let count: Int
+    @State var barcodeId: Int = 0
     
     var body: some View {
         
@@ -42,16 +40,20 @@ struct CameraView: View {
     
     private var mainView: some View {
         VStack{
-            NavigationLink("", destination: ProductView(path: $path, count: count + 1, barcode: barcodeString), isActive: $isProductViewShowing)
+            if let productFound = vm.getProductBarcode(barcode: barcodeId) {
+                NavigationLink("", destination: ProductView(product: productFound), isActive: $isProductViewShowing)
+            }
+            else {
+                //mostrar popUp que o produto nao existe
+            }
             DataScannerView(recognizedItems: $cameraVM.recognizedItems)
                 .onChange(of: cameraVM.recognizedItems) { newValue in
                     for nv in newValue {
                         switch nv {
                         case .barcode(let barcode):
                             if let barcodeString = barcode.payloadStringValue {
-                                if (Int(barcodeString) != nil) {
-                                    self.barcodeString = barcodeString
-                                    self.path.append(count + 1)
+                                if let barcodeId = Int(barcodeString) {
+                                    self.barcodeId = barcodeId
                                     self.isProductViewShowing = true
                                 }
                             }

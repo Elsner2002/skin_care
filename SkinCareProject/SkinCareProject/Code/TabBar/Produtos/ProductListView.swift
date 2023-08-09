@@ -9,9 +9,6 @@ import SwiftUI
 
 struct ProductListView: View {
     
-    @StateObject private var cameraVM = CameraViewModel()
-    @StateObject private var vm = CloudKitModel()
-    @State private var path: [Int] = []
     @State private var searchText = ""
     @State var categoryButtons: [(String, Bool)] = [
             (ProductCategory.moisturizer.rawValue, false),
@@ -21,34 +18,13 @@ struct ProductListView: View {
     ]
     
     var body: some View {
-        NavigationStack(path: $path) {
+        NavigationStack {
             VStack{
                 Text("Lista de Produtos")
                     .bold()
-                ZStack{
-                    Searchbar(searchText: $searchText, textPlaceHolder: "Busque produtos")
-                    HStack{
-                        Spacer()
-                        Button {
-                            path = []
-                            path.append(1)
-                        } label: {
-                            Image("scanSymbol")
-                                .padding(.trailing, 24)
-                                .offset(x: 10)
-                                .foregroundColor(Color.brandGray)
-                        }
-                        .navigationDestination(for: Int.self) { int in
-                            CameraView(path: $path, count: int)
-                                .environmentObject(cameraVM)
-                                .task {
-                                    await cameraVM.requestDataScannerAccessStatus()
-                                }
-                        }
-                    }
-                    .padding()
-                    .opacity(searchText.isEmpty ? 1.0 : 0.0)
-                }
+                
+                Searchbar(searchText: $searchText)
+                
                 ScrollView(showsIndicators: false) {
                     ScrollView(.horizontal, showsIndicators: false){
                         HStack {
@@ -70,31 +46,14 @@ struct ProductListView: View {
                         Spacer()
                     }
                     .padding(.leading, 15)
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(vm.listProducts, id: \.self) { product in
-                                if let url = product.image, let data =  try? Data(contentsOf: url),  let image = UIImage(data: data) {
-                                    ProductButton(image: Image(uiImage: image), brand: product.brand, name: product.name)
-                                }
-                            }
-                        }
-                        .padding()
-                    }
-                    .background(
-                        RoundedRectangle(cornerRadius: 25)
-                            .fill(Color.brandWhite)
-                            .shadow(
-                                color: Color.brandGray.opacity(0.15), radius: 10, x: 0, y: 0
-                            )
-                    )
-                    .padding([.leading, .trailing], 15)
+                    HorizontalScrollProductsView()
                     
                     HStack{
                         Text("Conheça Mais")
                             .bold()
                         Spacer()
                         NavigationLink {
-                            AllProductsListView() //for each of all products
+                            AllProductsListView()
                         } label: {
                             Text("Ver Todos")
                                 .foregroundColor(Color.brandGreen)
@@ -102,22 +61,7 @@ struct ProductListView: View {
 
                     }
                     .padding([.leading, .trailing], 15)
-                    
-                    ScrollView(.horizontal, showsIndicators: false){
-                        HStack{
-                            ProductButton(image: Image("Hidratante"), brand: "Epidrate", name: "Calm")
-                            //for each with 10 products: define limit in function
-                        }
-                        .padding()
-                    }
-                    .background(
-                        RoundedRectangle(cornerRadius: 25)
-                            .fill(Color.brandWhite)
-                            .shadow(
-                                color: Color.brandGray.opacity(0.15), radius: 10, x: 0, y: 0
-                            )
-                    )
-                    .padding([.leading, .trailing], 15)
+                    HorizontalScrollProductsView()
                     
                     HStack{
                         Text("Dica do Dia")

@@ -9,29 +9,28 @@ import SwiftUI
 
 struct ButtonProductList: View {
     
-    var name: String
-    var brand: String
-    var price: Int
-    var image: Image
+    var product: ListProduct
     
     var body: some View {
         HStack{
-            image
-                .resizable()
-                .frame(width: 60, height: 60)
-                .clipShape(Circle())
+            if let url = product.image, let data =  try? Data(contentsOf: url),  let imageProduct = UIImage(data: data) {
+                Image(uiImage: imageProduct)
+                    .resizable()
+                    .frame(width: 60, height: 60)
+                    .clipShape(Circle())
+            }
             
             VStack{
                 HStack{
-                    Text(name)
+                    Text(product.name)
                         .foregroundColor(Color.systemLabelPrimary)
-                    Text(Constants.shared.priceRange(price: price))
+                    Text(product.brand)
                         .foregroundColor(Color.systemLabelPrimary)
                     Spacer()
                 }
                 .padding(.bottom, 2)
                 HStack{
-                    Text(brand)
+                    Text(Constants.shared.priceRange(price: product.priceRange))
                         .foregroundColor(Color.systemLabelSecondary)
                     Spacer()
                 }
@@ -53,6 +52,6 @@ struct ButtonProductList: View {
 
 struct ButtonProductList_Previews: PreviewProvider {
     static var previews: some View {
-        ButtonProductList(name: "Niacinamida", brand: "Simple Organic", price: 100, image: Image("ProfileDefault"))
+        ButtonProductList(product: ListProduct(image: CloudKitUtility.makeURLJPG(image: "ProfileDefault"), name: "Niacinamida", explanation: "", brand: "Simple Organic", recomendedTime: [], vegan: true, barcode: 123, priceRange: 100, SPF: 1, texture: "", ingredients: [], categories: [])!)
     }
 }
