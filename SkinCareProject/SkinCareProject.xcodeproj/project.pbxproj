@@ -38,7 +38,7 @@
 		7CB66FE62A67289A006DFFB2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB66FE52A67289A006DFFB2 /* Constants.swift */; };
 		7CDF2E6D2A6B17C00028CA84 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF2E6C2A6B17C00028CA84 /* HomeView.swift */; };
 		7CDF2E6F2A6B17CE0028CA84 /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF2E6E2A6B17CE0028CA84 /* ProductListView.swift */; };
-		7CDF2E712A6B17DC0028CA84 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF2E702A6B17DC0028CA84 /* JournalView.swift */; };
+		7CDF2E712A6B17DC0028CA84 /* DiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF2E702A6B17DC0028CA84 /* DiaryView.swift */; };
 		7CDF2E732A6B17E70028CA84 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF2E722A6B17E70028CA84 /* ProfileView.swift */; };
 		7CDF2E822A6F142E0028CA84 /* TipsData.json in Resources */ = {isa = PBXBuildFile; fileRef = 7CDF2E7F2A6EFAE20028CA84 /* TipsData.json */; };
 		A544A6EE2A797A1A006E1747 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A544A6ED2A797A1A006E1747 /* NotificationService.swift */; };
@@ -58,12 +58,10 @@
 		A55E88D52A7403BE005E5AC5 /* CloudKitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55E88D42A7403BE005E5AC5 /* CloudKitViewModel.swift */; };
 		A5AD05332A7D378100826963 /* TipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AD05322A7D378100826963 /* TipsView.swift */; };
 		D82F35152A79747800E7A8B1 /* DesignColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82F35142A79747800E7A8B1 /* DesignColors.swift */; };
-		D82F351C2A797E5D00E7A8B1 /* ButtonPrimary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82F351B2A797E5D00E7A8B1 /* ButtonPrimary.swift */; };
 		D82F351F2A79922900E7A8B1 /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82F351E2A79922900E7A8B1 /* ButtonExtension.swift */; };
+		D87F2E692A816D34000B42F8 /* GraphicPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87F2E682A816D34000B42F8 /* GraphicPicker.swift */; };
+		D87F2E6F2A826D77000B42F8 /* AddPhotoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87F2E6E2A826D77000B42F8 /* AddPhotoCard.swift */; };
 		D88A10392A7B5915006CC93E /* TabBarQuest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88A10382A7B5915006CC93E /* TabBarQuest.swift */; };
-		D88A103B2A7B5FEC006CC93E /* QuestionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88A103A2A7B5FEC006CC93E /* QuestionCard.swift */; };
-		D88A103D2A7B608E006CC93E /* WheelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88A103C2A7B608E006CC93E /* WheelPicker.swift */; };
-		D88A10442A7C1B3B006CC93E /* ButtonWithTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88A10432A7C1B3B006CC93E /* ButtonWithTextfield.swift */; };
 		D88A10462A7C20E0006CC93E /* QuestionnairePage1.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88A10452A7C20E0006CC93E /* QuestionnairePage1.swift */; };
 		D88A104D2A7C3CE4006CC93E /* QuestionnairePage2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88A104C2A7C3CE4006CC93E /* QuestionnairePage2.swift */; };
 		D88A104F2A7C3F33006CC93E /* QuestionnairePage3.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88A104E2A7C3F33006CC93E /* QuestionnairePage3.swift */; };
@@ -73,11 +71,13 @@
 		D88A105B2A7D4061006CC93E /* QuestionnairePage6.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88A105A2A7D4061006CC93E /* QuestionnairePage6.swift */; };
 		D88A105D2A7D4102006CC93E /* QuestionnairePage7.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88A105C2A7D4102006CC93E /* QuestionnairePage7.swift */; };
 		D88A105F2A7D6F24006CC93E /* QuestionnaireModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88A105E2A7D6F24006CC93E /* QuestionnaireModel.swift */; };
-		D88A10632A7D880F006CC93E /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88A10622A7D880F006CC93E /* ProgressBar.swift */; };
 		D88A10652A7D9DD7006CC93E /* CustomButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88A10642A7D9DD7006CC93E /* CustomButtonStyle.swift */; };
 		D88A106A2A7DA75D006CC93E /* ButtonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88A10692A7DA75D006CC93E /* ButtonModel.swift */; };
-		D89A2F4C2A7B29C0002D77CC /* ButtonWithDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89A2F4B2A7B29C0002D77CC /* ButtonWithDescription.swift */; };
-		D89A2F4E2A7B3CE7002D77CC /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89A2F4D2A7B3CE7002D77CC /* PrimaryButton.swift */; };
+		D88A10702A7F431C006CC93E /* CustomButtonDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88A106F2A7F431C006CC93E /* CustomButtonDescription.swift */; };
+		D88A107A2A8054CE006CC93E /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88A10792A8054CE006CC93E /* ProgressBar.swift */; };
+		D88A107C2A8054F3006CC93E /* WheelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88A107B2A8054F3006CC93E /* WheelPicker.swift */; };
+		D88A107E2A80550C006CC93E /* QuestionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88A107D2A80550C006CC93E /* QuestionCard.swift */; };
+		D8A5EEFB2A813B590073F918 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A5EEFA2A813B590073F918 /* OnboardingModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,7 +113,7 @@
 		7CB66FE52A67289A006DFFB2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7CDF2E6C2A6B17C00028CA84 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		7CDF2E6E2A6B17CE0028CA84 /* ProductListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
-		7CDF2E702A6B17DC0028CA84 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
+		7CDF2E702A6B17DC0028CA84 /* DiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryView.swift; sourceTree = "<group>"; };
 		7CDF2E722A6B17E70028CA84 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		7CDF2E7F2A6EFAE20028CA84 /* TipsData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TipsData.json; sourceTree = "<group>"; };
 		A544A6ED2A797A1A006E1747 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
@@ -134,12 +134,10 @@
 		A55E88D42A7403BE005E5AC5 /* CloudKitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitViewModel.swift; sourceTree = "<group>"; };
 		A5AD05322A7D378100826963 /* TipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsView.swift; sourceTree = "<group>"; };
 		D82F35142A79747800E7A8B1 /* DesignColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignColors.swift; sourceTree = "<group>"; };
-		D82F351B2A797E5D00E7A8B1 /* ButtonPrimary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPrimary.swift; sourceTree = "<group>"; };
 		D82F351E2A79922900E7A8B1 /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
+		D87F2E682A816D34000B42F8 /* GraphicPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicPicker.swift; sourceTree = "<group>"; };
+		D87F2E6E2A826D77000B42F8 /* AddPhotoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoCard.swift; sourceTree = "<group>"; };
 		D88A10382A7B5915006CC93E /* TabBarQuest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarQuest.swift; sourceTree = "<group>"; };
-		D88A103A2A7B5FEC006CC93E /* QuestionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCard.swift; sourceTree = "<group>"; };
-		D88A103C2A7B608E006CC93E /* WheelPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelPicker.swift; sourceTree = "<group>"; };
-		D88A10432A7C1B3B006CC93E /* ButtonWithTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithTextfield.swift; sourceTree = "<group>"; };
 		D88A10452A7C20E0006CC93E /* QuestionnairePage1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnairePage1.swift; sourceTree = "<group>"; };
 		D88A104C2A7C3CE4006CC93E /* QuestionnairePage2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnairePage2.swift; sourceTree = "<group>"; };
 		D88A104E2A7C3F33006CC93E /* QuestionnairePage3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnairePage3.swift; sourceTree = "<group>"; };
@@ -149,11 +147,13 @@
 		D88A105A2A7D4061006CC93E /* QuestionnairePage6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnairePage6.swift; sourceTree = "<group>"; };
 		D88A105C2A7D4102006CC93E /* QuestionnairePage7.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnairePage7.swift; sourceTree = "<group>"; };
 		D88A105E2A7D6F24006CC93E /* QuestionnaireModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireModel.swift; sourceTree = "<group>"; };
-		D88A10622A7D880F006CC93E /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		D88A10642A7D9DD7006CC93E /* CustomButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonStyle.swift; sourceTree = "<group>"; };
 		D88A10692A7DA75D006CC93E /* ButtonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModel.swift; sourceTree = "<group>"; };
-		D89A2F4B2A7B29C0002D77CC /* ButtonWithDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithDescription.swift; sourceTree = "<group>"; };
-		D89A2F4D2A7B3CE7002D77CC /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		D88A106F2A7F431C006CC93E /* CustomButtonDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonDescription.swift; sourceTree = "<group>"; };
+		D88A10792A8054CE006CC93E /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		D88A107B2A8054F3006CC93E /* WheelPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelPicker.swift; sourceTree = "<group>"; };
+		D88A107D2A80550C006CC93E /* QuestionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCard.swift; sourceTree = "<group>"; };
+		D8A5EEFA2A813B590073F918 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,6 +267,7 @@
 				A55E88B92A686ECB005E5AC5 /* Splashscreen.swift */,
 				7C30D1562A7AEE5B009F93D7 /* Tips */,
 				7CA88C9E2A7063B500E58ABA /* Camera */,
+				D88A104B2A7C29D6006CC93E /* Questionnaire */,
 				A55E88BB2A7031EE005E5AC5 /* Onboarding */,
 				A586F5C12A74587B002AA9B9 /* TabBar */,
 			);
@@ -307,12 +308,9 @@
 		A55E88BB2A7031EE005E5AC5 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				D88A10402A7C1A49006CC93E /* Components */,
-				D88A104B2A7C29D6006CC93E /* Questionnaire */,
 				A55E88BC2A7031FE005E5AC5 /* TabBarOnb.swift */,
+				D8A5EEFA2A813B590073F918 /* OnboardingModel.swift */,
 				A55E88C82A7057CD005E5AC5 /* OnboardingView.swift */,
-				D88A10382A7B5915006CC93E /* TabBarQuest.swift */,
-				D88A105E2A7D6F24006CC93E /* QuestionnaireModel.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -374,7 +372,9 @@
 		A586F5C52A7458D2002AA9B9 /* Diario */ = {
 			isa = PBXGroup;
 			children = (
-				7CDF2E702A6B17DC0028CA84 /* JournalView.swift */,
+				7CDF2E702A6B17DC0028CA84 /* DiaryView.swift */,
+				D87F2E682A816D34000B42F8 /* GraphicPicker.swift */,
+				D87F2E6E2A826D77000B42F8 /* AddPhotoCard.swift */,
 			);
 			path = Diario;
 			sourceTree = "<group>";
@@ -383,27 +383,24 @@
 			isa = PBXGroup;
 			children = (
 				D82F35142A79747800E7A8B1 /* DesignColors.swift */,
-				7C30D1472A79E794009F93D7 /* Searchbar.swift */,
-				D82F351A2A797E3200E7A8B1 /* ButtonStyles */,
+				D82F351A2A797E3200E7A8B1 /* CustomStyles */,
 				7C30D14F2A7AC1C4009F93D7 /* TextFieldStyles */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
 		};
-		D82F351A2A797E3200E7A8B1 /* ButtonStyles */ = {
+		D82F351A2A797E3200E7A8B1 /* CustomStyles */ = {
 			isa = PBXGroup;
 			children = (
-				D82F351B2A797E5D00E7A8B1 /* ButtonPrimary.swift */,
+				D88A10642A7D9DD7006CC93E /* CustomButtonStyle.swift */,
 				7C30D1432A79959B009F93D7 /* CircleDayButton.swift */,
 				7C30D1452A799A20009F93D7 /* RectangleCategoryButton.swift */,
 				7C30D1492A7AA5D9009F93D7 /* ProductButton.swift */,
 				7C30D1522A7ACECC009F93D7 /* CategoryButton.swift */,
 				7C30D15B2A7C1B21009F93D7 /* ButtonProductList.swift */,
 				7C5FA0F92A7C42AE000D43BD /* RoutineButton.swift */,
-				D88A10642A7D9DD7006CC93E /* CustomButtonStyle.swift */,
-				D88A10692A7DA75D006CC93E /* ButtonModel.swift */,
 			);
-			path = ButtonStyles;
+			path = CustomStyles;
 			sourceTree = "<group>";
 		};
 		D82F351D2A79921800E7A8B1 /* Extensions */ = {
@@ -416,29 +413,13 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		D88A10402A7C1A49006CC93E /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				D88A103A2A7B5FEC006CC93E /* QuestionCard.swift */,
-				D89A2F4D2A7B3CE7002D77CC /* PrimaryButton.swift */,
-				D89A2F4B2A7B29C0002D77CC /* ButtonWithDescription.swift */,
-				D88A10432A7C1B3B006CC93E /* ButtonWithTextfield.swift */,
-				D88A103C2A7B608E006CC93E /* WheelPicker.swift */,
-				D88A10622A7D880F006CC93E /* ProgressBar.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
 		D88A104B2A7C29D6006CC93E /* Questionnaire */ = {
 			isa = PBXGroup;
 			children = (
-				D88A10452A7C20E0006CC93E /* QuestionnairePage1.swift */,
-				D88A104C2A7C3CE4006CC93E /* QuestionnairePage2.swift */,
-				D88A104E2A7C3F33006CC93E /* QuestionnairePage3.swift */,
-				D88A10502A7C4C78006CC93E /* QuestionnairePage4.swift */,
-				D88A10562A7C56B5006CC93E /* QuestionnairePage5.swift */,
-				D88A105A2A7D4061006CC93E /* QuestionnairePage6.swift */,
-				D88A105C2A7D4102006CC93E /* QuestionnairePage7.swift */,
+				D88A107F2A806978006CC93E /* Components */,
+				D88A10802A806992006CC93E /* Views */,
+				D88A105E2A7D6F24006CC93E /* QuestionnaireModel.swift */,
+				D88A10382A7B5915006CC93E /* TabBarQuest.swift */,
 			);
 			path = Questionnaire;
 			sourceTree = "<group>";
@@ -456,10 +437,37 @@
 		D88A106C2A7DAA7C006CC93E /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				D88A10692A7DA75D006CC93E /* ButtonModel.swift */,
 				D88A10542A7C4FB2006CC93E /* CustomButton.swift */,
 				7C62FE4E2A82C05700C586A3 /* ProductsComponents */,
+				D88A106F2A7F431C006CC93E /* CustomButtonDescription.swift */,
+				7C30D1472A79E794009F93D7 /* Searchbar.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		D88A107F2A806978006CC93E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				D88A10792A8054CE006CC93E /* ProgressBar.swift */,
+				D88A107D2A80550C006CC93E /* QuestionCard.swift */,
+				D88A107B2A8054F3006CC93E /* WheelPicker.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		D88A10802A806992006CC93E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D88A10452A7C20E0006CC93E /* QuestionnairePage1.swift */,
+				D88A104C2A7C3CE4006CC93E /* QuestionnairePage2.swift */,
+				D88A104E2A7C3F33006CC93E /* QuestionnairePage3.swift */,
+				D88A10502A7C4C78006CC93E /* QuestionnairePage4.swift */,
+				D88A10562A7C56B5006CC93E /* QuestionnairePage5.swift */,
+				D88A105A2A7D4061006CC93E /* QuestionnairePage6.swift */,
+				D88A105C2A7D4102006CC93E /* QuestionnairePage7.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -540,13 +548,15 @@
 				D88A10652A7D9DD7006CC93E /* CustomButtonStyle.swift in Sources */,
 				7CDF2E732A6B17E70028CA84 /* ProfileView.swift in Sources */,
 				7C30D14A2A7AA5D9009F93D7 /* ProductButton.swift in Sources */,
+				D88A10702A7F431C006CC93E /* CustomButtonDescription.swift in Sources */,
 				7CB66FC92A66F2D7006DFFB2 /* ContentView.swift in Sources */,
 				7CB66FE42A6723CE006DFFB2 /* Classes.swift in Sources */,
 				A544A6F02A797A65006E1747 /* HapticsService.swift in Sources */,
 				7C30D1512A7ACBEB009F93D7 /* UIApplicationExtension.swift in Sources */,
 				D88A10462A7C20E0006CC93E /* QuestionnairePage1.swift in Sources */,
+				D88A107A2A8054CE006CC93E /* ProgressBar.swift in Sources */,
+				D8A5EEFB2A813B590073F918 /* OnboardingModel.swift in Sources */,
 				7CB66FC72A66F2D7006DFFB2 /* SkinCareProjectApp.swift in Sources */,
-				D82F351C2A797E5D00E7A8B1 /* ButtonPrimary.swift in Sources */,
 				A544A7052A7ADB15006E1747 /* ListView.swift in Sources */,
 				A55E88D52A7403BE005E5AC5 /* CloudKitViewModel.swift in Sources */,
 				A544A6F32A797D1E006E1747 /* RoutineProgress.swift in Sources */,
@@ -557,8 +567,7 @@
 				7C62FE502A82C07800C586A3 /* HorizontalScrollProductsView.swift in Sources */,
 				A544A6F52A797F2C006E1747 /* RoutineProgressBar.swift in Sources */,
 				7C30D1532A7ACECC009F93D7 /* CategoryButton.swift in Sources */,
-				D88A10442A7C1B3B006CC93E /* ButtonWithTextfield.swift in Sources */,
-				D89A2F4C2A7B29C0002D77CC /* ButtonWithDescription.swift in Sources */,
+				D87F2E6F2A826D77000B42F8 /* AddPhotoCard.swift in Sources */,
 				A55E88C92A7057CD005E5AC5 /* OnboardingView.swift in Sources */,
 				D82F35152A79747800E7A8B1 /* DesignColors.swift in Sources */,
 				7CDF2E6D2A6B17C00028CA84 /* HomeView.swift in Sources */,
@@ -569,7 +578,7 @@
 				7C30D15C2A7C1B21009F93D7 /* ButtonProductList.swift in Sources */,
 				7C30D14C2A7AA627009F93D7 /* AllProductsListView.swift in Sources */,
 				D88A10572A7C56B5006CC93E /* QuestionnairePage5.swift in Sources */,
-				7CDF2E712A6B17DC0028CA84 /* JournalView.swift in Sources */,
+				7CDF2E712A6B17DC0028CA84 /* DiaryView.swift in Sources */,
 				D88A105F2A7D6F24006CC93E /* QuestionnaireModel.swift in Sources */,
 				7CB66FE02A67013F006DFFB2 /* TipsService.swift in Sources */,
 				7CA88CA02A7063EF00E58ABA /* CameraView.swift in Sources */,
@@ -581,27 +590,26 @@
 				D82F351F2A79922900E7A8B1 /* ButtonExtension.swift in Sources */,
 				7CB66FDE2A670132006DFFB2 /* CameraViewModel.swift in Sources */,
 				A544A6EE2A797A1A006E1747 /* NotificationService.swift in Sources */,
+				D87F2E692A816D34000B42F8 /* GraphicPicker.swift in Sources */,
 				A55E88BA2A686ECB005E5AC5 /* Splashscreen.swift in Sources */,
 				A544A7012A7AC4ED006E1747 /* ListDescription.swift in Sources */,
 				A544A7032A7AC67C006E1747 /* ListProductComponent.swift in Sources */,
-				D88A10632A7D880F006CC93E /* ProgressBar.swift in Sources */,
 				D88A104F2A7C3F33006CC93E /* QuestionnairePage3.swift in Sources */,
 				7CA88CA42A718C4F00E58ABA /* ProductView.swift in Sources */,
 				A544A6FF2A7AC3A3006E1747 /* ListTitle.swift in Sources */,
 				7CA88CA82A72DFDF00E58ABA /* ImageViewModel.swift in Sources */,
-				D88A103B2A7B5FEC006CC93E /* QuestionCard.swift in Sources */,
 				D88A10512A7C4C78006CC93E /* QuestionnairePage4.swift in Sources */,
 				D88A10392A7B5915006CC93E /* TabBarQuest.swift in Sources */,
 				D88A10552A7C4FB2006CC93E /* CustomButton.swift in Sources */,
 				7CB66FE62A67289A006DFFB2 /* Constants.swift in Sources */,
+				D88A107E2A80550C006CC93E /* QuestionCard.swift in Sources */,
 				A544A6F72A79840B006E1747 /* RoutineAlarm.swift in Sources */,
 				D88A105D2A7D4102006CC93E /* QuestionnairePage7.swift in Sources */,
-				D88A103D2A7B608E006CC93E /* WheelPicker.swift in Sources */,
 				A55E88D12A72E58A005E5AC5 /* CloudKitUtility.swift in Sources */,
-				D89A2F4E2A7B3CE7002D77CC /* PrimaryButton.swift in Sources */,
 				A55E88BD2A7031FE005E5AC5 /* TabBarOnb.swift in Sources */,
 				7C30D1482A79E794009F93D7 /* Searchbar.swift in Sources */,
 				D88A104D2A7C3CE4006CC93E /* QuestionnairePage2.swift in Sources */,
+				D88A107C2A8054F3006CC93E /* WheelPicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
