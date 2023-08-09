@@ -17,7 +17,7 @@ struct Searchbar: View {
             ZStack{
                 HStack{
                     Image(systemName: "magnifyingglass")
-                        .foregroundColor(Color.brandGray)
+                        .foregroundColor(Color.systemLabelTerciary)
                     TextField("Busque produtos", text: $searchText)
                         .foregroundColor(Color.brandGray)
                     //.disableAutocorrection(true)

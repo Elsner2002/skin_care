@@ -32,6 +32,7 @@ class CloudKitUtility {
         case RoutineProduct = "RoutineProduct"
         case AppUser = "AppUser"
         case Tips = "Tips"
+        case Diary = "Diary"
     }
     
 }

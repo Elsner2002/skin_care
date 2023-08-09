@@ -15,16 +15,23 @@ struct RoutineProgress: View {
         ZStack {
             VStack(alignment: .leading, spacing: 9.06){
                 HStack {
-                    Image("Elipse")
-                        .resizable()
-                        .frame(width: 22.64286, height: 22.64286)
-                        //.background(Constants.BrandPrimaryBlue)
+                    if title == "Rotina Noturna" {
+                        Image(systemName: "moon.stars.fill")
+                            .resizable()
+                            .frame(width: 22.64286, height: 22.64286)
+                            .foregroundColor(Color.brandGreen)
+                    } else {
+                        Image(systemName: "sun.max.fill")
+                            .resizable()
+                            .frame(width: 22.64286, height: 22.64286)
+                            .foregroundColor(Color.brandPink)
+                    }
                     Text(title)
                         .font(
                             Font.custom("SF Pro", size: 18.11428)
                                 .weight(.semibold)
                         )
-                        .foregroundColor(Color.systemLabelPrimary) //change
+                        .foregroundColor(Color.systemLabelPrimary)
                 }
                 
                 RoutineProgressBar(progress: CGFloat(completion))

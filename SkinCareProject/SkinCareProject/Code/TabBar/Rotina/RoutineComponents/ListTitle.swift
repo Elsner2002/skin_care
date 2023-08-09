@@ -16,7 +16,7 @@ struct ListTitle: View {
         NavigationStack {
             HStack(alignment: .center) {
                 Text(category)
-                    .font(Font.custom("SF Pro", size: 16))
+                    .font(Font.custom("SF Pro", size: 20))
                     .multilineTextAlignment(.leading)
                     .foregroundColor(Color.systemLabelPrimary)
                 Spacer()
@@ -29,7 +29,7 @@ struct ListTitle: View {
                                 .weight(.semibold)
                         )
                         .multilineTextAlignment(.center)
-                        .foregroundColor(Color.brandGreen)
+                        .foregroundColor(Color.systemButton)
                 }
                 .fullScreenCover(isPresented: $showSheet) {
                     AddProductView()
