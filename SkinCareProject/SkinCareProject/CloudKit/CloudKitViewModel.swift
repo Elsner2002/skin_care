@@ -17,6 +17,7 @@ class CloudKitModel: ObservableObject {
     @Published var userName: String = ""
     @Published var routineProducts: [RoutineProduct] = []
     @Published var listProducts: [ListProduct] = []
+    @Published var diaryList: [Diary] = []
     @Published var tips: [Tip] = []
     @Published var user: [AppUser] = []
     @Published var defaultUser: AppUser = AppUser(profileImage: CloudKitUtility.makeURLJPG(image: "ProfileDefault"), vegan: false, phototype: Phototype.one.title, skinType: SkinType.oily.rawValue, conditions: [Condition.none.rawValue], concerns: [Concern.none.rawValue])!
@@ -120,6 +121,15 @@ class CloudKitModel: ObservableObject {
             }
         }
     }
+    
+    private func addDiary(publicDb: Bool, name: String, recordType: CloudKitUtility.CloudKitTypes, newDiary: Diary){
+        CloudKitUtility.add(publicDb: publicDb, item: newDiary) { result in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.diaryList.append(newDiary)
+                self.fetchItems(publicDb: publicDb, recordType: recordType)
+            }
+        }
+    }
 
     
     //READ
@@ -163,6 +173,15 @@ class CloudKitModel: ObservableObject {
                     
                 } receiveValue: { [weak self] returnedItem in
                     self?.tips = returnedItem
+                }
+                .store(in: &cancellables)
+        case .Diary:
+            CloudKitUtility.fetch(publicDb: publicDb, predicate: predicate, recordType: recordType)
+                .receive(on: DispatchQueue.main)
+                .sink { _ in
+                    
+                } receiveValue: { [weak self] returnedItem in
+                    self?.diaryList = returnedItem
                 }
                 .store(in: &cancellables)
         }
@@ -238,13 +257,33 @@ class CloudKitModel: ObservableObject {
             }
             .store(in: &cancellables)
         
-        CKContainer.default().publicCloudDatabase.delete(withRecordID: record.recordID) { retunedRecordId, returnedError in
+        CKContainer.default().privateCloudDatabase.delete(withRecordID: record.recordID) { retunedRecordId, returnedError in
             DispatchQueue.main.async {
                 self.routineProducts.remove(at: index)
             }
         }
     }
     
+    func deleteDiary(publicDb: Bool, indexSet: IndexSet) {
+        guard let index = indexSet.first else {return}
+        let diary = diaryList[index]
+        let record = product.record
+        
+        CloudKitUtility.delete(publicDb: publicDb, item: product)
+            .receive(on: DispatchQueue.main)
+            .sink { _ in
+                
+            } receiveValue: { [weak self] success in
+                self?.diaryList.remove(at: index)
+            }
+            .store(in: &cancellables)
+        
+        CKContainer.default().privateCloudDatabase.delete(withRecordID: record.recordID) { retunedRecordId, returnedError in
+            DispatchQueue.main.async {
+                self.diaryList.remove(at: index)
+            }
+        }
+    }
 }
 
 struct CloudKitViewModel: View {
@@ -268,11 +307,11 @@ struct CloudKitViewModel: View {
             
             ListProductComponent(product: product)
             
-            //            List {
-            //                ForEach(vm.routineProducts, id: \.self) { product in
-            //                    ListProductComponent(product: product)
-            //                } //.onDelete(perform: vm.deleteItem(indexSet:))
-            //            }
+//                        List {
+//                            ForEach(vm.routineProducts, id: \.self) { product in
+//                                ListProductComponent(product: product)
+//                            } .onDelete(perform: vm.deleteItem(indexSet:))
+//                        }
         }
         .onChange(of: self.vm.routineProducts, perform: { _ in
             self.product = vm.routineProducts[0]

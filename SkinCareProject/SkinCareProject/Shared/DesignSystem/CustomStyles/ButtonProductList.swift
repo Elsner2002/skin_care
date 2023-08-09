@@ -23,15 +23,33 @@ struct ButtonProductList: View {
             VStack{
                 HStack{
                     Text(product.name)
-                        .foregroundColor(Color.systemLabelPrimary)
-                    Text(product.brand)
-                        .foregroundColor(Color.systemLabelPrimary)
+                        .font(
+                        Font.custom("SF Pro Text", size: 14)
+                        .weight(.bold)
+                        )
+                        .foregroundColor(Color.black)
                     Spacer()
-                }
-                .padding(.bottom, 2)
+                    Text(product.brand)
+                        .font(
+                        Font.custom("SF Pro Text", size: 14)
+                        .weight(.bold)
+                        )
+                        .foregroundColor(Color.black)
+                } .lineLimit(1)
+                    .padding(.bottom, 2)
                 HStack{
-                    Text(Constants.shared.priceRange(price: product.priceRange))
+                    Text(product.categories[0])
+                        .font(
+                        Font.custom("SF Pro Text", size: 14)
+                        .weight(.medium)
+                        )
                         .foregroundColor(Color.systemLabelSecondary)
+                    Text(Constants.shared.priceRange(price: product.priceRange))
+                        .font(
+                        Font.custom("SF Pro Text", size: 14)
+                        .weight(.medium)
+                        )
+                        .foregroundColor(Color.systemLabelTerciary)
                     Spacer()
                 }
             }
