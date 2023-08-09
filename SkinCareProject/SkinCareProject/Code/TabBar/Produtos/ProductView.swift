@@ -8,35 +8,27 @@
 import SwiftUI
 
 struct ProductView: View {
-    
-    @Binding var path: [Int]
-    let count: Int
-    var barcode: String
+    @StateObject private var vm = CloudKitModel()
+
+    let product: ListProduct
     
     var body: some View {
         VStack {
-            Text(barcode)
+            Text(String(product.barcode))
         }
-        .navigationBarBackButtonHidden(true)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button {
-                    path = []
-                } label: {
-                    HStack {
-                        Image(systemName: "chevron.backward")
-                        Text("Back")
-                    }
-                }
-                
-            }
-        }
+//        .navigationBarBackButtonHidden(true)
+//        .toolbar {
+//            ToolbarItem(placement: .navigationBarLeading) {
+//                Button {
+//                    path = []
+//                } label: {
+//                    HStack {
+//                        Image(systemName: "chevron.backward")
+//                        Text("Back")
+//                    }
+//                }
+//                
+//            }
+//        }
     }
 }
-
-//struct ProductView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ProductView()
-//    }
-//}
-

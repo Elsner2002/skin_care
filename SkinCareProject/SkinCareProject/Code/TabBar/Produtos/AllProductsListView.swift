@@ -8,8 +8,18 @@
 import SwiftUI
 
 struct AllProductsListView: View {
+    
+    @State private var searchText = ""
+    
     var body: some View {
-        Text("Todos os produtos")
+        NavigationStack {
+            VStack {
+                Searchbar(searchText: $searchText)
+
+                VerticalScrollProductsView()
+            }
+        }
+        .navigationTitle("Todos os produtos")
     }
 }
 
