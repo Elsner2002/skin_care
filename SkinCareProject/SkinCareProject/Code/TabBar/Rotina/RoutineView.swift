@@ -121,7 +121,7 @@ struct Sheet: View {
 
 struct RoutineView_Previews: PreviewProvider {
     static let url: URL = CloudKitUtility.makeURLJPG(image: "gato-cinza")
-    static let array: [RoutineProduct] = [RoutineProduct(image: url, name: "test", isCompleted: false, barcode: 12345, frequency: [1], timesDay: 1, categories: ["Limpeza"])!]
+    static let array: [RoutineProduct] = [RoutineProduct(image: url, name: "test", brand: "test", isCompleted: false, barcode: 12345, frequency: [1], categories: ["Limpeza"])!]
     
     static var previews: some View {
         RoutineView(routine: Routine(name: "Rotina Diurna", completition: 2, categoryLimpeza: [], categoryTratamentos: [], categoryHidratante: [], categoryProtetor: []))

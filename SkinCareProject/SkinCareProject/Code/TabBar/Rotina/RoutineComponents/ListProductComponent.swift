@@ -64,7 +64,7 @@ struct ListProductComponent: View {
 
 struct ListProductComponent_Previews: PreviewProvider {
     static let url: URL? = URL(string: "https://google.com")
-    static let product: RoutineProduct = RoutineProduct(image: url, name: "name", isCompleted: false, barcode: 1234, frequency: [1], timesDay: 1, categories: ["Limpeza"])!
+    static let product: RoutineProduct = RoutineProduct(image: url, name: "name", brand: "test", isCompleted: false, barcode: 1234, frequency: [1], categories: ["Limpeza"])!
     
     static var previews: some View {
         ListProductComponent(product: product)

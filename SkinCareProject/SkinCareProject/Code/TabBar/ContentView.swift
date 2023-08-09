@@ -9,37 +9,36 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
+
         @State var downloadAmount = 80.0
         
         
         TabView{
-            ProfileView()
+            HomeView()
                 .tabItem {
-                    Label("Perfil", systemImage: "person.crop.circle")
+                    Image("routinesSymbol")
+                    Text("Rotinas")
                 }
-
             ProductListView()
                 .tabItem {
                     Image("productSymbol")
                     Text("Produtos")
                 }
             
-            HomeView()
-                .tabItem {
-                    Image("routinesSymbol")
-                    Text("Rotinas")
-                }
-
-            DiaryView()
+            JournalView()
                 .tabItem {
                     Label("Diario", systemImage: "note.text")
                 }
+            ProfileView()
+                .tabItem {
+                    Label("Perfil", systemImage: "person.crop.circle")
+                }
         }
         .accentColor(Color.brandGreen)
-        .toolbarBackground(Color.yellow, for: .tabBar)
+
     }
-        
-    }
+    
+}
 
 
 struct ContentView_Previews: PreviewProvider {

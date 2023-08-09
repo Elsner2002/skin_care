@@ -10,6 +10,7 @@ import SwiftUI
 struct ProductListView: View {
     
     @StateObject private var cameraVM = CameraViewModel()
+    @StateObject private var vm = CloudKitModel()
     @State private var path: [Int] = []
     @State private var searchText = ""
     @State var categoryButtons: [(String, Bool)] = [
@@ -29,6 +30,7 @@ struct ProductListView: View {
                     HStack{
                         Spacer()
                         Button {
+                            path = []
                             path.append(1)
                         } label: {
                             Image("scanSymbol")
@@ -69,8 +71,12 @@ struct ProductListView: View {
                     }
                     .padding(.leading, 15)
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack{
-                            ProductButton(image: Image("Hidratante"), brand: "Neutrogena", name: "Hydroboost")
+                        HStack {
+                            ForEach(vm.listProducts, id: \.self) { product in
+                                if let url = product.image, let data =  try? Data(contentsOf: url),  let image = UIImage(data: data) {
+                                    ProductButton(image: Image(uiImage: image), brand: product.brand, name: product.name)
+                                }
+                            }
                         }
                         .padding()
                     }
@@ -88,7 +94,7 @@ struct ProductListView: View {
                             .bold()
                         Spacer()
                         NavigationLink {
-                            AllProductsListView()
+                            AllProductsListView() //for each of all products
                         } label: {
                             Text("Ver Todos")
                                 .foregroundColor(Color.brandGreen)
@@ -100,6 +106,7 @@ struct ProductListView: View {
                     ScrollView(.horizontal, showsIndicators: false){
                         HStack{
                             ProductButton(image: Image("Hidratante"), brand: "Epidrate", name: "Calm")
+                            //for each with 10 products: define limit in function
                         }
                         .padding()
                     }
@@ -118,7 +125,7 @@ struct ProductListView: View {
                         Spacer()
                     }
                     .padding(.leading, 15)
-                    TipsView(tip: Constants.shared.randomTip!)
+                    //TipsView(tip: Constants.shared.randomTip!)
                 }
             }
         }
