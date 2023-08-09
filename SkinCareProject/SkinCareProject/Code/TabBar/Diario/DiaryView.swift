@@ -32,7 +32,7 @@ struct DiaryView: View {
                         .interactiveDismissDisabled()
                         .presentationCornerRadius(40)
                         .presentationBackgroundInteraction(
-                            .enabled(upThrough: .medium)
+                            .enabled(upThrough: .large)
                         )
                     
                 }
@@ -86,8 +86,7 @@ struct SheetDiary: View {
                         
                         VStack {
                             CustomButton(label: "Salvar", action: {}, description: "", buttonType: .largeRounded)
-                            CustomButton(label: "Excluir", action: {}, description: "", buttonType: .largeRounded)
-                            
+                            CustomButton(label: "Excluir", action: {}, description: "", buttonType: .largeRounded)                         
                         }
                         .frame(width: 324, alignment: .center)
                     }

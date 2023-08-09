@@ -304,6 +304,38 @@ class Tip: CloudKitProtocol {
     }
 }
 
+class Diary: CloudKitProtocol {
+    var dayCompletion: Int
+    var nightCompletion: Int
+    var notes: String
+    var image: URL?
+    let record: CKRecord
+
+    required init?(record: CKRecord) {
+        guard let dayCompletion = record["dayCompletion"] as? Int else {return nil}
+        self.dayCompletion = dayCompletion
+        guard let nightCompletion = record["nightCompletion"] as? Int else {return nil}
+        self.nightCompletion = nightCompletion
+        guard let notes = record["notes"] as? String else {return nil}
+        self.notes = notes
+        let imageAsset = record["image"] as? CKAsset
+        self.image = imageAsset?.fileURL
+        self.record = record
+    }
+    
+    required convenience init?(dayCompletion: Int, nightCompletion: Int, notes: String, image: URL?){
+        let record = CKRecord(recordType: "Diary")
+        record["dayCompletion"] = dayCompletion
+        record["nightCompletion"] = nightCompletion
+        record["notes"] = notes
+        if let url = image {
+            let asset = CKAsset(fileURL: url)
+            record["image"] = asset
+        }
+        self.init(record: record)
+    }
+}
+
 class Routine {
     var name: String
     var completition: Int

@@ -15,7 +15,9 @@ struct ListView: View {
     let description: String
     let category: String
     let routine: Routine
+    @StateObject private var vm = CloudKitModel()
     @State var list: [RoutineProduct]
+    
     
     init(description: String, category: String, routine: Routine) {
         self.description = description
@@ -37,7 +39,21 @@ struct ListView: View {
                         Section{
                             ForEach(list, id: \.self) { product in
                                 ListProductComponent(product: product)
-                            } //.onDelete(perform: deleteItem)
+                                    .swipeActions (allowsFullSwipe: false) {
+                                        Button(role: .destructive) {
+                                            //delete item v.delete
+                                        } label: {
+                                            Label("Delete", systemImage: "trash.fill")
+                                        }
+                                        .tint(Color.red)
+                                        Button {
+                                            CreateProductView()
+                                        } label: {
+                                            Image (systemName: "gearshape.fill")
+                                        }
+                                        .tint(Color.systemMaterial)
+                                    }
+                            }
                         }
                     }
                     .padding(.leading, 3)
@@ -54,6 +70,6 @@ struct ListView_Previews: PreviewProvider {
     static let array: [RoutineProduct] = [RoutineProduct(image: url, name: "test", brand: "test", isCompleted: false, barcode: 12345, frequency: [1], categories: ["Limpeza", "Tônicos & Tratamentos",  "Hidratante"])!, RoutineProduct(image: url, name: "test", brand: "test", isCompleted: false, barcode: 12345, frequency: [1], categories: ["Limpeza", "Tônicos & Tratamentos",  "Hidratante"])!]
     
     static var previews: some View {
-        ListView(description: "Primeiro passo: Comece higienizando seu rosto e retirando impurezas", category: "Limpeza",  routine: Routine(name: "Noite", completition: 0, categoryLimpeza: [], categoryTratamentos: [], categoryHidratante: [], categoryProtetor: []) )
+        ListView(description: "Primeiro passo: Comece higienizando seu rosto e retirando impurezas", category: "Limpeza",  routine: Routine(name: "Noite", completition: 0, categoryLimpeza: array, categoryTratamentos: [], categoryHidratante: [], categoryProtetor: []) )
     }
 }
