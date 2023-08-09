@@ -23,6 +23,8 @@
 		7C5FA0FA2A7C42AE000D43BD /* RoutineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5FA0F92A7C42AE000D43BD /* RoutineButton.swift */; };
 		7C62FE502A82C07800C586A3 /* HorizontalScrollProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62FE4F2A82C07800C586A3 /* HorizontalScrollProductsView.swift */; };
 		7C62FE522A82C08800C586A3 /* VerticalScrollProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62FE512A82C08800C586A3 /* VerticalScrollProductsView.swift */; };
+		7C62FE542A843C2700C586A3 /* AboutProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62FE532A843C2600C586A3 /* AboutProductView.swift */; };
+		7C62FE562A84560900C586A3 /* HowUseProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62FE552A84560900C586A3 /* HowUseProductView.swift */; };
 		7CA88CA02A7063EF00E58ABA /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA88C9F2A7063EF00E58ABA /* CameraView.swift */; };
 		7CA88CA22A717B4600E58ABA /* DataScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA88CA12A717B4600E58ABA /* DataScannerView.swift */; };
 		7CA88CA42A718C4F00E58ABA /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA88CA32A718C4F00E58ABA /* ProductView.swift */; };
@@ -97,6 +99,8 @@
 		7C5FA0F92A7C42AE000D43BD /* RoutineButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineButton.swift; sourceTree = "<group>"; };
 		7C62FE4F2A82C07800C586A3 /* HorizontalScrollProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollProductsView.swift; sourceTree = "<group>"; };
 		7C62FE512A82C08800C586A3 /* VerticalScrollProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalScrollProductsView.swift; sourceTree = "<group>"; };
+		7C62FE532A843C2600C586A3 /* AboutProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutProductView.swift; sourceTree = "<group>"; };
+		7C62FE552A84560900C586A3 /* HowUseProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowUseProductView.swift; sourceTree = "<group>"; };
 		7CA88C9F2A7063EF00E58ABA /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		7CA88CA12A717B4600E58ABA /* DataScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScannerView.swift; sourceTree = "<group>"; };
 		7CA88CA32A718C4F00E58ABA /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
@@ -363,6 +367,8 @@
 				7CDF2E6E2A6B17CE0028CA84 /* ProductListView.swift */,
 				7C30D14B2A7AA627009F93D7 /* AllProductsListView.swift */,
 				7CA88CA32A718C4F00E58ABA /* ProductView.swift */,
+				7C62FE532A843C2600C586A3 /* AboutProductView.swift */,
+				7C62FE552A84560900C586A3 /* HowUseProductView.swift */,
 				7CB66FDD2A670132006DFFB2 /* CameraViewModel.swift */,
 				7CA88CA12A717B4600E58ABA /* DataScannerView.swift */,
 			);
@@ -559,6 +565,7 @@
 				7CB66FC72A66F2D7006DFFB2 /* SkinCareProjectApp.swift in Sources */,
 				A544A7052A7ADB15006E1747 /* ListView.swift in Sources */,
 				A55E88D52A7403BE005E5AC5 /* CloudKitViewModel.swift in Sources */,
+				7C62FE542A843C2700C586A3 /* AboutProductView.swift in Sources */,
 				A544A6F32A797D1E006E1747 /* RoutineProgress.swift in Sources */,
 				A544A6FB2A799AD5006E1747 /* RoutineView.swift in Sources */,
 				A55E88C92A7057CD005E5AC5 /* OnboardingView.swift in Sources */,
@@ -605,6 +612,7 @@
 				D88A107E2A80550C006CC93E /* QuestionCard.swift in Sources */,
 				A544A6F72A79840B006E1747 /* RoutineAlarm.swift in Sources */,
 				D88A105D2A7D4102006CC93E /* QuestionnairePage7.swift in Sources */,
+				7C62FE562A84560900C586A3 /* HowUseProductView.swift in Sources */,
 				A55E88D12A72E58A005E5AC5 /* CloudKitUtility.swift in Sources */,
 				A55E88BD2A7031FE005E5AC5 /* TabBarOnb.swift in Sources */,
 				7C30D1482A79E794009F93D7 /* Searchbar.swift in Sources */,

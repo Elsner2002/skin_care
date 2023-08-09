@@ -41,7 +41,7 @@ struct RoutineView: View {
                 Button (""){
                 }
                 .sheet(isPresented: $showSheet){
-                    Sheet(routine: routine)
+                    SheetRoutine(routine: routine)
                         .presentationDetents([.fraction(0.7), .medium])
                         .presentationDragIndicator(.hidden)
                         .interactiveDismissDisabled()
@@ -59,7 +59,7 @@ struct RoutineView: View {
     }
 }
 
-struct Sheet: View {
+struct SheetRoutine: View {
     let routine: Routine
     var listLimpeza: ListView
     var listTratamentos: ListView

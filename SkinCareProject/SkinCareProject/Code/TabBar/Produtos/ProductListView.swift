@@ -38,7 +38,7 @@ struct ProductListView: View {
                         }
                         .padding()
                     }
-                    .padding([.leading, .trailing], 15)
+                    .padding(.horizontal, 15)
                     
                     HStack{
                         Text("Recomendados para seu tipo de pele")
@@ -60,7 +60,7 @@ struct ProductListView: View {
                         }
 
                     }
-                    .padding([.leading, .trailing], 15)
+                    .padding(.horizontal, 15)
                     HorizontalScrollProductsView()
                     
                     HStack{

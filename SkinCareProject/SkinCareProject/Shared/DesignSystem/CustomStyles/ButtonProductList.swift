@@ -46,7 +46,7 @@ struct ButtonProductList: View {
                     color: Color.brandGray.opacity(0.15), radius: 10, x: 0, y: 0
                 )
         )
-        .padding([.leading, .trailing])
+        .padding(.horizontal)
     }
 }
 

@@ -127,6 +127,7 @@ struct CreateProductView: View {
                         dismiss()
                     } label: {
                         Text("Salvar")
+                            .frame(minWidth: 0, maxWidth: .infinity)
                     }
                     .customButtonStyle(buttonType: .largeRounded)
                     
@@ -134,11 +135,12 @@ struct CreateProductView: View {
                         dismiss()
                     } label: {
                         Text("Excluir")
+                            .frame(minWidth: 0, maxWidth: .infinity)
                     }
                     .customButtonStyle(buttonType: .largeRounded)
-                    .padding(.top, 10)
                 }
-                .padding(.top, 8)
+                .padding(.top, 18)
+                .padding(.horizontal, 30)
             }
         }
         .navigationTitle("Adicionar Produto")
