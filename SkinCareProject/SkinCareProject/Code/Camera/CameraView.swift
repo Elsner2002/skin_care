@@ -13,6 +13,8 @@ struct CameraView: View {
     @EnvironmentObject var cameraVM: CameraViewModel
     @State var isProductViewShowing: Bool = false
     @State var barcodeId: Int = 0
+    @State var product: ListProduct?
+//    @State var isLoading: Bool = false
     
     var body: some View {
         
@@ -40,30 +42,41 @@ struct CameraView: View {
     
     private var mainView: some View {
         VStack{
-            if let productFound = vm.getProductBarcode(barcode: barcodeId) {
-                NavigationLink("", destination: ProductView(product: productFound), isActive: $isProductViewShowing)
-            }
-            else {
-                //mostrar popUp que o produto nao existe
-            }
+            NavigationLink("", destination: ProductView(product: product), isActive: $isProductViewShowing)
+            
             DataScannerView(recognizedItems: $cameraVM.recognizedItems)
                 .onChange(of: cameraVM.recognizedItems) { newValue in
+//                    self.isLoading = true
                     for nv in newValue {
                         switch nv {
                         case .barcode(let barcode):
                             if let barcodeString = barcode.payloadStringValue {
                                 if let barcodeId = Int(barcodeString) {
                                     self.barcodeId = barcodeId
-                                    self.isProductViewShowing = true
+                                    if let productFound = vm.getProductBarcode(barcode: barcodeId) {
+                                        self.product = productFound
+                                        self.isProductViewShowing = true
+                                    }
+//                                    else {
+//                                        //mostrar popUp que o produto nao existe
+//                                    }
                                 }
                             }
+//                            self.isLoading = false
                         case .text(_):
+//                            self.isLoading = false
                             break
                         @unknown default:
+//                            self.isLoading = false
                             break
                         }
                     }
                 }
         }
+//        .overlay {
+//            if isLoading {
+//                Text("Loading...")
+//            }
+//        }
     }
 }
