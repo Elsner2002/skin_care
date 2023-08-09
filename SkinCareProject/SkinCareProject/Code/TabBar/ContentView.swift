@@ -25,7 +25,7 @@ struct ContentView: View {
                     Text("Produtos")
                 }
             
-            JournalView()
+            DiaryView()
                 .tabItem {
                     Label("Diario", systemImage: "note.text")
                 }

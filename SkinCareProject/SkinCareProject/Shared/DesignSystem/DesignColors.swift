@@ -24,6 +24,11 @@ extension Color {
     static let templateFillsTertiary = Color("templateFillsTertiary")
     static let primaryButtonColor = Color("primaryButton")
     static let buttonColor = Color("ButtonColor")
+    static let systemLabel = Color("systemLabel")
+    static let brandMint = Color("brandMint")
+    static let componentFill = Color("componentFill")
+    static let textfield = Color("textfield")
+
 
 
 
