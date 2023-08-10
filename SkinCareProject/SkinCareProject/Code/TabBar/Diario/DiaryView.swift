@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DiaryView: View {
     @State private var showSheet: Bool = false
+    @State var date: Date = Date.now
     
     
     init() {
@@ -19,29 +20,27 @@ struct DiaryView: View {
         NavigationStack {
             ZStack {
                 Color.brandGreen.ignoresSafeArea()
-                GraphicPicker()
+                GraphicPicker(selectedDate: $date)
                     .padding(EdgeInsets(top: -157, leading: 0, bottom: 0, trailing: 0))
+                    .onChange(of: date, perform: { newValue in
+                        showSheet = true
+                    })
             
                 Button (""){
                     showSheet.toggle()
                 }
                 .sheet(isPresented: $showSheet){
-                    SheetDiary()
-                        .presentationDetents([.fraction(0.1), .large])
+                    SheetDiary(date: date)
+                        .presentationDetents([.large])
                         .presentationDragIndicator(.visible)
-                        .interactiveDismissDisabled()
                         .presentationCornerRadius(40)
                         .presentationBackgroundInteraction(
                             .enabled(upThrough: .large)
                         )
                     
                 }
-                .onAppear {
-                    showSheet = true
-                }
             }
             .navigationTitle("Diário")
-            .foregroundColor(.white)
         }
     }
 }
@@ -49,17 +48,20 @@ struct DiaryView: View {
 
 struct SheetDiary: View {
     @State var notes: String = ""
-    @State var dayRoutineProgress = 0
+    @State var dayRoutineProgress = 2
     @State var nightRoutineProgress = 0
+    @StateObject private var vm = CloudKitModel()
+    var date: Date
+
     var body: some View {
         NavigationStack {
             ZStack {
                 Color.systemBG.ignoresSafeArea()
                 ScrollView (showsIndicators: false) {
                     VStack(alignment: .center, spacing: 0) {
-                        Spacer(minLength: 75)
+                        Spacer(minLength: 20)
                         AddPhotoCard()
-                            .padding(EdgeInsets(top: 38, leading: 24, bottom: 50, trailing: 24))
+                            .padding(EdgeInsets(top: 38, leading: 24, bottom: 20, trailing: 24))
                         VStack(alignment: .leading) {
                             Text("ROTINAS DO DIA")
                                 .foregroundColor(.systemLabelSecondary)

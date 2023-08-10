@@ -128,4 +128,10 @@ class Constants: ObservableObject {
     
     }
     
+    @Published var allowedNotification: Bool = UserDefaults.standard.value(forKey: "allowedNotification") as? Bool ?? false {
+        didSet {
+            UserDefaults.standard.set(allowedNotification, forKey: "allowedNotification")
+        }
+    }
+    
 }

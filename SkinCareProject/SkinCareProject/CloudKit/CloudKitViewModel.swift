@@ -20,6 +20,8 @@ class CloudKitModel: ObservableObject {
     @Published var diaryList: [Diary] = []
     @Published var tips: [Tip] = []
     @Published var user: [AppUser] = []
+    @Published var ingredients: [Ingredient] = []
+    
     @Published var defaultUser: AppUser = AppUser(profileImage: CloudKitUtility.makeURLJPG(image: "ProfileDefault"), vegan: false, phototype: Phototype.one.title, skinType: SkinType.oily.rawValue, conditions: [Condition.none.rawValue], concerns: [Concern.none.rawValue])!
     //set each variable in the questionnaire
      let product: RoutineProduct = RoutineProduct(image: CloudKitUtility.makeURLJPG(image: "gato-cinza"), name: "test", brand: "test", isCompleted: false, barcode: 12345, frequency: [1], categories: ["Limpeza"])!
@@ -35,10 +37,12 @@ class CloudKitModel: ObservableObject {
         fetchItems(publicDb: true, recordType: CloudKitUtility.CloudKitTypes.Tips)
         fetchItems(publicDb: false, recordType: CloudKitUtility.CloudKitTypes.RoutineProduct)
         fetchItems(publicDb: false, recordType: CloudKitUtility.CloudKitTypes.AppUser)
+        fetchItems(publicDb: false, recordType: CloudKitUtility.CloudKitTypes.Diary)
+        fetchItems(publicDb: true, recordType: CloudKitUtility.CloudKitTypes.Ingredient)
     }
     
     func addButtonPressed() {
-        addTip(publicDb: true, name: "Tip1", recordType: CloudKitUtility.CloudKitTypes.Tips, newTip: Tip(title: "Test", text: "Test Desc.", image: CloudKitUtility.makeURLJPG(image: "gato-cinza"))!)
+        addIngredient(publicDb: true, name: "test ingredient", recordType: CloudKitUtility.CloudKitTypes.Ingredient, newIngredient: Ingredient(names: ["Aqua", "Água"], description: "water")!)
     }
     
     func getProductBarcode(barcode: Int) -> ListProduct?{
@@ -130,6 +134,15 @@ class CloudKitModel: ObservableObject {
             }
         }
     }
+    
+    private func addIngredient(publicDb: Bool, name: String, recordType: CloudKitUtility.CloudKitTypes, newIngredient: Ingredient){
+        CloudKitUtility.add(publicDb: publicDb, item: newIngredient) { result in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.ingredients.append(newIngredient)
+                self.fetchItems(publicDb: publicDb, recordType: recordType)
+            }
+        }
+    }
 
     
     //READ
@@ -182,6 +195,15 @@ class CloudKitModel: ObservableObject {
                     
                 } receiveValue: { [weak self] returnedItem in
                     self?.diaryList = returnedItem
+                }
+                .store(in: &cancellables)
+        case .Ingredient:
+            CloudKitUtility.fetch(publicDb: publicDb, predicate: predicate, recordType: recordType)
+                .receive(on: DispatchQueue.main)
+                .sink { _ in
+                    
+                } receiveValue: { [weak self] returnedItem in
+                    self?.ingredients = returnedItem
                 }
                 .store(in: &cancellables)
         }
@@ -237,6 +259,27 @@ class CloudKitModel: ObservableObject {
             newUser = newUser.updateImage(newImage: userImage)!
         }
         CloudKitUtility.update(publicDb: publicDb, item: newUser) {[weak self] result in
+            print("update was successfull")
+            self?.fetchItems(publicDb: publicDb, recordType: recordType)
+        }
+    }
+    
+    func updateDiary(publicDb: Bool, diary: Diary, recordType: CloudKitUtility.CloudKitTypes, diaryDayCompletion: Int = 100, diaryNightCompletion: Int = 100, diaryNotes: String = "NaoAlterado", diaryImage: URL = CloudKitUtility.makeURLJPG(image: "ProfileDefault")) {
+        var newDiary = diary
+        
+        if diaryDayCompletion != 100 {
+            newDiary = newDiary.updateDayCompletion(newDayCompletion: diaryDayCompletion)!
+        }
+        if diaryNightCompletion != 100 {
+            newDiary = newDiary.updateNightCompletion(newNightCompletion: diaryNightCompletion)!
+        }
+        if diaryNotes != "NaoAlterado" {
+            newDiary = newDiary.updateNotes(newNotes: diaryNotes)!
+        }
+        if diaryImage != CloudKitUtility.makeURLJPG(image: "ProfileDefault"){
+            newDiary = newDiary.updateImage(newImage: diaryImage)!
+        }
+        CloudKitUtility.update(publicDb: publicDb, item: newDiary) {[weak self] result in
             print("update was successfull")
             self?.fetchItems(publicDb: publicDb, recordType: recordType)
         }
@@ -306,12 +349,6 @@ struct CloudKitViewModel: View {
             }
             
             ListProductComponent(product: product)
-            
-//                        List {
-//                            ForEach(vm.routineProducts, id: \.self) { product in
-//                                ListProductComponent(product: product)
-//                            } .onDelete(perform: vm.deleteItem(indexSet:))
-//                        }
         }
         .onChange(of: self.vm.routineProducts, perform: { _ in
             self.product = vm.routineProducts[0]

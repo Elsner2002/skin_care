@@ -18,7 +18,6 @@ struct SkinCareProjectApp: App {
             ZStack {
                 if self.isActive {
                     ContentView()
-                    //CloudKitViewModel()
 //                    if firstTimeHere {
 //                        TabBarOnb()
 //                    }

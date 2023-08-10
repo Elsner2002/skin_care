@@ -305,13 +305,16 @@ class Tip: CloudKitProtocol {
 }
 
 class Diary: CloudKitProtocol {
+    var date: Date
     var dayCompletion: Int
     var nightCompletion: Int
-    var notes: String
+    var notes: String?
     var image: URL?
     let record: CKRecord
 
     required init?(record: CKRecord) {
+        guard let date = record["date"] as? Date else {return nil}
+        self.date = date
         guard let dayCompletion = record["dayCompletion"] as? Int else {return nil}
         self.dayCompletion = dayCompletion
         guard let nightCompletion = record["nightCompletion"] as? Int else {return nil}
@@ -323,8 +326,9 @@ class Diary: CloudKitProtocol {
         self.record = record
     }
     
-    required convenience init?(dayCompletion: Int, nightCompletion: Int, notes: String, image: URL?){
+    required convenience init?(date: Date, dayCompletion: Int, nightCompletion: Int, notes: String, image: URL?){
         let record = CKRecord(recordType: "Diary")
+        record["date"] = date
         record["dayCompletion"] = dayCompletion
         record["nightCompletion"] = nightCompletion
         record["notes"] = notes
@@ -332,6 +336,51 @@ class Diary: CloudKitProtocol {
             let asset = CKAsset(fileURL: url)
             record["image"] = asset
         }
+        self.init(record: record)
+    }
+    
+    func updateDayCompletion(newDayCompletion: Int) -> Diary? {
+        let newRecord = record
+        newRecord["dayCompletion"] = newDayCompletion
+        return Diary(record: newRecord)
+    }
+    
+    func updateNightCompletion(newNightCompletion: Int) -> Diary? {
+        let newRecord = record
+        newRecord["nightCompletion"] = newNightCompletion
+        return Diary(record: newRecord)
+    }
+    
+    func updateNotes(newNotes: String) -> Diary? {
+        let newRecord = record
+        newRecord["notes"] = newNotes
+        return Diary(record: newRecord)
+    }
+    
+    func updateImage(newImage: URL) -> Diary? {
+        let newRecord = record
+        newRecord["image"] = newImage
+        return Diary(record: newRecord)
+    }
+}
+
+class Ingredient: CloudKitProtocol {
+    var names: [String]
+    var description: String
+    let record: CKRecord
+
+    required init?(record: CKRecord) {
+        guard let names = record["names"] as? [String] else {return nil}
+        self.names = names
+        guard let description = record["description"] as? String else {return nil}
+        self.description = description
+        self.record = record
+    }
+    
+    required convenience init?(names: [String], description: String){
+        let record = CKRecord(recordType: "Ingredient")
+        record["names"] = names
+        record["description"] = description
         self.init(record: record)
     }
 }

@@ -30,7 +30,6 @@ struct CreateProductView: View {
         ZStack {
             Color.brandGreen.ignoresSafeArea()
             Rectangle()
-                .frame(width: .infinity, height: 400)
                 .offset(y: 350)
                 .ignoresSafeArea()
                 .foregroundColor(Color.systemBG)
@@ -86,6 +85,7 @@ struct CreateProductView: View {
                                     .frame(width: 163, height: 167, alignment: .topLeading)
                                     .cornerRadius(15)
                                 }
+                                .padding(.top, 20)
                                 .confirmationDialog("Como você quer colocar a foto do produto?", isPresented: $chosePhoto, titleVisibility: .visible) {
                                     Button {
                                         sourceType = .camera
@@ -154,22 +154,12 @@ struct CreateProductView: View {
                         .padding(.all, 8)
                         
                         VStack{
-                            Button {
-                                //add produto na rotina
-                                dismiss()
-                            } label: {
-                                Text("Salvar")
-                                    .frame(minWidth: 0, maxWidth: .infinity)
-                            }
-                            .customButtonStyle(buttonType: .largeRounded)
-                            
-                            Button {
-                                dismiss()
-                            } label: {
-                                Text("Excluir")
-                                    .frame(minWidth: 0, maxWidth: .infinity)
-                            }
-                            .customButtonStyle(buttonType: .largeRounded)
+                            CustomButton(label: "Salvar", action: {}, description: "", buttonType: .largeRounded)
+                                .padding()
+                            CustomButton(label: "Excluir", action: {}, description: "", buttonType: .largeRounded)
+                                .padding()
+                                .padding(.top, -30)
+
                         }
                         .padding(.top, 18)
                         .padding(.horizontal, 30)
