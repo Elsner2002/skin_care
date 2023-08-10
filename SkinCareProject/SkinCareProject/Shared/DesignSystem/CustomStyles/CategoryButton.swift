@@ -10,6 +10,7 @@ import SwiftUI
 struct CategoryButton: View {
     
     @State var selectedButton: Bool
+    @State var color: Color = .brandGray
     var image: Image
     var label: String
     
@@ -17,16 +18,22 @@ struct CategoryButton: View {
         VStack{
             Button {
                 selectedButton = !selectedButton
+                if selectedButton {
+                    color = Color.brandGreen
+                }
+                else {
+                    color = Color.brandGray
+                }
             } label: {
                 VStack{
-                    if selectedButton{
+                    if selectedButton {
                         ZStack{
                             image
                                 .resizable()
                                 .frame(width: 70, height: 70)
                                 .clipShape(Circle())
                             Circle()
-                                .stroke(Color.brandGreen, lineWidth: 5)
+                                .stroke(color, lineWidth: 5)
                                 .frame(width: 65, height: 65)
                         }
                     }
@@ -37,7 +44,8 @@ struct CategoryButton: View {
                             .clipShape(Circle())
                     }
                     Text(label)
-                        .foregroundColor(Color.black)
+                        .bold()
+                        .foregroundColor(color)
                 }
             }
             

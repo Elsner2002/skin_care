@@ -159,8 +159,10 @@ struct CreateProductView: View {
                             CustomButton(label: "Excluir", action: {}, description: "", buttonType: .largeRounded)
                                 .padding()
                                 .padding(.top, -30)
+
                         }
-                        .padding(.top, 8)
+                        .padding(.top, 18)
+                        .padding(.horizontal, 30)
                     }
                 }
                 .background(Color.systemBG)
