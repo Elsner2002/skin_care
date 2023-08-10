@@ -63,7 +63,7 @@ struct AddProductView: View {
                         }
                         .padding()
                         if self.isActive {
-                            VerticalScrollProductsView()
+                            VerticalScrollProductsView(searchText: searchText)
                         } else {
                             Text("Loading...")
                         }

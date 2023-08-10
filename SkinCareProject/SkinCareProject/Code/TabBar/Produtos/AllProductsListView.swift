@@ -15,8 +15,8 @@ struct AllProductsListView: View {
         NavigationStack {
             VStack {
                 Searchbar(searchText: $searchText)
-
-                VerticalScrollProductsView()
+                
+                VerticalScrollProductsView(searchText: searchText)
             }
         }
         .navigationTitle("Todos os produtos")
