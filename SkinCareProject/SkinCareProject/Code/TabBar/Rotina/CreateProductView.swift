@@ -153,26 +153,26 @@ struct CreateProductView: View {
                         }
                         .padding(.all, 8)
                         
-                        VVStack{
-                    Button {
-                        //add produto na rotina
-                        dismiss()
-                    } label: {
-                        Text("Salvar")
-                            .frame(minWidth: 0, maxWidth: .infinity)
-                    }
-                    .customButtonStyle(buttonType: .largeRounded)
-                    
-                    Button {
-                        dismiss()
-                    } label: {
-                        Text("Excluir")
-                            .frame(minWidth: 0, maxWidth: .infinity)
-                    }
-                    .customButtonStyle(buttonType: .largeRounded)
-                }
-                .padding(.top, 18)
-                .padding(.horizontal, 30)
+                        VStack{
+                            Button {
+                                //add produto na rotina
+                                dismiss()
+                            } label: {
+                                Text("Salvar")
+                                    .frame(minWidth: 0, maxWidth: .infinity)
+                            }
+                            .customButtonStyle(buttonType: .largeRounded)
+                            
+                            Button {
+                                dismiss()
+                            } label: {
+                                Text("Excluir")
+                                    .frame(minWidth: 0, maxWidth: .infinity)
+                            }
+                            .customButtonStyle(buttonType: .largeRounded)
+                        }
+                        .padding(.top, 18)
+                        .padding(.horizontal, 30)
                     }
                 }
                 .background(Color.systemBG)
