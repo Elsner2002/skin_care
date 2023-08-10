@@ -106,7 +106,7 @@ struct SheetProduct: View {
                                     Button {
                                         print(product.ingredients[position])
                                     } label: {
-                                        Text(product.ingredients[position])
+                                        Text(product.ingredients[position].capitalized)
                                             .frame(minWidth: 0, maxWidth: .infinity)
                                     }
                                     .customButtonStyle(buttonType: .largeRounded)

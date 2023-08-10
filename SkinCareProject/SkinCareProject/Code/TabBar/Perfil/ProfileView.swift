@@ -120,7 +120,7 @@ struct ProfileView: View {
                     }
                 }
             }
-            .background(Color.systemBG)
+//            .background(Color.systemBG)
             
         }
         
