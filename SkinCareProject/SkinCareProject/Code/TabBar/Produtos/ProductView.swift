@@ -8,43 +8,63 @@
 import SwiftUI
 
 struct ProductView: View {
+    @Environment(\.dismiss) private var dismiss
     @StateObject private var vm = CloudKitModel()
     @State private var showSheet: Bool = false
     let product: ListProduct?
     
     var body: some View {
-        ZStack {
-            if let product{
-                if let url = product.image, let data =  try? Data(contentsOf: url),  let imageProduct = UIImage(data: data) {
-                    HStack(alignment: .center){
-                        Image(uiImage: imageProduct)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 390, height: 390)
-                            .position(x: 200, y: 200)
-                            .clipped()
+        NavigationStack{
+            ZStack {
+                if let product{
+                    if let url = product.image, let data =  try? Data(contentsOf: url),  let imageProduct = UIImage(data: data) {
+                        HStack(alignment: .center){
+                            Image(uiImage: imageProduct)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 390, height: 390)
+                                .position(x: 200, y: 200)
+                                .clipped()
+                        }
+                    }
+                    
+                    Button (""){
+                    }
+                    .sheet(isPresented: $showSheet){
+                        SheetProduct(product: product)
+                            .presentationDetents([.fraction(0.7), .medium])
+                            .presentationDragIndicator(.hidden)
+                            .interactiveDismissDisabled()
+                            .presentationCornerRadius(40)
+                            .presentationBackgroundInteraction(
+                                .enabled(upThrough: .medium)
+                            )
+                        
+                    }
+                    .onAppear {
+                        showSheet = true
                     }
                 }
-                
-                Button (""){
-                }
-                .sheet(isPresented: $showSheet){
-                    SheetProduct(product: product)
-                        .presentationDetents([.fraction(0.7), .medium])
-                        .presentationDragIndicator(.hidden)
-                        .interactiveDismissDisabled()
-                        .presentationCornerRadius(40)
-                        .presentationBackgroundInteraction(
-                            .enabled(upThrough: .medium)
-                        )
-                    
-                }
-                .onAppear {
-                    showSheet = true
+            }
+            .background(Color.white)
+        }
+            .navigationBarBackButtonHidden(true)
+            .navigationTitle("")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                       dismiss()
+                        showSheet = false
+                    } label: {
+                        HStack{
+                            Image(systemName: "chevron.backward")
+                                .resizable()
+                                .frame(width: 12.5, height: 22)
+                        }
+                        .foregroundColor(Color.black)
+                    }
                 }
             }
-        }
-        .background(Color.white)
     }
 }
 

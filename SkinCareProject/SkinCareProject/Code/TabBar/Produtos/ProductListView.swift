@@ -20,9 +20,6 @@ struct ProductListView: View {
     var body: some View {
         NavigationStack {
             VStack{
-                Text("Lista de Produtos")
-                    .bold()
-                
                 Searchbar(searchText: $searchText)
                 
                 ScrollView(showsIndicators: false) {
@@ -73,6 +70,7 @@ struct ProductListView: View {
                 }
             }
         }
+            .navigationTitle("Lista de Produtos")
     }
 }
 

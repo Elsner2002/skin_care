@@ -62,7 +62,7 @@ struct AddProductView: View {
                                 .cornerRadius(10, corners: .allCorners)
                         }
                         .padding()
-                        VerticalScrollProductsView()
+                        VerticalScrollProductsView(searchText: searchText)
                         Spacer()
                     }
                     .background(Color.systemBG)

@@ -82,7 +82,7 @@ class AppUser: CloudKitProtocol {
     
 }
 
-class ListProduct: CloudKitProtocol, Hashable {
+class ListProduct: CloudKitProtocol, Hashable, Identifiable {
     
     static func == (lhs: ListProduct, rhs: ListProduct) -> Bool {
         return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
