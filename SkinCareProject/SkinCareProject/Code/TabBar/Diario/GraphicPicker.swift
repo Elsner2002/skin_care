@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GraphicPicker: View {
-    @State var selectedDate: Date = .now
+    @Binding var selectedDate: Date
     var body: some View {
         DatePicker("", selection: $selectedDate)
             .datePickerStyle(GraphicalDatePickerStyle())
@@ -20,6 +20,6 @@ struct GraphicPicker: View {
 
 struct GraphicPicker_Previews: PreviewProvider {
     static var previews: some View {
-        GraphicPicker()
+        GraphicPicker(selectedDate: .constant(Date.now))
     }
 }
