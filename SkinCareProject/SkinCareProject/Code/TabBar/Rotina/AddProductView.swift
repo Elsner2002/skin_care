@@ -12,13 +12,13 @@ struct AddProductView: View {
     @Environment(\.dismiss) var dismiss
     
     @State private var searchText = ""
+    @State private var isActive = false
     
     var body: some View {
         NavigationStack{
             ZStack {
                 Color.brandGreen.ignoresSafeArea()
                 Rectangle()
-                    .frame(width: .infinity, height: 400)
                     .offset(y: 350)
                     .ignoresSafeArea()
                     .foregroundColor(Color.systemBG)
@@ -62,7 +62,11 @@ struct AddProductView: View {
                                 .cornerRadius(10, corners: .allCorners)
                         }
                         .padding()
-                        VerticalScrollProductsView()
+                        if self.isActive {
+                            VerticalScrollProductsView()
+                        } else {
+                            Text("Loading...")
+                        }
                         Spacer()
                     }
                     .background(Color.systemBG)
@@ -71,6 +75,13 @@ struct AddProductView: View {
             }
         }
         .navigationBarBackButtonHidden(true)
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                withAnimation {
+                    self.isActive = true
+                }
+            }
+        }
     }
 }
 
