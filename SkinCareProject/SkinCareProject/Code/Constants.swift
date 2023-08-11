@@ -11,22 +11,25 @@ import SwiftUI
 class Constants: ObservableObject {
     static let shared: Constants = Constants()
     
+    //CloudKit
+    @StateObject var vm = CloudKitModel()
+    
     //MARK: create variables here
     //tips variables
-    @ObservedObject var tipsData = TipsService()
-    var randomTip: Tip?
-    func randomTipGenerator(){
-        if !compareDay(){
-            randomTip = tipsData.tips.randomElement()
-            let encodedTip = try? JSONEncoder().encode(randomTip)
-            UserDefaults.standard.set(encodedTip, forKey: "randomTip")
-        }
-        else{
-            //randomTip = try? JSONDecoder().decode(Tip.self, from: UserDefaults.standard.data(forKey: "randomTip")!)
-            randomTip = Tip(title: "Tip 1", text: "Skin care é bom", image: "tipImage")
-        }
-        lastDay = Date.now
-    }
+//    @ObservedObject var tipsData = TipsService()
+//    var randomTip: Tip?
+//    func randomTipGenerator(){
+//        if !compareDay(){
+//            randomTip = tipsData.tips.randomElement()
+//            let encodedTip = try? JSONEncoder().encode(randomTip)
+//            UserDefaults.standard.set(encodedTip, forKey: "randomTip")
+//        }
+//        else{
+//            //randomTip = try? JSONDecoder().decode(Tip.self, from: UserDefaults.standard.data(forKey: "randomTip")!)
+//            randomTip = Tip(title: "Tip 1", text: "Skin care é bom", image: "tipImage")
+//        }
+//        lastDay = Date.now
+//    }
     
     //days variables
     var dayBefore: Date {
@@ -51,7 +54,7 @@ class Constants: ObservableObject {
         if lastDay == nil {
             lastDay = dayBefore
         }
-        randomTipGenerator()
+        //randomTipGenerator()
     }
     
     //price range
@@ -81,6 +84,7 @@ class Constants: ObservableObject {
             if !notification {
                 morningNotification = false
                 nightNotification = false
+
             } else if notification {
                 morningNotification = true
                 nightNotification = true
@@ -95,7 +99,7 @@ class Constants: ObservableObject {
             let morningHour = componentsMorning.hour ?? 0
             let morningMinute = componentsMorning.minute ?? 0
             if morningNotification {
-                NotificationService.intance.scheduleNotification(hour: morningHour, minute: morningMinute)
+                NotificationService.intance.dispatchNotification(identifier: "morningTime", hour: morningHour, minute: morningMinute)
                 notification = true
             }
             UserDefaults.standard.set(morningTime, forKey: "morningTime")
@@ -114,7 +118,7 @@ class Constants: ObservableObject {
             let nightHour = componentsNight.hour ?? 0
             let nightMinute = componentsNight.minute ?? 0
             if nightNotification {
-                NotificationService.intance.scheduleNotification(hour: nightHour, minute: nightMinute)
+                NotificationService.intance.dispatchNotification(identifier: "nightTime", hour: nightHour, minute: nightMinute)
                 notification = true
             }
             UserDefaults.standard.set(nightTime, forKey: "nightTime")
@@ -126,6 +130,12 @@ class Constants: ObservableObject {
             UserDefaults.standard.set(nightNotification, forKey: "nightNotification")
         }
     
+    }
+    
+    @Published var allowedNotification: Bool = UserDefaults.standard.value(forKey: "allowedNotification") as? Bool ?? false {
+        didSet {
+            UserDefaults.standard.set(allowedNotification, forKey: "allowedNotification")
+        }
     }
     
 }

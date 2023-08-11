@@ -11,73 +11,78 @@ struct AddProductView: View {
     
     @Environment(\.dismiss) var dismiss
     
-    @StateObject private var cameraVM = CameraViewModel()
-    
     @State private var searchText = ""
-    
-    @State var listTest: [(String, String, String, Int)] = [("A", "a", "ProfileDefault", 10), ("B", "b", "ProfileDefault", 100), ("C", "c", "ProfileDefault", 50), ("D", "d", "ProfileDefault", 70), ("E", "e", "ProfileDefault", 1000), ("A", "a", "ProfileDefault", 10), ("B", "b", "ProfileDefault", 100), ("C", "c", "ProfileDefault", 50), ("D", "d", "ProfileDefault", 70), ("E", "e", "ProfileDefault", 1000)]
+    @State private var isActive = false
     
     var body: some View {
         NavigationStack{
-            VStack{
-                HStack{
-                    Button {
-                        dismiss()
-                    } label: {
-                        HStack{
-                            Image(systemName: "chevron.backward")
-                                .resizable()
-                                .frame(width: 12, height: 24)
-                        }
-                        .foregroundColor(Color.black)
-                    }
-                    Spacer()
-                    Text("Adicionar produto")
-                        .font(Font.custom("SF Pro", size: 18))
-                        .padding(.trailing, 16)
-                        .foregroundColor(.black)
-                    Spacer()
-                }
-                .padding(.leading, 20)
-                
-                ZStack{
-                    Searchbar(searchText: $searchText, textPlaceHolder: "Busque produtos")
-                    HStack{
-                        Spacer()
-                        Image("scanSymbol")
-                            .padding(.trailing, 24)
-                            .offset(x: 10)
-                            .foregroundColor(Color.brandGray)
-                    }
-                    .padding()
-                    .opacity(searchText.isEmpty ? 1.0 : 0.0)
-                }
-                
-                NavigationLink {
-                    CreateProductView()
-                } label: {
-                    Text("Adicionar produto manualmente")
-                        .padding(.vertical)
-                        .padding(.horizontal, 50)
-                        .background(Color.systemMaterial)
-                        .foregroundColor(Color.systemLabelPrimary)
-                        .cornerRadius(10, corners: .allCorners)
-                }
-                
-                ScrollView(showsIndicators: false) {
-                    ForEach(0..<listTest.count) { position in
+            ZStack {
+                Color.brandGreen.ignoresSafeArea()
+                Rectangle()
+                    .offset(y: 350)
+                    .ignoresSafeArea()
+                    .foregroundColor(Color.systemBG)
+                VStack{
+                    HStack (alignment: .center){
                         Button {
-                            //
+                            dismiss()
                         } label: {
-                            ButtonProductList(name: listTest[position].0, brand: listTest[position].1, price: listTest[position].3, image: Image(listTest[position].2))
+                            HStack{
+                                Image(systemName: "chevron.backward")
+                                    .resizable()
+                                    .frame(width: 12.5, height: 22)
+                            }
+                            .foregroundColor(Color.black)
                         }
-                        
+                        Spacer()
+                        Text("Adicionar produto")
+                            .font(Font.custom("SF Pro", size: 18))
+                            .padding(.trailing, 16)
+                            .foregroundColor(.black)
+                        Spacer()
                     }
+                    .padding(.leading, 20)
+                    .padding(.bottom, 20)
+                    .padding(.top, 20)
+                    
+                    VStack {
+                        Searchbar(searchText: $searchText, showCreateProduct: true)
+                            .padding(.bottom, -20)
+                            .padding(.top, 20)
+                        
+                        NavigationLink {
+                            CreateProductView()
+                        } label: {
+                            Text("Adicionar produto manualmente")
+                                .bold()
+                                .padding(.vertical)
+                                .padding(.horizontal, 50)
+                                .background(Color.systemMaterialSecondary)
+                                .foregroundColor(Color.systemLabelSecondary)
+                                .cornerRadius(10, corners: .allCorners)
+                        }
+                        .padding()
+                        if self.isActive {
+                            VerticalScrollProductsView(searchText: searchText)
+                        } else {
+                            Text("Loading...")
+                        }
+                        Spacer()
+                    }
+                    .background(Color.systemBG)
+                    .cornerRadius(40)
+                }
+            }
+        }
+        .navigationBarBackButtonHidden(true)
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                withAnimation {
+                    self.isActive = true
                 }
             }
         }
     }
-    
 }
 
 struct AddProductView_Previews: PreviewProvider {

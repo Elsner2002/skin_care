@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct CameraView: View {
-    
+    @StateObject private var vm = Constants.shared.vm
+
     @EnvironmentObject var cameraVM: CameraViewModel
     @State var isProductViewShowing: Bool = false
-    @State var barcodeString: String = ""
-    
-    @Binding var path: [Int]
-    let count: Int
+    @State var productNotFound: Bool = false
+    @State var barcodeId: Int = 0
+    @State var product: ListProduct?
+    var showCreateProduct: Bool
+//    @State var isLoading: Bool = false
     
     var body: some View {
         
@@ -42,26 +44,43 @@ struct CameraView: View {
     
     private var mainView: some View {
         VStack{
-            NavigationLink("", destination: ProductView(path: $path, count: count + 1, barcode: barcodeString), isActive: $isProductViewShowing)
+            NavigationLink("", destination: ProductView(product: product), isActive: $isProductViewShowing)
+            
+            NavigationLink("", destination: ProductNotFoundView(showCreateProduct: showCreateProduct), isActive: $productNotFound)
+            
             DataScannerView(recognizedItems: $cameraVM.recognizedItems)
                 .onChange(of: cameraVM.recognizedItems) { newValue in
+//                    self.isLoading = true
                     for nv in newValue {
                         switch nv {
                         case .barcode(let barcode):
                             if let barcodeString = barcode.payloadStringValue {
-                                if (Int(barcodeString) != nil) {
-                                    self.barcodeString = barcodeString
-                                    self.path.append(count + 1)
-                                    self.isProductViewShowing = true
+                                if let barcodeId = Int(barcodeString) {
+                                    self.barcodeId = barcodeId
+                                    if let productFound = vm.getProductBarcode(barcode: barcodeId) {
+                                        self.product = productFound
+                                        self.isProductViewShowing = true
+                                    }
+                                    else {
+                                        self.productNotFound = true
+                                    }
                                 }
                             }
+//                            self.isLoading = false
                         case .text(_):
+//                            self.isLoading = false
                             break
                         @unknown default:
+//                            self.isLoading = false
                             break
                         }
                     }
                 }
         }
+//        .overlay {
+//            if isLoading {
+//                Text("Loading...")
+//            }
+//        }
     }
 }

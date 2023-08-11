@@ -9,6 +9,7 @@ import SwiftUI
 import CloudKit
 
 struct HomeView: View {
+    @StateObject private var vm = Constants.shared.vm
     
     var routineImages: [String] = ["sun.max.fill", "moon.stars.fill"]
     var routineColor: [Color] = [Color.brandPink, Color.brandGreen]
@@ -32,7 +33,7 @@ struct HomeView: View {
                                 Spacer()
                             }
                             HStack{
-                                Text("Bruna!")
+                                Text("\(vm.userName)!")
                                     .font( Font.custom("SF Pro", size: 34)
                                         .weight(.bold))
                                 Spacer()
@@ -69,20 +70,7 @@ struct HomeView: View {
                     }
                     .padding(.leading, 28)
                     
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack{
-                            ProductButton(image: Image("Tratamento"), brand: "Simple Organic", name: "Niacinamida")
-                        }
-                        .padding()
-                    }
-                    .background(
-                        RoundedRectangle(cornerRadius: 25)
-                            .fill(Color.brandWhite)
-                            .shadow(
-                                color: Color.brandGray.opacity(0.15), radius: 10, x: 0, y: 0
-                            )
-                    )
-                    .padding([.leading, .trailing], 15)
+                    HorizontalScrollProductsView()
                     
                     HStack{
                         Text("Dica do Dia")
@@ -90,7 +78,7 @@ struct HomeView: View {
                         Spacer()
                     }
                     .padding(.leading, 15)
-                    TipsView(tip: Constants.shared.randomTip!)
+                   // TipsView(tip: Constants.shared.randomTip!)
                     
                     
                 } .onAppear{

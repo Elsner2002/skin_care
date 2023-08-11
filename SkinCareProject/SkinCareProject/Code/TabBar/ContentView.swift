@@ -9,37 +9,44 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
+
         @State var downloadAmount = 80.0
         
         
         TabView{
-            ProfileView()
-                .tabItem {
-                    Label("Perfil", systemImage: "person.crop.circle")
-                }
-
-            ProductListView()
-                .tabItem {
-                    Image("productSymbol")
-                    Text("Produtos")
-                }
-            
             HomeView()
                 .tabItem {
                     Image("routinesSymbol")
                     Text("Rotinas")
                 }
-
-            JournalView()
+                .tag(0)
+            ProductListView()
                 .tabItem {
-                    Label("Diario", systemImage: "note.text")
+                    Image("productSymbol")
+                    Text("Produtos")
                 }
+                .tag(1)
+            DiaryView()
+                .tabItem {
+                    Image(systemName: "note.text")
+                    Text("Diario")
+                }
+                .tag(2)
+            ProfileView()
+                .tabItem {
+                    Image(systemName: "person.crop.circle")
+                    Text("Perfil")
+                }
+                .tag(3)
         }
         .accentColor(Color.brandGreen)
-        .toolbarBackground(Color.yellow, for: .tabBar)
+        .onAppear{
+            UITabBar.appearance().backgroundColor = UIColor(Color.systemBG)
+        }
+
     }
-        
-    }
+    
+}
 
 
 struct ContentView_Previews: PreviewProvider {

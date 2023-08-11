@@ -9,39 +9,49 @@ import SwiftUI
 
 struct RoutineView: View {
     @State private var showSheet: Bool = false
+    @Environment(\.dismiss) private var dismiss
     let routine: Routine
-
+    var scaleEffect: CGFloat = 1 //0.67 when smaller
+    var offsetValue: CGFloat = -200 //define when smaller -300?
+    
     var body: some View {
         NavigationStack {
             ZStack {
                 //background: day/night
                 if routine.name == "Rotina Noturna"{
-                    Color(red: 0.16, green: 0.39, blue: 0.47)
+                    Color(UIColor(Color.brandPink))
                         .ignoresSafeArea()
                         .brightness(0.07)
-                    Image(systemName: "moon.stars.fill")
-                        .resizable()
-                        .frame(width: 226, height: 243, alignment: .top)
-                        .position(CGPoint(x: 226, y: 212.66409))
-                        .foregroundColor(Color.brandGreen)
-                        .brightness(0.05)
+                    HStack (alignment: .center) {
+                        Image(systemName: "moon.stars.fill")
+                            .resizable()
+                            .frame(width: 212.66409, height: 226, alignment: .top)
+                            .offset(y: offsetValue)
+                            .foregroundColor(Color.brandGreen)
+                            .brightness(0.05)
+                            .scaleEffect(scaleEffect)
+                    }
                     
                 } else {
-                    Color(red: 0.6, green: 0.76, blue: 0.75)
+                    Color(UIColor(Color.brandGreen))
                         .ignoresSafeArea()
                         .brightness(0.07)
-                    Image(systemName: "sun.max.fill")
-                        .resizable()
-                        .frame(width: 216, height: 212.66409, alignment: .top)
-                        .position(CGPoint(x: 216, y: 212.66409))
-                        .foregroundColor(Color.brandPink)
-                        .brightness(0.02)
+                    HStack (alignment: .center) {
+                        Image(systemName: "sun.max.fill")
+                            .resizable()
+                            .frame(width: 212.66409, height: 216, alignment: .top)
+                            .offset(y: offsetValue)
+                            .foregroundColor(Color.brandPink)
+                            .brightness(0.02)
+                            .scaleEffect(scaleEffect)
+                    }
                 }
                 
                 Button (""){
                 }
                 .sheet(isPresented: $showSheet){
-                    Sheet(routine: routine)
+                    SheetRoutine(routine: routine)
+                        .environmentObject(Constants())
                         .presentationDetents([.fraction(0.7), .medium])
                         .presentationDragIndicator(.hidden)
                         .interactiveDismissDisabled()
@@ -49,22 +59,41 @@ struct RoutineView: View {
                         .presentationBackgroundInteraction(
                             .enabled(upThrough: .medium)
                         )
-                    
+                    // .preferredColorScheme(.dark)
                 }
                 .onAppear {
                     showSheet = true
                 }
             }
-        }
+        } .navigationBarBackButtonHidden(true)
+            .navigationTitle("")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                       dismiss()
+                        showSheet = false
+                    } label: {
+                        HStack{
+                            Image(systemName: "chevron.backward")
+                                .resizable()
+                                .frame(width: 12.5, height: 22)
+                        }
+                        .foregroundColor(Color.black)
+                    }
+                }
+            }
+        
     }
 }
 
-struct Sheet: View {
+struct SheetRoutine: View {
     let routine: Routine
     var listLimpeza: ListView
     var listTratamentos: ListView
     var listHidratante: ListView
     var listProtetor: ListView
+    @EnvironmentObject var constants: Constants
+
     
     init(routine: Routine) {
         self.routine = routine
@@ -86,20 +115,20 @@ struct Sheet: View {
                         RoutineProgress(title: routine.name, completion: routine.completition)
                             .padding(EdgeInsets(top: 38, leading: 24, bottom: 32, trailing: 24))
                         if routine.name == "Rotina Noturna" {
-                            RoutineAlarm(title: "Noite", time: Constants.shared.nightTime, isOn: Constants.shared.nightNotification)
+                            RoutineAlarm(title: "Noite", time: $constants.nightTime, isOn: $constants.nightNotification)
                         } else {
-                            RoutineAlarm(title: "Dia", time: Constants.shared.morningTime, isOn: Constants.shared.morningNotification)
+                            RoutineAlarm(title: "Manhã", time: $constants.morningTime, isOn: $constants.morningNotification)
                         }
                         
                         VStack(alignment: .leading, spacing: 20) {
                             Text("Meus produtos")
                                 .font(
-                                    Font.custom("SF Pro", size: 20)
-                                        .weight(.semibold)
+                                    Font.custom("SF Pro", size: 28)
+                                        .weight(.bold)
                                 )
+                                .padding()
                                 .foregroundColor(Color.systemLabelPrimary)
-                                .padding(.top, 32)
-                                .padding(.bottom, -10)
+                                .padding(.bottom, -20)
                             
                             listLimpeza
                             listTratamentos
@@ -109,7 +138,7 @@ struct Sheet: View {
                                 listProtetor
                             }
                             Spacer()
-                        }
+                        } .padding()
                     }
                     .frame(maxWidth: .infinity)
                     .background(Color.systemBG)
@@ -121,9 +150,10 @@ struct Sheet: View {
 
 struct RoutineView_Previews: PreviewProvider {
     static let url: URL = CloudKitUtility.makeURLJPG(image: "gato-cinza")
-    static let array: [RoutineProduct] = [RoutineProduct(image: url, name: "test", isCompleted: false, barcode: 12345, frequency: [1], timesDay: 1, categories: ["Limpeza"])!]
+    static let array: [RoutineProduct] = [RoutineProduct(image: url, name: "test", brand: "test", isCompleted: false, barcode: 12345, frequency: [1], categories: ["Limpeza"])!]
     
     static var previews: some View {
         RoutineView(routine: Routine(name: "Rotina Diurna", completition: 2, categoryLimpeza: [], categoryTratamentos: [], categoryHidratante: [], categoryProtetor: []))
+        // .preferredColorScheme(.dark)
     }
 }

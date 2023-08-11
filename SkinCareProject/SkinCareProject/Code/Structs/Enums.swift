@@ -44,6 +44,7 @@ enum Condition: String {
     case dermatitis = "Dermatite"
     case vitiligo = "Vitiligo"
     case foliculitis = "Foliculite"
+    case none = ""
 }
 
 enum Concern: String {
@@ -53,13 +54,14 @@ enum Concern: String {
     case blackHeads = "Cravos"
     case redness = "Vermelhidão"
     case darkCircles = "Olheiras"
+    case none = ""
 }
 
 enum Warning {
     
 }
 
-enum ProductCategory: String {
+enum ProductCategory: String, CaseIterable {
     case moisturizer = "Hidratante"
     case cleanser = "Limpeza"
     case sunscreen = "Protetor Solar"
