@@ -9,21 +9,19 @@ import SwiftUI
 
 struct CategoryButton: View {
     
-    @State var selectedButton: Bool
-    @State var color: Color = .brandGray
+    let selectedButton: Bool
     var image: Image
     var label: String
+    var buttonAction: () -> Void
+    
+    var color: Color {
+        selectedButton ? Color.brandGreen : Color.brandGray
+    }
     
     var body: some View {
         VStack{
             Button {
-                selectedButton = !selectedButton
-                if selectedButton {
-                    color = Color.brandGreen
-                }
-                else {
-                    color = Color.brandGray
-                }
+                buttonAction()
             } label: {
                 VStack{
                     if selectedButton {
@@ -55,6 +53,6 @@ struct CategoryButton: View {
 
 struct CategoryButton_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryButton(selectedButton: false, image: Image("ProfileDefault"), label: "label")
+        CategoryButton(selectedButton: false, image: Image("ProfileDefault"), label: "label"){}
     }
 }

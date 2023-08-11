@@ -14,6 +14,7 @@ struct AboutProductView: View {
     var body: some View {
         VStack{
             HStack {
+                //mudar para nickname aqui ou nao?
                 Text(product.name)
                     .foregroundColor(Color.systemLabelPrimary)
                     .bold()

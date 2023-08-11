@@ -12,8 +12,10 @@ struct CameraView: View {
 
     @EnvironmentObject var cameraVM: CameraViewModel
     @State var isProductViewShowing: Bool = false
+    @State var productNotFound: Bool = false
     @State var barcodeId: Int = 0
     @State var product: ListProduct?
+    var showCreateProduct: Bool
 //    @State var isLoading: Bool = false
     
     var body: some View {
@@ -44,6 +46,8 @@ struct CameraView: View {
         VStack{
             NavigationLink("", destination: ProductView(product: product), isActive: $isProductViewShowing)
             
+            NavigationLink("", destination: ProductNotFoundView(showCreateProduct: showCreateProduct), isActive: $productNotFound)
+            
             DataScannerView(recognizedItems: $cameraVM.recognizedItems)
                 .onChange(of: cameraVM.recognizedItems) { newValue in
 //                    self.isLoading = true
@@ -57,9 +61,9 @@ struct CameraView: View {
                                         self.product = productFound
                                         self.isProductViewShowing = true
                                     }
-//                                    else {
-//                                        //mostrar popUp que o produto nao existe
-//                                    }
+                                    else {
+                                        self.productNotFound = true
+                                    }
                                 }
                             }
 //                            self.isLoading = false

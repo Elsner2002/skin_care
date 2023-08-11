@@ -14,16 +14,19 @@ struct ProductView: View {
     let product: ListProduct?
     
     var body: some View {
-        NavigationStack{
+        NavigationStack {
             ZStack {
-                if let product{
+                Color(red: 231/255, green: 231/255, blue: 231/255)
+                    .ignoresSafeArea()
+                
+                if let product {
                     if let url = product.image, let data =  try? Data(contentsOf: url),  let imageProduct = UIImage(data: data) {
                         HStack(alignment: .center){
                             Image(uiImage: imageProduct)
                                 .resizable()
-                                .scaledToFit()
-                                .frame(width: 390, height: 390)
-                                .position(x: 200, y: 200)
+                                .scaledToFill()
+                                .frame(width: 450, height: 450)
+                                .position(x: 200, y: 220)
                                 .clipped()
                         }
                     }
@@ -39,32 +42,32 @@ struct ProductView: View {
                             .presentationBackgroundInteraction(
                                 .enabled(upThrough: .medium)
                             )
-                        
+
                     }
                     .onAppear {
                         showSheet = true
                     }
                 }
             }
-            .background(Color.white)
+            .ignoresSafeArea()
         }
-            .navigationBarBackButtonHidden(true)
-            .navigationTitle("")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                       dismiss()
-                        showSheet = false
-                    } label: {
-                        HStack{
-                            Image(systemName: "chevron.backward")
-                                .resizable()
-                                .frame(width: 12.5, height: 22)
-                        }
-                        .foregroundColor(Color.black)
+        .navigationBarBackButtonHidden(true)
+        .navigationTitle("")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                   dismiss()
+                    showSheet = false
+                } label: {
+                    HStack{
+                        Image(systemName: "chevron.backward")
+                            .resizable()
+                            .frame(width: 12.5, height: 22)
                     }
+                    .foregroundColor(Color.black)
                 }
             }
+        }
     }
 }
 
@@ -81,7 +84,8 @@ struct SheetProduct: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color.systemBG.ignoresSafeArea()
+                Color.systemBG
+                    .ignoresSafeArea()
                 ScrollView (showsIndicators: false) {
                     VStack(alignment: .center, spacing: 0) {
                         Picker("Product Options", selection: $option) {

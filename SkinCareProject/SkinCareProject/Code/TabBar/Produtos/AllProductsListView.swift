@@ -14,7 +14,7 @@ struct AllProductsListView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Searchbar(searchText: $searchText)
+                Searchbar(searchText: $searchText, showCreateProduct: false)
                 
                 VerticalScrollProductsView(searchText: searchText)
             }

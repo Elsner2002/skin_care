@@ -27,6 +27,7 @@ struct ProductButton: View {
                         .bold()
                         .foregroundColor(.black)
                     
+                    //mudar para nickname aqui
                     Text(product.name)
                         .bold()
                         .foregroundColor(.black)

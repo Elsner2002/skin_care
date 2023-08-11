@@ -11,6 +11,7 @@ struct Searchbar: View {
     
     @StateObject private var cameraVM = CameraViewModel()
     @Binding var searchText: String
+    var showCreateProduct: Bool
 
     var body: some View {
         NavigationStack {
@@ -49,7 +50,7 @@ struct Searchbar: View {
                 HStack{
                     Spacer()
                     NavigationLink {
-                        CameraView()
+                        CameraView(showCreateProduct: showCreateProduct)
                             .environmentObject(cameraVM)
                             .task {
                                 await cameraVM.requestDataScannerAccessStatus()
@@ -71,6 +72,6 @@ struct Searchbar: View {
 
 struct Searchbar_Previews: PreviewProvider {
     static var previews: some View {
-        Searchbar(searchText: .constant(""))
+        Searchbar(searchText: .constant(""), showCreateProduct: false)
     }
 }

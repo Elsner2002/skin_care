@@ -61,7 +61,7 @@ enum Warning {
     
 }
 
-enum ProductCategory: String {
+enum ProductCategory: String, CaseIterable {
     case moisturizer = "Hidratante"
     case cleanser = "Limpeza"
     case sunscreen = "Protetor Solar"

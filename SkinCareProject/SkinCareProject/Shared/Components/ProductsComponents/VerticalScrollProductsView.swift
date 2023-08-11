@@ -15,15 +15,9 @@ struct VerticalScrollProductsView: View {
     var body: some View {
         NavigationStack{
             ScrollView(showsIndicators: false) {
-//                ForEach(vm.listProducts.filter({_ in vm.listProducts.contains(where: {$0.name.compare(searchText, options: .caseInsensitive) == .orderedSame})}), id: \.self) { product in
-//                    NavigationLink {
-//                        ProductView(product: product)
-//                    } label: {
-//                        ButtonProductList(product: product)
-//                    }
-//                }
                 ForEach(vm.listProducts.filter({searchText.isEmpty ? true : ($0.name.uppercased().contains(searchText.uppercased())) || ($0.brand.uppercased().contains(searchText.uppercased()))}), id: \.self) {
                     product in
+
                     NavigationLink {
                         ProductView(product: product)
                     } label: {

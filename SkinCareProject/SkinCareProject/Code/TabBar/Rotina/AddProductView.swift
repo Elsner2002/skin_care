@@ -46,7 +46,7 @@ struct AddProductView: View {
                     .padding(.top, 20)
                     
                     VStack {
-                        Searchbar(searchText: $searchText)
+                        Searchbar(searchText: $searchText, showCreateProduct: true)
                             .padding(.bottom, -20)
                             .padding(.top, 20)
                         
