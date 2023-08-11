@@ -21,6 +21,7 @@ struct HowUseProductView: View {
             .padding(.vertical, 20)
             
             HStack {
+                //mudar para nickname aqui ou nao?
                 Text(product.name)
                     .foregroundColor(Color.systemLabelPrimary)
                     .bold()
