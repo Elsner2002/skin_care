@@ -94,6 +94,7 @@ class ListProduct: CloudKitProtocol, Hashable, Identifiable {
     
     var image: URL?
     var name: String
+    var nickname: String
     var explanation: String
     var brand: String
     var recomendedTime: [String]
@@ -115,6 +116,8 @@ class ListProduct: CloudKitProtocol, Hashable, Identifiable {
         self.image = imageAsset?.fileURL
         guard let name = record["name"] as? String else {return nil}
         self.name = name
+        guard let nickname = record["nicname"] as? String else {return nil}
+        self.nickname = nickname
         guard let explanation = record["explanation"] as? String else {return nil}
         self.explanation = explanation
         guard let brand = record["brand"] as? String else {return nil}
@@ -147,11 +150,12 @@ class ListProduct: CloudKitProtocol, Hashable, Identifiable {
         self.record = record
     }
     
-    required convenience init?(image: URL?, name: String, explanation: String, brand: String, recomendedTime: [String], vegan: Bool, barcode: Int, priceRange: Int, SPF: Int, texture: String, ingredients: [String], categories: [String], warnings: [String]? = nil, phototypes: [String]? = nil, skintypes: [String]? = nil, conditions: [String]? = nil) {
+    required convenience init?(image: URL?, name: String, nickname: String, explanation: String, brand: String, recomendedTime: [String], vegan: Bool, barcode: Int, priceRange: Int, SPF: Int, texture: String, ingredients: [String], categories: [String], warnings: [String]? = nil, phototypes: [String]? = nil, skintypes: [String]? = nil, conditions: [String]? = nil) {
         
         let record = CKRecord(recordType: "ListProduct")
         
         record["name"] = name
+        record["nickname"] = nickname
         
         if let url = image {
             let asset = CKAsset(fileURL: url)

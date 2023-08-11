@@ -21,7 +21,7 @@ struct Searchbar: View {
                         .foregroundColor(Color.systemLabelTerciary)
                     TextField("Busque produtos", text: $searchText)
                         .foregroundColor(Color.brandGray)
-                    //.disableAutocorrection(true)
+                        .disableAutocorrection(true)
                         .overlay(
                             Image(systemName: "xmark.circle.fill")
                                 .padding([.bottom, .leading, .top])
