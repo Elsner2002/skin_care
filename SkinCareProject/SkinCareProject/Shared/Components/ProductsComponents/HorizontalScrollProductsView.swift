@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HorizontalScrollProductsView: View {
     
-    @StateObject private var vm = CloudKitModel()
+    @StateObject private var vm = Constants.shared.vm
     
     var body: some View {
         ZStack{

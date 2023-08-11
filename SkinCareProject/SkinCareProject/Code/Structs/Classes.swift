@@ -116,7 +116,7 @@ class ListProduct: CloudKitProtocol, Hashable, Identifiable {
         self.image = imageAsset?.fileURL
         guard let name = record["name"] as? String else {return nil}
         self.name = name
-        guard let nickname = record["nicname"] as? String else {return nil}
+        guard let nickname = record["nickname"] as? String else {return nil}
         self.nickname = nickname
         guard let explanation = record["explanation"] as? String else {return nil}
         self.explanation = explanation

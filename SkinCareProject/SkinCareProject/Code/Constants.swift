@@ -11,6 +11,9 @@ import SwiftUI
 class Constants: ObservableObject {
     static let shared: Constants = Constants()
     
+    //CloudKit
+    @StateObject var vm = CloudKitModel()
+    
     //MARK: create variables here
     //tips variables
 //    @ObservedObject var tipsData = TipsService()
