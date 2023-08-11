@@ -19,22 +19,30 @@ struct ContentView: View {
                     Image("routinesSymbol")
                     Text("Rotinas")
                 }
+                .tag(0)
             ProductListView()
                 .tabItem {
                     Image("productSymbol")
                     Text("Produtos")
                 }
-            
+                .tag(1)
             DiaryView()
                 .tabItem {
-                    Label("Diario", systemImage: "note.text")
+                    Image(systemName: "note.text")
+                    Text("Diario")
                 }
+                .tag(2)
             ProfileView()
                 .tabItem {
-                    Label("Perfil", systemImage: "person.crop.circle")
+                    Image(systemName: "person.crop.circle")
+                    Text("Perfil")
                 }
+                .tag(3)
         }
         .accentColor(Color.brandGreen)
+        .onAppear{
+            UITabBar.appearance().backgroundColor = UIColor(Color.systemBG)
+        }
 
     }
     
