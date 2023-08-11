@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
     
-    @StateObject private var vm = CloudKitModel()
+    @StateObject private var vm = Constants.shared.vm
     
     @State var changeProfileImage = false
     @State var openCameraRoll = false

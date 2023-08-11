@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProductView: View {
     @Environment(\.dismiss) private var dismiss
-    @StateObject private var vm = CloudKitModel()
+    @StateObject private var vm = Constants.shared.vm
     @State private var showSheet: Bool = false
     let product: ListProduct?
     

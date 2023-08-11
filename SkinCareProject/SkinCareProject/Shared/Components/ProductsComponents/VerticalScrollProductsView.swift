@@ -9,7 +9,7 @@ import SwiftUI
 
 struct VerticalScrollProductsView: View {
     
-    @StateObject private var vm = CloudKitModel()
+    @StateObject private var vm = Constants.shared.vm
     var searchText: String
     
     var body: some View {
