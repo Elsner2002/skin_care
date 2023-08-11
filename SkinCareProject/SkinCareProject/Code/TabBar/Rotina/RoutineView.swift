@@ -51,6 +51,7 @@ struct RoutineView: View {
                 }
                 .sheet(isPresented: $showSheet){
                     SheetRoutine(routine: routine)
+                        .environmentObject(Constants())
                         .presentationDetents([.fraction(0.7), .medium])
                         .presentationDragIndicator(.hidden)
                         .interactiveDismissDisabled()
@@ -91,6 +92,8 @@ struct SheetRoutine: View {
     var listTratamentos: ListView
     var listHidratante: ListView
     var listProtetor: ListView
+    @EnvironmentObject var constants: Constants
+
     
     init(routine: Routine) {
         self.routine = routine
@@ -112,9 +115,9 @@ struct SheetRoutine: View {
                         RoutineProgress(title: routine.name, completion: routine.completition)
                             .padding(EdgeInsets(top: 38, leading: 24, bottom: 32, trailing: 24))
                         if routine.name == "Rotina Noturna" {
-                            RoutineAlarm(title: "Noite", time: Constants.shared.nightTime, isOn: Constants.shared.nightNotification)
+                            RoutineAlarm(title: "Noite", time: $constants.nightTime, isOn: $constants.nightNotification)
                         } else {
-                            RoutineAlarm(title: "Manhã", time: Constants.shared.morningTime, isOn: Constants.shared.morningNotification)
+                            RoutineAlarm(title: "Manhã", time: $constants.morningTime, isOn: $constants.morningNotification)
                         }
                         
                         VStack(alignment: .leading, spacing: 20) {

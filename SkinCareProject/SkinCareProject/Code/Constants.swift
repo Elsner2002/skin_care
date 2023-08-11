@@ -81,6 +81,7 @@ class Constants: ObservableObject {
             if !notification {
                 morningNotification = false
                 nightNotification = false
+
             } else if notification {
                 morningNotification = true
                 nightNotification = true
@@ -95,7 +96,7 @@ class Constants: ObservableObject {
             let morningHour = componentsMorning.hour ?? 0
             let morningMinute = componentsMorning.minute ?? 0
             if morningNotification {
-                NotificationService.intance.scheduleNotification(hour: morningHour, minute: morningMinute)
+                NotificationService.intance.dispatchNotification(identifier: "morningTime", hour: morningHour, minute: morningMinute)
                 notification = true
             }
             UserDefaults.standard.set(morningTime, forKey: "morningTime")
@@ -114,7 +115,7 @@ class Constants: ObservableObject {
             let nightHour = componentsNight.hour ?? 0
             let nightMinute = componentsNight.minute ?? 0
             if nightNotification {
-                NotificationService.intance.scheduleNotification(hour: nightHour, minute: nightMinute)
+                NotificationService.intance.dispatchNotification(identifier: "nightTime", hour: nightHour, minute: nightMinute)
                 notification = true
             }
             UserDefaults.standard.set(nightTime, forKey: "nightTime")

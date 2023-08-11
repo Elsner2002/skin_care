@@ -9,8 +9,8 @@ import SwiftUI
 
 struct RoutineAlarm: View {
     let title: String
-    @State var time = Date()
-    @State var isOn: Bool
+    @Binding var time: Date
+    @Binding var isOn: Bool
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
@@ -40,6 +40,11 @@ struct RoutineAlarm: View {
                     
                     Toggle("", isOn: $isOn)
                         .toggleStyle(SwitchToggleStyle(tint: (Color.systemButton)))
+                        .onTapGesture {
+                            if Constants.shared.notification == false {
+                                Constants.shared.notification.toggle()
+                            }
+                        }
                 }
                 .padding()
             }
@@ -61,8 +66,8 @@ struct RoutineAlarm_Previews: PreviewProvider {
     static var previews: some View {
         RoutineAlarm(
             title: "Noite",
-            time: Date.now,
-            isOn: true
+            time: .constant(Date.now),
+            isOn: .constant(true)
         ) 
     }
 }

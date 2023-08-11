@@ -341,12 +341,19 @@ struct CloudKitViewModel: View {
             Text("is signed in: \(vm.isSignedToiCloud.description)")
             Text("Name: \(vm.userName)")
             
-            Button {
-                vm.addButtonPressed()
-            } label: {
-                Text("Add")
-                    .font(.headline)
-            }
+//            Button {
+//                vm.requestNotificationPermissions()
+//            } label: {
+//                Text("Notification Permission")
+//                    .font(.headline)
+//            }
+//            
+//            Button {
+//                vm.subscribeToNotifications()
+//            } label: {
+//                Text("Fire Notif.")
+//                    .font(.headline)
+//            }
             
             ListProductComponent(product: product)
         }
