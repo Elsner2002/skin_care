@@ -20,6 +20,8 @@
 		7C30D1582A7AEE79009F93D7 /* TipSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C30D1572A7AEE79009F93D7 /* TipSheetView.swift */; };
 		7C30D15A2A7C168B009F93D7 /* AddProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C30D1592A7C168B009F93D7 /* AddProductView.swift */; };
 		7C30D15C2A7C1B21009F93D7 /* ButtonProductList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C30D15B2A7C1B21009F93D7 /* ButtonProductList.swift */; };
+		7C4710132A8844B700A93EB4 /* CategoryVerticalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4710122A8844B700A93EB4 /* CategoryVerticalView.swift */; };
+		7C4710152A887E4C00A93EB4 /* RecomendedProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4710142A887E4C00A93EB4 /* RecomendedProductsView.swift */; };
 		7C5FA0FA2A7C42AE000D43BD /* RoutineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5FA0F92A7C42AE000D43BD /* RoutineButton.swift */; };
 		7C62FE502A82C07800C586A3 /* HorizontalScrollProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62FE4F2A82C07800C586A3 /* HorizontalScrollProductsView.swift */; };
 		7C62FE522A82C08800C586A3 /* VerticalScrollProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62FE512A82C08800C586A3 /* VerticalScrollProductsView.swift */; };
@@ -97,6 +99,8 @@
 		7C30D1572A7AEE79009F93D7 /* TipSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipSheetView.swift; sourceTree = "<group>"; };
 		7C30D1592A7C168B009F93D7 /* AddProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductView.swift; sourceTree = "<group>"; };
 		7C30D15B2A7C1B21009F93D7 /* ButtonProductList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonProductList.swift; sourceTree = "<group>"; };
+		7C4710122A8844B700A93EB4 /* CategoryVerticalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVerticalView.swift; sourceTree = "<group>"; };
+		7C4710142A887E4C00A93EB4 /* RecomendedProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomendedProductsView.swift; sourceTree = "<group>"; };
 		7C5FA0F92A7C42AE000D43BD /* RoutineButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineButton.swift; sourceTree = "<group>"; };
 		7C62FE4F2A82C07800C586A3 /* HorizontalScrollProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollProductsView.swift; sourceTree = "<group>"; };
 		7C62FE512A82C08800C586A3 /* VerticalScrollProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalScrollProductsView.swift; sourceTree = "<group>"; };
@@ -195,6 +199,8 @@
 			children = (
 				7C62FE4F2A82C07800C586A3 /* HorizontalScrollProductsView.swift */,
 				7C62FE512A82C08800C586A3 /* VerticalScrollProductsView.swift */,
+				7C4710122A8844B700A93EB4 /* CategoryVerticalView.swift */,
+				7C4710142A887E4C00A93EB4 /* RecomendedProductsView.swift */,
 			);
 			path = ProductsComponents;
 			sourceTree = "<group>";
@@ -578,6 +584,7 @@
 				A544A6F52A797F2C006E1747 /* RoutineProgressBar.swift in Sources */,
 				7C30D1532A7ACECC009F93D7 /* CategoryButton.swift in Sources */,
 				D87F2E6F2A826D77000B42F8 /* AddPhotoCard.swift in Sources */,
+				7C4710132A8844B700A93EB4 /* CategoryVerticalView.swift in Sources */,
 				A55E88C92A7057CD005E5AC5 /* OnboardingView.swift in Sources */,
 				D82F35152A79747800E7A8B1 /* DesignColors.swift in Sources */,
 				7CDF2E6D2A6B17C00028CA84 /* HomeView.swift in Sources */,
@@ -599,6 +606,7 @@
 				7CA88CA22A717B4600E58ABA /* DataScannerView.swift in Sources */,
 				D82F351F2A79922900E7A8B1 /* ButtonExtension.swift in Sources */,
 				7CB66FDE2A670132006DFFB2 /* CameraViewModel.swift in Sources */,
+				7C4710152A887E4C00A93EB4 /* RecomendedProductsView.swift in Sources */,
 				A544A6EE2A797A1A006E1747 /* NotificationService.swift in Sources */,
 				D87F2E692A816D34000B42F8 /* GraphicPicker.swift in Sources */,
 				A55E88BA2A686ECB005E5AC5 /* Splashscreen.swift in Sources */,

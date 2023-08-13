@@ -1,13 +1,13 @@
 //
-//  HorizontalScrollProductsView.swift
+//  RecomendedProductsView.swift
 //  SkinCareProject
 //
-//  Created by Felipe  Elsner Silva on 08/08/23.
+//  Created by Felipe  Elsner Silva on 12/08/23.
 //
 
 import SwiftUI
 
-struct HorizontalScrollProductsView: View {
+struct RecomendedProductsView: View {
     
     @StateObject var vm = CloudKitModel()
     
@@ -33,17 +33,8 @@ struct HorizontalScrollProductsView: View {
     }
 }
 
-struct HorizontalScrollProductsView_Previews: PreviewProvider {
+struct RecomendedProductsView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            HorizontalScrollProductsView()
-                .previewLayout(.sizeThatFits)
-                .preferredColorScheme(.light)
-            
-            HorizontalScrollProductsView()
-                .previewLayout(.sizeThatFits)
-                .preferredColorScheme(.dark)
-
-        }
+        RecomendedProductsView()
     }
 }

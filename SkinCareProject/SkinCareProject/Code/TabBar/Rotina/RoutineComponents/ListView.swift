@@ -15,7 +15,7 @@ struct ListView: View {
     let description: String
     let category: String
     let routine: Routine
-    @StateObject private var vm = Constants.shared.vm
+    @StateObject var vm = CloudKitModel()
     @State var list: [RoutineProduct]
     
     

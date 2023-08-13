@@ -10,20 +10,15 @@ import SwiftUI
 struct ProductListView: View {
     
     @State private var searchText = ""
-//    @State var categoryButtons: [(String, Bool)] = [
-//        (ProductCategory.moisturizer.rawValue, false),
-//        (ProductCategory.cleanser.rawValue, false),
-//        (ProductCategory.sunscreen.rawValue, false),
-//        (ProductCategory.treatment.rawValue, false)
-//    ]
     
+    @StateObject var vm = CloudKitModel()
     @State var categoryButtons = ProductCategory.allCases
     @State var selectedCategory: ProductCategory?
     
     var body: some View {
         NavigationStack {
             VStack{
-                Searchbar(searchText: $searchText, showCreateProduct: false)
+                Searchbar(searchText: $searchText, showCreateProduct: false, addRoutine: false)
                 
                 if searchText.isEmpty {
                     ScrollView(showsIndicators: false) {
@@ -49,8 +44,7 @@ struct ProductListView: View {
                         .padding(.horizontal, 15)
                         
                         if let selectedCategory {
-                            //filtro
-                            VerticalScrollProductsView(searchText: searchText)
+                            CategoryVerticalView(searchText: searchText, listOfProducts: Constants.shared.filter(category: selectedCategory, productList: vm.listProducts))
                         }
                         else {
                             HStack{
@@ -66,7 +60,7 @@ struct ProductListView: View {
                                     .bold()
                                 Spacer()
                                 NavigationLink {
-                                    AllProductsListView()
+                                    AllProductsListView(addRoutine: false)
                                 } label: {
                                     Text("Ver Todos")
                                         .foregroundColor(Color.brandGreen)
@@ -88,7 +82,7 @@ struct ProductListView: View {
                     }
                 }
                 else {
-                    VerticalScrollProductsView(searchText: searchText)
+                    VerticalScrollProductsView(searchText: searchText, addRoutine: false)
                 }
             }
         }
