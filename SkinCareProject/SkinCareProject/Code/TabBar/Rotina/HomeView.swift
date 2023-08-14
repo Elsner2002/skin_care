@@ -78,7 +78,7 @@ struct HomeView: View {
                         Spacer()
                     }
                     .padding(.leading, 28)
-                   // TipsView(tip: Constants.shared.randomTip!)
+                    TipsView(tip: Constants.shared.randomTip!)
                     
                     
                 } .onAppear{

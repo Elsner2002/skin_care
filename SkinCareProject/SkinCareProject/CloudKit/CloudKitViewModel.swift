@@ -19,6 +19,7 @@ class CloudKitModel: ObservableObject {
     @Published var listProducts: [ListProduct] = []
     @Published var diaryList: [Diary] = []
     @Published var tips: [Tip] = []
+    @Published var dailyTip: [Tip] = []
     @Published var user: [AppUser] = []
     @Published var ingredients: [Ingredient] = []
     
@@ -34,7 +35,8 @@ class CloudKitModel: ObservableObject {
         requestPermission()
         getCurrentUserName()
         fetchItems(publicDb: true, recordType: CloudKitUtility.CloudKitTypes.ListProduct)//, limit: 10)
-        fetchItems(publicDb: true, recordType: CloudKitUtility.CloudKitTypes.Tips)
+//        fetchItems(publicDb: true, recordType: CloudKitUtility.CloudKitTypes.Tips)
+//        fetchItems(publicDb: false, recordType: CloudKitUtility.CloudKitTypes.Tips)
         fetchItems(publicDb: false, recordType: CloudKitUtility.CloudKitTypes.RoutineProduct)
         fetchItems(publicDb: false, recordType: CloudKitUtility.CloudKitTypes.AppUser)
         fetchItems(publicDb: false, recordType: CloudKitUtility.CloudKitTypes.Diary)
@@ -44,6 +46,10 @@ class CloudKitModel: ObservableObject {
     func addButtonPressed() {
         addIngredient(publicDb: true, name: "test ingredient", recordType: CloudKitUtility.CloudKitTypes.Ingredient, newIngredient: Ingredient(names: ["Aqua", "Água"], description: "water")!)
     }
+    
+//    func addDailyTip(newTip: Tip){
+//        addTip(publicDb: false, name: "Daily Tip", recordType: .Tips, newTip: newTip)
+//    }
     
     func getProductBarcode(barcode: Int) -> ListProduct?{
         var productBarcode: ListProduct?
@@ -117,14 +123,14 @@ class CloudKitModel: ObservableObject {
         }
     }
     
-    private func addTip(publicDb: Bool, name: String, recordType: CloudKitUtility.CloudKitTypes, newTip: Tip){
-        CloudKitUtility.add(publicDb: publicDb, item: newTip) { result in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.tips.append(newTip)
-                self.fetchItems(publicDb: publicDb, recordType: recordType)
-            }
-        }
-    }
+//    private func addTip(publicDb: Bool, name: String, recordType: CloudKitUtility.CloudKitTypes, newTip: Tip){
+//        CloudKitUtility.add(publicDb: publicDb, item: newTip) { result in
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//                self.tips.append(newTip)
+//                self.fetchItems(publicDb: publicDb, recordType: recordType)
+//            }
+//        }
+//    }
     
     private func addDiary(publicDb: Bool, name: String, recordType: CloudKitUtility.CloudKitTypes, newDiary: Diary){
         CloudKitUtility.add(publicDb: publicDb, item: newDiary) { result in
@@ -179,15 +185,20 @@ class CloudKitModel: ObservableObject {
                     self?.user = returnedItem
                 }
                 .store(in: &cancellables)
-        case .Tips:
-            CloudKitUtility.fetch(publicDb: publicDb, predicate: predicate, recordType: recordType)
-                .receive(on: DispatchQueue.main)
-                .sink { _ in
-                    
-                } receiveValue: { [weak self] returnedItem in
-                    self?.tips = returnedItem
-                }
-                .store(in: &cancellables)
+//        case .Tips:
+//            CloudKitUtility.fetch(publicDb: publicDb, predicate: predicate, recordType: recordType)
+//                .receive(on: DispatchQueue.main)
+//                .sink { _ in
+//
+//                } receiveValue: { [weak self] returnedItem in
+//                    if publicDb{
+//                        self?.tips = returnedItem
+//                    }
+//                    else {
+//                        self?.dailyTip = returnedItem
+//                    }
+//                }
+//                .store(in: &cancellables)
         case .Diary:
             CloudKitUtility.fetch(publicDb: publicDb, predicate: predicate, recordType: recordType)
                 .receive(on: DispatchQueue.main)
@@ -240,6 +251,13 @@ class CloudKitModel: ObservableObject {
             self?.fetchItems(publicDb: publicDb, recordType: recordType)
         }
     }
+    
+//    func updateDailyTip(publicDb: Bool, tip: Tip, recordType: CloudKitUtility.CloudKitTypes) {
+//        CloudKitUtility.update(publicDb: publicDb, item: tip) {[weak self] result in
+//            print("update was successfull")
+//            self?.fetchItems(publicDb: publicDb, recordType: recordType)
+//        }
+//    }
     
     func updateUser(publicDb: Bool, appUser: AppUser, recordType: CloudKitUtility.CloudKitTypes, userVegan: Bool, userPhototype: String = "NaoAlterado", userSkinType: String = "NaoAlterado", userConditions: [String] = [], userImage: URL = CloudKitUtility.makeURLJPG(image: "ProfileDefault")) {
         var newUser = appUser

@@ -44,7 +44,7 @@ enum Condition: String {
     case dermatitis = "Dermatite"
     case vitiligo = "Vitiligo"
     case foliculitis = "Foliculite"
-    case none = ""
+    case none = "None"
 }
 
 enum Concern: String {
@@ -54,7 +54,7 @@ enum Concern: String {
     case blackHeads = "Cravos"
     case redness = "Vermelhidão"
     case darkCircles = "Olheiras"
-    case none = ""
+    case none = "None"
 }
 
 enum Warning: String {
