@@ -9,7 +9,7 @@ import SwiftUI
 import CloudKit
 
 struct HomeView: View {
-    @StateObject private var vm = Constants.shared.vm
+    @StateObject var vm = CloudKitModel()
     
     var routineImages: [String] = ["sun.max.fill", "moon.stars.fill"]
     var routineColor: [Color] = [Color.brandPink, Color.brandGreen]
@@ -77,7 +77,7 @@ struct HomeView: View {
                             .bold()
                         Spacer()
                     }
-                    .padding(.leading, 15)
+                    .padding(.leading, 28)
                    // TipsView(tip: Constants.shared.randomTip!)
                     
                     

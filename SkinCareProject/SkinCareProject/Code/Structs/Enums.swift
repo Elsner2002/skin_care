@@ -57,8 +57,11 @@ enum Concern: String {
     case none = ""
 }
 
-enum Warning {
-    
+enum Warning: String {
+    case irritationCase = "Em caso de irritação, suspenda o uso e procure orientação médica."
+    case eyeAreaContact = "Evite a área dos olhos."
+    case eyeDirectContact = "Evite contato direto com os olhos."
+    case washEye = "Caso haja contato com os olhos, lave-os abundantemente."
 }
 
 enum ProductCategory: String, CaseIterable {

@@ -10,13 +10,14 @@ import SwiftUI
 struct AllProductsListView: View {
     
     @State private var searchText = ""
+    var addRoutine: Bool
     
     var body: some View {
         NavigationStack {
             VStack {
-                Searchbar(searchText: $searchText, showCreateProduct: false)
+                Searchbar(searchText: $searchText, showCreateProduct: false, addRoutine: addRoutine)
                 
-                VerticalScrollProductsView(searchText: searchText)
+                VerticalScrollProductsView(searchText: searchText, addRoutine: addRoutine)
             }
         }
         .navigationTitle("Todos os produtos")
@@ -25,6 +26,6 @@ struct AllProductsListView: View {
 
 struct AllProductsListView_Previews: PreviewProvider {
     static var previews: some View {
-        AllProductsListView()
+        AllProductsListView(addRoutine: true)
     }
 }
