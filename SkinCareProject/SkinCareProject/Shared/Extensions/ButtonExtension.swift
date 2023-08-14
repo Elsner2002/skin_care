@@ -13,4 +13,8 @@ extension Button {
     func customButtonStyle(buttonType: ButtonType) -> some View {
         self.buttonStyle(CustomButtonStyle(buttonType: buttonType))
     }
+    
+    func buttonPrimary(backgroundColor: Color = .brandGray) -> some View {
+        self.buttonStyle(ButtonPrimary(backgroundColor: backgroundColor, cornerRadius: 12))
+    }
 }

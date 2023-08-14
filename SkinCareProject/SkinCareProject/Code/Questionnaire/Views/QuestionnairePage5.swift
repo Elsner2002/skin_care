@@ -26,10 +26,10 @@ struct QuestionnairePage5: View, Hashable {
                          buttonLabels: ConcernsQuestion.self)
                 .frame(width: 334, alignment: .topLeading)
             HStack {
-                NavigationLink(destination: QuestionnairePage6(),
-                               label: {CustomButton(label: "Próximo", action: {}, description: "Description", buttonType: .smallRounded) })
+                NavigationLink("Próxima", destination: QuestionnairePage6())
+                    .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
             }
-                .frame(width: 165, height: 35.71429, alignment: .topLeading)
+                .frame(width: 162.14287, alignment: .center)
                 .padding(EdgeInsets(top: 50, leading: 0, bottom: 70, trailing: 0))
         }
         .padding(20)

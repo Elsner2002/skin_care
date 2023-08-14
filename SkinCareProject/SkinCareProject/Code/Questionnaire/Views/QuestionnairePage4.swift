@@ -17,9 +17,10 @@ struct QuestionnairePage4: View {
             
             QuestionCard(buttonType: .largeRounded, questionLabel: "Marque se você possui alguma das seguintes condições de pele:", buttonLabels: SkinConditionQuestion.self)
             HStack {
-                NavigationLink(destination: QuestionnairePage5(), label: {CustomButton(label: "Próximo", action: {}, description: "Description", buttonType: .smallRounded) })
+                NavigationLink("Próxima", destination: QuestionnairePage5())
+                    .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
             }
-                .frame(width: 165, height: 35.71429, alignment: .topLeading)
+                .frame(width: 162.14287, alignment: .center)
                 .padding(EdgeInsets(top: 160, leading: 0, bottom: 70, trailing: 0))
         }
         .padding(20)

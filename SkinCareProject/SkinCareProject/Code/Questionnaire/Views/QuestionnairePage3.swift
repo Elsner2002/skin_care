@@ -18,9 +18,10 @@ struct QuestionnairePage3: View {
             QuestionCard(buttonType: .largeRounded, questionLabel: "Como sua pele fica após horas de exposição ao sol sem proteção solar?", buttonLabels: PhototypeQuestions.self)
                 .frame(width: 334, alignment: .topLeading)
             HStack {
-                NavigationLink(destination: QuestionnairePage4(), label: {CustomButton(label: "Próximo", action: {}, description: "Description", buttonType: .smallRounded) })
+                NavigationLink("Próxima", destination: QuestionnairePage4())
+                    .buttonStyle(CustomButtonStyle(buttonType: .largeRounded))
             }
-                .frame(width: 165, height: 35.71429, alignment: .topLeading)
+                .frame(width: 162.14287, alignment: .center)
                 .padding(EdgeInsets(top: 60, leading: 0, bottom: 70, trailing: 0))
 
         }

@@ -11,11 +11,6 @@ struct DiaryView: View {
     @State private var showSheet: Bool = false
     @State var date: Date = Date.now
     
-    
-    init() {
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-    }
-
     var body: some View {
         NavigationStack {
             ZStack {
