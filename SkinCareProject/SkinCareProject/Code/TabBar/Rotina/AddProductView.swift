@@ -46,7 +46,7 @@ struct AddProductView: View {
                     .padding(.top, 20)
                     
                     VStack {
-                        Searchbar(searchText: $searchText, showCreateProduct: true)
+                        Searchbar(searchText: $searchText, showCreateProduct: true, addRoutine: false)
                             .padding(.bottom, -20)
                             .padding(.top, 20)
                         
@@ -63,7 +63,7 @@ struct AddProductView: View {
                         }
                         .padding()
                         if self.isActive {
-                            VerticalScrollProductsView(searchText: searchText)
+                            VerticalScrollProductsView(searchText: searchText, addRoutine: true)
                         } else {
                             Text("Loading...")
                         }

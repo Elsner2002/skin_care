@@ -9,8 +9,10 @@ import SwiftUI
 
 struct VerticalScrollProductsView: View {
     
-    @StateObject private var vm = Constants.shared.vm
+    @StateObject var vm = CloudKitModel()
+    
     var searchText: String
+    var addRoutine: Bool
     
     var body: some View {
         NavigationStack{
@@ -19,7 +21,7 @@ struct VerticalScrollProductsView: View {
                     product in
 
                     NavigationLink {
-                        ProductView(product: product)
+                        ProductView(product: product, addRoutine: addRoutine)
                     } label: {
                         ButtonProductList(product: product)
                     }
@@ -31,6 +33,6 @@ struct VerticalScrollProductsView: View {
 
 struct VerticalScrollProductsView_Previews: PreviewProvider {
     static var previews: some View {
-        VerticalScrollProductsView(searchText: "")
+        VerticalScrollProductsView(searchText: "", addRoutine: true)
     }
 }
