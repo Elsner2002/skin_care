@@ -12,13 +12,14 @@ import Foundation
 import SwiftUI
 
 struct QuestionnairePage2: View, Hashable {
+    
     var body: some View {
         VStack {
             ProgressView("", value: 20, total: 100)
                 .tint(.systemButton)
                 .frame(width: 243, height: 80, alignment: .center)
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
-            QuestionCard(buttonType: .smallRounded, questionLabel: "Como sua pele fica após horas de exposição ao sol sem proteção solar?", buttonLabels: SkinType.self)
+            QuestionCard(buttonType: .smallRounded, questionLabel: "CQual seu tipo de pele?", buttonLabels: SkinType.self)
                 .frame(width: 334, alignment: .topLeading)
             HStack {
                 NavigationLink("Próximo", destination: QuestionnairePage3())

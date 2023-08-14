@@ -18,10 +18,11 @@ struct QuestionnairePage1: View, Hashable {
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 51, trailing: 0))
             HStack(alignment: .center){
                 NavigationLink("Responder Depois", destination: HomeView())
-                    .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
-                NavigationLink("Responder Depois", destination: QuestionnairePage2())
-                    .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
+                    .buttonStyle(CustomButtonStyle(buttonType: .largeRounded))
+                NavigationLink("Próximo", destination: QuestionnairePage2())
+                    .buttonStyle(CustomButtonStyle(buttonType: .largeRounded))
             }
+            
             Spacer(minLength: 77)
         }
         .padding(20)
