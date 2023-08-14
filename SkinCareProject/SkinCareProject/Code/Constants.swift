@@ -11,8 +11,6 @@ import SwiftUI
 class Constants: ObservableObject {
     static let shared: Constants = Constants()
     
-    //CloudKit
-    @StateObject var vm = CloudKitModel()
     
     //MARK: create variables here
     //tips variables
@@ -138,4 +136,14 @@ class Constants: ObservableObject {
         }
     }
     
+    //filter funcion
+    func filter(category: ProductCategory, productList: [ListProduct]) -> [ListProduct] {
+        var list: [ListProduct] = []
+        productList.forEach { product in
+            if product.categories.contains(category.rawValue) || (product.categories.contains("Sabonete") && category == .cleanser) {
+                list.append(product)
+            }
+        }
+        return list
+    }
 }

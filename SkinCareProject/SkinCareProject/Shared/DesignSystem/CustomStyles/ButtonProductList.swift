@@ -22,8 +22,7 @@ struct ButtonProductList: View {
             
             VStack{
                 HStack{
-                    //mudar para nickname aqui
-                    Text(product.name)
+                    Text(product.nickname)
                         .font(
                         Font.custom("SF Pro Text", size: 14)
                         .weight(.bold)

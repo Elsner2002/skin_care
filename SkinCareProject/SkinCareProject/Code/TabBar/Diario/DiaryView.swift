@@ -50,7 +50,7 @@ struct SheetDiary: View {
     @State var notes: String = ""
     @State var dayRoutineProgress = 2
     @State var nightRoutineProgress = 0
-    @StateObject private var vm = Constants.shared.vm
+    @StateObject var vm = CloudKitModel()
     var date: Date
 
     var body: some View {
