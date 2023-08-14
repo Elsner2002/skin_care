@@ -44,7 +44,13 @@ struct ProductListView: View {
                         .padding(.horizontal, 15)
                         
                         if let selectedCategory {
-                            CategoryVerticalView(searchText: searchText, listOfProducts: Constants.shared.filter(category: selectedCategory, productList: vm.listProducts))
+                            HStack{
+                                Text("Produtos de \(selectedCategory.rawValue)")
+                                    .bold()
+                                Spacer()
+                            }
+                            .padding(.leading, 15)
+                            CategoryVerticalView(listOfProducts: Constants.shared.filter(category: selectedCategory, productList: vm.listProducts))
                         }
                         else {
                             HStack{
@@ -54,30 +60,30 @@ struct ProductListView: View {
                             }
                             .padding(.leading, 15)
                             HorizontalScrollProductsView()
-                            
-                            HStack{
-                                Text("Conheça Mais")
-                                    .bold()
-                                Spacer()
-                                NavigationLink {
-                                    AllProductsListView(addRoutine: false)
-                                } label: {
-                                    Text("Ver Todos")
-                                        .foregroundColor(Color.brandGreen)
-                                }
-                                
-                            }
-                            .padding(.horizontal, 15)
-                            HorizontalScrollProductsView()
-                            
-                            HStack{
-                                Text("Dica do Dia")
-                                    .bold()
-                                Spacer()
-                            }
-                            .padding(.leading, 15)
-                            //TipsView(tip: Constants.shared.randomTip!)
                         }
+                        
+                        HStack{
+                            Text("Conheça Mais")
+                                .bold()
+                            Spacer()
+                            NavigationLink {
+                                AllProductsListView(addRoutine: false)
+                            } label: {
+                                Text("Ver Todos")
+                                    .foregroundColor(Color.brandGreen)
+                            }
+                            
+                        }
+                        .padding(.horizontal, 15)
+                        HorizontalScrollProductsView()
+                        
+                        HStack{
+                            Text("Dica do Dia")
+                                .bold()
+                            Spacer()
+                        }
+                        .padding(.leading, 15)
+                        //TipsView(tip: Constants.shared.randomTip!)
                         
                     }
                 }

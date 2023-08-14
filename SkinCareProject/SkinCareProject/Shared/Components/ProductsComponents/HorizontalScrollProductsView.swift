@@ -20,13 +20,13 @@ struct HorizontalScrollProductsView: View {
                     }
                 }
                 .padding()
-                .background(
-                    RoundedRectangle(cornerRadius: 25)
-                        .fill(Color.systemBG)
-                        .shadow(
-                            color: Color.brandGray.opacity(0.15), radius: 10, x: 0, y: 0
-                        )
-                )
+//                .background(
+//                    RoundedRectangle(cornerRadius: 25)
+//                        .fill(Color.systemBG)
+//                        .shadow(
+//                            color: Color.brandGray.opacity(0.15), radius: 10, x: 0, y: 0
+//                        )
+//                )
             }
             .padding(.horizontal, 15)
         }

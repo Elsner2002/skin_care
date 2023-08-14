@@ -77,7 +77,7 @@ struct HomeView: View {
                             .bold()
                         Spacer()
                     }
-                    .padding(.leading, 15)
+                    .padding(.leading, 28)
                    // TipsView(tip: Constants.shared.randomTip!)
                     
                     

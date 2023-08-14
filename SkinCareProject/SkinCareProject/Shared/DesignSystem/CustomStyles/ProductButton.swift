@@ -45,7 +45,7 @@ struct ProductButton: View {
                 }
                 .scaledToFit()
                 .frame(width: 96, alignment: .leading)
-                .background(Color.brandWhite)
+                .background(Color.systemMaterialSecondary)
                 .cornerRadius(15, corners: [.topLeft, .bottomRight])
                 .offset(y: 55)
             }
