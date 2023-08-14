@@ -17,18 +17,17 @@ struct QuestionnairePage1: View, Hashable {
                 .frame(height: 220)
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 51, trailing: 0))
             HStack(alignment: .center){
-                NavigationLink(destination: HomeView(),
-                           label: { CustomButton(label: "Responder Depois", action: {print("to aqui1")}, description: "", buttonType: .smallRounded) })
-         
-                NavigationLink(destination: QuestionnairePage2(),
-                           label: { CustomButton(label: "Próximo", action: {print("to aqui")}, description: "", buttonType: .largeRounded) })
+                NavigationLink("Responder Depois", destination: HomeView())
+                    .buttonStyle(CustomButtonStyle(buttonType: .largeRounded))
+                NavigationLink("Próximo", destination: QuestionnairePage2())
+                    .buttonStyle(CustomButtonStyle(buttonType: .largeRounded))
             }
+            
             Spacer(minLength: 77)
         }
         .padding(20)
     }
 }
-
 
 struct QuestionnairePage1_Preview: PreviewProvider {
     static var previews: some View {

@@ -13,32 +13,39 @@ struct TabBarOnb: View {
     
     var body: some View {
         NavigationStack{
-            VStack {
-                HStack {
-                    Spacer()
-                    //controls back button navigation
-                    NavigationLink(destination: TabBarQuest().navigationBarBackButtonHidden(true), label: {
-                        Text("Pular")
-                            .font(.callout)
-                            .foregroundColor(Color(uiColor: .black))
-                    }).padding(20)
-                }
+            ZStack {
                 TabView {
-                    ForEach(onboardingList, id: \.self) {
-                        onboarding in OnboardingView(image: onboarding.image , title: onboarding.title, subtitle: onboarding.subtitle)
-                    }
+                    OnboardingPage1()
+                    OnboardingPage2()
+                    OnboardingPage3()
+                    OnboardingPage4()
                 }
-                .tabViewStyle(.page)
+                .ignoresSafeArea()
+                VStack {
+                    HStack {
+                        Spacer()
+                        //controls back button navigation
+                        NavigationLink(destination: TabBarQuest().navigationBarBackButtonHidden(true), label: {
+                            Text("Pular")
+                                .font(.callout)
+                                .foregroundColor(Color(uiColor: .black))
+                        })
+                        .padding(20)
+                    }
+                    Spacer()
+                }
             }
-            .onAppear {
-                UIPageControl.appearance().currentPageIndicatorTintColor = .black
-                UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
-            }
-            Spacer(minLength: 55)
+            .tabViewStyle(.page)
         }
-        .navigationBarBackButtonHidden(true)
+        .onAppear {
+            UIPageControl.appearance().currentPageIndicatorTintColor = .black
+            UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
+        }
+        .padding(EdgeInsets(top: 0, leading: 0, bottom: 50, trailing: 0))
+
     }
 }
+
 
 struct TabBarOnb_Previews: PreviewProvider {
     static var previews: some View {

@@ -59,5 +59,6 @@ enum EnvironmentQuestions: String, CaseIterable {
 enum PreferenceQuestions: String, CaseIterable {
     case vegan = "Produtos Veganos"
     case none = "Não tenho preferência"
+        
 }
 
