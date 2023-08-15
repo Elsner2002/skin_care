@@ -21,7 +21,6 @@ struct ButtonPrimary: ButtonStyle {
             .padding()
             .background(self.backgroundColor)
             .cornerRadius(12)
-        
     }
 }
 

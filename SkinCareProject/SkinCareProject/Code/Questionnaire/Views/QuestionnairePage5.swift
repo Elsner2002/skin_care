@@ -35,6 +35,7 @@ struct QuestionnairePage5: View{
                     }
                 }
                 .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
+
             }
                 .frame(width: 162.14287, alignment: .center)
                 .padding(EdgeInsets(top: 50, leading: 0, bottom: 70, trailing: 0))

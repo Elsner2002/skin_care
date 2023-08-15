@@ -31,6 +31,7 @@ struct QuestionnairePage3: View {
                 .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
             }
             .padding(EdgeInsets(top: 0, leading: 0, bottom: 55, trailing: 0))
+
         }
     }
 }

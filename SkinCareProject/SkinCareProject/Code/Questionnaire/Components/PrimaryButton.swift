@@ -10,8 +10,7 @@ struct PrimaryButton: View {
 
     var body: some View {
         VStack {
-            
-            
+
             Button {
                 self.action()
             } label: {

@@ -10,6 +10,7 @@ import SwiftUI
 struct QuestionCard<T: RawRepresentable & CaseIterable & Hashable>: View where T.AllCases : RandomAccessCollection, T.RawValue == String { // accepts any enum as T
     
     @Binding var buttonPressed: String
+
     @State var showDescription: Bool = false
     var buttonType: ButtonType
     var questionLabel: String
