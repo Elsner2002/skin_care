@@ -8,18 +8,20 @@
 import Foundation
 import SwiftUI
 
-struct QuestionnairePage1: View, Hashable {
+struct QuestionnairePage1: View {
+    @StateObject var userInfo = UserInfo()
+    
     var body: some View {
         VStack {
             ProgressBar(progress: 10.0)
-            QuestionCard(buttonType: .largeRounded,questionLabel: "Qual seu gênero?",buttonLabels: Gender.self)
+            QuestionCard(buttonPressed: .constant(""), buttonType: .largeRounded,questionLabel: "Qual seu gênero?", buttonLabels: Gender.self)
             WheelPicker(questionLabel: "Qual sua idade?")
                 .frame(height: 220)
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 51, trailing: 0))
             HStack(alignment: .center){
                 NavigationLink("Responder Depois", destination: HomeView())
                     .buttonStyle(CustomButtonStyle(buttonType: .largeRounded))
-                NavigationLink("Próximo", destination: QuestionnairePage2())
+                NavigationLink("Próximo", destination: QuestionnairePage2(buttonLabel: .next).environmentObject(userInfo))
                     .buttonStyle(CustomButtonStyle(buttonType: .largeRounded))
             }
             

@@ -82,8 +82,8 @@ struct SheetDiary: View {
                         Spacer(minLength: 90)
                         
                         VStack {
-                            CustomButton(label: "Salvar", action: {}, description: "", buttonType: .largeRounded)
-                            CustomButton(label: "Excluir", action: {}, description: "", buttonType: .largeRounded)                         
+                            CustomButton(label: "Salvar", description: "", buttonType: .largeRounded, action: {})
+                            CustomButton(label: "Excluir", description: "", buttonType: .largeRounded, action: {})       
                         }
                         .frame(width: 324, alignment: .center)
                     }

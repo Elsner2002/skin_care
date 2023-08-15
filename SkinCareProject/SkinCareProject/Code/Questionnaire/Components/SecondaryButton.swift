@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-struct PrimaryButton: View {
+struct SecondaryButton: View {
     var label: String
     var description: String
     var isPressed: Bool = false
@@ -10,7 +10,6 @@ struct PrimaryButton: View {
 
     var body: some View {
         VStack {
-
             Button {
                 self.action()
             } label: {
@@ -25,5 +24,6 @@ struct PrimaryButton: View {
         }
     }
 }
+
 
 

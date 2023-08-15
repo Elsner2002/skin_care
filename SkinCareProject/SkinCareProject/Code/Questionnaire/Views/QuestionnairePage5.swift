@@ -11,8 +11,9 @@ import SwiftUI
 import Foundation
 import SwiftUI
 
-struct QuestionnairePage5: View, Hashable {
-    
+struct QuestionnairePage5: View{
+    @EnvironmentObject var userInfo: UserInfo
+    @State var buttonPressed: String = ""
 
     var body: some View {
         VStack {
@@ -21,13 +22,20 @@ struct QuestionnairePage5: View, Hashable {
                 .frame(width: 243, height: 80, alignment: .center)
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
             
-            QuestionCard(buttonType: .largeRoundedOverlay,
+            QuestionCard(buttonPressed: .constant(""),buttonType: .largeRoundedOverlay,
                          questionLabel: "Quais suas principais preocupações?",
                          buttonLabels: ConcernsQuestion.self)
                 .frame(width: 334, alignment: .topLeading)
-            HStack {
-                NavigationLink("Próxima", destination: QuestionnairePage6())
-                    .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
+            
+            HStack(alignment: .center) {
+                Button(action: {userInfo.userPhototype = buttonPressed}) {
+                    NavigationLink(destination: QuestionnairePage6())
+                    {
+                        Text("Próximo")
+                    }
+                }
+                .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
+
             }
                 .frame(width: 162.14287, alignment: .center)
                 .padding(EdgeInsets(top: 50, leading: 0, bottom: 70, trailing: 0))
