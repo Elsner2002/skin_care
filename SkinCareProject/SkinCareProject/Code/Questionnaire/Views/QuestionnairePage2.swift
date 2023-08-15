@@ -12,8 +12,8 @@ import SwiftUI
 
 
 struct QuestionnairePage2: View {
+    @EnvironmentObject var vm: CloudKitModel 
     @Environment(\.dismiss) private var dismiss
-    @StateObject private var vm = Constants.shared.vm
     @EnvironmentObject var userInfo: UserInfo
     @State var buttonPressed: String = ""
     var buttonLabel: buttonLabels
