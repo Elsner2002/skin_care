@@ -8,28 +8,23 @@
 import Foundation
 import SwiftUI
 
-//final class TipsService: ObservableObject {
-//    @Published var tips = [Tip]()
-//    
-//    init(){
-//        loadData()
-//    }
-//        
-//    func loadData() {
-//        do{
-//            guard let url = Bundle.main.url(forResource: "TipsData", withExtension: "json") else {
-//                print("Json file not found")
-//                return
-//            }
-//            let data = try? Data(contentsOf: url)
-////            let url = Bundle.main.url(forResource: "TipsData", withExtension: "json")!
-////            let data = try Data(contentsOf: url)
-//            let decoder = JSONDecoder()
-//            decoder.dateDecodingStrategy = .iso8601
-//            self.tips = try decoder.decode([Tip].self, from: data!)
-//        }
-//        catch{
-//            self.tips = []
-//        }
-//    }
-//}
+final class TipsService: ObservableObject {
+    private var tips: [Tip]
+    
+    init(){
+        do {
+            let mockDataUrl = Bundle.main.url(forResource: "TipsData", withExtension: "json")!
+            let data = try Data(contentsOf: mockDataUrl)
+            
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            self.tips = try decoder.decode([Tip].self, from: data)
+        } catch {
+            self.tips = []
+        }
+    }
+    
+    func getTips() -> [Tip] {
+        return tips
+    }
+}
