@@ -7,11 +7,16 @@
 
 import Foundation
 import SwiftUI
-
 import Foundation
 import SwiftUI
 
-struct QuestionnairePage2: View, Hashable {
+
+struct QuestionnairePage2: View {
+    @Environment(\.dismiss) private var dismiss
+    @StateObject private var vm = Constants.shared.vm
+    @EnvironmentObject var userInfo: UserInfo
+    @State var buttonPressed: String = ""
+    var buttonLabel: buttonLabels
     
     var body: some View {
         VStack {
@@ -19,22 +24,40 @@ struct QuestionnairePage2: View, Hashable {
                 .tint(.systemButton)
                 .frame(width: 243, height: 80, alignment: .center)
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
-            QuestionCard(buttonType: .smallRounded, questionLabel: "CQual seu tipo de pele?", buttonLabels: SkinType.self)
+            QuestionCard(buttonPressed: $buttonPressed, buttonType: .smallRounded, questionLabel: "Qual seu tipo de pele?", buttonLabels: SkinType.self)
                 .frame(width: 334, alignment: .topLeading)
-            HStack {
-                NavigationLink("Próximo", destination: QuestionnairePage3())
-                    .buttonStyle(CustomButtonStyle(buttonType: .largeRounded))
+            
+            HStack(alignment: .center) {
+                if buttonLabel == .next {
+                    Button(action: {userInfo.userSkinType = buttonPressed}) {
+                        NavigationLink(destination:
+                                        QuestionnairePage3())
+                        {
+                            Text(buttonLabel.rawValue)}
+                    }
+                    .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
+                    .frame(width: 165, height: 35.71429, alignment: .center)
+                    .padding(EdgeInsets(top: 100, leading: 0, bottom: 0, trailing: 0))
+                } else {
+                    Button(action: {
+                        print(vm.user.isEmpty)
+                        vm.updateUser(publicDb: false, appUser: vm.user[0], recordType: .AppUser, userVegan: vm.user[0].vegan, userSkinType: buttonPressed)
+                        dismiss()
+                    }, label: {
+                        Text(buttonLabel.rawValue)
+                    })
+                    .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
+                    .frame(width: 165, height: 35.71429, alignment: .center)
+                    .padding(EdgeInsets(top: 100, leading: 0, bottom: 0, trailing: 0))
+                }
             }
-                .frame(width: 162.14287, alignment: .center)
-                .padding(EdgeInsets(top: 100, leading: 0, bottom: 0, trailing: 0))
             Spacer(minLength: 70)
-
         }
         .padding(20)
     }
 }
 struct QuestionnairePage2_Preview: PreviewProvider {
     static var previews: some View {
-        QuestionnairePage2()
+        QuestionnairePage2(buttonLabel: .save)
     }
 }

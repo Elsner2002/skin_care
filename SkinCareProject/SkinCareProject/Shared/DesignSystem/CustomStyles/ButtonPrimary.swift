@@ -21,7 +21,7 @@ struct ButtonPrimary: ButtonStyle {
             .padding()
             .background(self.backgroundColor)
             .cornerRadius(12)
-    
+        
     }
 }
 
@@ -29,11 +29,11 @@ struct ButtonPrimary_Preview: PreviewProvider {
     static var previews: some View {
         VStack {
             Button {
-                          print("Button was tapped")
-                      } label: {
-                          Text("Button label")
-                      }
-                      .buttonStyle(ButtonPrimary(backgroundColor: .buttonColor, cornerRadius: 12))
+                print("Button was tapped")
+            } label: {
+                Text("Button label")
+            }
+            .buttonStyle(ButtonPrimary(backgroundColor: .buttonColor, cornerRadius: 12))
         }
     }
 }

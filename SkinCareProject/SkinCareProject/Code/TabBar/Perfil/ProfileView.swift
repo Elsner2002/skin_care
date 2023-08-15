@@ -89,7 +89,15 @@ struct ProfileView: View {
                     Section("QUIZ DA PELE") {
                         ForEach(0..<skinQuiz.count) { position in
                             NavigationLink {
-                                //
+                                switch position {
+                                case 0: QuestionnairePage1()
+                                case 1: QuestionnairePage2(buttonLabel: .save)
+                                case 2: QuestionnairePage3()
+                                case 3: QuestionnairePage4()
+                                case 4: QuestionnairePage5()
+                                default:
+                                    EmptyView()
+                                }
                             } label: {
                                 HStack {
                                     Image(systemName: skinQuiz[position].1)

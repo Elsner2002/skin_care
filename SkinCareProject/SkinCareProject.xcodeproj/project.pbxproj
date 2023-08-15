@@ -86,6 +86,9 @@
 		D8E60F582A8AA0CB00F9CB18 /* ButtonPrimary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E60F572A8AA0CB00F9CB18 /* ButtonPrimary.swift */; };
 		D8E60F5A2A8AA13800F9CB18 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E60F592A8AA13800F9CB18 /* PrimaryButton.swift */; };
 		D8E60F5C2A8AA6CB00F9CB18 /* TextDescriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E60F5B2A8AA6CB00F9CB18 /* TextDescriptions.swift */; };
+		D8E60F5E2A8AEF2A00F9CB18 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E60F5D2A8AEF2A00F9CB18 /* SecondaryButton.swift */; };
+		D8E60F602A8B163000F9CB18 /* QuestionCardMultipleChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E60F5F2A8B163000F9CB18 /* QuestionCardMultipleChoice.swift */; };
+		D8E60F622A8BBF2D00F9CB18 /* ButtonSecondary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E60F612A8BBF2D00F9CB18 /* ButtonSecondary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -170,6 +173,9 @@
 		D8E60F572A8AA0CB00F9CB18 /* ButtonPrimary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPrimary.swift; sourceTree = "<group>"; };
 		D8E60F592A8AA13800F9CB18 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		D8E60F5B2A8AA6CB00F9CB18 /* TextDescriptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDescriptions.swift; sourceTree = "<group>"; };
+		D8E60F5D2A8AEF2A00F9CB18 /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
+		D8E60F5F2A8B163000F9CB18 /* QuestionCardMultipleChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCardMultipleChoice.swift; sourceTree = "<group>"; };
+		D8E60F612A8BBF2D00F9CB18 /* ButtonSecondary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSecondary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -421,6 +427,7 @@
 				7C30D15B2A7C1B21009F93D7 /* ButtonProductList.swift */,
 				7C5FA0F92A7C42AE000D43BD /* RoutineButton.swift */,
 				D8E60F572A8AA0CB00F9CB18 /* ButtonPrimary.swift */,
+				D8E60F612A8BBF2D00F9CB18 /* ButtonSecondary.swift */,
 			);
 			path = CustomStyles;
 			sourceTree = "<group>";
@@ -473,8 +480,10 @@
 			isa = PBXGroup;
 			children = (
 				D8E60F592A8AA13800F9CB18 /* PrimaryButton.swift */,
+				D8E60F5D2A8AEF2A00F9CB18 /* SecondaryButton.swift */,
 				D88A10792A8054CE006CC93E /* ProgressBar.swift */,
 				D88A107D2A80550C006CC93E /* QuestionCard.swift */,
+				D8E60F5F2A8B163000F9CB18 /* QuestionCardMultipleChoice.swift */,
 				D88A107B2A8054F3006CC93E /* WheelPicker.swift */,
 			);
 			path = Components;
@@ -565,6 +574,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8E60F602A8B163000F9CB18 /* QuestionCardMultipleChoice.swift in Sources */,
 				D88F2A2D2A8A897F0017561D /* OnboardingPage4.swift in Sources */,
 				7C30D1462A799A20009F93D7 /* RectangleCategoryButton.swift in Sources */,
 				7CDF2E6F2A6B17CE0028CA84 /* ProductListView.swift in Sources */,
@@ -585,6 +595,7 @@
 				A544A7052A7ADB15006E1747 /* ListView.swift in Sources */,
 				A55E88D52A7403BE005E5AC5 /* CloudKitViewModel.swift in Sources */,
 				7C62FE542A843C2700C586A3 /* AboutProductView.swift in Sources */,
+				D8E60F622A8BBF2D00F9CB18 /* ButtonSecondary.swift in Sources */,
 				A544A6F32A797D1E006E1747 /* RoutineProgress.swift in Sources */,
 				D8E60F5C2A8AA6CB00F9CB18 /* TextDescriptions.swift in Sources */,
 				A544A6FB2A799AD5006E1747 /* RoutineView.swift in Sources */,
@@ -631,6 +642,7 @@
 				D8E60F582A8AA0CB00F9CB18 /* ButtonPrimary.swift in Sources */,
 				D88A10552A7C4FB2006CC93E /* CustomButton.swift in Sources */,
 				7CB66FE62A67289A006DFFB2 /* Constants.swift in Sources */,
+				D8E60F5E2A8AEF2A00F9CB18 /* SecondaryButton.swift in Sources */,
 				D88A107E2A80550C006CC93E /* QuestionCard.swift in Sources */,
 				A544A6F72A79840B006E1747 /* RoutineAlarm.swift in Sources */,
 				D88A105D2A7D4102006CC93E /* QuestionnairePage7.swift in Sources */,

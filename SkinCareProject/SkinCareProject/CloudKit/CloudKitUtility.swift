@@ -239,6 +239,7 @@ extension CloudKitUtility {
                 } else {
                     completion(.success(true))
                 }
+                print(returnedRecord)
             }
         }
         

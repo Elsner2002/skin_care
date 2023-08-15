@@ -9,7 +9,9 @@ import SwiftUI
 import CloudKit
 
 struct HomeView: View {
-    @StateObject private var vm = Constants.shared.vm
+//    @StateObject private var vm = Constants.shared.vm
+    @EnvironmentObject var vm: CloudKitModel
+
     
     var routineImages: [String] = ["sun.max.fill", "moon.stars.fill"]
     var routineColor: [Color] = [Color.brandPink, Color.brandGreen]

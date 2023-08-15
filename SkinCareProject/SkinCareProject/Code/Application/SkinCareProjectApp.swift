@@ -11,29 +11,39 @@ import SwiftUI
 struct SkinCareProjectApp: App {
     @State var firstTimeHere: Bool = UserDefaults.standard.value(forKey: "firstTimeHere") as? Bool ?? true
     @State private var isActive = false
-    @State var fetch = false
+//    @State var fetch = false
+//    @StateObject private var vm = Constants.shared.vm
+    @StateObject var vm = CloudKitModel()
     
     var body: some Scene {
         WindowGroup {
             ZStack {
                 if self.isActive {
                     ContentView()
-//                    if firstTimeHere {
-//                        TabBarOnb()
-//                    }
-//                    else {
-//                        ContentView()
-//                    }
+                        .environmentObject(vm)
+                    if firstTimeHere {
+                        TabBarOnb()
+                            .environmentObject(vm)
+                    }
+                    else {
+                        ContentView()
+                            .environmentObject(vm)
+                    }
                 }
                 else {
                     Splashscreen()
                 }
             }
             .onAppear {
-                if !fetch {
-                    @StateObject var vm = CloudKitModel()
-                    fetch = true
+//                if !fetch {
+//                    @StateObject var vm = CloudKitModel()
+//                    fetch = true
+//                }
+                if firstTimeHere {
+                    vm.addUser(publicDb: false, name: vm.userName, recordType: .AppUser)
                 }
+                vm.fetchItems(publicDb: false, recordType: .AppUser)
+
                 //Constants.shared.randomTipGenerator()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     withAnimation {

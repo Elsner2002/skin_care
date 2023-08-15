@@ -22,7 +22,7 @@ struct OnboardingPage4: View, Hashable {
                         .font(.callout)
                         .frame(width: 347, alignment: .topLeading)
                     
-                    CustomButton(label: "Próximo", action: {}, description: "", buttonType: .smallRounded)
+                    CustomButton(label: "Próximo", description: "", buttonType: .smallRounded, action: {})
                         .frame(width: 162.14287, alignment: .center)
                         .padding(EdgeInsets(top: 139, leading: 0, bottom: 0, trailing: 0))
                 }

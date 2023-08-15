@@ -8,36 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     var body: some View {
-
-        @State var downloadAmount = 80.0
-        TabBarQuest()
-//        TabView{
-//            HomeView()
-//                .tabItem {
-//                    Image("routinesSymbol")
-//                    Text("Rotinas")
-//                }
-//                .tag(0)
-//            ProductListView()
-//                .tabItem {
-//                    Image("productSymbol")
-//                    Text("Produtos")
-//                }
-//                .tag(1)
-//            DiaryView()
-//                .tabItem {
-//                    Image(systemName: "note.text")
-//                    Text("Diario")
-//                }
-//                .tag(2)
-//            ProfileView()
-//                .tabItem {
-//                    Image(systemName: "person.crop.circle")
-//                    Text("Perfil")
-//                }
-//                .tag(3)
-//        }
+        //TabBarQuest()
+        TabView{
+            HomeView()
+                .tabItem {
+                    Image("routinesSymbol")
+                    Text("Rotinas")
+                }
+                .tag(0)
+            ProductListView()
+                .tabItem {
+                    Image("productSymbol")
+                    Text("Produtos")
+                }
+                .tag(1)
+            DiaryView()
+                .tabItem {
+                    Image(systemName: "note.text")
+                    Text("Diario")
+                }
+                .tag(2)
+            ProfileView()
+                .tabItem {
+                    Image(systemName: "person.crop.circle")
+                    Text("Perfil")
+                }
+                .tag(3)
+        }
         .accentColor(Color.brandGreen)
         .onAppear{
             UITabBar.appearance().backgroundColor = UIColor(Color.systemBG)
