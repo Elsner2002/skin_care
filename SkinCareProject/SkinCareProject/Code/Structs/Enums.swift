@@ -94,5 +94,10 @@ enum SkinConditionQuestions: String, CaseIterable {
     case vitiligo = "Vitiligo"
     case acne = "Acne"
     case melasma = "Melasma"
-    
+}
+
+
+enum buttonLabels: String {
+    case next = "Próximo"
+    case save = "Salvar"
 }

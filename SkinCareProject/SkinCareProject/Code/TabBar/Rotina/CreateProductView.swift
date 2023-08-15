@@ -154,9 +154,9 @@ struct CreateProductView: View {
                         .padding(.all, 8)
                         
                         VStack{
-                            CustomButton(label: "Salvar", action: {}, description: "", buttonType: .largeRounded)
+                            CustomButton(label: "Salvar", description: "", buttonType: .largeRounded, action: {})
                                 .padding()
-                            CustomButton(label: "Excluir", action: {}, description: "", buttonType: .largeRounded)
+                            CustomButton(label: "Excluir", description: "", buttonType: .largeRounded, action: {})
                                 .padding()
                                 .padding(.top, -30)
 

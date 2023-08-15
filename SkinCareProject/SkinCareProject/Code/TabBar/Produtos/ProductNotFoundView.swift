@@ -40,13 +40,13 @@ struct ProductNotFoundView: View {
             
             VStack{
                 if showCreateProduct{
-                    CustomButton(label: "Cadastrar Produto", action: {
+                    CustomButton(label: "Cadastrar Produto", description: "", buttonType: .largeRounded, action: {
                         self.isShowingCreateProductView = true
-                    }, description: "", buttonType: .largeRounded)
+                    })
                 }
-                CustomButton(label: "Voltar", action: {
+                CustomButton(label: "Voltar", description: "", buttonType: .largeRounded, action: {
                     dismiss()
-                }, description: "", buttonType: .largeRounded)
+                })
                 
                 NavigationLink(isActive: self.$isShowingCreateProductView, destination: { CreateProductView() }, label: { EmptyView() })
             }

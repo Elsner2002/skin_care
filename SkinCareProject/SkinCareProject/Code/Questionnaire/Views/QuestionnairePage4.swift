@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct QuestionnairePage4: View {
+    @EnvironmentObject var userInfo: UserInfo
+    @State var buttonPressed: Set<String> = []
+    
     var body: some View {
         VStack {
             ProgressView("", value: 40, total: 100)
@@ -15,14 +18,21 @@ struct QuestionnairePage4: View {
                 .frame(width: 243, height: 80, alignment: .center)
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
             
-            QuestionCard(buttonType: .largeRounded, questionLabel: "Marque se você possui alguma das seguintes condições de pele:", buttonLabels: SkinConditionQuestion.self)
-            HStack {
-                NavigationLink(destination: QuestionnairePage5(), label: {CustomButton(label: "Próximo", action: {}, description: "Description", buttonType: .smallRounded) })
+            QuestionCardMultipleChoice(buttonPressed: $buttonPressed, buttonType: .largeRoundedOverlay, questionLabel: "Marque se você possui alguma das seguintes condições de pele:", buttonLabels: SkinConditionQuestion.self)
+                .padding(EdgeInsets(top: 0, leading: 50, bottom: 0, trailing: 50))
+
+            HStack(alignment: .center) {
+                Button(action: {userInfo.userConditions = Array(buttonPressed)}) {
+                    NavigationLink(destination: QuestionnairePage5())
+                    {
+                        Text("Próximo")
+                    }
+                }
+                .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
             }
-                .frame(width: 165, height: 35.71429, alignment: .topLeading)
-                .padding(EdgeInsets(top: 160, leading: 0, bottom: 70, trailing: 0))
+            .padding(EdgeInsets(top: 107, leading: 0, bottom: 55, trailing: 0))
+
         }
-        .padding(20)
     }
 }
 

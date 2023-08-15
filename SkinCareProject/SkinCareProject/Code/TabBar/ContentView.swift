@@ -8,11 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     var body: some View {
-
-        @State var downloadAmount = 80.0
-        
-        
+        //TabBarQuest()
         TabView{
             HomeView()
                 .tabItem {
@@ -39,6 +37,7 @@ struct ContentView: View {
                 }
                 .tag(3)
         }
+
         .accentColor(Color.brandGreen)
         .onAppear{
             UITabBar.appearance().backgroundColor = UIColor(Color.systemBG)

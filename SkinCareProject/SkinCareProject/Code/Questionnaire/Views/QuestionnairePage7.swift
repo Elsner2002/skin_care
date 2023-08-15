@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct QuestionnairePage7: View {
+    @EnvironmentObject var userInfo: UserInfo
+    @State var buttonPressed: String = ""
+    
     var body: some View {
         VStack {
             ProgressView("", value: 100, total: 100)
@@ -15,15 +18,21 @@ struct QuestionnairePage7: View {
                 .frame(width: 243, height: 80, alignment: .center)
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
             
-            QuestionCard(buttonType: .largeRounded,
+            QuestionCard(buttonPressed: .constant(""), buttonType: .largeRounded,
                          questionLabel: "Você tem uma preferência por produtos?",
                          buttonLabels: PreferenceQuestions.self)
                 .frame(width: 291, alignment: .topLeading)
-            HStack {
-                NavigationLink(destination: HomeView(),
-                               label: {CustomButton(label: "Próximo", action: {}, description: "Description", buttonType: .smallRounded) })
+            HStack(alignment: .center) {
+                Button(action: {userInfo.userPhototype = buttonPressed}) {
+                    NavigationLink(destination: QuestionnairePage4())
+                    {
+                        Text("Próximo")
+                    }
+                }
+                .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
+
             }
-                .frame(width: 165, height: 35.71429, alignment: .topLeading)
+                .frame(width: 162.14287, alignment: .center)
                 .padding(EdgeInsets(top: 350, leading: 0, bottom: 70, trailing: 0))
         }
         .padding(20)
