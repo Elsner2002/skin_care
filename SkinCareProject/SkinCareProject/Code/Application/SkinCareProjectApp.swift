@@ -19,8 +19,6 @@ struct SkinCareProjectApp: App {
         WindowGroup {
             ZStack {
                 if self.isActive {
-                    ContentView()
-                        .environmentObject(vm)
                     if firstTimeHere {
                         TabBarOnb()
                             .environmentObject(vm)

@@ -19,7 +19,7 @@ struct QuestionnairePage1: View {
                 .frame(height: 220)
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 51, trailing: 0))
             HStack(alignment: .center){
-                NavigationLink("Responder Depois", destination: HomeView())
+                NavigationLink("Responder Depois", destination: ContentView().navigationBarBackButtonHidden(true))
                     .buttonStyle(CustomButtonStyle(buttonType: .largeRounded))
                 NavigationLink("Próximo", destination: QuestionnairePage2(buttonLabel: .next).environmentObject(userInfo))
                     .buttonStyle(CustomButtonStyle(buttonType: .largeRounded))
