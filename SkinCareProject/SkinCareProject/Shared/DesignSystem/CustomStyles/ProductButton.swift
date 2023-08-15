@@ -13,7 +13,7 @@ struct ProductButton: View {
     
     var body: some View {
         NavigationLink {
-            ProductView(product: product)
+            ProductView(product: product, addRoutine: false)
         } label: {
             ZStack{
                 if let url = product.image, let data =  try? Data(contentsOf: url),  let imageProduct = UIImage(data: data) {
@@ -23,18 +23,29 @@ struct ProductButton: View {
                         .cornerRadius(15, corners: [.topLeft, .bottomRight])
                 }
                 VStack{
-                    Text(product.brand)
-                        .bold()
-                        .foregroundColor(.black)
+                    Text(product.nickname)
+                        .multilineTextAlignment(.leading)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .font(
+                        Font.custom("SF Pro", size: 12)
+                            .weight(.medium)
+                        )
+                        .foregroundColor(Color.systemLabelPrimary)
+                        .frame(width: 86, height: 26, alignment: .topLeading)
+                        .padding([.leading, .top], 10)
                     
-                    //mudar para nickname aqui
-                    Text(product.name)
-                        .bold()
-                        .foregroundColor(.black)
+                    HStack{
+                        Text(product.brand)
+                            .font(Font.custom("SF Pro", size: 10))
+                            .multilineTextAlignment(.leading)
+                            .foregroundColor(Color.systemLabelSecondary)
+                        Spacer()
+                    }
+                    .padding([.leading, .bottom], 10)
                 }
                 .scaledToFit()
                 .frame(width: 96, alignment: .leading)
-                .background(Color.brandWhite)
+                .background(Color.systemMaterialSecondary)
                 .cornerRadius(15, corners: [.topLeft, .bottomRight])
                 .offset(y: 55)
             }
@@ -45,6 +56,6 @@ struct ProductButton: View {
 
 struct ProductButton_Previews: PreviewProvider {
     static var previews: some View {
-        ProductButton(product: ListProduct(image: CloudKitUtility.makeURLJPG(image: "ProfileDefault"), name: "Niacinamida", nickname: "Niacinamida", explanation: "", brand: "Simple Organic", recomendedTime: [], vegan: true, barcode: 123, priceRange: 100, SPF: 1, texture: "", ingredients: [], categories: [])!)
+        ProductButton(product: ListProduct(image: CloudKitUtility.makeURLJPG(image: "ProfileDefault"), name: "Niacinamida", nickname: "Niacinamida", explanation: "", brand: "Simple Organic", recomendedTime: [""], vegan: true, barcode: 123, priceRange: 100, SPF: 1, texture: "", ingredients: [""], categories: [""])!)
     }
 }

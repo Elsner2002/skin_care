@@ -9,24 +9,24 @@ import SwiftUI
 
 struct HorizontalScrollProductsView: View {
     
-    @StateObject private var vm = Constants.shared.vm
+    @StateObject var vm = CloudKitModel()
     
     var body: some View {
         ZStack{
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    ForEach(vm.listProducts, id: \.self) { product in
-                        ProductButton(product: product)
+                    ForEach(vm.listProducts.count >= 10 ? 0..<9 : 0..<vm.listProducts.count, id: \.self) { position in
+                        ProductButton(product: vm.listProducts[position])
                     }
                 }
                 .padding()
-                .background(
-                    RoundedRectangle(cornerRadius: 25)
-                        .fill(Color.systemBG)
-                        .shadow(
-                            color: Color.brandGray.opacity(0.15), radius: 10, x: 0, y: 0
-                        )
-                )
+//                .background(
+//                    RoundedRectangle(cornerRadius: 25)
+//                        .fill(Color.systemBG)
+//                        .shadow(
+//                            color: Color.brandGray.opacity(0.15), radius: 10, x: 0, y: 0
+//                        )
+//                )
             }
             .padding(.horizontal, 15)
         }
