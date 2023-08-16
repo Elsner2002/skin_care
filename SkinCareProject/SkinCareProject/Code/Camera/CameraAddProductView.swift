@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CameraView: View {
+struct CameraAddProductView: View {
     @StateObject var vm = CloudKitModel()
 
     @EnvironmentObject var cameraVM: CameraViewModel
@@ -15,6 +15,7 @@ struct CameraView: View {
     @State var productNotFound: Bool = false
     @State var barcodeId: Int = 0
     @State var product: ListProduct?
+    @Binding var routine: Routine
     var showCreateProduct: Bool
     var addRoutine: Bool
 //    @State var isLoading: Bool = false
@@ -47,7 +48,7 @@ struct CameraView: View {
         VStack{
             NavigationLink("", destination: ProductView(product: product, addRoutine: addRoutine), isActive: $isProductViewShowing)
             
-            NavigationLink("", destination: ProductNotFoundView(), isActive: $productNotFound)
+            NavigationLink("", destination: ProductNotFoundAdd(routine: $routine, showCreateProduct: showCreateProduct), isActive: $productNotFound)
             
             DataScannerView(recognizedItems: $cameraVM.recognizedItems)
                 .onChange(of: cameraVM.recognizedItems) { newValue in

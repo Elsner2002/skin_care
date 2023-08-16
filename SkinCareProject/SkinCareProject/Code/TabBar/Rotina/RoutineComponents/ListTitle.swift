@@ -11,6 +11,7 @@ struct ListTitle: View {
     let category: String
     
     @State private var showSheet = false
+    @Binding var routine: Routine
     
     var body: some View {
         NavigationStack {
@@ -32,7 +33,7 @@ struct ListTitle: View {
                         .foregroundColor(Color.systemButton)
                 }
                 .fullScreenCover(isPresented: $showSheet) {
-                    AddProductView()
+                    AddProductView(routine: $routine)
                 }
             }
             .frame(width: 362, alignment: .leading)
@@ -43,6 +44,6 @@ struct ListTitle: View {
 
 struct ListTitle_Previews: PreviewProvider {
     static var previews: some View {
-        ListTitle(category: "Tônicos & Tratamentos")
+        ListTitle(category: "Tônicos & Tratamentos", routine: .constant(Routine(name: "Rotina Diurna", completition: 2, categoryLimpeza: [], categoryTratamentos: [], categoryHidratante: [], categoryProtetor: [])))
     }
 }

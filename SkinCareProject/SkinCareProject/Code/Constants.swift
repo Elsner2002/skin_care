@@ -11,6 +11,11 @@ import SwiftUI
 class Constants: ObservableObject {
     static let shared: Constants = Constants()
     
+    //routine variables
+    @Published var dayRoutine = Routine(name: "Rotina Diurna", completition: 0, categoryLimpeza: [], categoryTratamentos: [], categoryHidratante: [], categoryProtetor: [])
+    
+    @Published var nightRoutine = Routine(name: "Rotina Noturna", completition: 0, categoryLimpeza: [], categoryTratamentos: [], categoryHidratante: [], categoryProtetor: [])
+    
     
     //MARK: create variables here
     //tips variables

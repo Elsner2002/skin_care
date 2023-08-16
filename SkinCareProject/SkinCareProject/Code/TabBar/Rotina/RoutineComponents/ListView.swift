@@ -9,45 +9,36 @@ import SwiftUI
 import Combine
 import CloudKit
 
-
 struct ListView: View {
     
     let description: String
     let category: String
-    let routine: Routine
     @StateObject var vm = CloudKitModel()
-    @State var list: [RoutineProduct]
-    
-    
-    init(description: String, category: String, routine: Routine) {
-        self.description = description
-        self.category = category
-        self.routine = routine
-        self.list = routine.categoryLimpeza //how to get routine category?
-    }
+    @Binding var productList: [RoutineProduct]
+    @Binding var routine: Routine
     
     var body: some View {
         NavigationStack {
             VStack (alignment: .leading, spacing: 10) {
-                ListTitle(category: category)
+                ListTitle(category: category, routine: $routine)
                 
-                if list.isEmpty {
+                if productList.isEmpty {
                     ListDescription(description: description)
                 }
                 else {
                     List {
                         Section{
-                            ForEach(list, id: \.self) { product in
+                            ForEach($productList, id: \.self) { $product in
                                 ListProductComponent(product: product)
                                     .swipeActions (allowsFullSwipe: false) {
                                         Button(role: .destructive) {
-                                            //delete item v.delete
+                                            vm.deleteItem(publicDb: false, product: product)
                                         } label: {
                                             Label("Delete", systemImage: "trash.fill")
                                         }
                                         .tint(Color.red)
                                         Button {
-                                            CreateProductView()
+                                            CreateProductView(routine: $routine)
                                         } label: {
                                             Image (systemName: "gearshape.fill")
                                         }
@@ -70,6 +61,6 @@ struct ListView_Previews: PreviewProvider {
     static let array: [RoutineProduct] = [RoutineProduct(image: url, name: "test", brand: "test", isCompleted: false, barcode: 12345, frequency: [1], categories: ["Limpeza", "Tônicos & Tratamentos",  "Hidratante"])!, RoutineProduct(image: url, name: "test", brand: "test", isCompleted: false, barcode: 12345, frequency: [1], categories: ["Limpeza", "Tônicos & Tratamentos",  "Hidratante"])!]
     
     static var previews: some View {
-        ListView(description: "Primeiro passo: Comece higienizando seu rosto e retirando impurezas", category: "Limpeza",  routine: Routine(name: "Noite", completition: 0, categoryLimpeza: array, categoryTratamentos: [], categoryHidratante: [], categoryProtetor: []) )
+        ListView(description: "Primeiro passo: Comece higienizando seu rosto e retirando impurezas", category: "Limpeza",  productList: .constant(array), routine: .constant(Routine(name: "Rotina Diurna", completition: 2, categoryLimpeza: [], categoryTratamentos: [], categoryHidratante: [], categoryProtetor: [])))
     }
 }

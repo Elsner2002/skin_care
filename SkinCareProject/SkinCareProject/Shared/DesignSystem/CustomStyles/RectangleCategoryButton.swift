@@ -9,39 +9,47 @@ import SwiftUI
 
 struct RectangleCategoryButton: View {
     
-    var categoryString: String
-    @State var selectedButton: Bool
+    var categoryString: String = "Hidratante"
+    @Binding var selected: String
     
     var body: some View {
         Button {
-            selectedButton = !selectedButton
         } label: {
             ZStack{
-                if selectedButton {
-                    RoundedRectangle(cornerSize: CGSize(width: 8, height: 8))
-                        .foregroundColor(Color.systemButton)
-                        .frame(width: 175, height: 73)
-                    RoundedRectangle(cornerSize: CGSize(width: 8, height: 8))
-                        .stroke()
-                        .foregroundColor(.black)
-                        .frame(width: 175, height: 73)
+                if self.selected == categoryString {
+                    ZStack {
+                        RoundedRectangle(cornerSize: CGSize(width: 8, height: 8))
+                            .foregroundColor(Color.systemButton)
+                            .frame(width: 175, height: 73)
+                        RoundedRectangle(cornerSize: CGSize(width: 8, height: 8))
+                            .stroke()
+                            .foregroundColor(.black)
+                            .frame(width: 175, height: 73)
+                        Text(categoryString)
+                            .foregroundColor(.black)
+                    } .onTapGesture {
+                        self.selected = ""
+                    }
+                }  else{
+                    ZStack {
+                        RoundedRectangle(cornerSize: CGSize(width: 8, height: 8))
+                            .stroke()
+                            .foregroundColor(.black)
+                            .frame(width: 175, height: 73)
+                        Text(categoryString)
+                            .foregroundColor(.black)
+                    } .onTapGesture {
+                        self.selected = categoryString
+                    }
                 }
-                else{
-                    RoundedRectangle(cornerSize: CGSize(width: 8, height: 8))
-                        .stroke()
-                        .foregroundColor(.black)
-                        .frame(width: 175, height: 73)
-                }
-                
-                Text(categoryString)
-                    .foregroundColor(.black)
             }
+            
         }
     }
 }
 
 struct RectangleCategoryButton_Previews: PreviewProvider {
     static var previews: some View {
-        RectangleCategoryButton(categoryString: "Hidratante", selectedButton: true)
+        RectangleCategoryButton(categoryString: "Hidratante", selected: .constant("Hidratante"))
     }
 }

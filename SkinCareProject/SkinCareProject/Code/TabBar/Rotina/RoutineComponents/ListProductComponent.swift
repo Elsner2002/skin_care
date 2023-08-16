@@ -48,9 +48,17 @@ struct ListProductComponent: View {
             Button {
                 product.isCompleted.toggle()
             } label: {
-                Image(systemName: "checkmark")
-                    .foregroundColor(Color.brandPink)
-                    .frame(width: 18, height: 22, alignment: .center)
+                if product.isCompleted {
+                    Image(systemName: "checkmark.circle.fill")
+                        .resizable()
+                        .foregroundColor(Color.brandPink)
+                        .frame(width: 23, height: 23, alignment: .center)
+                } else {
+                    Image(systemName: "circle")
+                        .resizable()
+                        .foregroundColor(Color.brandPink)
+                        .frame(width: 23, height: 23, alignment: .center)
+                }
             }
         }
         .padding(.leading, 16)

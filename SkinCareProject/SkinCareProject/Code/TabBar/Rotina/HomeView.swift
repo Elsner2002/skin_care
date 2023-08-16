@@ -14,7 +14,7 @@ struct HomeView: View {
 
     var routineImages: [String] = ["sun.max.fill", "moon.stars.fill"]
     var routineColor: [Color] = [Color.brandPink, Color.brandGreen]
-    var routineList: [Routine] = [Routine(name: "Rotina Diurna", completition: 0, categoryLimpeza: [], categoryTratamentos: [], categoryHidratante: [], categoryProtetor: []), Routine(name: "Rotina Noturna", completition: 0, categoryLimpeza: [], categoryTratamentos: [], categoryHidratante: [], categoryProtetor: [])]
+    @State var routineList: [Routine] = [Constants.shared.dayRoutine, Constants.shared.nightRoutine]
     
     var body: some View {
         NavigationStack{
