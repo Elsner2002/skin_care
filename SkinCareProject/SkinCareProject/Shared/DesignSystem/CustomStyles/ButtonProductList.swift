@@ -16,7 +16,7 @@ struct ButtonProductList: View {
             if let url = product.image, let data =  try? Data(contentsOf: url),  let imageProduct = UIImage(data: data) {
                 Image(uiImage: imageProduct)
                     .resizable()
-                    .frame(width: 60, height: 60)
+                    .frame(width: 75, height: 75)
                     .clipShape(Circle())
             }
             
@@ -24,14 +24,14 @@ struct ButtonProductList: View {
                 HStack{
                     Text(product.nickname)
                         .font(
-                        Font.custom("SF Pro Text", size: 14)
+                        Font.custom("SF Pro Text", size: 15)
                         .weight(.bold)
                         )
                         .foregroundColor(Color.black)
                     Spacer()
                     Text(product.brand)
                         .font(
-                        Font.custom("SF Pro Text", size: 14)
+                        Font.custom("SF Pro Text", size: 15)
                         .weight(.bold)
                         )
                         .foregroundColor(Color.black)
@@ -40,13 +40,13 @@ struct ButtonProductList: View {
                 HStack{
                     Text(product.categories[0])
                         .font(
-                        Font.custom("SF Pro Text", size: 14)
+                        Font.custom("SF Pro Text", size: 15)
                         .weight(.medium)
                         )
                         .foregroundColor(Color.systemLabelSecondary)
                     Text(Constants.shared.priceRange(price: product.priceRange))
                         .font(
-                        Font.custom("SF Pro Text", size: 14)
+                        Font.custom("SF Pro Text", size: 15)
                         .weight(.medium)
                         )
                         .foregroundColor(Color.systemLabelTerciary)
