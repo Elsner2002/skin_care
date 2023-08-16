@@ -9,7 +9,6 @@ import SwiftUI
 import CloudKit
 
 struct HomeView: View {
-//    @StateObject private var vm = Constants.shared.vm
     @EnvironmentObject var vm: CloudKitModel
 
     var routineImages: [String] = ["sun.max.fill", "moon.stars.fill"]
@@ -21,13 +20,13 @@ struct HomeView: View {
             ScrollView(showsIndicators: false) {
                 VStack{
                     HStack{
-                        if let url = vm.user[0].profileImage, let data =  try? Data(contentsOf: url),  let imageProfile = UIImage(data: data) {
-                            Image(uiImage: imageProfile)
-                                .resizable()
-                                .frame(width: 87, height: 87)
-                                .clipShape(Circle())
-                                .padding(.leading, 28)
-                        }
+//                        if let url = vm.user[0].profileImage, let data =  try? Data(contentsOf: url),  let imageProfile = UIImage(data: data) {
+//                            Image(uiImage: imageProfile)
+//                                .resizable()
+//                                .frame(width: 87, height: 87)
+//                                .clipShape(Circle())
+//                                .padding(.leading, 28)
+//                        }
                         VStack{
                             HStack{
                                 Text("Oi, ")
@@ -58,6 +57,7 @@ struct HomeView: View {
                         ForEach(0..<routineImages.count) { position in
                             NavigationLink {
                                 RoutineView(routine: routineList[position])
+                                    .environmentObject(vm)
                             } label: {
                                 RoutineButton(image: Image(systemName: routineImages[position]), color: routineColor[position])
                             }

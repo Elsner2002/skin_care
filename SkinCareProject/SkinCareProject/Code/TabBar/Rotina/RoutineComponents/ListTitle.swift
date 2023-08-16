@@ -12,6 +12,7 @@ struct ListTitle: View {
     
     @State private var showSheet = false
     @Binding var routine: Routine
+    @EnvironmentObject var vm: CloudKitModel
     
     var body: some View {
         NavigationStack {
@@ -34,6 +35,7 @@ struct ListTitle: View {
                 }
                 .fullScreenCover(isPresented: $showSheet) {
                     AddProductView(routine: $routine)
+                        .environmentObject(vm)
                 }
             }
             .frame(width: 362, alignment: .leading)

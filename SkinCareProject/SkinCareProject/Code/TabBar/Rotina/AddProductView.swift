@@ -11,6 +11,7 @@ struct AddProductView: View {
     
     @Environment(\.dismiss) var dismiss
     
+    @EnvironmentObject var vm: CloudKitModel
     @State private var searchText = ""
     @State private var isActive = false
     @Binding var routine: Routine
@@ -57,6 +58,7 @@ struct AddProductView: View {
                         
                         NavigationLink {
                             CreateProductView(routine: $routine)
+                                .environmentObject(vm)
                         } label: {
                             Text("Adicionar produto manualmente")
                                 .bold()

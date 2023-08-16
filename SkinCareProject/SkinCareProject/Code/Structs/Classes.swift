@@ -229,6 +229,7 @@ class RoutineProduct: CloudKitProtocol, Hashable {
     var barcode: Int
     var frequency: [Int]
     var categories: [String]
+    var routine: String
     var record: CKRecord
     
     required init?(record: CKRecord) {
@@ -246,10 +247,12 @@ class RoutineProduct: CloudKitProtocol, Hashable {
         self.frequency = frequency
         guard let categories = record["categories"] as? [String] else {return nil}
         self.categories = categories
+        guard let routine = record["routine"] as? String else {return nil}
+        self.routine = routine
         self.record = record
     }
     
-    required convenience init?(image: URL?, name: String, brand: String, isCompleted: Bool, barcode: Int, frequency: [Int], categories: [String]) {
+    required convenience init?(image: URL?, name: String, brand: String, isCompleted: Bool, barcode: Int, frequency: [Int], categories: [String], routine: String) {
         
         let record = CKRecord(recordType: "RoutineProduct")
         record["name"] = name
@@ -263,6 +266,7 @@ class RoutineProduct: CloudKitProtocol, Hashable {
         record["barcode"] = barcode
         record["frequency"] = frequency
         record["categories"] = categories
+        record["routine"] = routine
         
         self.init(record: record)
     }

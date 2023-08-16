@@ -10,7 +10,7 @@ import SwiftUI
 struct CreateProductView: View {    
     @Environment(\.dismiss) var dismiss
     @Binding var routine: Routine
-    @State var vm = CloudKitModel()
+    @EnvironmentObject var vm: CloudKitModel
     @State var saveConfirm = false
     
     @State var changeProductImage = false
@@ -31,10 +31,11 @@ struct CreateProductView: View {
     var ckBrand: String?
     var ckImage: URL?
     var ckCategory: String?
+    var ckFrequency: [Int]?
     
     func saveProduct() {
         //creates routine product object
-        let newProduct: RoutineProduct = RoutineProduct(image: CloudKitUtility.makeURL(image: image), name: productName, brand: productBrand, isCompleted: false, barcode: 0, frequency: frequency, categories: [selectedCategory])!
+        let newProduct: RoutineProduct = RoutineProduct(image: CloudKitUtility.makeURL(image: image), name: productName, brand: productBrand, isCompleted: false, barcode: 0, frequency: frequency, categories: [selectedCategory], routine: routine.name)!
         
         //adds in Cloudkit
         vm.addProduct(publicDb: false, name: productName, recordType: CloudKitUtility.CloudKitTypes.RoutineProduct, newProduct: newProduct)
@@ -52,6 +53,8 @@ struct CreateProductView: View {
         default:
             print("Not added")
         }
+        
+        
     }
     
     var body: some View {
@@ -231,6 +234,9 @@ struct CreateProductView: View {
                         image = imageProduct
                     }
                 }
+                if ckFrequency != nil{
+                    frequency = ckFrequency!
+                }
             }
     }
     
@@ -241,6 +247,6 @@ struct CreateProductView: View {
 
 struct CreateProductView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateProductView(routine: .constant(Routine(name: "Rotina Diurna", completition: 2, categoryLimpeza: [], categoryTratamentos: [], categoryHidratante: [], categoryProtetor: [])), ckName: nil, ckBrand: nil, ckImage: nil, ckCategory: nil)
+        CreateProductView(routine: .constant(Routine(name: "Rotina Diurna", completition: 2, categoryLimpeza: [], categoryTratamentos: [], categoryHidratante: [], categoryProtetor: [])), ckName: nil, ckBrand: nil, ckImage: nil, ckCategory: nil, ckFrequency: nil)
     }
 }
