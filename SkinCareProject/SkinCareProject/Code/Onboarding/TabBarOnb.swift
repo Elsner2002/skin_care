@@ -11,6 +11,9 @@ import UIKit
 
 struct TabBarOnb: View {
     
+    @EnvironmentObject var vm: CloudKitModel
+
+    
     var body: some View {
         NavigationStack{
             ZStack {
@@ -25,7 +28,10 @@ struct TabBarOnb: View {
                     HStack {
                         Spacer()
                         //controls back button navigation
-                        NavigationLink(destination: TabBarQuest().navigationBarBackButtonHidden(true), label: {
+                        NavigationLink(destination: TabBarQuest()
+                            .navigationBarBackButtonHidden(true)
+                            .environmentObject(vm),
+                            label: {
                             Text("Pular")
                                 .font(.callout)
                                 .foregroundColor(Color(uiColor: .black))

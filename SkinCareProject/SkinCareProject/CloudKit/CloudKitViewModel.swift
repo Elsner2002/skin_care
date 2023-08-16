@@ -28,10 +28,10 @@ class CloudKitModel: ObservableObject {
     @Published var diaryList: [Diary] = []
     @Published var tips: [Tip] = []
     @Published var dailyTip: [Tip] = []
-    @Published var user: [AppUser] = []
+    @Published var user: [User] = []
     @Published var ingredients: [Ingredient] = []
     
-    @Published var defaultUser: AppUser = AppUser(profileImage: CloudKitUtility.makeURLJPG(image: "ProfileDefault"), vegan: false, phototype: Phototype.one.title, skinType: SkinType.oily.rawValue, conditions: [Condition.none.rawValue], concerns: [Concern.none.rawValue])!
+    @Published var defaultUser: User = User(profileImage: CloudKitUtility.makeURLJPG(image: "ProfileDefault"), vegan: false, phototype: Phototype.one.title, skinType: SkinType.oily.rawValue, conditions: [Condition.none.rawValue], concerns: [Concern.none.rawValue], gender: Gender.female.rawValue, age: 18, location: Location.dry.rawValue)!
     //set each variable in the questionnaire
      let product: RoutineProduct = RoutineProduct(image: CloudKitUtility.makeURLJPG(image: "gato-cinza"), name: "test", brand: "test", isCompleted: false, barcode: 12345, frequency: [1], categories: ["Limpeza"])!
     
@@ -43,10 +43,8 @@ class CloudKitModel: ObservableObject {
         requestPermission()
         getCurrentUserName()
         fetchItems(publicDb: true, recordType: CloudKitUtility.CloudKitTypes.ListProduct)//, limit: 10)
-//        fetchItems(publicDb: true, recordType: CloudKitUtility.CloudKitTypes.Tips)
-//        fetchItems(publicDb: false, recordType: CloudKitUtility.CloudKitTypes.Tips)
         fetchItems(publicDb: false, recordType: CloudKitUtility.CloudKitTypes.RoutineProduct)
-        fetchItems(publicDb: false, recordType: CloudKitUtility.CloudKitTypes.AppUser)
+        fetchItems(publicDb: false, recordType: CloudKitUtility.CloudKitTypes.User)
         fetchItems(publicDb: false, recordType: CloudKitUtility.CloudKitTypes.Diary)
         fetchItems(publicDb: true, recordType: CloudKitUtility.CloudKitTypes.Ingredient)
     }
@@ -54,10 +52,6 @@ class CloudKitModel: ObservableObject {
     func addButtonPressed() {
         addIngredient(publicDb: true, name: "test ingredient", recordType: CloudKitUtility.CloudKitTypes.Ingredient, newIngredient: Ingredient(names: ["Aqua", "Água"], description: "water")!)
     }
-    
-//    func addDailyTip(newTip: Tip){
-//        addTip(publicDb: false, name: "Daily Tip", recordType: .Tips, newTip: newTip)
-//    }
     
     func getProductBarcode(barcode: Int) -> ListProduct?{
         var productBarcode: ListProduct?
@@ -131,15 +125,6 @@ class CloudKitModel: ObservableObject {
         }
     }
     
-//    private func addTip(publicDb: Bool, name: String, recordType: CloudKitUtility.CloudKitTypes, newTip: Tip){
-//        CloudKitUtility.add(publicDb: publicDb, item: newTip) { result in
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                self.tips.append(newTip)
-//                self.fetchItems(publicDb: publicDb, recordType: recordType)
-//            }
-//        }
-//    }
-    
     private func addDiary(publicDb: Bool, name: String, recordType: CloudKitUtility.CloudKitTypes, newDiary: Diary){
         CloudKitUtility.add(publicDb: publicDb, item: newDiary) { result in
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -184,7 +169,7 @@ class CloudKitModel: ObservableObject {
                     self?.routineProducts = returnedItem
                 }
                 .store(in: &cancellables)
-        case .AppUser:
+        case .User:
               CloudKitUtility.fetch(publicDb: publicDb, predicate: predicate, recordType: recordType)
                 .receive(on: DispatchQueue.main)
                 .sink { _ in
@@ -193,20 +178,6 @@ class CloudKitModel: ObservableObject {
                     self?.user = returnedItem
                 }
                 .store(in: &cancellables)
-//        case .Tips:
-//            CloudKitUtility.fetch(publicDb: publicDb, predicate: predicate, recordType: recordType)
-//                .receive(on: DispatchQueue.main)
-//                .sink { _ in
-//
-//                } receiveValue: { [weak self] returnedItem in
-//                    if publicDb{
-//                        self?.tips = returnedItem
-//                    }
-//                    else {
-//                        self?.dailyTip = returnedItem
-//                    }
-//                }
-//                .store(in: &cancellables)
         case .Diary:
             CloudKitUtility.fetch(publicDb: publicDb, predicate: predicate, recordType: recordType)
                 .receive(on: DispatchQueue.main)
@@ -260,7 +231,7 @@ class CloudKitModel: ObservableObject {
         }
     }
     
-    func NEW_updateUser(publicDb: Bool, appUser: AppUser, recordType: CloudKitUtility.CloudKitTypes, userInfo: UserInfo) {
+    func NEW_updateUser(publicDb: Bool, appUser: User, recordType: CloudKitUtility.CloudKitTypes, userInfo: UserInfo) {
         var newUser = appUser
         if userInfo.userVegan != appUser.vegan {
             newUser = newUser.updateVegan(newVegan: userInfo.userVegan)!
@@ -283,7 +254,7 @@ class CloudKitModel: ObservableObject {
         }
     }
     
-    func updateUser(publicDb: Bool, appUser: AppUser, recordType: CloudKitUtility.CloudKitTypes, userVegan: Bool, userPhototype: String = "NaoAlterado", userSkinType: String = "NaoAlterado", userConditions: [String] = [], userImage: URL = CloudKitUtility.makeURLJPG(image: "ProfileDefault")) {
+    func updateUser(publicDb: Bool, appUser: User, recordType: CloudKitUtility.CloudKitTypes, userVegan: Bool, userPhototype: String = "NaoAlterado", userSkinType: String = "NaoAlterado", userConditions: [String] = [], userImage: URL = CloudKitUtility.makeURLJPG(image: "ProfileDefault")) {
         var newUser = appUser
         if userVegan != appUser.vegan {
             newUser = newUser.updateVegan(newVegan: userVegan)!

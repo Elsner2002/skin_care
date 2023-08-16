@@ -86,6 +86,8 @@ struct RoutineView: View {
 struct SheetRoutine: View {
     @Binding var routine: Routine
     @EnvironmentObject var constants: Constants
+    @EnvironmentObject var vm: CloudKitModel
+
     var listLimpeza: ListView
     var listTratamentos: ListView
     var listHidratante: ListView

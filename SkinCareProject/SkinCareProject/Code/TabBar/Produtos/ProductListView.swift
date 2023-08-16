@@ -11,7 +11,7 @@ struct ProductListView: View {
     
     @State private var searchText = ""
     
-    @StateObject var vm = CloudKitModel()
+    @EnvironmentObject var vm: CloudKitModel
     @State var categoryButtons = ProductCategory.allCases
     @State var selectedCategory: ProductCategory?
     

@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct CameraAddProductView: View {
-    @StateObject var vm = CloudKitModel()
+    @EnvironmentObject var vm: CloudKitModel
+
 
     @EnvironmentObject var cameraVM: CameraViewModel
     @State var isProductViewShowing: Bool = false

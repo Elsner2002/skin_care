@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct CategoryVerticalView: View {
-    @StateObject var vm = CloudKitModel()
+    @EnvironmentObject var vm: CloudKitModel
+
     var listOfProducts: [ListProduct]
     
     var body: some View {

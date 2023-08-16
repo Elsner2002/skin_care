@@ -33,17 +33,12 @@ struct SkinCareProjectApp: App {
                 }
             }
             .onAppear {
-//                if !fetch {
-//                    @StateObject var vm = CloudKitModel()
-//                    fetch = true
-//                }
                 if firstTimeHere {
-                    vm.addUser(publicDb: false, name: vm.userName, recordType: .AppUser)
+                    vm.addUser(publicDb: false, name: vm.userName, recordType: .User)
                 }
-                vm.fetchItems(publicDb: false, recordType: .AppUser)
+               // vm.fetchItems(publicDb: true, recordType: .User)
 
-                //Constants.shared.randomTipGenerator()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     withAnimation {
                         self.isActive = true
                     }

@@ -30,8 +30,7 @@ class CloudKitUtility {
     enum CloudKitTypes: String {
         case ListProduct = "ListProduct"
         case RoutineProduct = "RoutineProduct"
-        case AppUser = "AppUser"
-//        case Tips = "Tips"
+        case User = "User"
         case Diary = "Diary"
         case Ingredient = "Ingredient"
     }
