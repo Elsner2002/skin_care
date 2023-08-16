@@ -11,11 +11,6 @@ struct DiaryView: View {
     @State private var showSheet: Bool = false
     @State var date: Date = Date.now
     
-    
-    init() {
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-    }
-
     var body: some View {
         NavigationStack {
             ZStack {
@@ -87,8 +82,8 @@ struct SheetDiary: View {
                         Spacer(minLength: 90)
                         
                         VStack {
-                            CustomButton(label: "Salvar", action: {}, description: "", buttonType: .largeRounded)
-                            CustomButton(label: "Excluir", action: {}, description: "", buttonType: .largeRounded)                         
+                            CustomButton(label: "Salvar", description: "", buttonType: .largeRounded, action: {})
+                            CustomButton(label: "Excluir", description: "", buttonType: .largeRounded, action: {})       
                         }
                         .frame(width: 324, alignment: .center)
                     }

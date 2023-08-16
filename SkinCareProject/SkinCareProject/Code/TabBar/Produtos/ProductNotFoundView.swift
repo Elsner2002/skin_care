@@ -39,8 +39,14 @@ struct ProductNotFoundView: View {
             
             VStack{
                 CustomButton(label: "Voltar", action: {
+                if showCreateProduct{
+                    CustomButton(label: "Cadastrar Produto", description: "", buttonType: .largeRounded, action: {
+                        self.isShowingCreateProductView = true
+                    })
+                }
+
                     dismiss()
-                }, description: "", buttonType: .largeRounded)
+                })
                 
             }
             .padding(.horizontal, 33)

@@ -55,13 +55,27 @@ struct AboutProductView: View {
                                 }
                                 .padding(.horizontal, 10)
                             }
-                            Spacer()
+                            
+                            if product.vegan {
+                                VStack{
+                                    Image("Vegan")
+                                        .resizable()
+                                        .frame(width: 70, height: 70)
+                                        .clipShape(Circle())
+                                    Text("vegano")
+                                        .bold()
+                                        .foregroundColor(Color.brandGray)
+                                }
+                                .padding(.horizontal, 10)
+                            }
+                            
                         }
                         .padding(.horizontal, 12)
                     }
                     
                     if addRoutine {
                         CustomButton(label: "Adicionar a minha rotina", action: {message.toggle()}, description: "", buttonType: .largeRounded)
+
                             .padding(.top, 18)
                             .padding(.horizontal, 30)
                             .confirmationDialog("", isPresented: $message, titleVisibility: .hidden) {

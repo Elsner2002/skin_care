@@ -19,20 +19,19 @@ class Constants: ObservableObject {
     
     //MARK: create variables here
     //tips variables
-//    @ObservedObject var tipsData = TipsService()
-//    var randomTip: Tip?
-//    func randomTipGenerator(){
-//        if !compareDay(){
-//            randomTip = tipsData.tips.randomElement()
-//            let encodedTip = try? JSONEncoder().encode(randomTip)
-//            UserDefaults.standard.set(encodedTip, forKey: "randomTip")
-//        }
-//        else{
-//            //randomTip = try? JSONDecoder().decode(Tip.self, from: UserDefaults.standard.data(forKey: "randomTip")!)
-//            randomTip = Tip(title: "Tip 1", text: "Skin care é bom", image: "tipImage")
-//        }
-//        lastDay = Date.now
-//    }
+    @ObservedObject var tipsData = TipsService()
+    var randomTip: Tip?
+    func randomTipGenerator(){
+        if !compareDay(){
+            randomTip = tipsData.getTips().randomElement()
+            let encodedTip = try? JSONEncoder().encode(randomTip)
+            UserDefaults.standard.set(encodedTip, forKey: "randomTip")
+        }
+        else{
+            randomTip = try? JSONDecoder().decode(Tip.self, from: UserDefaults.standard.data(forKey: "randomTip")!)
+        }
+        lastDay = Date.now
+    }
     
     //days variables
     var dayBefore: Date {
@@ -57,7 +56,7 @@ class Constants: ObservableObject {
         if lastDay == nil {
             lastDay = dayBefore
         }
-        //randomTipGenerator()
+        randomTipGenerator()
     }
     
     //price range
@@ -87,7 +86,7 @@ class Constants: ObservableObject {
             if !notification {
                 morningNotification = false
                 nightNotification = false
-
+                
             } else if notification {
                 morningNotification = true
                 nightNotification = true
@@ -132,7 +131,7 @@ class Constants: ObservableObject {
         didSet {
             UserDefaults.standard.set(nightNotification, forKey: "nightNotification")
         }
-    
+        
     }
     
     @Published var allowedNotification: Bool = UserDefaults.standard.value(forKey: "allowedNotification") as? Bool ?? false {

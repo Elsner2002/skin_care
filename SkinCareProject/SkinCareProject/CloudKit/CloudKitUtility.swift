@@ -31,7 +31,7 @@ class CloudKitUtility {
         case ListProduct = "ListProduct"
         case RoutineProduct = "RoutineProduct"
         case AppUser = "AppUser"
-        case Tips = "Tips"
+//        case Tips = "Tips"
         case Diary = "Diary"
         case Ingredient = "Ingredient"
     }
@@ -239,6 +239,7 @@ extension CloudKitUtility {
                 } else {
                     completion(.success(true))
                 }
+                print(returnedRecord)
             }
         }
         

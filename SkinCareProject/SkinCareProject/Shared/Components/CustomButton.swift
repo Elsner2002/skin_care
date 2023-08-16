@@ -9,10 +9,10 @@ import SwiftUI
 
 struct CustomButton: View {
     var label: String
-    var action: () -> Void
     var description: String
     var isPressed: Bool = false
     var buttonType: ButtonType
+    var action: () -> Void
     
     var body: some View {
         Button {
@@ -27,7 +27,7 @@ struct CustomButton: View {
 
 struct CustomButton_Previews: PreviewProvider {
     static var previews: some View {
-        CustomButton(label: "Label", action: {}, description: "This is a button description text.", buttonType: .largeRoundedOverlay)
+        CustomButton(label: "Label", description: "This is a button description text.", buttonType: .largeRounded, action: {})
     }
 }
 

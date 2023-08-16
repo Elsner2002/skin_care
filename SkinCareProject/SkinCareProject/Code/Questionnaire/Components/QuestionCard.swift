@@ -9,34 +9,29 @@ import SwiftUI
 
 struct QuestionCard<T: RawRepresentable & CaseIterable & Hashable>: View where T.AllCases : RandomAccessCollection, T.RawValue == String { // accepts any enum as T
     
-    @State var buttonPressed: String = ""
+    @Binding var buttonPressed: String
+
+    @State var showDescription: Bool = false
     var buttonType: ButtonType
     var questionLabel: String
     var buttonLabels: T.Type
     
     var body: some View {
         VStack(alignment: .center) {
-            VStack(alignment: .leading, spacing: 21) {
+            VStack(alignment: .leading, spacing: 18) {
                 Text(questionLabel)
                     .multilineTextAlignment(.leading)
                     .frame(height: 48)
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 33))
 
                 ForEach(buttonLabels.allCases, id: \.self) { label in
-                    CustomButton(label: label.rawValue,
-                                 action: { self.buttonPressed = label.rawValue},
-                                 description: "implement this",
-                                 isPressed: buttonPressed == label.rawValue,
-                                 buttonType: buttonType)
-                } 
+                    PrimaryButton(
+                        label: label.rawValue,
+                        description: "implement this",
+                        isPressed: buttonPressed == label.rawValue)
+                    {self.buttonPressed = label.rawValue}
+                }
             }
         }
     }
 }
-
-struct Components_Previews: PreviewProvider {
-    static var previews: some View {
-        QuestionCard(buttonType: .largeRoundedOverlay, questionLabel: "pergunta", buttonLabels: SkinType.self)
-    }
-}
-

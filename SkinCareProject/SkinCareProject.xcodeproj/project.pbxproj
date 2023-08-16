@@ -58,7 +58,6 @@
 		A544A7052A7ADB15006E1747 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A544A7042A7ADB15006E1747 /* ListView.swift */; };
 		A55E88BA2A686ECB005E5AC5 /* Splashscreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55E88B92A686ECB005E5AC5 /* Splashscreen.swift */; };
 		A55E88BD2A7031FE005E5AC5 /* TabBarOnb.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55E88BC2A7031FE005E5AC5 /* TabBarOnb.swift */; };
-		A55E88C92A7057CD005E5AC5 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55E88C82A7057CD005E5AC5 /* OnboardingView.swift */; };
 		A55E88D12A72E58A005E5AC5 /* CloudKitUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55E88D02A72E58A005E5AC5 /* CloudKitUtility.swift */; };
 		A55E88D52A7403BE005E5AC5 /* CloudKitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55E88D42A7403BE005E5AC5 /* CloudKitViewModel.swift */; };
 		A55FBB722A8AF1C5003B5DDC /* SearchBarAddProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55FBB712A8AF1C5003B5DDC /* SearchBarAddProduct.swift */; };
@@ -85,7 +84,17 @@
 		D88A107A2A8054CE006CC93E /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88A10792A8054CE006CC93E /* ProgressBar.swift */; };
 		D88A107C2A8054F3006CC93E /* WheelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88A107B2A8054F3006CC93E /* WheelPicker.swift */; };
 		D88A107E2A80550C006CC93E /* QuestionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88A107D2A80550C006CC93E /* QuestionCard.swift */; };
-		D8A5EEFB2A813B590073F918 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A5EEFA2A813B590073F918 /* OnboardingModel.swift */; };
+		D88F2A272A8A81A40017561D /* OnboardingPage1.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88F2A262A8A81A40017561D /* OnboardingPage1.swift */; };
+		D88F2A292A8A848F0017561D /* OnboardingPage2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88F2A282A8A848F0017561D /* OnboardingPage2.swift */; };
+		D88F2A2B2A8A88EB0017561D /* OnboardingPage3.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88F2A2A2A8A88EB0017561D /* OnboardingPage3.swift */; };
+		D88F2A2D2A8A897F0017561D /* OnboardingPage4.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88F2A2C2A8A897F0017561D /* OnboardingPage4.swift */; };
+		D8E60F582A8AA0CB00F9CB18 /* ButtonPrimary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E60F572A8AA0CB00F9CB18 /* ButtonPrimary.swift */; };
+		D8E60F5A2A8AA13800F9CB18 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E60F592A8AA13800F9CB18 /* PrimaryButton.swift */; };
+		D8E60F5C2A8AA6CB00F9CB18 /* TextDescriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E60F5B2A8AA6CB00F9CB18 /* TextDescriptions.swift */; };
+		D8E60F5E2A8AEF2A00F9CB18 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E60F5D2A8AEF2A00F9CB18 /* SecondaryButton.swift */; };
+		D8E60F602A8B163000F9CB18 /* QuestionCardMultipleChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E60F5F2A8B163000F9CB18 /* QuestionCardMultipleChoice.swift */; };
+		D8E60F622A8BBF2D00F9CB18 /* ButtonSecondary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E60F612A8BBF2D00F9CB18 /* ButtonSecondary.swift */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -141,7 +150,6 @@
 		A544A7042A7ADB15006E1747 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		A55E88B92A686ECB005E5AC5 /* Splashscreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Splashscreen.swift; sourceTree = "<group>"; };
 		A55E88BC2A7031FE005E5AC5 /* TabBarOnb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarOnb.swift; sourceTree = "<group>"; };
-		A55E88C82A7057CD005E5AC5 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		A55E88CA2A70606D005E5AC5 /* SkinCareProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SkinCareProject.entitlements; sourceTree = "<group>"; };
 		A55E88D02A72E58A005E5AC5 /* CloudKitUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitUtility.swift; sourceTree = "<group>"; };
 		A55E88D42A7403BE005E5AC5 /* CloudKitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitViewModel.swift; sourceTree = "<group>"; };
@@ -169,7 +177,17 @@
 		D88A10792A8054CE006CC93E /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		D88A107B2A8054F3006CC93E /* WheelPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelPicker.swift; sourceTree = "<group>"; };
 		D88A107D2A80550C006CC93E /* QuestionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCard.swift; sourceTree = "<group>"; };
-		D8A5EEFA2A813B590073F918 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
+		D88F2A262A8A81A40017561D /* OnboardingPage1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage1.swift; sourceTree = "<group>"; };
+		D88F2A282A8A848F0017561D /* OnboardingPage2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage2.swift; sourceTree = "<group>"; };
+		D88F2A2A2A8A88EB0017561D /* OnboardingPage3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage3.swift; sourceTree = "<group>"; };
+		D88F2A2C2A8A897F0017561D /* OnboardingPage4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage4.swift; sourceTree = "<group>"; };
+		D8E60F572A8AA0CB00F9CB18 /* ButtonPrimary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPrimary.swift; sourceTree = "<group>"; };
+		D8E60F592A8AA13800F9CB18 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		D8E60F5B2A8AA6CB00F9CB18 /* TextDescriptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDescriptions.swift; sourceTree = "<group>"; };
+		D8E60F5D2A8AEF2A00F9CB18 /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
+		D8E60F5F2A8B163000F9CB18 /* QuestionCardMultipleChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCardMultipleChoice.swift; sourceTree = "<group>"; };
+		D8E60F612A8BBF2D00F9CB18 /* ButtonSecondary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSecondary.swift; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -328,8 +346,10 @@
 			isa = PBXGroup;
 			children = (
 				A55E88BC2A7031FE005E5AC5 /* TabBarOnb.swift */,
-				D8A5EEFA2A813B590073F918 /* OnboardingModel.swift */,
-				A55E88C82A7057CD005E5AC5 /* OnboardingView.swift */,
+				D88F2A262A8A81A40017561D /* OnboardingPage1.swift */,
+				D88F2A282A8A848F0017561D /* OnboardingPage2.swift */,
+				D88F2A2A2A8A88EB0017561D /* OnboardingPage3.swift */,
+				D88F2A2C2A8A897F0017561D /* OnboardingPage4.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -422,6 +442,8 @@
 				7C30D1522A7ACECC009F93D7 /* CategoryButton.swift */,
 				7C30D15B2A7C1B21009F93D7 /* ButtonProductList.swift */,
 				7C5FA0F92A7C42AE000D43BD /* RoutineButton.swift */,
+				D8E60F572A8AA0CB00F9CB18 /* ButtonPrimary.swift */,
+				D8E60F612A8BBF2D00F9CB18 /* ButtonSecondary.swift */,
 			);
 			path = CustomStyles;
 			sourceTree = "<group>";
@@ -466,6 +488,7 @@
 				D88A106F2A7F431C006CC93E /* CustomButtonDescription.swift */,
 				7C30D1472A79E794009F93D7 /* Searchbar.swift */,
 				A55FBB712A8AF1C5003B5DDC /* SearchBarAddProduct.swift */,
+				D8E60F5B2A8AA6CB00F9CB18 /* TextDescriptions.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -473,8 +496,11 @@
 		D88A107F2A806978006CC93E /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				D8E60F592A8AA13800F9CB18 /* PrimaryButton.swift */,
+				D8E60F5D2A8AEF2A00F9CB18 /* SecondaryButton.swift */,
 				D88A10792A8054CE006CC93E /* ProgressBar.swift */,
 				D88A107D2A80550C006CC93E /* QuestionCard.swift */,
+				D8E60F5F2A8B163000F9CB18 /* QuestionCardMultipleChoice.swift */,
 				D88A107B2A8054F3006CC93E /* WheelPicker.swift */,
 			);
 			path = Components;
@@ -565,6 +591,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8E60F602A8B163000F9CB18 /* QuestionCardMultipleChoice.swift in Sources */,
+				D88F2A2D2A8A897F0017561D /* OnboardingPage4.swift in Sources */,
 				7C30D1462A799A20009F93D7 /* RectangleCategoryButton.swift in Sources */,
 				7CDF2E6F2A6B17CE0028CA84 /* ProductListView.swift in Sources */,
 				7C30D1582A7AEE79009F93D7 /* TipSheetView.swift in Sources */,
@@ -577,17 +605,18 @@
 				A55FBB762A8BF416003B5DDC /* ProductNotFoundAdd.swift in Sources */,
 				7CB66FE42A6723CE006DFFB2 /* Classes.swift in Sources */,
 				A544A6F02A797A65006E1747 /* HapticsService.swift in Sources */,
+				D8E60F5A2A8AA13800F9CB18 /* PrimaryButton.swift in Sources */,
 				7C30D1512A7ACBEB009F93D7 /* UIApplicationExtension.swift in Sources */,
 				D88A10462A7C20E0006CC93E /* QuestionnairePage1.swift in Sources */,
 				D88A107A2A8054CE006CC93E /* ProgressBar.swift in Sources */,
-				D8A5EEFB2A813B590073F918 /* OnboardingModel.swift in Sources */,
 				7CB66FC72A66F2D7006DFFB2 /* SkinCareProjectApp.swift in Sources */,
 				A544A7052A7ADB15006E1747 /* ListView.swift in Sources */,
 				A55E88D52A7403BE005E5AC5 /* CloudKitViewModel.swift in Sources */,
 				7C62FE542A843C2700C586A3 /* AboutProductView.swift in Sources */,
+				D8E60F622A8BBF2D00F9CB18 /* ButtonSecondary.swift in Sources */,
 				A544A6F32A797D1E006E1747 /* RoutineProgress.swift in Sources */,
+				D8E60F5C2A8AA6CB00F9CB18 /* TextDescriptions.swift in Sources */,
 				A544A6FB2A799AD5006E1747 /* RoutineView.swift in Sources */,
-				A55E88C92A7057CD005E5AC5 /* OnboardingView.swift in Sources */,
 				7C30D15A2A7C168B009F93D7 /* AddProductView.swift in Sources */,
 				A5AD05332A7D378100826963 /* TipsView.swift in Sources */,
 				7C62FE502A82C07800C586A3 /* HorizontalScrollProductsView.swift in Sources */,
@@ -607,6 +636,7 @@
 				D88A10572A7C56B5006CC93E /* QuestionnairePage5.swift in Sources */,
 				7CDF2E712A6B17DC0028CA84 /* DiaryView.swift in Sources */,
 				D88A105F2A7D6F24006CC93E /* QuestionnaireModel.swift in Sources */,
+				D88F2A292A8A848F0017561D /* OnboardingPage2.swift in Sources */,
 				7CB66FE02A67013F006DFFB2 /* TipsService.swift in Sources */,
 				7CA88CA02A7063EF00E58ABA /* CameraView.swift in Sources */,
 				7C30D14E2A7ABC7A009F93D7 /* CreateProductTextField.swift in Sources */,
@@ -615,6 +645,7 @@
 				7C30D1552A7AD8F3009F93D7 /* ViewExtension.swift in Sources */,
 				7CA88CA22A717B4600E58ABA /* DataScannerView.swift in Sources */,
 				D82F351F2A79922900E7A8B1 /* ButtonExtension.swift in Sources */,
+				D88F2A2B2A8A88EB0017561D /* OnboardingPage3.swift in Sources */,
 				7CB66FDE2A670132006DFFB2 /* CameraViewModel.swift in Sources */,
 				7C4710152A887E4C00A93EB4 /* RecomendedProductsView.swift in Sources */,
 				A544A6EE2A797A1A006E1747 /* NotificationService.swift in Sources */,
@@ -629,8 +660,10 @@
 				7CA88CA82A72DFDF00E58ABA /* ImageViewModel.swift in Sources */,
 				D88A10512A7C4C78006CC93E /* QuestionnairePage4.swift in Sources */,
 				D88A10392A7B5915006CC93E /* TabBarQuest.swift in Sources */,
+				D8E60F582A8AA0CB00F9CB18 /* ButtonPrimary.swift in Sources */,
 				D88A10552A7C4FB2006CC93E /* CustomButton.swift in Sources */,
 				7CB66FE62A67289A006DFFB2 /* Constants.swift in Sources */,
+				D8E60F5E2A8AEF2A00F9CB18 /* SecondaryButton.swift in Sources */,
 				D88A107E2A80550C006CC93E /* QuestionCard.swift in Sources */,
 				A544A6F72A79840B006E1747 /* RoutineAlarm.swift in Sources */,
 				D88A105D2A7D4102006CC93E /* QuestionnairePage7.swift in Sources */,
@@ -640,6 +673,7 @@
 				A55E88BD2A7031FE005E5AC5 /* TabBarOnb.swift in Sources */,
 				7C30D1482A79E794009F93D7 /* Searchbar.swift in Sources */,
 				D88A104D2A7C3CE4006CC93E /* QuestionnairePage2.swift in Sources */,
+				D88F2A272A8A81A40017561D /* OnboardingPage1.swift in Sources */,
 				D88A107C2A8054F3006CC93E /* WheelPicker.swift in Sources */,
 				A55FBB742A8AF28F003B5DDC /* CameraAddProductView.swift in Sources */,
 			);

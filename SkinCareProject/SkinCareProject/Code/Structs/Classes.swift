@@ -279,32 +279,24 @@ extension URL: CKRecordValueProtocol {
     
 }
 
-class Tip: CloudKitProtocol {
-    var title: String
-    var text: String
-    var image: URL?
-    let record: CKRecord
+class Tip: Codable {
     
-    required init?(record: CKRecord) {
-        let imageAsset = record["image"] as? CKAsset
-        self.image = imageAsset?.fileURL
-        guard let title = record["title"] as? String else {return nil}
-        self.title = title
-        guard let text = record["text"] as? String else {return nil}
-        self.text = text
-        self.record = record
+    static func == (lhs: Tip, rhs: Tip) -> Bool {
+        return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
     }
     
-    required convenience init?(title: String, text: String, image: URL?){
-        let record = CKRecord(recordType: "Tip")
-        if let url = image {
-            let asset = CKAsset(fileURL: url)
-                record["image"] = asset
-        }
-        record["title"] = title
-        record["text"] = text
-
-        self.init(record: record)
+    var title: String
+    var text: String
+    var subtitle: String
+    var type: String
+    var image: String
+    
+    init(title: String, text: String, image: String, subtitle: String, type: String){
+        self.image = image
+        self.title = title
+        self.text = text
+        self.subtitle = subtitle
+        self.type = type
     }
 }
 
