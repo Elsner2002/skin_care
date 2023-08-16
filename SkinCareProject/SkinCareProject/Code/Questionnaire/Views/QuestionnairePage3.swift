@@ -1,28 +1,31 @@
 //
-//  QuestionnairePage3.swift
+//  QuestionnairePage2.swift
 //  SkinCareProject
 //
 //  Created by Natalia Dal Pizzol on 03/08/23.
 //
 
+import Foundation
+import SwiftUI
+import Foundation
 import SwiftUI
 
+
 struct QuestionnairePage3: View {
+    @EnvironmentObject var vm: CloudKitModel
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var userInfo: UserInfo
-    @EnvironmentObject var vm: CloudKitModel
     @State var buttonPressed: String = ""
     var buttonLabel: buttonLabels
     
     var body: some View {
         VStack {
-            ProgressView("", value: 30, total: 100)
+            ProgressView("", value: 20, total: 100)
                 .tint(.systemButton)
                 .frame(width: 243, height: 80, alignment: .center)
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: 15, trailing: 0))
-            QuestionCard(buttonPressed: .constant(""), buttonType: .largeRounded, questionLabel: "Como sua pele fica após horas de exposição ao sol sem proteção solar?", buttonLabels: PhototypeQuestions.self)
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
+            QuestionCard(buttonPressed: $buttonPressed, buttonType: .smallRounded, questionLabel: "Como sua pele fica após horas de exposição ao sol sem proteção ?", buttonLabels: PhototypeQuestion.self)
                 .frame(width: 334, alignment: .topLeading)
-            Spacer()
             
             HStack(alignment: .center) {
                 if buttonLabel == .next {
@@ -48,16 +51,15 @@ struct QuestionnairePage3: View {
                     .frame(width: 165, height: 35.71429, alignment: .center)
                     .padding(EdgeInsets(top: 100, leading: 0, bottom: 0, trailing: 0))
                 }
-                
             }
-            .padding(EdgeInsets(top: 0, leading: 0, bottom: 55, trailing: 0))
-
+            Spacer(minLength: 70)
         }
+        .padding(20)
+    }
+}
+struct QuestionnairePage3_Preview: PreviewProvider {
+    static var previews: some View {
+        QuestionnairePage3(buttonLabel: .save)
     }
 }
 
-struct QuestionnairePage3_Previews: PreviewProvider {
-    static var previews: some View {
-        QuestionnairePage3(buttonLabel: .next)
-    }
-}

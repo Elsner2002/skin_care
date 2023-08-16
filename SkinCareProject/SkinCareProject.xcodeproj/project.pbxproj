@@ -94,7 +94,6 @@
 		D8E60F5E2A8AEF2A00F9CB18 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E60F5D2A8AEF2A00F9CB18 /* SecondaryButton.swift */; };
 		D8E60F602A8B163000F9CB18 /* QuestionCardMultipleChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E60F5F2A8B163000F9CB18 /* QuestionCardMultipleChoice.swift */; };
 		D8E60F622A8BBF2D00F9CB18 /* ButtonSecondary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E60F612A8BBF2D00F9CB18 /* ButtonSecondary.swift */; };
-
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -187,7 +186,6 @@
 		D8E60F5D2A8AEF2A00F9CB18 /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
 		D8E60F5F2A8B163000F9CB18 /* QuestionCardMultipleChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCardMultipleChoice.swift; sourceTree = "<group>"; };
 		D8E60F612A8BBF2D00F9CB18 /* ButtonSecondary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSecondary.swift; sourceTree = "<group>"; };
-
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -298,10 +296,10 @@
 		7CB66FD72A66F37F006DFFB2 /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				A55E88B92A686ECB005E5AC5 /* Splashscreen.swift */,
 				7CB66FE52A67289A006DFFB2 /* Constants.swift */,
 				7CB66FD82A66F3BD006DFFB2 /* Application */,
 				7CB66FDA2A66F4C7006DFFB2 /* Structs */,
-				A55E88B92A686ECB005E5AC5 /* Splashscreen.swift */,
 				7C30D1562A7AEE5B009F93D7 /* Tips */,
 				7CA88C9E2A7063B500E58ABA /* Camera */,
 				D88A104B2A7C29D6006CC93E /* Questionnaire */,
@@ -624,7 +622,6 @@
 				7C30D1532A7ACECC009F93D7 /* CategoryButton.swift in Sources */,
 				D87F2E6F2A826D77000B42F8 /* AddPhotoCard.swift in Sources */,
 				7C4710132A8844B700A93EB4 /* CategoryVerticalView.swift in Sources */,
-				A55E88C92A7057CD005E5AC5 /* OnboardingView.swift in Sources */,
 				D82F35152A79747800E7A8B1 /* DesignColors.swift in Sources */,
 				7CDF2E6D2A6B17C00028CA84 /* HomeView.swift in Sources */,
 				7C62FE522A82C08800C586A3 /* VerticalScrollProductsView.swift in Sources */,

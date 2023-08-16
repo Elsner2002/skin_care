@@ -18,8 +18,7 @@ struct QuestionnairePage7: View {
                 .tint(.systemButton)
                 .frame(width: 243, height: 80, alignment: .center)
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
-            
-            QuestionCard(buttonPressed: .constant(""), buttonType: .largeRounded,
+            QuestionCard(buttonPressed: $buttonPressed, buttonType: .largeRounded,
                          questionLabel: "Você tem uma preferência por produtos?",
                          buttonLabels: PreferenceQuestions.self)
                 .frame(width: 291, alignment: .topLeading)
@@ -32,10 +31,10 @@ struct QuestionnairePage7: View {
                     }
                 }
                 .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
-
+                
             }
-                .frame(width: 162.14287, alignment: .center)
-                .padding(EdgeInsets(top: 350, leading: 0, bottom: 70, trailing: 0))
+            .frame(width: 162.14287, alignment: .center)
+            .padding(EdgeInsets(top: 350, leading: 0, bottom: 70, trailing: 0))
         }
         .padding(20)
     }

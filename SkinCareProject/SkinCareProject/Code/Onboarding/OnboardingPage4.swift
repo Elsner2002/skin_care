@@ -9,26 +9,27 @@ import SwiftUI
 
 struct OnboardingPage4: View, Hashable {
     var body: some View {
-        VStack{
-            ZStack {
-                Image("OnboardingPage4")
-                    .padding(EdgeInsets(top: 177, leading: 0, bottom: 0, trailing: 0))
-                VStack(spacing: 21){
+        ZStack {
+            Color.systemBG
+                .ignoresSafeArea()
+            Image("OnboardingPage4")
+                .resizable()
+                .scaledToFit()
+                .aspectRatio(contentMode: .fill)
+                .padding(.top, 203)
+            VStack {
+                VStack( alignment: .leading, spacing: 44) {
                     Text("Aprenda a composição dos produtos")
                         .font(.largeTitle)
                         .bold()
-                        .frame(width: 359, alignment: .topLeading)
-                    Text("Saiba para o que servem os componentes químicos dos seus produtos favoritos")
-                        .font(.callout)
-                        .frame(width: 347, alignment: .topLeading)
-                    
-                    CustomButton(label: "Próximo", description: "", buttonType: .smallRounded, action: {})
-
-                        .frame(width: 162.14287, alignment: .center)
-                        .padding(EdgeInsets(top: 139, leading: 0, bottom: 0, trailing: 0))
+                    Text("Saiba para o que servem os \ncomponentes químicos dos seus produtos favoritos")
+                        .font(.title2)
                 }
+                .padding(.bottom, 140)
+                CustomButton(label: "Próximo", description: "", buttonType: .smallRounded, action: {})
+                    .frame(width: 162.14287, alignment: .center)
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 15, trailing: 0))
             }
-          
         }
     }
 }

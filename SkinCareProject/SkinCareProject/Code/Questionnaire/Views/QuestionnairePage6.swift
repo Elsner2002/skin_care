@@ -10,8 +10,8 @@ import SwiftUI
 struct QuestionnairePage6: View {
     @EnvironmentObject var userInfo: UserInfo
     @EnvironmentObject var vm: CloudKitModel
-    @State var buttonPressed: String = ""
-    
+    @State var buttonPressed: Set<String> = []
+
     var body: some View {
         VStack {
             ProgressView("", value: 80, total: 100)
@@ -24,7 +24,7 @@ struct QuestionnairePage6: View {
                          buttonLabels: EnvironmentQuestions.self)
                 .frame(width: 291, alignment: .topLeading)
             HStack(alignment: .center) {
-                Button(action: {userInfo.userPhototype = buttonPressed}) {
+                Button(action: {}) {
                     NavigationLink(destination: QuestionnairePage7()
                         .environmentObject(vm))
                     {

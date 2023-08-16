@@ -9,23 +9,22 @@ import SwiftUI
 
 struct OnboardingPage1: View, Hashable {
     var body: some View {
-        VStack{
-            ZStack {
-                Image("OnboardingPage1")
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 576, trailing: 0))
-                VStack(spacing: 21){
-                    Text("Skin care é cuidado com sua pele e saúde")
-                        .font(.largeTitle)
-                        .bold()
-                        .frame(width: 359, alignment: .topLeading)
-                    Text("Realize o nosso Quiz e aproveite 100% do nosso aplicativo")
-                        .font(.callout)
-                        .frame(width: 347, alignment: .topLeading)
-                }
-                Spacer()
+        ZStack {
+            Color.systemBG
+                .ignoresSafeArea()
+            Image("OnboardingPage1")
+                .resizable()
+                .scaledToFit()
+                .aspectRatio(contentMode: .fill)
+            VStack(spacing: 44){
+                Text("Skin care é cuidado com sua pele e saúde")
+                    .font(.largeTitle)
+                    .bold()
+                Text("Realize o nosso Quiz e aproveite 100% do nosso aplicativo")
+                    .font(.title2)
             }
-          
         }
+        .ignoresSafeArea()
     }
 }
 

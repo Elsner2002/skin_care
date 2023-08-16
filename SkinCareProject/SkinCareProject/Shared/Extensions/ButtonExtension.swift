@@ -17,4 +17,8 @@ extension Button {
     func buttonPrimary(backgroundColor: Color = .brandGray) -> some View {
         self.buttonStyle(ButtonPrimary(backgroundColor: backgroundColor, cornerRadius: 12))
     }
+    
+    func buttonSecondary(backgroundColor: Color = .white) -> some View {
+        self.buttonStyle(ButtonSecondary(backgroundColor: backgroundColor))
+    }
 }

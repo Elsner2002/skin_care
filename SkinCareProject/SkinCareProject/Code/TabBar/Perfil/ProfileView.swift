@@ -27,22 +27,22 @@ struct ProfileView: View {
                 HStack{
                     ZStack(alignment: .bottomTrailing) {
                         //tirar esse if e colocar para pegar a foto do usuário que no padrao vai ser a "ProfileDefault"
-                        if changeProfileImage {
-                            Image(uiImage: image)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 120, height: 120)
-                                .clipShape(Circle())
-                        }
-                        else{
-                            if let url = vm.user[0].profileImage, let data =  try? Data(contentsOf: url),  let imageProduct = UIImage(data: data) {
-                                Image(uiImage: imageProduct)
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 120, height: 120)
-                                    .clipShape(Circle())
-                            }
-                        }
+//                        if changeProfileImage {
+//                            Image(uiImage: image)
+//                                .resizable()
+//                                .scaledToFill()
+//                                .frame(width: 120, height: 120)
+//                                .clipShape(Circle())
+//                        }
+//                        else{
+//                            if let url = vm.user[0].profileImage, let data =  try? Data(contentsOf: url),  let imageProduct = UIImage(data: data) {
+//                                Image(uiImage: imageProduct)
+//                                    .resizable()
+//                                    .scaledToFill()
+//                                    .frame(width: 120, height: 120)
+//                                    .clipShape(Circle())
+//                            }
+//                        }
                         Button {
                             chosePhoto.toggle()
                             
@@ -71,7 +71,7 @@ struct ProfileView: View {
                     .sheet(isPresented: $openCameraRoll) {
                         ImagePicker(selectedImage: $image, changeImage: $changeProfileImage, sourceType: sourceType)
                     } .onDisappear {
-                        vm.user[0].updateImage(newImage: CloudKitUtility.makeURL(image: image))
+//                        vm.user[0].updateImage(newImage: CloudKitUtility.makeURL(image: image))
                     }
                     VStack{
                         HStack{

@@ -9,22 +9,21 @@ import SwiftUI
 
 struct OnboardingPage2: View, Hashable {
     var body: some View {
-        VStack{
-            ZStack {
-                Image("OnboardingPage2")
-                    .padding(EdgeInsets(top: 300, leading: 0, bottom: 0, trailing: 0))
-                VStack(spacing: 21){
-                    Text("Monte sua rotina e visualize o seu progresso")
-                        .font(.largeTitle)
-                        .bold()
-                        .frame(width: 359, alignment: .topLeading)
-                    Text("Dê check-in nos passos da sua rotina e mantenha o seu progresso sempre atualizado")
-                        .font(.callout)
-                        .frame(width: 347, alignment: .topLeading)
-                }
-                Spacer()
+        ZStack {
+            Color.systemBG
+                .ignoresSafeArea()
+            Image("OnboardingPage2")
+                .resizable()
+                .scaledToFit()
+                .aspectRatio(contentMode: .fill)
+                .padding(.top, 210)
+            VStack(alignment: .leading, spacing: 44) {
+                Text("Monte sua rotina e visualize o seu \nprogresso")
+                    .font(.largeTitle)
+                    .bold()
+                Text("Dê check-in nos passos da sua rotina e mantenha o seu progresso sempre atualizado")
+                    .font(.title2)
             }
-          
         }
     }
 }

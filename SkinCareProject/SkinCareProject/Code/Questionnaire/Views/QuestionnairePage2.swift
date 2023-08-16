@@ -24,7 +24,7 @@ struct QuestionnairePage2: View {
                 .tint(.systemButton)
                 .frame(width: 243, height: 80, alignment: .center)
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
-            QuestionCard(buttonPressed: $buttonPressed, buttonType: .smallRounded, questionLabel: "Qual seu tipo de pele?", buttonLabels: SkinType.self)
+            QuestionCard(buttonPressed: $buttonPressed, buttonType: .smallRounded, questionLabel: "Qual seu tipo de pele?", buttonLabels: SkinTypeQuestion.self)
                 .frame(width: 334, alignment: .topLeading)
             
             HStack(alignment: .center) {
@@ -41,7 +41,6 @@ struct QuestionnairePage2: View {
                     .padding(EdgeInsets(top: 100, leading: 0, bottom: 0, trailing: 0))
                 } else {
                     Button(action: {
-                        print(vm.user.isEmpty)
                         vm.updateUser(publicDb: false, appUser: vm.user[0], recordType: .User, userVegan: vm.user[0].vegan, userSkinType: buttonPressed)
                         dismiss()
                     }, label: {

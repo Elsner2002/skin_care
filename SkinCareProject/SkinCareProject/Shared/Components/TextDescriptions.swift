@@ -17,6 +17,8 @@ struct TextDescriptions: View {
                 .frame(width: 1, height: 71)
                 .background(Color.systemButton)
             Text(description)
+                .frame(maxHeight: .infinity)
+                .multilineTextAlignment(.leading)
             Spacer()
         }
     }

@@ -10,7 +10,6 @@ struct PrimaryButton: View {
 
     var body: some View {
         VStack {
-
             Button {
                 self.action()
             } label: {
@@ -19,7 +18,7 @@ struct PrimaryButton: View {
             }
             .buttonPrimary(backgroundColor: self.isPressed ? .brandGreen : .buttonColor)
             
-            if isPressed {
+            if (isPressed && description != "") {
                 TextDescriptions(description: description)
             }
         }

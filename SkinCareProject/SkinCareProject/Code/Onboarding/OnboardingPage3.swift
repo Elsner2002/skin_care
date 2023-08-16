@@ -9,22 +9,22 @@ import SwiftUI
 
 struct OnboardingPage3: View, Hashable {
     var body: some View {
-        VStack{
-            ZStack {
-                Image("OnboardingPage3")
-                    .padding(EdgeInsets(top: 165, leading: 0, bottom: 162, trailing: 0))
-                VStack(spacing: 21){
-                    Text("Receba recomendações e alcance seus objetivos")
-                        .font(.largeTitle)
-                        .bold()
-                        .frame(width: 359, alignment: .topLeading)
-                    Text("Conheça os melhores produtos para sua pele")
-                        .font(.callout)
-                        .frame(width: 347, alignment: .topLeading)
-                }
-                Spacer()
+        ZStack {
+            Color.systemBG
+                .ignoresSafeArea()
+            Image("OnboardingPage3")
+                .resizable()
+                .scaledToFit()
+                .aspectRatio(contentMode: .fill)
+                .padding(.top, 165)
+            VStack(alignment: .leading, spacing: 44) {
+                Text("Receba recomendações e alcance seus objetivos")
+                    .font(.largeTitle)
+                    .bold()
+                Text("Conheça os melhores produtos para sua pele")
+                    .font(.title2)
             }
-          
+            .padding()
         }
     }
 }
@@ -34,7 +34,3 @@ struct OnboardingPage3_Previews: PreviewProvider {
         OnboardingPage3()
     }
 }
-
-
-
-
