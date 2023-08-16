@@ -13,22 +13,22 @@ struct SkinCareProjectApp: App {
     @State private var isActive = false
 //    @State var fetch = false
     @StateObject var vm = CloudKitModel()
-    
     var body: some Scene {
         WindowGroup {
             ZStack {
                 if self.vm.isLoading {
-                    if firstTimeHere {
-                        TabBarOnb()
-                            .environmentObject(vm)
+                    if self.isActive {
+                        if firstTimeHere {
+                            TabBarOnb()
+                                .environmentObject(vm)
+                        }
+                        else {
+                            ContentView()
+                                .environmentObject(vm)
+                        }
+                    } else {
+                        SplashAnimation()
                     }
-                    else {
-                        ContentView()
-                            .environmentObject(vm)
-                    }
-                }
-                else {
-                    Splashscreen()
                 }
             }
             .onAppear {
