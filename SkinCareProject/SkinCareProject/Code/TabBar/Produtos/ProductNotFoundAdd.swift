@@ -1,24 +1,27 @@
 //
-//  ProductNotFoundView.swift
+//  ProductNotFoundAdd.swift
 //  SkinCareProject
 //
-//  Created by Felipe  Elsner Silva on 10/08/23.
+//  Created by Marina Yamaguti on 15/08/23.
 //
+
 
 import SwiftUI
 
-struct ProductNotFoundView: View {
+struct ProductNotFoundAdd: View {
     
     @Environment(\.dismiss) private var dismiss
+    @Binding var routine: Routine
     
+    var showCreateProduct: Bool
     @State var isShowingCreateProductView: Bool = false
     
     var body: some View {
         VStack{
             Text("Não encontramos este produto")
                 .font(
-                    Font.custom("SF Pro", size: 22)
-                        .weight(.semibold)
+                Font.custom("SF Pro", size: 22)
+                .weight(.semibold)
                 )
                 .multilineTextAlignment(.center)
                 .foregroundColor(Color.systemLabelSecondary)
@@ -26,8 +29,8 @@ struct ProductNotFoundView: View {
                 .padding(.top, 161)
             Text("no nosso banco de dados")
                 .font(
-                    Font.custom("SF Pro", size: 22)
-                        .weight(.semibold)
+                Font.custom("SF Pro", size: 22)
+                .weight(.semibold)
                 )
                 .multilineTextAlignment(.center)
                 .foregroundColor(Color.systemLabelSecondary)
@@ -38,21 +41,27 @@ struct ProductNotFoundView: View {
                 .padding(.top, 76)
             
             VStack{
+                if showCreateProduct{
+                    CustomButton(label: "Cadastrar Produto", action: {
+                        self.isShowingCreateProductView = true
+                    }, description: "", buttonType: .largeRounded)
+                }
                 CustomButton(label: "Voltar", action: {
                     dismiss()
                 }, description: "", buttonType: .largeRounded)
                 
+                NavigationLink(isActive: self.$isShowingCreateProductView, destination: { CreateProductView(routine: $routine) }, label: { EmptyView() })
             }
             .padding(.horizontal, 33)
             .padding(.bottom, 85)
             .padding(.top, 245)
-            
+
         }
     }
 }
 
-struct ProductNotFoundView_Previews: PreviewProvider {
+struct ProductNotFoundAdd_Previews: PreviewProvider {
     static var previews: some View {
-        ProductNotFoundView()
+        ProductNotFoundAdd(routine: .constant(Routine(name: "Rotina Diurna", completition: 2, categoryLimpeza: [], categoryTratamentos: [], categoryHidratante: [], categoryProtetor: [])), showCreateProduct: true)
     }
 }

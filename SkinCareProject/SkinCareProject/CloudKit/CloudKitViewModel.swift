@@ -108,7 +108,7 @@ class CloudKitModel: ObservableObject {
         }
     }
     
-    private func addProduct(publicDb: Bool, name: String, recordType: CloudKitUtility.CloudKitTypes, newProduct: RoutineProduct){
+    func addProduct(publicDb: Bool, name: String, recordType: CloudKitUtility.CloudKitTypes, newProduct: RoutineProduct){
         CloudKitUtility.add(publicDb: publicDb, item: newProduct) { result in
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.routineProducts.append(newProduct)
@@ -286,9 +286,9 @@ class CloudKitModel: ObservableObject {
     }
     
     //DELETE
-    func deleteItem(publicDb: Bool, indexSet: IndexSet) {
-        guard let index = indexSet.first else {return}
-        let product = routineProducts[index]
+    func deleteItem(publicDb: Bool, product: RoutineProduct) {
+        //guard let index = indexSet.first else {return}
+       // let product = routineProducts[index]
         let record = product.record
         
         CloudKitUtility.delete(publicDb: publicDb, item: product)
@@ -296,13 +296,13 @@ class CloudKitModel: ObservableObject {
             .sink { _ in
                 
             } receiveValue: { [weak self] success in
-                self?.routineProducts.remove(at: index)
+                self?.routineProducts.removeAll(where: { $0.record == record })
             }
             .store(in: &cancellables)
         
         CKContainer.default().privateCloudDatabase.delete(withRecordID: record.recordID) { retunedRecordId, returnedError in
             DispatchQueue.main.async {
-                self.routineProducts.remove(at: index)
+                self.routineProducts.removeAll(where: { $0.record == record })
             }
         }
     }

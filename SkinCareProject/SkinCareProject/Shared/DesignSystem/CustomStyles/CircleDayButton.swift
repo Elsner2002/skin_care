@@ -10,27 +10,41 @@ import SwiftUI
 struct CircleDayButton: View {
     
     var dayString: String
-    @State var selectedButton: Bool
+    @State var selectedButton: Bool = false
+    var frequencyDescription: Int = 0
+    @Binding var frequency: [Int]
     
     var body: some View {
         Button {
-            selectedButton = !selectedButton
         } label: {
             ZStack{
                 if selectedButton {
-                    Circle()
-                        .foregroundColor(Color.systemButton)
-                        .frame(width: 40, height: 40)
-                    Circle()
-                        .stroke()
-                        .foregroundColor(.black)
-                        .frame(width: 40, height: 40)
+                    ZStack {
+                        Circle()
+                            .foregroundColor(Color.systemButton)
+                            .frame(width: 40, height: 40)
+                        Circle()
+                            .stroke()
+                            .foregroundColor(.black)
+                            .frame(width: 40, height: 40)
+                    } .onTapGesture {
+                        if let index = frequency.firstIndex(of: frequencyDescription) {
+                            frequency.remove(at: index)
+                            self.selectedButton = false
+                        }
+                    }
                 }
-                else{
-                    Circle()
-                        .stroke()
-                        .foregroundColor(.black)
-                        .frame(width: 40, height: 40)
+                else {
+                    ZStack {
+                        Circle()
+                            .stroke()
+                            .foregroundColor(.black)
+                            .frame(width: 40, height: 40)
+                    }
+                    .onTapGesture {
+                        frequency.append(frequencyDescription)
+                        self.selectedButton = true
+                    }
                 }
                 
                 Text(dayString)
@@ -42,6 +56,6 @@ struct CircleDayButton: View {
 
 struct CircleDayButton_Previews: PreviewProvider {
     static var previews: some View {
-        CircleDayButton(dayString: "S", selectedButton: true)
+        CircleDayButton(dayString: "S", frequencyDescription: 1, frequency: .constant([]))
     }
 }

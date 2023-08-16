@@ -61,6 +61,9 @@
 		A55E88C92A7057CD005E5AC5 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55E88C82A7057CD005E5AC5 /* OnboardingView.swift */; };
 		A55E88D12A72E58A005E5AC5 /* CloudKitUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55E88D02A72E58A005E5AC5 /* CloudKitUtility.swift */; };
 		A55E88D52A7403BE005E5AC5 /* CloudKitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55E88D42A7403BE005E5AC5 /* CloudKitViewModel.swift */; };
+		A55FBB722A8AF1C5003B5DDC /* SearchBarAddProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55FBB712A8AF1C5003B5DDC /* SearchBarAddProduct.swift */; };
+		A55FBB742A8AF28F003B5DDC /* CameraAddProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55FBB732A8AF28F003B5DDC /* CameraAddProductView.swift */; };
+		A55FBB762A8BF416003B5DDC /* ProductNotFoundAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55FBB752A8BF416003B5DDC /* ProductNotFoundAdd.swift */; };
 		A5AD05332A7D378100826963 /* TipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AD05322A7D378100826963 /* TipsView.swift */; };
 		D82F35152A79747800E7A8B1 /* DesignColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82F35142A79747800E7A8B1 /* DesignColors.swift */; };
 		D82F351F2A79922900E7A8B1 /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82F351E2A79922900E7A8B1 /* ButtonExtension.swift */; };
@@ -142,6 +145,9 @@
 		A55E88CA2A70606D005E5AC5 /* SkinCareProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SkinCareProject.entitlements; sourceTree = "<group>"; };
 		A55E88D02A72E58A005E5AC5 /* CloudKitUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitUtility.swift; sourceTree = "<group>"; };
 		A55E88D42A7403BE005E5AC5 /* CloudKitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitViewModel.swift; sourceTree = "<group>"; };
+		A55FBB712A8AF1C5003B5DDC /* SearchBarAddProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarAddProduct.swift; sourceTree = "<group>"; };
+		A55FBB732A8AF28F003B5DDC /* CameraAddProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraAddProductView.swift; sourceTree = "<group>"; };
+		A55FBB752A8BF416003B5DDC /* ProductNotFoundAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductNotFoundAdd.swift; sourceTree = "<group>"; };
 		A5AD05322A7D378100826963 /* TipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsView.swift; sourceTree = "<group>"; };
 		D82F35142A79747800E7A8B1 /* DesignColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignColors.swift; sourceTree = "<group>"; };
 		D82F351E2A79922900E7A8B1 /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
@@ -210,6 +216,7 @@
 			children = (
 				7CA88CA72A72DFDF00E58ABA /* ImageViewModel.swift */,
 				7CA88C9F2A7063EF00E58ABA /* CameraView.swift */,
+				A55FBB732A8AF28F003B5DDC /* CameraAddProductView.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -378,6 +385,7 @@
 				7C62FE532A843C2600C586A3 /* AboutProductView.swift */,
 				7C62FE552A84560900C586A3 /* HowUseProductView.swift */,
 				7C62FE5A2A85B51600C586A3 /* ProductNotFoundView.swift */,
+				A55FBB752A8BF416003B5DDC /* ProductNotFoundAdd.swift */,
 				7CB66FDD2A670132006DFFB2 /* CameraViewModel.swift */,
 				7CA88CA12A717B4600E58ABA /* DataScannerView.swift */,
 			);
@@ -457,6 +465,7 @@
 				7C62FE4E2A82C05700C586A3 /* ProductsComponents */,
 				D88A106F2A7F431C006CC93E /* CustomButtonDescription.swift */,
 				7C30D1472A79E794009F93D7 /* Searchbar.swift */,
+				A55FBB712A8AF1C5003B5DDC /* SearchBarAddProduct.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -565,6 +574,7 @@
 				7C30D14A2A7AA5D9009F93D7 /* ProductButton.swift in Sources */,
 				D88A10702A7F431C006CC93E /* CustomButtonDescription.swift in Sources */,
 				7CB66FC92A66F2D7006DFFB2 /* ContentView.swift in Sources */,
+				A55FBB762A8BF416003B5DDC /* ProductNotFoundAdd.swift in Sources */,
 				7CB66FE42A6723CE006DFFB2 /* Classes.swift in Sources */,
 				A544A6F02A797A65006E1747 /* HapticsService.swift in Sources */,
 				7C30D1512A7ACBEB009F93D7 /* UIApplicationExtension.swift in Sources */,
@@ -625,11 +635,13 @@
 				A544A6F72A79840B006E1747 /* RoutineAlarm.swift in Sources */,
 				D88A105D2A7D4102006CC93E /* QuestionnairePage7.swift in Sources */,
 				7C62FE562A84560900C586A3 /* HowUseProductView.swift in Sources */,
+				A55FBB722A8AF1C5003B5DDC /* SearchBarAddProduct.swift in Sources */,
 				A55E88D12A72E58A005E5AC5 /* CloudKitUtility.swift in Sources */,
 				A55E88BD2A7031FE005E5AC5 /* TabBarOnb.swift in Sources */,
 				7C30D1482A79E794009F93D7 /* Searchbar.swift in Sources */,
 				D88A104D2A7C3CE4006CC93E /* QuestionnairePage2.swift in Sources */,
 				D88A107C2A8054F3006CC93E /* WheelPicker.swift in Sources */,
+				A55FBB742A8AF28F003B5DDC /* CameraAddProductView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -756,6 +768,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SkinCareProject/CloudKit/SkinCareProject.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SkinCareProject/Preview Content\"";
@@ -775,6 +788,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.academy.SkinCareProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -787,6 +801,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SkinCareProject/CloudKit/SkinCareProject.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SkinCareProject/Preview Content\"";
@@ -806,6 +821,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.academy.SkinCareProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

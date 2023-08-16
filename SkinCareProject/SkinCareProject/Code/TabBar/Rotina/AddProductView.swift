@@ -13,11 +13,16 @@ struct AddProductView: View {
     
     @State private var searchText = ""
     @State private var isActive = false
+    @Binding var routine: Routine
     
     var body: some View {
         NavigationStack{
             ZStack {
-                Color.brandGreen.ignoresSafeArea()
+                if routine.name == "Rotina Diurna" {
+                    Color.brandGreen.ignoresSafeArea()
+                } else {
+                    Color.brandPink.ignoresSafeArea()
+                }
                 Rectangle()
                     .offset(y: 350)
                     .ignoresSafeArea()
@@ -46,12 +51,12 @@ struct AddProductView: View {
                     .padding(.top, 20)
                     
                     VStack {
-                        Searchbar(searchText: $searchText, showCreateProduct: true, addRoutine: false)
+                        SearchbarAddProduct(searchText: $searchText, routine: $routine, showCreateProduct: true, addRoutine: false)
                             .padding(.bottom, -20)
                             .padding(.top, 20)
                         
                         NavigationLink {
-                            CreateProductView()
+                            CreateProductView(routine: $routine)
                         } label: {
                             Text("Adicionar produto manualmente")
                                 .bold()
@@ -87,6 +92,6 @@ struct AddProductView: View {
 
 struct AddProductView_Previews: PreviewProvider {
     static var previews: some View {
-        AddProductView()
+        AddProductView(routine: .constant(Routine(name: "Rotina Diurna", completition: 2, categoryLimpeza: [], categoryTratamentos: [], categoryHidratante: [], categoryProtetor: [])))
     }
 }
