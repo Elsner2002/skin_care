@@ -9,7 +9,6 @@ import SwiftUI
 import CloudKit
 
 struct HomeView: View {
-//    @StateObject private var vm = Constants.shared.vm
     @EnvironmentObject var vm: CloudKitModel
 
     var routineImages: [String] = ["sun.max.fill", "moon.stars.fill"]
@@ -58,6 +57,7 @@ struct HomeView: View {
                         ForEach(0..<routineImages.count) { position in
                             NavigationLink {
                                 RoutineView(routine: routineList[position])
+                                    .environmentObject(vm)
                             } label: {
                                 RoutineButton(image: Image(systemName: routineImages[position]), color: routineColor[position])
                             }

@@ -10,6 +10,8 @@ import SwiftUI
 struct RoutineView: View {
     @State private var showSheet: Bool = false
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var vm: CloudKitModel
+
     @State var routine: Routine
     var scaleEffect: CGFloat = 1 //0.67 when smaller
     var offsetValue: CGFloat = -200 //define when smaller -300?
@@ -137,7 +139,7 @@ struct SheetRoutine: View {
 
 struct RoutineView_Previews: PreviewProvider {
     static let url: URL = CloudKitUtility.makeURLJPG(image: "gato-cinza")
-    static let array: [RoutineProduct] = [RoutineProduct(image: url, name: "test", brand: "test", isCompleted: false, barcode: 12345, frequency: [1], categories: ["Limpeza"])!]
+    static let array: [RoutineProduct] = [RoutineProduct(image: url, name: "test", brand: "test", isCompleted: false, barcode: 12345, frequency: [1], categories: ["Limpeza"], routine: "Rotina Diurna")!]
     
     static var previews: some View {
         RoutineView(routine: Routine(name: "Rotina Diurna", completition: 2, categoryLimpeza: [], categoryTratamentos: [], categoryHidratante: [], categoryProtetor: []))

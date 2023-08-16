@@ -56,7 +56,10 @@
 		A544A7012A7AC4ED006E1747 /* ListDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = A544A7002A7AC4ED006E1747 /* ListDescription.swift */; };
 		A544A7032A7AC67C006E1747 /* ListProductComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A544A7022A7AC67C006E1747 /* ListProductComponent.swift */; };
 		A544A7052A7ADB15006E1747 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A544A7042A7ADB15006E1747 /* ListView.swift */; };
-		A55E88BA2A686ECB005E5AC5 /* Splashscreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55E88B92A686ECB005E5AC5 /* Splashscreen.swift */; };
+		A553E6302A8D718200825689 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A553E62F2A8D718200825689 /* Lottie */; };
+		A553E6322A8D730000825689 /* animationLoading.json in Resources */ = {isa = PBXBuildFile; fileRef = A553E6312A8D730000825689 /* animationLoading.json */; };
+		A553E6342A8D746F00825689 /* SplashAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A553E6332A8D746F00825689 /* SplashAnimation.swift */; };
+		A553E6362A8D83FC00825689 /* animationSplash.json in Resources */ = {isa = PBXBuildFile; fileRef = A553E6352A8D83FC00825689 /* animationSplash.json */; };
 		A55E88BD2A7031FE005E5AC5 /* TabBarOnb.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55E88BC2A7031FE005E5AC5 /* TabBarOnb.swift */; };
 		A55E88D12A72E58A005E5AC5 /* CloudKitUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55E88D02A72E58A005E5AC5 /* CloudKitUtility.swift */; };
 		A55E88D52A7403BE005E5AC5 /* CloudKitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55E88D42A7403BE005E5AC5 /* CloudKitViewModel.swift */; };
@@ -147,7 +150,9 @@
 		A544A7002A7AC4ED006E1747 /* ListDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDescription.swift; sourceTree = "<group>"; };
 		A544A7022A7AC67C006E1747 /* ListProductComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListProductComponent.swift; sourceTree = "<group>"; };
 		A544A7042A7ADB15006E1747 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
-		A55E88B92A686ECB005E5AC5 /* Splashscreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Splashscreen.swift; sourceTree = "<group>"; };
+		A553E6312A8D730000825689 /* animationLoading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animationLoading.json; sourceTree = "<group>"; };
+		A553E6332A8D746F00825689 /* SplashAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashAnimation.swift; sourceTree = "<group>"; };
+		A553E6352A8D83FC00825689 /* animationSplash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animationSplash.json; sourceTree = "<group>"; };
 		A55E88BC2A7031FE005E5AC5 /* TabBarOnb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarOnb.swift; sourceTree = "<group>"; };
 		A55E88CA2A70606D005E5AC5 /* SkinCareProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SkinCareProject.entitlements; sourceTree = "<group>"; };
 		A55E88D02A72E58A005E5AC5 /* CloudKitUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitUtility.swift; sourceTree = "<group>"; };
@@ -193,6 +198,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A553E6302A8D718200825689 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +306,7 @@
 				7CB66FE52A67289A006DFFB2 /* Constants.swift */,
 				7CB66FD82A66F3BD006DFFB2 /* Application */,
 				7CB66FDA2A66F4C7006DFFB2 /* Structs */,
+				A553E6372A8D841D00825689 /* Animation */,
 				7C30D1562A7AEE5B009F93D7 /* Tips */,
 				7CA88C9E2A7063B500E58ABA /* Camera */,
 				D88A104B2A7C29D6006CC93E /* Questionnaire */,
@@ -338,6 +345,16 @@
 				A544A7042A7ADB15006E1747 /* ListView.swift */,
 			);
 			path = RoutineComponents;
+			sourceTree = "<group>";
+		};
+		A553E6372A8D841D00825689 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				A553E6332A8D746F00825689 /* SplashAnimation.swift */,
+				A553E6352A8D83FC00825689 /* animationSplash.json */,
+				A553E6312A8D730000825689 /* animationLoading.json */,
+			);
+			path = Animation;
 			sourceTree = "<group>";
 		};
 		A55E88BB2A7031EE005E5AC5 /* Onboarding */ = {
@@ -534,6 +551,9 @@
 			dependencies = (
 			);
 			name = SkinCareProject;
+			packageProductDependencies = (
+				A553E62F2A8D718200825689 /* Lottie */,
+			);
 			productName = SkinCareProject;
 			productReference = 7CB66FC32A66F2D7006DFFB2 /* SkinCareProject.app */;
 			productType = "com.apple.product-type.application";
@@ -562,6 +582,9 @@
 				Base,
 			);
 			mainGroup = 7CB66FBA2A66F2D6006DFFB2;
+			packageReferences = (
+				A553E62E2A8D718200825689 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = 7CB66FC42A66F2D7006DFFB2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -578,7 +601,9 @@
 			files = (
 				7CB66FCE2A66F2D7006DFFB2 /* Preview Assets.xcassets in Resources */,
 				7CB66FCB2A66F2D7006DFFB2 /* Assets.xcassets in Resources */,
+				A553E6322A8D730000825689 /* animationLoading.json in Resources */,
 				7CDF2E822A6F142E0028CA84 /* TipsData.json in Resources */,
+				A553E6362A8D83FC00825689 /* animationSplash.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -603,6 +628,7 @@
 				A55FBB762A8BF416003B5DDC /* ProductNotFoundAdd.swift in Sources */,
 				7CB66FE42A6723CE006DFFB2 /* Classes.swift in Sources */,
 				A544A6F02A797A65006E1747 /* HapticsService.swift in Sources */,
+				A553E6342A8D746F00825689 /* SplashAnimation.swift in Sources */,
 				D8E60F5A2A8AA13800F9CB18 /* PrimaryButton.swift in Sources */,
 				7C30D1512A7ACBEB009F93D7 /* UIApplicationExtension.swift in Sources */,
 				D88A10462A7C20E0006CC93E /* QuestionnairePage1.swift in Sources */,
@@ -647,7 +673,6 @@
 				7C4710152A887E4C00A93EB4 /* RecomendedProductsView.swift in Sources */,
 				A544A6EE2A797A1A006E1747 /* NotificationService.swift in Sources */,
 				D87F2E692A816D34000B42F8 /* GraphicPicker.swift in Sources */,
-				A55E88BA2A686ECB005E5AC5 /* Splashscreen.swift in Sources */,
 				A544A7012A7AC4ED006E1747 /* ListDescription.swift in Sources */,
 				7C62FE5B2A85B51600C586A3 /* ProductNotFoundView.swift in Sources */,
 				A544A7032A7AC67C006E1747 /* ListProductComponent.swift in Sources */,
@@ -881,6 +906,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A553E62E2A8D718200825689 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A553E62F2A8D718200825689 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A553E62E2A8D718200825689 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7CB66FBB2A66F2D6006DFFB2 /* Project object */;
 }

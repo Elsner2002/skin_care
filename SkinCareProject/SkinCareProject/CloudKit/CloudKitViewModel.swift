@@ -30,10 +30,11 @@ class CloudKitModel: ObservableObject {
     @Published var dailyTip: [Tip] = []
     @Published var user: [User] = []
     @Published var ingredients: [Ingredient] = []
+    @State var isLoading: Bool = true
     
     @Published var defaultUser: User = User(profileImage: CloudKitUtility.makeURLJPG(image: "ProfileDefault"), vegan: false, phototype: Phototype.one.title, skinType: SkinType.oily.rawValue, conditions: [Condition.none.rawValue], concerns: [Concern.none.rawValue], gender: Gender.female.rawValue, age: 18, location: Location.dry.rawValue)!
     //set each variable in the questionnaire
-     let product: RoutineProduct = RoutineProduct(image: CloudKitUtility.makeURLJPG(image: "gato-cinza"), name: "test", brand: "test", isCompleted: false, barcode: 12345, frequency: [1], categories: ["Limpeza"])!
+     let product: RoutineProduct = RoutineProduct(image: CloudKitUtility.makeURLJPG(image: "gato-cinza"), name: "test", brand: "test", isCompleted: false, barcode: 12345, frequency: [1], categories: ["Limpeza"], routine: "Rotina Diurna")!
     
     
     var cancellables = Set<AnyCancellable>()
@@ -42,11 +43,9 @@ class CloudKitModel: ObservableObject {
         getiCloudStatus()
         requestPermission()
         getCurrentUserName()
-        fetchItems(publicDb: true, recordType: CloudKitUtility.CloudKitTypes.ListProduct)//, limit: 10)
-        fetchItems(publicDb: false, recordType: CloudKitUtility.CloudKitTypes.RoutineProduct)
-        fetchItems(publicDb: false, recordType: CloudKitUtility.CloudKitTypes.User)
-        fetchItems(publicDb: false, recordType: CloudKitUtility.CloudKitTypes.Diary)
-        fetchItems(publicDb: true, recordType: CloudKitUtility.CloudKitTypes.Ingredient)
+        loadAll() {
+            self.isLoading = false
+        }
     }
     
     func addButtonPressed() {
@@ -81,6 +80,19 @@ class CloudKitModel: ObservableObject {
             }
             .store(in: &cancellables)
     }
+    
+    func loadAll(completion: () -> Void) {
+        self.isLoading = true
+        fetchItems(publicDb: true, recordType: CloudKitUtility.CloudKitTypes.ListProduct)//, limit: 10)
+        fetchItems(publicDb: false, recordType: CloudKitUtility.CloudKitTypes.RoutineProduct)
+        fetchItems(publicDb: false, recordType: CloudKitUtility.CloudKitTypes.User)
+        fetchItems(publicDb: false, recordType: CloudKitUtility.CloudKitTypes.Diary)
+        fetchItems(publicDb: true, recordType: CloudKitUtility.CloudKitTypes.Ingredient)
+
+        completion()
+    }
+    
+   
     
     func requestPermission() {
         CloudKitUtility.requestApplicationPermission()
@@ -346,7 +358,7 @@ struct CloudKitViewModel: View {
     @StateObject private var vm = CloudKitModel()
     
     
-    @State var product: RoutineProduct = RoutineProduct(image: nil, name: "teste", brand: "test", isCompleted: false, barcode: 123, frequency: [1], categories: ["teste"])!
+    @State var product: RoutineProduct = RoutineProduct(image: nil, name: "teste", brand: "test", isCompleted: false, barcode: 123, frequency: [1], categories: ["teste"], routine: "Rotina Diurna")!
     
     var body: some View {
         VStack {
@@ -368,11 +380,11 @@ struct CloudKitViewModel: View {
 //                    .font(.headline)
 //            }
             
-            ListProductComponent(product: product)
+            //ListProductComponent(product: product)
         }
-        .onChange(of: self.vm.routineProducts, perform: { _ in
-            self.product = vm.routineProducts[0]
-        })
+//        .onChange(of: self.vm.routineProducts, perform: { _ in
+//            self.product = vm.routineProducts[0]
+//        })
     }
 }
 
