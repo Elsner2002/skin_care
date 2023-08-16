@@ -9,13 +9,16 @@ import Foundation
 import SwiftUI
 import CloudKit
 
-class AppUser: CloudKitProtocol {
+class User: CloudKitProtocol {
     var profileImage: URL?
     var vegan: Bool
     var phototype: String
     var skinType: String
     var conditions: [String]
     var concerns: [String]
+    var gender: String
+    var age: Int
+    var location: String
     var record: CKRecord
     
     required init?(record: CKRecord) {
@@ -31,10 +34,16 @@ class AppUser: CloudKitProtocol {
         self.conditions = conditions
         guard let concerns = record["concerns"] as? [String] else {return nil}
         self.concerns = concerns
+        guard let gender = record["gender"] as? String else {return nil}
+        self.gender = gender
+        guard let age = record["age"] as? Int else {return nil}
+        self.age = age
+        guard let location = record["location"] as? String else {return nil}
+        self.location = location
         self.record = record
     }
     
-    required convenience init?(profileImage: URL?, vegan: Bool, phototype: String, skinType: String,  conditions: [String], concerns: [String]){
+    required convenience init?(profileImage: URL?, vegan: Bool, phototype: String, skinType: String,  conditions: [String], concerns: [String], gender: String, age: Int, location: String){
         let record = CKRecord(recordType: "User")
         if let url = profileImage {
             let asset = CKAsset(fileURL: url)
@@ -45,41 +54,61 @@ class AppUser: CloudKitProtocol {
         record["skinType"] = skinType
         record["conditions"] = conditions
         record["concerns"] = concerns
+        record["gender"] = gender
+        record["age"] = age
+        record["location"] = location
 
         self.init(record: record)
     }
     
     
-    func updateVegan(newVegan: Bool) -> AppUser? {
+    func updateVegan(newVegan: Bool) -> User? {
         let newRecord = record
         newRecord["vegan"] = newVegan
-        return AppUser(record: newRecord)
+        return User(record: newRecord)
     }
     
-    func updatePhototype(newPhototype: String) -> AppUser? {
+    func updatePhototype(newPhototype: String) -> User? {
         let newRecord = record
         newRecord["phototype"] = newPhototype
-        return AppUser(record: newRecord)
+        return User(record: newRecord)
     }
 
-    func updateSkinType(newSkinType: String) -> AppUser? {
+    func updateSkinType(newSkinType: String) -> User? {
         let newRecord = record
         newRecord["skinType"] = newSkinType
-        return AppUser(record: newRecord)
+        return User(record: newRecord)
     }
     
-    func updateConditions(newConditions: [String]) -> AppUser? {
+    func updateConditions(newConditions: [String]) -> User? {
         let newRecord = record
         newRecord["conditions"] = newConditions
-        return AppUser(record: newRecord)
+        return User(record: newRecord)
     }
     
-    func updateImage(newImage: URL) -> AppUser? {
+    func updateImage(newImage: URL) -> User? {
         let newRecord = record
         newRecord["profileImage"] = newImage
-        return AppUser(record: newRecord)
+        return User(record: newRecord)
     }
     
+    func updateGender(newGender: String) -> User? {
+        let newRecord = record
+        newRecord["gender"] = newGender
+        return User(record: newRecord)
+    }
+    
+    func updateAge(newAge: Int) -> User? {
+        let newRecord = record
+        newRecord["age"] = newAge
+        return User(record: newRecord)
+    }
+    
+    func updateLocation(newLocation: String) -> User? {
+        let newRecord = record
+        newRecord["location"] = newLocation
+        return User(record: newRecord)
+    }
 }
 
 class ListProduct: CloudKitProtocol, Hashable, Identifiable {

@@ -12,8 +12,11 @@ import Foundation
 import SwiftUI
 
 struct QuestionnairePage5: View{
+    @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var userInfo: UserInfo
+    @EnvironmentObject var vm: CloudKitModel
     @State var buttonPressed: String = ""
+    var buttonLabel: buttonLabels
 
     var body: some View {
         VStack {
@@ -28,13 +31,28 @@ struct QuestionnairePage5: View{
                 .frame(width: 334, alignment: .topLeading)
             
             HStack(alignment: .center) {
-                Button(action: {userInfo.userPhototype = buttonPressed}) {
-                    NavigationLink(destination: QuestionnairePage6())
-                    {
-                        Text("Próximo")
+                if buttonLabel == .next {
+                    Button(action: {}) {
+                        NavigationLink(destination:
+                                        QuestionnairePage6()
+                            .environmentObject(vm))
+                        {
+                            Text(buttonLabel.rawValue)}
                     }
+                    .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
+                    .frame(width: 165, height: 35.71429, alignment: .center)
+                    .padding(EdgeInsets(top: 100, leading: 0, bottom: 0, trailing: 0))
+                } else {
+                    Button(action: {
+                        print(vm.user.isEmpty)
+                        dismiss()
+                    }, label: {
+                        Text(buttonLabel.rawValue)
+                    })
+                    .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
+                    .frame(width: 165, height: 35.71429, alignment: .center)
+                    .padding(EdgeInsets(top: 100, leading: 0, bottom: 0, trailing: 0))
                 }
-                .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
 
             }
                 .frame(width: 162.14287, alignment: .center)
@@ -45,6 +63,6 @@ struct QuestionnairePage5: View{
 }
 struct QuestionnairePage5_Preview: PreviewProvider {
     static var previews: some View {
-        QuestionnairePage5()
+        QuestionnairePage5(buttonLabel: .next)
     }
 }

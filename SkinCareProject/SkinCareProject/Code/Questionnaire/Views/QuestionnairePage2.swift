@@ -31,7 +31,8 @@ struct QuestionnairePage2: View {
                 if buttonLabel == .next {
                     Button(action: {userInfo.userSkinType = buttonPressed}) {
                         NavigationLink(destination:
-                                        QuestionnairePage3())
+                                        QuestionnairePage3(buttonLabel: .next)
+                            .environmentObject(vm))
                         {
                             Text(buttonLabel.rawValue)}
                     }
@@ -41,7 +42,7 @@ struct QuestionnairePage2: View {
                 } else {
                     Button(action: {
                         print(vm.user.isEmpty)
-                        vm.updateUser(publicDb: false, appUser: vm.user[0], recordType: .AppUser, userVegan: vm.user[0].vegan, userSkinType: buttonPressed)
+                        vm.updateUser(publicDb: false, appUser: vm.user[0], recordType: .User, userVegan: vm.user[0].vegan, userSkinType: buttonPressed)
                         dismiss()
                     }, label: {
                         Text(buttonLabel.rawValue)

@@ -9,7 +9,8 @@ import SwiftUI
 
 struct RecomendedProductsView: View {
     
-    @StateObject var vm = CloudKitModel()
+    @EnvironmentObject var vm: CloudKitModel
+
     
     var body: some View {
         ZStack{

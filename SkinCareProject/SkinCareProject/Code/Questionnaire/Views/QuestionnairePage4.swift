@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct QuestionnairePage4: View {
+    @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var userInfo: UserInfo
+    @EnvironmentObject var vm: CloudKitModel
     @State var buttonPressed: Set<String> = []
+    var buttonLabel: buttonLabels
     
     var body: some View {
         VStack {
@@ -22,13 +25,29 @@ struct QuestionnairePage4: View {
                 .padding(EdgeInsets(top: 0, leading: 50, bottom: 0, trailing: 50))
 
             HStack(alignment: .center) {
-                Button(action: {userInfo.userConditions = Array(buttonPressed)}) {
-                    NavigationLink(destination: QuestionnairePage5())
-                    {
-                        Text("Próximo")
+                if buttonLabel == .next {
+                    Button(action: {userInfo.userConditions = Array(buttonPressed)}) {
+                        NavigationLink(destination:
+                                        QuestionnairePage5(buttonLabel: .next)
+                            .environmentObject(vm))
+                        {
+                            Text(buttonLabel.rawValue)}
                     }
+                    .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
+                    .frame(width: 165, height: 35.71429, alignment: .center)
+                    .padding(EdgeInsets(top: 100, leading: 0, bottom: 0, trailing: 0))
+                } else {
+                    Button(action: {
+                        print(vm.user.isEmpty)
+                        vm.updateUser(publicDb: false, appUser: vm.user[0], recordType: .User, userVegan: vm.user[0].vegan, userConditions: Array(buttonPressed))
+                        dismiss()
+                    }, label: {
+                        Text(buttonLabel.rawValue)
+                    })
+                    .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
+                    .frame(width: 165, height: 35.71429, alignment: .center)
+                    .padding(EdgeInsets(top: 100, leading: 0, bottom: 0, trailing: 0))
                 }
-                .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
             }
             .padding(EdgeInsets(top: 107, leading: 0, bottom: 55, trailing: 0))
 
@@ -38,6 +57,6 @@ struct QuestionnairePage4: View {
 
 struct QuestionnairePage4_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionnairePage4()
+        QuestionnairePage4(buttonLabel: .next)
     }
 }

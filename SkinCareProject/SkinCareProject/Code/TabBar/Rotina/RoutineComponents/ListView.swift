@@ -13,7 +13,8 @@ struct ListView: View {
     
     let description: String
     let category: String
-    @StateObject var vm = CloudKitModel()
+    @EnvironmentObject var vm: CloudKitModel
+
     @Binding var productList: [RoutineProduct]
     @Binding var routine: Routine
     

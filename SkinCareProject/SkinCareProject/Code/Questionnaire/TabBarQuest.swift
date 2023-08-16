@@ -9,10 +9,12 @@ import SwiftUI
 
 struct TabBarQuest: View {
     
+    @EnvironmentObject var vm: CloudKitModel
     
     var body: some View {
         NavigationStack {
-            QuestionnairePage1()
+            QuestionnairePage1(buttonLabel: .next)
+                .environmentObject(vm)
         }
     }
 }

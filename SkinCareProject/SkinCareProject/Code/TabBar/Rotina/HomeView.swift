@@ -21,11 +21,13 @@ struct HomeView: View {
             ScrollView(showsIndicators: false) {
                 VStack{
                     HStack{
-                        Image("ProfileDefault")
-                            .resizable()
-                            .frame(width: 87, height: 87)
-                            .clipShape(Circle())
-                            .padding(.leading, 28)
+                        if let url = vm.user[0].profileImage, let data =  try? Data(contentsOf: url),  let imageProfile = UIImage(data: data) {
+                            Image(uiImage: imageProfile)
+                                .resizable()
+                                .frame(width: 87, height: 87)
+                                .clipShape(Circle())
+                                .padding(.leading, 28)
+                        }
                         VStack{
                             HStack{
                                 Text("Oi, ")

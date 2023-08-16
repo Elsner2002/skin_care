@@ -9,7 +9,8 @@ import SwiftUI
 
 struct VerticalScrollProductsView: View {
     
-    @StateObject var vm = CloudKitModel()
+    @EnvironmentObject var vm: CloudKitModel
+
     
     var searchText: String
     var addRoutine: Bool

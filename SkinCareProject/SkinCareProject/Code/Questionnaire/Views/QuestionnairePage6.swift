@@ -9,6 +9,7 @@ import SwiftUI
 
 struct QuestionnairePage6: View {
     @EnvironmentObject var userInfo: UserInfo
+    @EnvironmentObject var vm: CloudKitModel
     @State var buttonPressed: String = ""
     
     var body: some View {
@@ -24,7 +25,8 @@ struct QuestionnairePage6: View {
                 .frame(width: 291, alignment: .topLeading)
             HStack(alignment: .center) {
                 Button(action: {userInfo.userPhototype = buttonPressed}) {
-                    NavigationLink(destination: QuestionnairePage7())
+                    NavigationLink(destination: QuestionnairePage7()
+                        .environmentObject(vm))
                     {
                         Text("Próximo")
                     }

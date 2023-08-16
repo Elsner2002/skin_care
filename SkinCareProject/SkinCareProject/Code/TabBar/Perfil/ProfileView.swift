@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ProfileView: View {
     
-    @StateObject var vm = CloudKitModel()
-    
+    @EnvironmentObject var vm: CloudKitModel
+
     @State var changeProfileImage = false
     @State var openCameraRoll = false
     @State var chosePhoto = false
@@ -35,10 +35,13 @@ struct ProfileView: View {
                                 .clipShape(Circle())
                         }
                         else{
-                            Image("ProfileDefault")
-                                .resizable()
-                                .frame(width: 120, height: 120)
-                                .clipShape(Circle())
+                            if let url = vm.user[0].profileImage, let data =  try? Data(contentsOf: url),  let imageProduct = UIImage(data: data) {
+                                Image(uiImage: imageProduct)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 120, height: 120)
+                                    .clipShape(Circle())
+                            }
                         }
                         Button {
                             chosePhoto.toggle()
@@ -67,6 +70,8 @@ struct ProfileView: View {
                     }
                     .sheet(isPresented: $openCameraRoll) {
                         ImagePicker(selectedImage: $image, changeImage: $changeProfileImage, sourceType: sourceType)
+                    } .onDisappear {
+                        vm.user[0].updateImage(newImage: CloudKitUtility.makeURL(image: image))
                     }
                     VStack{
                         HStack{
@@ -90,11 +95,11 @@ struct ProfileView: View {
                         ForEach(0..<skinQuiz.count) { position in
                             NavigationLink {
                                 switch position {
-                                case 0: QuestionnairePage1()
+                                case 0: QuestionnairePage1(buttonLabel: .save)
                                 case 1: QuestionnairePage2(buttonLabel: .save)
-                                case 2: QuestionnairePage3()
-                                case 3: QuestionnairePage4()
-                                case 4: QuestionnairePage5()
+                                case 2: QuestionnairePage3(buttonLabel: .save)
+                                case 3: QuestionnairePage4(buttonLabel: .save)
+                                case 4: QuestionnairePage5(buttonLabel: .save)
                                 default:
                                     EmptyView()
                                 }
