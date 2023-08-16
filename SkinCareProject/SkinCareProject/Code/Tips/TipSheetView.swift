@@ -31,6 +31,7 @@ struct TipSheetView: View {
                     )
                     .foregroundColor(Color.systemLabelPrimary)
                     .frame(width: 327, alignment: .topLeading)
+                    .padding(20)
                 
                 Image(tip.image)
                     .resizable()
@@ -38,11 +39,12 @@ struct TipSheetView: View {
                     .frame(width: 312, height: 169)
                     .clipped()
                     .cornerRadius(12, corners: .allCorners)
+                    .padding(20)
                 
                 Text(tip.subtitle)
                     .font(
-                        Font.custom("SF Pro", size: 22)
-                            .weight(.bold)
+                        Font.custom("SF Pro", size: 20)
+                            .weight(.regular)
                     )
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color.systemLabelSecondary)

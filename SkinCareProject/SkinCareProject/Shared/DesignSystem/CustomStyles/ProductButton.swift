@@ -20,7 +20,8 @@ struct ProductButton: View {
                     Image(uiImage: imageProduct)
                         .resizable()
                         .frame(width: 96, height: 133)
-                        .cornerRadius(15, corners: [.topLeft, .bottomRight])
+                        .cornerRadius(15)
+                        .shadow(color: .black.opacity(0.07), radius: 0, x: 4, y: 4)
                 }
                 VStack{
                     Text(product.nickname)
@@ -48,6 +49,7 @@ struct ProductButton: View {
                 .background(Color.systemMaterialSecondary)
                 .cornerRadius(15, corners: [.topLeft, .bottomRight])
                 .offset(y: 55)
+                .shadow(color: .black.opacity(0.07), radius: 0, x: 4, y: 4)
             }
         }
         

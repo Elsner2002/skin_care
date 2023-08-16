@@ -30,14 +30,14 @@ struct HomeView: View {
                         VStack{
                             HStack{
                                 Text("Oi, ")
-                                    .font(Font.custom("SF Pro", size: 34)
-                                        .weight(.bold))
-                                Spacer()
+                                    .font(.system(size: 34))
+                                    .fontDesign(.serif)
                             }
                             HStack{
                                 Text("\(vm.userName)!")
-                                    .font( Font.custom("SF Pro", size: 34)
-                                        .weight(.bold))
+                                    .font(.system(size: 34))
+                                    .fontDesign(.serif)
+//                                        .weight(.bold))
                                 Spacer()
                             }
                         }
@@ -47,8 +47,8 @@ struct HomeView: View {
                     
                     HStack{
                         Text("Rotinas")
-                            .font(Font.custom("SF Pro", size: 22)
-                                .weight(.bold))
+                            .font(Font.custom("SF Pro", size: 20)
+                                .weight(.semibold))
                         Spacer()
                     }
                     .padding(.leading, 28)
@@ -66,18 +66,20 @@ struct HomeView: View {
                     .padding()
                     
                     HStack{
-                        Text("Recomendados para seu tipo de pele")
-                            .font(Font.custom("SF Pro", size: 15)
-                                .weight(.bold))
+                        Text("Recomendados para você")
+                            .font(Font.custom("SF Pro", size: 18)
+                                .weight(.regular))
                         Spacer()
                     }
-                    .padding(.leading, 28)
+                    .padding(.leading, 14)
                     
                     HorizontalScrollProductsView()
                     
                     HStack{
                         Text("Dica do Dia")
-                            .bold()
+                            .font(Font.custom("SF Pro", size: 18)
+                                .weight(.regular))
+
                         Spacer()
                     }
                     .padding(.leading, 28)
@@ -88,6 +90,7 @@ struct HomeView: View {
                     UserDefaults.standard.set(false, forKey: "firstTimeHere")
                 }
             }
+            .navigationTitle("Peach")
         }
     }
 }

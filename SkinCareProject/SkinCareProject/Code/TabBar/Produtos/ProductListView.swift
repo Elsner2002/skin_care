@@ -49,13 +49,14 @@ struct ProductListView: View {
                                     .bold()
                                 Spacer()
                             }
-                            .padding(.leading, 15)
+                            .padding(.leading, 36)
                             CategoryVerticalView(listOfProducts: Constants.shared.filter(category: selectedCategory, productList: vm.listProducts))
                         }
                         else {
                             HStack{
-                                Text("Recomendados para seu tipo de pele")
-                                    .bold()
+                                Text("Recomendados para você")
+                                    .font(Font.custom("SF Pro", size: 20)
+                                        .weight(.semibold))
                                 Spacer()
                             }
                             .padding(.leading, 15)
@@ -70,6 +71,8 @@ struct ProductListView: View {
                                 AllProductsListView(addRoutine: false)
                             } label: {
                                 Text("Ver Todos")
+                                    .font(Font.custom("SF Pro", size: 12)
+                                        .weight(.medium))
                                     .foregroundColor(Color.brandGreen)
                             }
                             
@@ -91,8 +94,9 @@ struct ProductListView: View {
                     VerticalScrollProductsView(searchText: searchText, addRoutine: false)
                 }
             }
+            .navigationTitle("Lista de Produtos")
+            
         }
-        .navigationTitle("Lista de Produtos")
     }
 }
 
