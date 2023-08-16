@@ -74,7 +74,7 @@ struct AboutProductView: View {
                     }
                     
                     if addRoutine {
-                        CustomButton(label: "Adicionar a minha rotina", action: {message.toggle()}, description: "", buttonType: .largeRounded)
+                        CustomButton(label: "Adicionar a minha rotina", description: "", buttonType: .largeRounded, action: {message.toggle()})
 
                             .padding(.top, 18)
                             .padding(.horizontal, 30)

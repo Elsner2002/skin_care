@@ -38,8 +38,8 @@ struct ProductNotFoundView: View {
                 .padding(.top, 76)
             
             VStack{
-                CustomButton(label: "Voltar", action: {
-                if showCreateProduct{
+                CustomButton(label: "Voltar", description: "", buttonType: .largeRounded, action: {
+                if isShowingCreateProductView{
                     CustomButton(label: "Cadastrar Produto", description: "", buttonType: .largeRounded, action: {
                         self.isShowingCreateProductView = true
                     })

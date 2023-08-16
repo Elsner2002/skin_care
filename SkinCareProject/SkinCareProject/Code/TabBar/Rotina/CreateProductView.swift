@@ -192,16 +192,16 @@ struct CreateProductView: View {
                         VStack{
                             if !(productName.isEmpty) && !(productBrand.isEmpty) && !(frequency.isEmpty) && !(selectedCategory.isEmpty) && !(image == nil) {
                                 ZStack {
-                                    CustomButton(label: "Salvar", action: {
+                                    CustomButton(label: "Salvar", description: "", buttonType: .largeRounded, action: {
                                         saveProduct()
                                         dismiss()
-                                    }, description: "", buttonType: .largeRounded)
+                                    })
                                 }
                                 .padding()
                             } else {
                                 ZStack {
-                                    CustomButton(label: "Salvar", action: {saveConfirm.toggle()
-                                    }, description: "", buttonType: .largeRounded)
+                                    CustomButton(label: "Salvar", description: "", buttonType: .largeRounded, action: {saveConfirm.toggle()
+                                    })
                                 }
                                 .confirmationDialog("Preencha todos os campos para salvar!", isPresented: $saveConfirm, titleVisibility: .visible) {
                                     Button("Voltar", role: .cancel) {
@@ -209,7 +209,7 @@ struct CreateProductView: View {
                                 }
                                 .padding()
                             }
-                            CustomButton(label: "Excluir", action: {dismiss()}, description: "", buttonType: .largeRounded)
+                            CustomButton(label: "Excluir", description: "", buttonType: .largeRounded, action: {dismiss()})
                                 .padding()
                                 .padding(.top, -30)
                         }
