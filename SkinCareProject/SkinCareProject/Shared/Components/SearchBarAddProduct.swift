@@ -22,7 +22,7 @@ struct SearchbarAddProduct: View {
                     Image(systemName: "magnifyingglass")
                         .foregroundColor(Color.systemLabelTerciary)
                     TextField("Busque produtos", text: $searchText)
-                        .foregroundColor(Color.systemLabelPrimary)
+                        .foregroundColor(Color.systemLabelTerciary)
                         .disableAutocorrection(true)
                         .overlay(
                             Image(systemName: "xmark.circle.fill")

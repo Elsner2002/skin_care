@@ -10,37 +10,39 @@ import SwiftUI
 struct ProfileView: View {
     
     @EnvironmentObject var vm: CloudKitModel
-
     @State var changeProfileImage = false
     @State var openCameraRoll = false
     @State var chosePhoto = false
-    @State var image = UIImage()
+    @State var image = Constants.shared.loadImage()
     @State var sourceType: UIImagePickerController.SourceType = .photoLibrary
+    @State private var showingPopover = false
+    @State private var returnToStart = false
     
     let skinQuiz: [String] = ["Gênero e Idade", "Tipo de Pele", "Fotótipo", "Condições de Pele", "Ambiente", "Preocupações com a Pele", "Preferência"]
     let about: [String] = ["Termos e condições", "Politica de privacidade"]
-    let account: [String] = ["Apagar conta"]
+    let account: String = "Apagar conta"
+    
+    func deleteUser() {
+        //delete user
+        vm.deleteUser(publicDb: false)
+        
+        //user default first time here ir pra true
+        UserDefaults.standard.set(true, forKey: "firstTimeHere")
+        Constants.shared.saveImage(image: UIImage(named: "ProfileDefault")!)
+        
+        returnToStart.toggle()
+    }
     
     var body: some View {
         NavigationStack {
             VStack{
-                HStack{
+                HStack (spacing: 20){
                     ZStack(alignment: .bottomTrailing) {
-                        //tirar esse if e colocar para pegar a foto do usuário que no padrao vai ser a "ProfileDefault"
-//                        if changeProfileImage {
-//                            Image(uiImage: image)
-//                                .resizable()
-//                                .scaledToFill()
-//                                .frame(width: 120, height: 120)
-//                                .clipShape(Circle())
-//                        }
-                            if let url = vm.user[0].profileImage, let data =  try? Data(contentsOf: url),  let imageProduct = UIImage(data: data) {
-                                Image(uiImage: imageProduct)
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 120, height: 120)
-                                    .clipShape(Circle())
-                            }
+                        Image(uiImage: image)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 120, height: 120)
+                            .clipShape(Circle())
                         
                         Button {
                             chosePhoto.toggle()
@@ -71,7 +73,8 @@ struct ProfileView: View {
                         ImagePicker(selectedImage: $image, changeImage: $changeProfileImage, sourceType: sourceType)
                             .onDisappear {
                                 if changeProfileImage {
-                                    vm.user[0].updateImage(newImage: CloudKitUtility.makeURL(image: image))
+                                    Constants.shared.saveImage(image: image)
+                                    //vm.user[0].updateImage(newImage: CloudKitUtility.makeURL(image: image))
                                 }
                             }
                     }
@@ -135,14 +138,22 @@ struct ProfileView: View {
                         }
                     }
                     Section("CONTA") {
-                        ForEach(account, id: \.self) { accountText in
-                            NavigationLink {
-                                //delete user
-                                //user default first time here ir pra true
-                                //TabBarOnb()
-                                //.navigationBarBackButtonHidden(true)
-                            } label: {
-                                Text(accountText)
+                        Button {
+                            showingPopover = true
+                        } label: {
+                            Text(account)
+                                .foregroundColor(Color.systemLabel)
+                        }  .alert("Apagar Conta", isPresented: $showingPopover) {
+                            Button("Voltar", role: .cancel) { }
+                            Button("Apagar", role: .destructive) {
+                                deleteUser()
+                                if returnToStart {
+                                    NavigationLink(destination: TabBarQuest()
+                                        .navigationBarBackButtonHidden(true)
+                                        .environmentObject(vm),
+                                                   label: { Text("")
+                                    })
+                                }
                             }
                         }
                     }
