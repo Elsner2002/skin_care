@@ -11,8 +11,9 @@ import SwiftUI
 struct SkinCareProjectApp: App {
     @State var firstTimeHere: Bool = UserDefaults.standard.value(forKey: "firstTimeHere") as? Bool ?? true
     @State private var isActive = false
-//    @State var fetch = false
     @StateObject var vm = CloudKitModel()
+    
+    
     var body: some Scene {
         WindowGroup {
             ZStack {
@@ -40,6 +41,7 @@ struct SkinCareProjectApp: App {
                         self.isActive = true
                     }
                 }
+                
             }
         }
     }
