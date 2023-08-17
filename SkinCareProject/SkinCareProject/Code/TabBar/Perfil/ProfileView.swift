@@ -69,11 +69,13 @@ struct ProfileView: View {
                     }
                     .sheet(isPresented: $openCameraRoll) {
                         ImagePicker(selectedImage: $image, changeImage: $changeProfileImage, sourceType: sourceType)
-                    } .onDisappear {
-                        if changeProfileImage {
-                            vm.user[0].updateImage(newImage: CloudKitUtility.makeURL(image: image))
-                        }
+                            .onDisappear {
+                                if changeProfileImage {
+                                    vm.user[0].updateImage(newImage: CloudKitUtility.makeURL(image: image))
+                                }
+                            }
                     }
+                    
                     VStack{
                         HStack{
                             Text("Oi, ")

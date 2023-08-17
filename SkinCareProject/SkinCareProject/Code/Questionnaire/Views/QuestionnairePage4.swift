@@ -26,13 +26,10 @@ struct QuestionnairePage4: View {
 
             HStack(alignment: .center) {
                 if buttonLabel == .next {
-                    Button(action: {vm.updateUser(publicDb: false, appUser: vm.user[0], recordType: .User, userVegan: vm.user[0].vegan, userConditions: Array(buttonPressed))}) {
+                    Button(action: {userInfo.userConditions = Array(buttonPressed)}) {
                         NavigationLink(destination:
-                                        QuestionnairePage5(buttonLabel: .next)
-                            .environmentObject(vm))
-                        {
-                            Text(buttonLabel.rawValue)}
-                    }
+                                        QuestionnairePage5(buttonLabel: .next))
+                        { Text(buttonLabel.rawValue)}}
                     .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
                     .frame(width: 165, height: 35.71429, alignment: .center)
                     .padding(EdgeInsets(top: 100, leading: 0, bottom: 0, trailing: 0))
@@ -48,8 +45,6 @@ struct QuestionnairePage4: View {
                     .padding(EdgeInsets(top: 100, leading: 0, bottom: 0, trailing: 0))
                 }
             }
-            .padding(EdgeInsets(top: 107, leading: 0, bottom: 55, trailing: 0))
-
         }
     }
 }
