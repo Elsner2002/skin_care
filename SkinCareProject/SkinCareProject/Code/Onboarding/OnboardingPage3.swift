@@ -14,9 +14,8 @@ struct OnboardingPage3: View, Hashable {
                 .ignoresSafeArea()
             Image("OnboardingPage3")
                 .resizable()
-                .scaledToFit()
-                .aspectRatio(contentMode: .fill)
-                .padding(.top, 165)
+                .aspectRatio(contentMode: .fit)
+                .padding(.top, 102)
             VStack(alignment: .leading, spacing: 44) {
                 Text("Receba recomendações e alcance seus objetivos")
                     .font(.largeTitle)
@@ -26,6 +25,7 @@ struct OnboardingPage3: View, Hashable {
             }
             .padding()
         }
+        .ignoresSafeArea()
     }
 }
 

@@ -16,18 +16,17 @@ struct OnboardingPage4: View {
                 .ignoresSafeArea()
             Image("OnboardingPage4")
                 .resizable()
-                .scaledToFit()
-                .aspectRatio(contentMode: .fill)
-                .padding(.top, 203)
+                .aspectRatio(contentMode: .fit)
+                .padding(.top, 145)
             VStack {
-                VStack( alignment: .leading, spacing: 44) {
+                VStack( alignment: .leading, spacing: 40) {
                     Text("Aprenda a composição dos produtos")
                         .font(.largeTitle)
                         .bold()
                     Text("Saiba para o que servem os \ncomponentes químicos dos seus produtos favoritos")
                         .font(.title2)
                 }
-                .padding(.bottom, 140)
+            
                 HStack(alignment: .center) {
                     Button(action: {}) {
                         NavigationLink(destination: QuestionnairePage1( buttonLabel: .next)
@@ -38,15 +37,12 @@ struct OnboardingPage4: View {
                     }
                     .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
                 }
-                .frame(width: 161, height: 36, alignment: .topLeading)
-                .padding(EdgeInsets(top: 350, leading: 0, bottom: 70, trailing: 0))
-                
-                    .frame(width: 162.14287, alignment: .center)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 15, trailing: 0))
+                .frame(width: 162.14287, alignment: .center)
             }
+            }
+            .ignoresSafeArea()
         }
     }
-}
 
 struct OnboardingPage4_Previews: PreviewProvider {
     static var previews: some View {

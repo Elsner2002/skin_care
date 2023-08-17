@@ -12,11 +12,11 @@ struct OnboardingPage2: View, Hashable {
         ZStack {
             Color.systemBG
                 .ignoresSafeArea()
-            Image("Onb2")
+            Image("OnboardingPage2")
                 .resizable()
-                .scaledToFit()
                 .aspectRatio(contentMode: .fill)
-                .padding(.top, 210)
+                .padding(.top, 153)
+            
             VStack(alignment: .leading, spacing: 44) {
                 Text("Monte sua rotina e visualize o seu \nprogresso")
                     .font(.largeTitle)
@@ -24,7 +24,9 @@ struct OnboardingPage2: View, Hashable {
                 Text("Dê check-in nos passos da sua rotina e mantenha o seu progresso sempre atualizado")
                     .font(.title2)
             }
+            .padding()
         }
+        .ignoresSafeArea()
     }
 }
 

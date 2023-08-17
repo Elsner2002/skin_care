@@ -12,10 +12,9 @@ struct OnboardingPage1: View, Hashable {
         ZStack {
             Color.systemBG
                 .ignoresSafeArea()
-            Image("OnboardingPage1.2")
+            Image("OnboardingPage1")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-               // .padding(EdgeInsets(top: 0, leading: 0, bottom: 25, trailing: 0))
 
             VStack(alignment: .leading, spacing: 44) {
                 Text("Skin care é cuidado com sua pele e saúde")
@@ -24,7 +23,9 @@ struct OnboardingPage1: View, Hashable {
                 Text("Realize o nosso Quiz e aproveite 100% do nosso aplicativo")
                     .font(.title2)
             }
+            .padding(10)
         }
+        .ignoresSafeArea()
     }
 }
 

@@ -10,18 +10,17 @@ import SwiftUI
 
 struct QuestionnairePage1: View {
     @Environment(\.dismiss) private var dismiss
-    @StateObject var userInfo = UserInfo()
     @EnvironmentObject var vm: CloudKitModel
+    @EnvironmentObject var userInfo: UserInfo
     @State var buttonPressed: String = ""
     @State var selected: Int = 18
     var buttonLabel: buttonLabels
     
     var body: some View {
-        VStack {
+        VStack(spacing: 30) {
             ProgressBar(progress: 10.0)
             QuestionCard(buttonPressed: $buttonPressed, buttonType: .largeRounded,questionLabel: "Qual seu gênero?", buttonLabels: GenderQuestion.self)
             WheelPicker(selected: $selected, questionLabel: "Qual sua idade?")
-                .frame(height: 220)
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 51, trailing: 0))
             HStack(alignment: .center){
                 if buttonLabel == .next {
@@ -30,35 +29,36 @@ struct QuestionnairePage1: View {
                         .environmentObject(vm))
                         .buttonStyle(CustomButtonStyle(buttonType: .largeRounded))
                     Button(action: {
-//                        userInfo.userGender = buttonPressed
-//                        userInfo.userAge = selected
+                        userInfo.userGender = buttonPressed
+                        userInfo.userAge = selected
                     }) {
                         NavigationLink(destination:
                                         QuestionnairePage2(buttonLabel: .next)
                             .environmentObject(userInfo)
                             .environmentObject(vm))
                         {
-                            Text(buttonLabel.rawValue)}
+                            Text(buttonLabel.rawValue)
+                                .frame(maxWidth: .infinity)
+                        }
+                        
                     }
                     .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
-                    .frame(width: 165, height: 35.71429, alignment: .center)
-                    .padding(EdgeInsets(top: 100, leading: 0, bottom: 0, trailing: 0))
+
                 } else {
                     Button(action: {
-//                        vm.updateUser(publicDb: false, appUser: vm.user[0], recordType: .User, userVegan: vm.user[0].vegan, userAge: selected, userGender: buttonPressed)
+                        vm.updateUser(publicDb: false, appUser: vm.user[0], recordType: .User, userVegan: vm.user[0].vegan, userGender: buttonPressed, userAge: selected)
                         dismiss()
                     }, label: {
                         Text(buttonLabel.rawValue)
+                            .frame(maxWidth: .infinity)
                     })
                     .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
-                    .frame(width: 165, height: 35.71429, alignment: .center)
-                    .padding(EdgeInsets(top: 100, leading: 0, bottom: 0, trailing: 0))
                 }
             }
-            
-            Spacer(minLength: 77)
+            .padding(10)
+            .frame(width: 380, height: 35.71429, alignment: .center)
         }
-        .padding(20)
+        .padding(30)
     }
 }
 

@@ -19,7 +19,7 @@ struct QuestionCard<T: RawHashIterableStringConvertible>: View where T.AllCases 
     
     var body: some View {
         VStack(alignment: .center) {
-            VStack(alignment: .leading, spacing: 18) {
+            VStack(alignment: .leading, spacing: 21) {
                 HStack(alignment: .center) {
                     Image("QuestionnaireSymbol")
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
@@ -28,12 +28,13 @@ struct QuestionCard<T: RawHashIterableStringConvertible>: View where T.AllCases 
                         .frame(height: 48)
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 33))
                 }
-                ForEach(buttonLabels.allCases, id: \.self) { label in
-                    PrimaryButton(
-                        label: label.rawValue,
-                        description: label.description,
-                        isPressed: buttonPressed == label.rawValue)
-                    {self.buttonPressed = label.rawValue}
+                
+                    ForEach(buttonLabels.allCases, id: \.self) { label in
+                        PrimaryButton(
+                            label: label.rawValue,
+                            description: label.description,
+                            isPressed: buttonPressed == label.rawValue)
+                        {self.buttonPressed = label.rawValue}
                 }
             }
         }
