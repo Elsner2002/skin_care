@@ -19,6 +19,7 @@ struct OnboardingPage4: View {
                 .aspectRatio(contentMode: .fit)
                 .padding(.top, 145)
             VStack {
+                Spacer()
                 VStack( alignment: .leading, spacing: 40) {
                     Text("Aprenda a composição dos produtos")
                         .font(.largeTitle)
@@ -26,7 +27,8 @@ struct OnboardingPage4: View {
                     Text("Saiba para o que servem os \ncomponentes químicos dos seus produtos favoritos")
                         .font(.title2)
                 }
-            
+                .padding(.bottom, 140)
+                
                 HStack(alignment: .center) {
                     Button(action: {}) {
                         NavigationLink(destination: QuestionnairePage1( buttonLabel: .next)
@@ -39,6 +41,7 @@ struct OnboardingPage4: View {
                 }
                 .frame(width: 162.14287, alignment: .center)
             }
+            .padding(.bottom, 100)
             }
             .ignoresSafeArea()
         }

@@ -12,6 +12,7 @@ import UIKit
 struct TabBarOnb: View {
     
     @EnvironmentObject var vm: CloudKitModel
+    @State var selected: Int = 0
 
     
     var body: some View {
@@ -19,27 +20,32 @@ struct TabBarOnb: View {
             ZStack {
                 Color.systemBG
                     .ignoresSafeArea()
-                TabView {
+                TabView(selection: $selected) {
                     OnboardingPage1()
+                        .tag(0)
                     OnboardingPage2()
+                        .tag(1)
                     OnboardingPage3()
+                        .tag(2)
                     OnboardingPage4()
+                        .tag(3)
                 }
                 .tabViewStyle(.page)
                 .ignoresSafeArea()
                 VStack {
                     HStack {
                         Spacer()
-                        //controls back button navigation
-                        NavigationLink(destination: TabBarQuest()
-                            .navigationBarBackButtonHidden(true)
-                            .environmentObject(vm),
-                            label: {
-                            Text("Pular")
-                                .font(.callout)
-                                .foregroundColor(Color(uiColor: .black))
-                        })
-                        .padding(20)
+                        if selected != 3 {
+                            NavigationLink(destination: TabBarQuest()
+                                .navigationBarBackButtonHidden(true)
+                                .environmentObject(vm),
+                                label: {
+                                Text("Pular")
+                                    .font(.callout)
+                                    .foregroundColor(Color(uiColor: .black))
+                            })
+                            .padding(20)
+                        }
                     }
                     Spacer()
                 }
