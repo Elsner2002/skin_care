@@ -15,6 +15,9 @@ class UserInfo: ObservableObject {
     @Published var userSkinType: String = "NaoAlterado"
     @Published var userConditions: [String] = []
     @Published var userImage: URL = CloudKitUtility.makeURLJPG(image: "ProfileDefault")
+    @Published var userAge: Int = -1
+    @Published var userGender: String = "NaoAlterado"
+    @Published var userLocation: String = "NaoAlterado"
 }
 
 class CloudKitModel: ObservableObject {

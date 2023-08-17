@@ -19,22 +19,15 @@ struct TipsView: View {
                 VStack {
                     Rectangle()
                         .foregroundColor(.clear)
-                        .frame(width: 312, height: 169)
+                        .frame(width: 349, height: 189)
                         .background(
                             Image(tip.image)
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
-                                .frame(width: 312, height: 169)
+                                .frame(width: 349, height: 189)
                                 .clipped()
                         )
                         .cornerRadius(15)
-                    HStack{
-                        Text("Saiba mais")
-                            .bold()
-                            .foregroundColor(.black)
-                            .padding(.leading, 40)
-                        Spacer()
-                    }
                 }
             }
             .sheet(isPresented: $showSheet) {

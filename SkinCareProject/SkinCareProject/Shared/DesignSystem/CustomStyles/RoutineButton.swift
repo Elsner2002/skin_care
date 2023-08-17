@@ -18,6 +18,7 @@ struct RoutineButton: View {
                 .resizable()
                 .frame(width: 124, height: 124)
                 .foregroundColor(color)
+                .padding(.vertical, 10)
         }
         .font(.headline)
         .padding()

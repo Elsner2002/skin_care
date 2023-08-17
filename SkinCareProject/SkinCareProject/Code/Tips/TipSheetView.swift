@@ -22,7 +22,7 @@ struct TipSheetView: View {
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color.systemLabelPrimary)
                     .padding(.top, 14)
-                    .padding(.bottom, 59)
+                    .padding(.bottom, 40)
                 
                 Text(tip.title)
                     .font(
@@ -31,19 +31,19 @@ struct TipSheetView: View {
                     )
                     .foregroundColor(Color.systemLabelPrimary)
                     .frame(width: 327, alignment: .topLeading)
-                    .padding(20)
+                    .padding([.bottom, .horizontal], 20)
                 
                 Image(tip.image)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: 312, height: 169)
+                    .frame(width: 326, height: 156)
                     .clipped()
                     .cornerRadius(12, corners: .allCorners)
-                    .padding(20)
+                    .padding(.horizontal, 30)
                 
                 Text(tip.subtitle)
                     .font(
-                        Font.custom("SF Pro", size: 20)
+                        Font.custom("SF Pro", size: 18)
                             .weight(.regular)
                     )
                     .multilineTextAlignment(.center)
@@ -53,9 +53,9 @@ struct TipSheetView: View {
                 
                 Text(tip.text)
                     .fixedSize(horizontal: false, vertical: true)
-                    .font(Font.custom("SF Pro", size: 17))
+                    .font(Font.custom("SF Pro", size: 15))
                     .foregroundColor(Color.systemLabelPrimary)
-                    .frame(width: 350, height: 136, alignment: .topLeading)
+                    .frame(width: 327, height: 136, alignment: .topLeading)
                     .padding(.vertical, 20)
             }
             

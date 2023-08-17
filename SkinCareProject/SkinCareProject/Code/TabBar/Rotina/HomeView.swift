@@ -10,16 +10,28 @@ import CloudKit
 
 struct HomeView: View {
     @EnvironmentObject var vm: CloudKitModel
-
+    
     var routineImages: [String] = ["sun.max.fill", "moon.stars.fill"]
     var routineColor: [Color] = [Color.brandPink, Color.brandGreen]
     @State var routineList: [Routine] = [Constants.shared.dayRoutine, Constants.shared.nightRoutine]
     
     var body: some View {
         NavigationStack{
+            HStack{
+                Image("TinyLogo")
+                
+                Text("Peach")
+                    .font(Font.custom("New York", size: 20.4))
+                    .fontDesign(.serif)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.brandPink)
+            }
+            .padding(.top, 7)
+            
             ScrollView(showsIndicators: false) {
                 VStack{
                     HStack{
+
                         if let url = vm.user[0].profileImage, let data =  try? Data(contentsOf: url),  let imageProduct = UIImage(data: data) {
                             Image(uiImage: imageProduct)
                                 .resizable()
@@ -33,6 +45,7 @@ struct HomeView: View {
                                 Text("Oi, ")
                                     .font(.system(size: 34))
                                     .fontDesign(.serif)
+                                Spacer()
                             }
                             HStack{
                                 Text("\(vm.userName)!")
@@ -43,16 +56,24 @@ struct HomeView: View {
                             }
                         }
                         Spacer()
-                    }
-                    .padding(.vertical)
-                    
-                    HStack{
-                        Text("Rotinas")
-                            .font(Font.custom("SF Pro", size: 20)
-                                .weight(.semibold))
-                        Spacer()
+                        
+//                        if let url = vm.user[0].profileImage, let data =  try? Data(contentsOf: url),  let imageProfile = UIImage(data: data) {
+//                            Image(uiImage: imageProfile)
+//                                .resizable()
+//                                .frame(width: 87, height: 87)
+//                                .clipShape(Circle())
+//                            .padding(.trailing, 38)
+//                        }
                     }
                     .padding(.leading, 28)
+                    
+                    HStack{
+                        Text("Minhas Rotinas")
+                            .font(Font.custom("SF Pro", size: 20)
+                                .weight(.bold))
+                        Spacer()
+                    }
+                    .padding([.leading, .top], 28)
                     
                     HStack{
                         ForEach(0..<routineImages.count) { position in
@@ -72,7 +93,7 @@ struct HomeView: View {
                                 .weight(.regular))
                         Spacer()
                     }
-                    .padding(.leading, 14)
+                    .padding(.leading, 28)
                     
                     HorizontalScrollProductsView()
                     
@@ -80,7 +101,7 @@ struct HomeView: View {
                         Text("Dica do Dia")
                             .font(Font.custom("SF Pro", size: 18)
                                 .weight(.regular))
-
+                        
                         Spacer()
                     }
                     .padding(.leading, 28)
@@ -91,7 +112,7 @@ struct HomeView: View {
                     UserDefaults.standard.set(false, forKey: "firstTimeHere")
                 }
             }
-            .navigationTitle("Peach")
+            //            .navigationTitle("Peach")
         }
     }
 }
