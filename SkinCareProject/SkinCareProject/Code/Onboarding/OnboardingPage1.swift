@@ -12,11 +12,12 @@ struct OnboardingPage1: View, Hashable {
         ZStack {
             Color.systemBG
                 .ignoresSafeArea()
-            Image("OnboardingPage1")
+            Image("OnboardingPage1.2")
                 .resizable()
-                .scaledToFit()
                 .aspectRatio(contentMode: .fill)
-            VStack(spacing: 44){
+               // .padding(EdgeInsets(top: 0, leading: 0, bottom: 25, trailing: 0))
+
+            VStack(alignment: .leading, spacing: 44) {
                 Text("Skin care é cuidado com sua pele e saúde")
                     .font(.largeTitle)
                     .bold()
@@ -24,7 +25,6 @@ struct OnboardingPage1: View, Hashable {
                     .font(.title2)
             }
         }
-        .ignoresSafeArea()
     }
 }
 
@@ -33,6 +33,5 @@ struct OnboardingPage1_Previews: PreviewProvider {
         OnboardingPage1()
     }
 }
-
 
 
