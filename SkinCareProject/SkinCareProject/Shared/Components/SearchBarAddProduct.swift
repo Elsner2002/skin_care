@@ -22,7 +22,7 @@ struct SearchbarAddProduct: View {
                     Image(systemName: "magnifyingglass")
                         .foregroundColor(Color.systemLabelTerciary)
                     TextField("Busque produtos", text: $searchText)
-                        .foregroundColor(Color.brandGray)
+                        .foregroundColor(Color.systemLabelPrimary)
                         .disableAutocorrection(true)
                         .overlay(
                             Image(systemName: "xmark.circle.fill")
@@ -43,7 +43,7 @@ struct SearchbarAddProduct: View {
                 .padding()
                 .background(
                     RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.brandWhite)
+                        .fill(Color.systemMaterialSecondary)
                         .shadow(
                             color: Color.brandGray.opacity(0.15), radius: 10, x: 0, y: 0
                         )
@@ -61,7 +61,6 @@ struct SearchbarAddProduct: View {
                         Image("scanSymbol")
                             .padding(.trailing, 24)
                             .offset(x: 10)
-                            .foregroundColor(Color.brandGray)
                     }
 
                 }

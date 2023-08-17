@@ -23,7 +23,7 @@ struct CreateProductTextField: View {
                 .frame(maxWidth: .infinity, minHeight: 44, maxHeight: 44, alignment: .center)
         }
         .background(
-            RoundedRectangle(cornerRadius: 25)
+            RoundedRectangle(cornerRadius: 12)
                 .fill(Color.brandWhite)
                 .shadow(color: Color.gray.opacity(0.15), radius: 10, x: 0, y: 0)
         )
