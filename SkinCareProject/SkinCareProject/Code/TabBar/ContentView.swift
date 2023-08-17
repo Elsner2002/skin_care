@@ -42,6 +42,8 @@ struct ContentView: View {
         .onAppear{
             UITabBar.appearance().backgroundColor = UIColor(Color.systemBG)
         }
+        .navigationBarBackButtonHidden(true)
+
 
     }
     
