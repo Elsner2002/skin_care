@@ -31,12 +31,10 @@ struct QuestionnairePage5: View{
             
             HStack(alignment: .center) {
                 if buttonLabel == .next {
-                    Button(action: {vm.updateUser(publicDb: false, appUser: vm.user[0], recordType: CloudKitUtility.CloudKitTypes.User, userVegan: vm.user[0].vegan, userConditions: Array(buttonPressed))}) {
+                    Button(action: {userInfo.userConditions = Array(buttonPressed)}) {
                         NavigationLink(destination:
-                                        QuestionnairePage6(buttonLabel: .next)
-                            .environmentObject(vm))
-                        {
-                            Text(buttonLabel.rawValue)}
+                                        QuestionnairePage6(buttonLabel: .next))
+                        {Text(buttonLabel.rawValue)}
                     }
                     .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
                     .frame(width: 165, height: 35.71429, alignment: .center)

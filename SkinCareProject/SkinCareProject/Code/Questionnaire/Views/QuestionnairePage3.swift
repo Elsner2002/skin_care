@@ -29,12 +29,9 @@ struct QuestionnairePage3: View {
             
             HStack(alignment: .center) {
                 if buttonLabel == .next {
-                    Button(action: {vm.updateUser(publicDb: false, appUser: vm.user[0], recordType: .User, userVegan: vm.user[0].vegan, userPhototype: buttonPressed)}) {
-                        NavigationLink(destination:
-                                        QuestionnairePage4(buttonLabel: .next)
-                            .environmentObject(vm))
-                        {
-                            Text(buttonLabel.rawValue)}
+                    Button(action: {userInfo.userPhototype = buttonPressed}) {
+                        NavigationLink(destination: QuestionnairePage4(buttonLabel: .next))
+                            {Text(buttonLabel.rawValue)}
                     }
                     .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
                     .frame(width: 165, height: 35.71429, alignment: .center)

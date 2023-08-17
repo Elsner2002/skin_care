@@ -88,7 +88,8 @@ class User: CloudKitProtocol {
     
     func updateImage(newImage: URL) -> User? {
         let newRecord = record
-        newRecord["profileImage"] = newImage
+        let asset = CKAsset(fileURL: newImage)
+        newRecord["profileImage"] = asset
         return User(record: newRecord)
     }
     

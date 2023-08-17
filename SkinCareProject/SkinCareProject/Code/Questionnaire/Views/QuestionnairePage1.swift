@@ -15,7 +15,6 @@ struct QuestionnairePage1: View {
     @State var buttonPressed: String = ""
     @State var selected: Int = 18
     var buttonLabel: buttonLabels
-    @State var buttonPressed: String = ""
     
     var body: some View {
         VStack {
@@ -31,8 +30,8 @@ struct QuestionnairePage1: View {
                         .environmentObject(vm))
                         .buttonStyle(CustomButtonStyle(buttonType: .largeRounded))
                     Button(action: {
-                        userInfo.userGender = buttonPressed
-                        userInfo.userAge = selected
+//                        userInfo.userGender = buttonPressed
+//                        userInfo.userAge = selected
                     }) {
                         NavigationLink(destination:
                                         QuestionnairePage2(buttonLabel: .next)
@@ -46,7 +45,7 @@ struct QuestionnairePage1: View {
                     .padding(EdgeInsets(top: 100, leading: 0, bottom: 0, trailing: 0))
                 } else {
                     Button(action: {
-                        vm.updateUser(publicDb: false, appUser: vm.user[0], recordType: .User, userVegan: vm.user[0].vegan, userAge: selected, userGender: buttonPressed)
+//                        vm.updateUser(publicDb: false, appUser: vm.user[0], recordType: .User, userVegan: vm.user[0].vegan, userAge: selected, userGender: buttonPressed)
                         dismiss()
                     }, label: {
                         Text(buttonLabel.rawValue)

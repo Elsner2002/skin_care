@@ -29,10 +29,8 @@ struct QuestionnairePage6: View {
                 if buttonLabel == .next {
                     Button(action: {userInfo.userLocation = buttonPressed}) {
                         NavigationLink(destination:
-                                        QuestionnairePage7(buttonLabel: .next)
-                            .environmentObject(vm))
-                        {
-                            Text(buttonLabel.rawValue)}
+                                        QuestionnairePage7(buttonLabel: .next))
+                        {Text(buttonLabel.rawValue)}
                     }
                     .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
                     .frame(width: 165, height: 35.71429, alignment: .center)
