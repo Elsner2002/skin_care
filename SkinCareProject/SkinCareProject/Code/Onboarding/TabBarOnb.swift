@@ -17,12 +17,15 @@ struct TabBarOnb: View {
     var body: some View {
         NavigationStack{
             ZStack {
+                Color.systemBG
+                    .ignoresSafeArea()
                 TabView {
                     OnboardingPage1()
                     OnboardingPage2()
                     OnboardingPage3()
                     OnboardingPage4()
                 }
+                .tabViewStyle(.page)
                 .ignoresSafeArea()
                 VStack {
                     HStack {
@@ -41,13 +44,12 @@ struct TabBarOnb: View {
                     Spacer()
                 }
             }
-            .tabViewStyle(.page)
         }
         .onAppear {
             UIPageControl.appearance().currentPageIndicatorTintColor = .black
             UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
         }
-        .padding(EdgeInsets(top: 0, leading: 0, bottom: 50, trailing: 0))
+        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
 
     }
 }

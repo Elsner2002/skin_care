@@ -12,7 +12,7 @@ struct OnboardingPage2: View, Hashable {
         ZStack {
             Color.systemBG
                 .ignoresSafeArea()
-            Image("OnboardingPage2")
+            Image("Onb2")
                 .resizable()
                 .scaledToFit()
                 .aspectRatio(contentMode: .fill)
