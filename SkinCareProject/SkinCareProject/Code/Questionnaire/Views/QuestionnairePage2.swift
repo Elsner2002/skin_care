@@ -17,22 +17,22 @@ struct QuestionnairePage2: View {
     @EnvironmentObject var userInfo: UserInfo
     @State var buttonPressed: String = ""
     var buttonLabel: buttonLabels
+    @State var nextPage: Bool = false
+
     
     var body: some View {
         VStack {
             ProgressBar(progress: 20)
             QuestionCard(buttonPressed: $buttonPressed, buttonType: .smallRounded, questionLabel: "Qual seu tipo de pele?", buttonLabels: SkinTypeQuestion.self)
                 .frame(width: 334, alignment: .topLeading)
-            Spacer(minLength: 185)
             HStack {
                 if buttonLabel == .next {
-                    Button(action: {userInfo.userSkinType = buttonPressed}) {
-                        NavigationLink(destination:
-                                        QuestionnairePage3(buttonLabel: .next)
-                            .environmentObject(vm))
-                        { Text(buttonLabel.rawValue)
-                                .frame(maxWidth: .infinity)
-                        }
+                    Button(action: {
+                        userInfo.userSkinType = buttonPressed
+                        self.nextPage = true
+                    }) {
+                        Text(buttonLabel.rawValue)
+                            .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
                 } else {
@@ -49,6 +49,7 @@ struct QuestionnairePage2: View {
             .frame(width: 165, height: 35.71429, alignment: .topLeading)
         }
         .padding(30)
+        .navigationDestination(isPresented: $nextPage, destination: { QuestionnairePage3(buttonLabel: .next) })
     }
 }
 

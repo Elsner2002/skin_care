@@ -51,6 +51,7 @@ struct TabBarOnb: View {
                 }
             }
         }
+        .navigationBarBackButtonHidden(true)
         .onAppear {
             UIPageControl.appearance().currentPageIndicatorTintColor = .black
             UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
