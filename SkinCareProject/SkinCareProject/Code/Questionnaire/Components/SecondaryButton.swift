@@ -18,12 +18,9 @@ struct SecondaryButton: View {
             }
             .buttonPrimary(backgroundColor: self.isPressed ? .brandGreen : .buttonColor)
             
-            if isPressed {
+            if isPressed && description != "" {
                 TextDescriptions(description: description)
             }
         }
     }
 }
-
-
-

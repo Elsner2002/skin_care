@@ -15,7 +15,7 @@ struct QuestionnairePage5: View{
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var userInfo: UserInfo
     @EnvironmentObject var vm: CloudKitModel
-    @State var buttonPressed: String = ""
+    @State var buttonPressed: Set<String> = []
     var buttonLabel: buttonLabels
 
     var body: some View {
@@ -25,14 +25,13 @@ struct QuestionnairePage5: View{
                 .frame(width: 243, height: 80, alignment: .center)
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
             
-            QuestionCard(buttonPressed: .constant(""),buttonType: .largeRoundedOverlay,
-                         questionLabel: "Quais suas principais preocupações?",
-                         buttonLabels: ConcernsQuestion.self)
+            
+            QuestionCardMultipleChoice(buttonPressed: $buttonPressed, questionLabel: "Quais suas principais preocupações?", buttonLabels: ConcernsQuestion.self)
                 .frame(width: 334, alignment: .topLeading)
             
             HStack(alignment: .center) {
                 if buttonLabel == .next {
-                    Button(action: {}) {
+                    Button(action: {vm.updateUser(publicDb: false, appUser: vm.user[0], recordType: .User, userVegan: vm.user[0].vegan, userConditions: Array(buttonPressed))}) {
                         NavigationLink(destination:
                                         QuestionnairePage6()
                             .environmentObject(vm))
@@ -44,7 +43,7 @@ struct QuestionnairePage5: View{
                     .padding(EdgeInsets(top: 100, leading: 0, bottom: 0, trailing: 0))
                 } else {
                     Button(action: {
-                        print(vm.user.isEmpty)
+                        vm.updateUser(publicDb: false, appUser: vm.user[0], recordType: .User, userVegan: vm.user[0].vegan, userConditions: Array(buttonPressed))
                         dismiss()
                     }, label: {
                         Text(buttonLabel.rawValue)

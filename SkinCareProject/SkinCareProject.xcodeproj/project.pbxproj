@@ -302,6 +302,7 @@
 		7CB66FD72A66F37F006DFFB2 /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				A55E88B92A686ECB005E5AC5 /* Splashscreen.swift */,
 				7CB66FE52A67289A006DFFB2 /* Constants.swift */,
 				7CB66FD82A66F3BD006DFFB2 /* Application */,
 				7CB66FDA2A66F4C7006DFFB2 /* Structs */,
