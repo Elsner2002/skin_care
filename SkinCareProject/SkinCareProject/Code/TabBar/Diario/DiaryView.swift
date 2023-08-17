@@ -62,8 +62,8 @@ struct SheetDiary: View {
                                 .foregroundColor(.systemLabelSecondary)
                                 .padding(EdgeInsets(top: 20, leading: 32, bottom: 10, trailing: 32))
                             VStack(spacing: 20) {
-                                RoutineProgress(title: "Rotina Diurna", completion: dayRoutineProgress)
-                                RoutineProgress(title: "Rotina Noturna", completion: nightRoutineProgress)
+                                RoutineProgress(title: "Rotina Diurna", completion: dayRoutineProgress, totalProducts: 5)
+                                RoutineProgress(title: "Rotina Noturna", completion: nightRoutineProgress, totalProducts: 5)
                             }
                         }
                         VStack(alignment: .leading) {
