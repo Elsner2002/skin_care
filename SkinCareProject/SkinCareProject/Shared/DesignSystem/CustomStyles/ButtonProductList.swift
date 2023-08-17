@@ -27,14 +27,14 @@ struct ButtonProductList: View {
                         Font.custom("SF Pro Text", size: 15)
                         .weight(.bold)
                         )
-                        .foregroundColor(Color.black)
+                        .foregroundColor(Color.systemLabelPrimary)
                     Spacer()
                     Text(product.brand)
                         .font(
                         Font.custom("SF Pro Text", size: 15)
                         .weight(.bold)
                         )
-                        .foregroundColor(Color.black)
+                        .foregroundColor(Color.systemLabelPrimary)
                 } .lineLimit(1)
                     .padding(.bottom, 2)
                 HStack{
@@ -59,7 +59,7 @@ struct ButtonProductList: View {
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 10)
-                .fill(Color.brandWhite)
+                .fill(Color.systemMaterialSecondary)
                 .shadow(
                     color: Color.brandGray.opacity(0.15), radius: 10, x: 0, y: 0
                 )

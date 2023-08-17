@@ -79,14 +79,16 @@ struct ProfileView: View {
                     VStack{
                         HStack{
                             Text("Oi, ")
-                                .font(Font.custom("SF Pro", size: 34)
+                                .font( Font.custom("New York", size: 34)
                                     .weight(.bold))
+                                .fontDesign(.serif)
                             Spacer()
                         }
                         HStack{
                             Text("\(vm.userName)!")
-                                .font( Font.custom("SF Pro", size: 34)
+                                .font( Font.custom("New York", size: 34)
                                     .weight(.bold))
+                                .fontDesign(.serif)
                             Spacer()
                         }
                     }
@@ -121,7 +123,12 @@ struct ProfileView: View {
                     Section("SOBRE") {
                         ForEach(about, id: \.self) { aboutText in
                             NavigationLink {
-                                //
+                                if aboutText == "Politica de privacidade" {
+                                    PolicyView()
+                                }
+                                else {
+                                    TermsView()
+                                }
                             } label: {
                                 Text(aboutText)
                             }
@@ -130,7 +137,10 @@ struct ProfileView: View {
                     Section("CONTA") {
                         ForEach(account, id: \.self) { accountText in
                             NavigationLink {
-                                //
+                                //delete user
+                                //user default first time here ir pra true
+                                //TabBarOnb()
+                                //.navigationBarBackButtonHidden(true)
                             } label: {
                                 Text(accountText)
                             }
