@@ -7,7 +7,7 @@
 import SwiftUI
 
 struct WheelPicker: View {
-    @State var selected: Int = 18
+    @Binding var selected: Int
     var questionLabel: String
     
     var body: some View {
@@ -30,7 +30,7 @@ struct WheelPicker: View {
 
 struct WheelPicker_Previews: PreviewProvider {
     static var previews: some View {
-        WheelPicker(questionLabel: "Qual seu genero?")
+        WheelPicker(selected: .constant(18), questionLabel: "Qual seu genero?")
     }
 }
 

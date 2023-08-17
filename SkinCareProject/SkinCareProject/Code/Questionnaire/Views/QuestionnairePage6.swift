@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct QuestionnairePage6: View {
+    @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var userInfo: UserInfo
     @EnvironmentObject var vm: CloudKitModel
-    @State var buttonPressed: Set<String> = []
+    @State var buttonPressed: String = ""
+    var buttonLabel: buttonLabels
 
     var body: some View {
         VStack {
@@ -19,19 +21,33 @@ struct QuestionnairePage6: View {
                 .frame(width: 243, height: 80, alignment: .center)
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
             
-            QuestionCard(buttonPressed: .constant(""), buttonType: .largeRounded,
+            QuestionCard(buttonPressed: $buttonPressed, buttonType: .largeRounded,
                          questionLabel: "Como você descreveria o lugar onde mais passa seu tempo?",
                          buttonLabels: EnvironmentQuestions.self)
                 .frame(width: 291, alignment: .topLeading)
             HStack(alignment: .center) {
-                Button(action: {}) {
-                    NavigationLink(destination: QuestionnairePage7()
-                        .environmentObject(vm))
-                    {
-                        Text("Próximo")
+                if buttonLabel == .next {
+                    Button(action: {userInfo.userLocation = buttonPressed}) {
+                        NavigationLink(destination:
+                                        QuestionnairePage7(buttonLabel: .next)
+                            .environmentObject(vm))
+                        {
+                            Text(buttonLabel.rawValue)}
                     }
+                    .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
+                    .frame(width: 165, height: 35.71429, alignment: .center)
+                    .padding(EdgeInsets(top: 100, leading: 0, bottom: 0, trailing: 0))
+                } else {
+                    Button(action: {
+                        vm.updateUser(publicDb: false, appUser: vm.user[0], recordType: .User, userVegan: vm.user[0].vegan, userLocation: buttonPressed)
+                        dismiss()
+                    }, label: {
+                        Text(buttonLabel.rawValue)
+                    })
+                    .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
+                    .frame(width: 165, height: 35.71429, alignment: .center)
+                    .padding(EdgeInsets(top: 100, leading: 0, bottom: 0, trailing: 0))
                 }
-                .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
 
             }
                 .frame(width: 162.14287, alignment: .center)
@@ -43,6 +59,6 @@ struct QuestionnairePage6: View {
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionnairePage6()
+        QuestionnairePage6(buttonLabel: .next)
     }
 }

@@ -17,9 +17,9 @@ struct ProfileView: View {
     @State var image = UIImage()
     @State var sourceType: UIImagePickerController.SourceType = .photoLibrary
     
-    let skinQuiz: [(String, String)] = [("Gênero e Idade", "star"), ("Tipo de Pele","star"), ("Fotótipo", "star"), ("Condições de Pele", "star"), ("Preocupações com a Pele", "star")]
+    let skinQuiz: [String] = ["Gênero e Idade", "Tipo de Pele", "Fotótipo", "Condições de Pele", "Ambiente", "Preocupações com a Pele", "Preferência"]
     let about: [String] = ["Termos e condições", "Politica de privacidade"]
-    let account: [String] = ["Sair", "Apagar conta"]
+    let account: [String] = ["Apagar conta"]
     
     var body: some View {
         NavigationStack {
@@ -99,15 +99,17 @@ struct ProfileView: View {
                                 case 1: QuestionnairePage2(buttonLabel: .save)
                                 case 2: QuestionnairePage3(buttonLabel: .save)
                                 case 3: QuestionnairePage4(buttonLabel: .save)
-                                case 4: QuestionnairePage5(buttonLabel: .save)
+                                case 4: QuestionnairePage6(buttonLabel: .save)
+                                case 5: QuestionnairePage5(buttonLabel: .save)
+                                case 6: QuestionnairePage7(buttonLabel: .save)
                                 default:
                                     EmptyView()
                                 }
                             } label: {
                                 HStack {
-                                    Image(systemName: skinQuiz[position].1)
+                                    Image("QuestionnaireSymbol")
                                         .foregroundColor(Color.brandPink)
-                                    Text(skinQuiz[position].0)
+                                    Text(skinQuiz[position])
                                 }
                             }
                             

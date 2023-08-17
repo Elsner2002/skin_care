@@ -22,7 +22,7 @@ struct CategoryVerticalView: View {
                             ProductButton(product: listOfProducts[position*3])
                             if listOfProducts.count>(position*3)+1 {
                                 ProductButton(product: listOfProducts[(position*3)+1])
-                                    .padding(.horizontal, 20)
+                                    .padding(.horizontal, 5)
                                 if listOfProducts.count>(position*3)+2 {
                                     ProductButton(product: listOfProducts[(position*3)+2])
                                 }

@@ -18,6 +18,13 @@ struct ProductListView: View {
     var body: some View {
         NavigationStack {
             VStack{
+                Text("Lista de Produtos")
+                    .font(Font.custom("New York", size: 17))
+                    .fontDesign(.serif)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(Color.systemLabelPrimary)
+                    .padding(.top, 22)
+                
                 Searchbar(searchText: $searchText, showCreateProduct: false, addRoutine: false)
                 
                 if searchText.isEmpty {
@@ -94,7 +101,6 @@ struct ProductListView: View {
                     VerticalScrollProductsView(searchText: searchText, addRoutine: false)
                 }
             }
-            .navigationTitle("Lista de Produtos")
             
         }
     }

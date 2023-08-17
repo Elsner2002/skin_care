@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C29F2C22A8DF00C0081335B /* PolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C29F2C12A8DF00C0081335B /* PolicyView.swift */; };
+		7C29F2C42A8DF01E0081335B /* TermsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C29F2C32A8DF01E0081335B /* TermsView.swift */; };
 		7C30D13E2A79764B009F93D7 /* CreateProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C30D13D2A79764B009F93D7 /* CreateProductView.swift */; };
 		7C30D1442A79959B009F93D7 /* CircleDayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C30D1432A79959B009F93D7 /* CircleDayButton.swift */; };
 		7C30D1462A799A20009F93D7 /* RectangleCategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C30D1452A799A20009F93D7 /* RectangleCategoryButton.swift */; };
@@ -100,6 +102,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C29F2C12A8DF00C0081335B /* PolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyView.swift; sourceTree = "<group>"; };
+		7C29F2C32A8DF01E0081335B /* TermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsView.swift; sourceTree = "<group>"; };
 		7C30D13D2A79764B009F93D7 /* CreateProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProductView.swift; sourceTree = "<group>"; };
 		7C30D1432A79959B009F93D7 /* CircleDayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleDayButton.swift; sourceTree = "<group>"; };
 		7C30D1452A799A20009F93D7 /* RectangleCategoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleCategoryButton.swift; sourceTree = "<group>"; };
@@ -302,7 +306,6 @@
 		7CB66FD72A66F37F006DFFB2 /* Code */ = {
 			isa = PBXGroup;
 			children = (
-				A55E88B92A686ECB005E5AC5 /* Splashscreen.swift */,
 				7CB66FE52A67289A006DFFB2 /* Constants.swift */,
 				7CB66FD82A66F3BD006DFFB2 /* Application */,
 				7CB66FDA2A66F4C7006DFFB2 /* Structs */,
@@ -407,6 +410,8 @@
 			isa = PBXGroup;
 			children = (
 				7CDF2E722A6B17E70028CA84 /* ProfileView.swift */,
+				7C29F2C12A8DF00C0081335B /* PolicyView.swift */,
+				7C29F2C32A8DF01E0081335B /* TermsView.swift */,
 			);
 			path = Perfil;
 			sourceTree = "<group>";
@@ -642,6 +647,7 @@
 				D8E60F5C2A8AA6CB00F9CB18 /* TextDescriptions.swift in Sources */,
 				A544A6FB2A799AD5006E1747 /* RoutineView.swift in Sources */,
 				7C30D15A2A7C168B009F93D7 /* AddProductView.swift in Sources */,
+				7C29F2C42A8DF01E0081335B /* TermsView.swift in Sources */,
 				A5AD05332A7D378100826963 /* TipsView.swift in Sources */,
 				7C62FE502A82C07800C586A3 /* HorizontalScrollProductsView.swift in Sources */,
 				A544A6F52A797F2C006E1747 /* RoutineProgressBar.swift in Sources */,
@@ -688,6 +694,7 @@
 				D8E60F5E2A8AEF2A00F9CB18 /* SecondaryButton.swift in Sources */,
 				D88A107E2A80550C006CC93E /* QuestionCard.swift in Sources */,
 				A544A6F72A79840B006E1747 /* RoutineAlarm.swift in Sources */,
+				7C29F2C22A8DF00C0081335B /* PolicyView.swift in Sources */,
 				D88A105D2A7D4102006CC93E /* QuestionnairePage7.swift in Sources */,
 				7C62FE562A84560900C586A3 /* HowUseProductView.swift in Sources */,
 				A55FBB722A8AF1C5003B5DDC /* SearchBarAddProduct.swift in Sources */,
