@@ -15,6 +15,7 @@ struct QuestionnairePage1: View {
     @State var buttonPressed: String = ""
     @State var selected: Int = 18
     var buttonLabel: buttonLabels
+    @State var buttonPressed: String = ""
     
     var body: some View {
         VStack {

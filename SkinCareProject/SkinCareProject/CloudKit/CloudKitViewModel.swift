@@ -269,7 +269,7 @@ class CloudKitModel: ObservableObject {
         }
     }
     
-    func updateUser(publicDb: Bool, appUser: User, recordType: CloudKitUtility.CloudKitTypes, userVegan: Bool, userPhototype: String = "NaoAlterado", userSkinType: String = "NaoAlterado", userConditions: [String] = [], userImage: URL = CloudKitUtility.makeURLJPG(image: "ProfileDefault"), userAge: Int = -1, userGender: String = "NaoAlterado", userLocation: String = "NaoAlterado") {
+    func updateUser(publicDb: Bool, appUser: User, recordType: CloudKitUtility.CloudKitTypes, userVegan: Bool, userPhototype: String = "NaoAlterado", userSkinType: String = "NaoAlterado", userConditions: [String] = [], userImage: URL = CloudKitUtility.makeURLJPG(image: "ProfileDefault"), userGender: String = "NaoAlterado", userAge: Int = 0, userLocation: String = "NaoAlterado") {
         var newUser = appUser
         if userVegan != appUser.vegan {
             newUser = newUser.updateVegan(newVegan: userVegan)!
@@ -286,16 +286,16 @@ class CloudKitModel: ObservableObject {
         if userImage != CloudKitUtility.makeURLJPG(image: "ProfileDefault"){
             newUser = newUser.updateImage(newImage: userImage)!
         }
-        if userAge != -1 {
-            newUser = newUser.updateAge(newAge: userAge)!
-        }
         if userGender != "NaoAlterado" {
             newUser = newUser.updateGender(newGender: userGender)!
         }
-        if userLocation != "NaoAlterado" {
+        if userAge != 0 {
+            newUser = newUser.updateAge(newAge: userAge)!
+        }
+        if userGender != "NaoAlterado" {
             newUser = newUser.updateLocation(newLocation: userLocation)!
         }
-            
+        
         CloudKitUtility.update(publicDb: publicDb, item: newUser) {[weak self] result in
             print("update was successfull")
             self?.fetchItems(publicDb: publicDb, recordType: recordType)

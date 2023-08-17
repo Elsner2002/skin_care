@@ -22,6 +22,7 @@ struct SkinCareProjectApp: App {
                         if firstTimeHere {
                             TabBarOnb()
                                 .environmentObject(vm)
+                                .navigationBarBackButtonHidden(true)
                         }
                         else {
                             ContentView()
