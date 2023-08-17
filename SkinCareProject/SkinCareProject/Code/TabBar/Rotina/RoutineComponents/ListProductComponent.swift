@@ -27,11 +27,11 @@ struct ListProductComponent: View {
             VStack(alignment: .leading, spacing: -4) {
                 Text(product.name)
                 //.font(Font.custom("SF Pro", size: 17))
-                    .foregroundColor(.black)
+                    .foregroundColor(.systemLabelPrimary)
                     .frame(maxWidth: .infinity, minHeight: 22, maxHeight: 22, alignment: .leading)
                 Text(product.categories[0])
                     .font(Font.custom("SF Pro", size: 13)) //.caption
-                    .foregroundColor(.black)
+                    .foregroundColor(.systemLabelPrimary)
                     .frame(maxWidth: .infinity, minHeight: 18, maxHeight: 18, alignment: .leading)
             }
             .padding(0)
@@ -61,7 +61,7 @@ struct ListProductComponent: View {
         .padding(.trailing, 16)
         .padding(.vertical, 0)
         .frame(maxWidth: .infinity, minHeight: 75, maxHeight: 75, alignment: .leading)
-        .background(.white)
+        .background(Color.systemMaterialSecondary)
         .cornerRadius(10)
     }
 }

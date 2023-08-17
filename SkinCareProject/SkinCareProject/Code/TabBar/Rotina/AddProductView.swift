@@ -41,8 +41,10 @@ struct AddProductView: View {
                         }
                         Spacer()
                         Text("Adicionar produto")
-                            .font(Font.custom("SF Pro", size: 18))
-                            .padding(.trailing, 16)
+                            .font( Font.custom("New York", size: 17)
+                                .weight(.bold))
+                            .fontDesign(.serif)
+                           // .padding(.trailing, 16)
                             .foregroundColor(.black)
                         Spacer()
                         NavigationLink {

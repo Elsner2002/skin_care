@@ -167,4 +167,17 @@ class Constants: ObservableObject {
         }
         return list
     }
+    
+    func saveImage(image: UIImage) {
+        guard let data = image.jpegData(compressionQuality: 0.5) else { return }
+        let encoded = try! PropertyListEncoder().encode(data)
+        UserDefaults.standard.set(encoded, forKey: "PROFILEIMAGE")
+    }
+
+    func loadImage() -> UIImage {
+        guard let data = UserDefaults.standard.data(forKey: "PROFILEIMAGE") else { return UIImage(named: "ProfileDefault")!}
+         let decoded = try! PropertyListDecoder().decode(Data.self, from: data)
+         let image = UIImage(data: decoded)
+        return image!
+    }
 }

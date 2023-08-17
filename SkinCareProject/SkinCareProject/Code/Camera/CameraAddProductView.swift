@@ -49,7 +49,7 @@ struct CameraAddProductView: View {
         VStack{
             NavigationLink("", destination: ProductView(product: product, addRoutine: addRoutine), isActive: $isProductViewShowing)
             
-            NavigationLink("", destination: ProductNotFoundAdd(routine: $routine, showCreateProduct: showCreateProduct), isActive: $productNotFound)
+            NavigationLink("", destination: ProductNotFoundAdd(routine: $routine, showCreateProduct: showCreateProduct).navigationBarBackButtonHidden(true), isActive: $productNotFound)
             
             DataScannerView(recognizedItems: $cameraVM.recognizedItems)
                 .onChange(of: cameraVM.recognizedItems) { newValue in

@@ -13,6 +13,7 @@ struct HomeView: View {
     
     var routineImages: [String] = ["sun.max.fill", "moon.stars.fill"]
     var routineColor: [Color] = [Color.brandPink, Color.brandGreen]
+    @State var image = Constants.shared.loadImage()
     @State var routineList: [Routine] = [Constants.shared.dayRoutine, Constants.shared.nightRoutine]
     
     var body: some View {
@@ -31,39 +32,27 @@ struct HomeView: View {
             ScrollView(showsIndicators: false) {
                 VStack{
                     HStack{
-
-                        if let url = vm.user[0].profileImage, let data =  try? Data(contentsOf: url),  let imageProduct = UIImage(data: data) {
-                            Image(uiImage: imageProduct)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 87, height: 87)
-                                .clipShape(Circle())
-                                .padding(.leading, 28)
-                        }
                         VStack{
                             HStack{
                                 Text("Oi, ")
-                                    .font(.system(size: 34))
+                                    .font(.system(size: 40))
                                     .fontDesign(.serif)
                                 Spacer()
                             }
                             HStack{
                                 Text("\(vm.userName)!")
-                                    .font(.system(size: 34))
+                                    .font(.system(size: 40))
                                     .fontDesign(.serif)
-//                                        .weight(.bold))
                                 Spacer()
                             }
                         }
                         Spacer()
-                        
-//                        if let url = vm.user[0].profileImage, let data =  try? Data(contentsOf: url),  let imageProfile = UIImage(data: data) {
-//                            Image(uiImage: imageProfile)
-//                                .resizable()
-//                                .frame(width: 87, height: 87)
-//                                .clipShape(Circle())
-//                            .padding(.trailing, 38)
-//                        }
+                        Image(uiImage: image)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 109, height: 109)
+                            .clipShape(Circle())
+                            .padding(.trailing, 38)
                     }
                     .padding(.leading, 28)
                     
@@ -110,9 +99,9 @@ struct HomeView: View {
                     
                 } .onAppear{
                     UserDefaults.standard.set(false, forKey: "firstTimeHere")
+                    image = Constants.shared.loadImage()
                 }
             }
-            //            .navigationTitle("Peach")
         }
     }
 }

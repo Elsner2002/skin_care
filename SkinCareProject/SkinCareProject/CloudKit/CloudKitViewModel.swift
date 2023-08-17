@@ -365,6 +365,26 @@ class CloudKitModel: ObservableObject {
             }
         }
     }
+    
+    func deleteUser(publicDb: Bool) {
+        let user = user[0]
+        let record = user.record
+        
+        CloudKitUtility.delete(publicDb: publicDb, item: product)
+            .receive(on: DispatchQueue.main)
+            .sink { _ in
+                
+            } receiveValue: { [weak self] success in
+                self?.user.remove(at: 0)
+            }
+            .store(in: &cancellables)
+        
+        CKContainer.default().privateCloudDatabase.delete(withRecordID: record.recordID) { retunedRecordId, returnedError in
+            DispatchQueue.main.async {
+                self.user.remove(at: 0)
+            }
+        }
+    }
 }
 
 struct CloudKitViewModel: View {
