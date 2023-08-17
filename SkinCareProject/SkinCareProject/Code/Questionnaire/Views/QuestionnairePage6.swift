@@ -10,7 +10,7 @@ import SwiftUI
 struct QuestionnairePage6: View {
     @EnvironmentObject var userInfo: UserInfo
     @EnvironmentObject var vm: CloudKitModel
-    @State var buttonPressed: Set<String> = []
+    @State var buttonPressed: String = ""
 
     var body: some View {
         VStack {
@@ -19,12 +19,12 @@ struct QuestionnairePage6: View {
                 .frame(width: 243, height: 80, alignment: .center)
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
             
-            QuestionCard(buttonPressed: .constant(""), buttonType: .largeRounded,
+            QuestionCard(buttonPressed: $buttonPressed, buttonType: .largeRounded,
                          questionLabel: "Como você descreveria o lugar onde mais passa seu tempo?",
                          buttonLabels: EnvironmentQuestions.self)
                 .frame(width: 291, alignment: .topLeading)
             HStack(alignment: .center) {
-                Button(action: {}) {
+                Button(action: {vm.updateUser(publicDb: false, appUser: vm.user[0], recordType: .User, userVegan: vm.user[0].vegan, userLocation: buttonPressed)}) {
                     NavigationLink(destination: QuestionnairePage7()
                         .environmentObject(vm))
                     {

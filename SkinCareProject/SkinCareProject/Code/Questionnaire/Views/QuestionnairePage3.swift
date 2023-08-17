@@ -29,7 +29,7 @@ struct QuestionnairePage3: View {
             
             HStack(alignment: .center) {
                 if buttonLabel == .next {
-                    Button(action: {userInfo.userPhototype = buttonPressed}) {
+                    Button(action: {vm.updateUser(publicDb: false, appUser: vm.user[0], recordType: .User, userVegan: vm.user[0].vegan, userPhototype: buttonPressed)}) {
                         NavigationLink(destination:
                                         QuestionnairePage4(buttonLabel: .next)
                             .environmentObject(vm))
@@ -41,7 +41,6 @@ struct QuestionnairePage3: View {
                     .padding(EdgeInsets(top: 100, leading: 0, bottom: 0, trailing: 0))
                 } else {
                     Button(action: {
-                        print(vm.user.isEmpty)
                         vm.updateUser(publicDb: false, appUser: vm.user[0], recordType: .User, userVegan: vm.user[0].vegan, userPhototype: buttonPressed)
                         dismiss()
                     }, label: {

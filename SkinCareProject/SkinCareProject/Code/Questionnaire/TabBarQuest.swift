@@ -14,6 +14,7 @@ struct TabBarQuest: View {
     var body: some View {
         NavigationStack {
             QuestionnairePage1(buttonLabel: .next)
+                .navigationBarBackButtonHidden(true)
                 .environmentObject(vm)
         }
     }

@@ -23,7 +23,9 @@ struct QuestionnairePage7: View {
                          buttonLabels: PreferenceQuestions.self)
                 .frame(width: 291, alignment: .topLeading)
             HStack(alignment: .center) {
-                Button(action: {userInfo.userPhototype = buttonPressed}) {
+                //vm.updateUser(publicDb: false, appUser: vm.user[0], recordType: .User, userVegan: enum
+                
+                Button(action: {}) {
                     NavigationLink(destination: ContentView()
                         .environmentObject(vm))
                     {
