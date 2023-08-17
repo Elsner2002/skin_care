@@ -12,14 +12,17 @@ struct WheelPicker: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(questionLabel)
-                .padding(EdgeInsets(top: 51, leading: 0, bottom: 30, trailing: 33))
-            
+            HStack(alignment: .center) {
+                Image("QuestionnaireSymbol")
+                    .frame(width: 26.32767, height: 25)
+                    .padding(.top, 20)
+                Text(questionLabel)
+                    .padding(EdgeInsets(top: 51, leading: 0, bottom: 30, trailing: 33))
+            }
             Picker("", selection: $selected) {
                 ForEach(12...100, id: \.self) { index in
                     Text("\(index)")
                         .font(.body)
-
                 }
             }
             .pickerStyle(.wheel)

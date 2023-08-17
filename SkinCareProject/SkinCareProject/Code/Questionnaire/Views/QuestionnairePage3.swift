@@ -19,13 +19,9 @@ struct QuestionnairePage3: View {
     var buttonLabel: buttonLabels
     
     var body: some View {
-        VStack {
-            ProgressView("", value: 20, total: 100)
-                .tint(.systemButton)
-                .frame(width: 243, height: 80, alignment: .center)
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
+        VStack(spacing: 30) {
+            ProgressBar(progress: 30)
             QuestionCard(buttonPressed: $buttonPressed, buttonType: .smallRounded, questionLabel: "Como sua pele fica após horas de exposição ao sol sem proteção ?", buttonLabels: PhototypeQuestion.self)
-                .frame(width: 334, alignment: .topLeading)
             
             HStack(alignment: .center) {
                 if buttonLabel == .next {
@@ -50,7 +46,8 @@ struct QuestionnairePage3: View {
             }
             Spacer(minLength: 70)
         }
-        .padding(20)
+        .padding()
+        .frame(width: 380, height: 35.71429, alignment: .center)
     }
 }
 struct QuestionnairePage3_Preview: PreviewProvider {

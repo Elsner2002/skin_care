@@ -12,6 +12,8 @@ struct SkinCareProjectApp: App {
     @State var firstTimeHere: Bool = UserDefaults.standard.value(forKey: "firstTimeHere") as? Bool ?? true
     @State private var isActive = false
     @StateObject var vm = CloudKitModel()
+    @StateObject var userInfo = UserInfo()
+
     
     
     var body: some Scene {
@@ -22,11 +24,13 @@ struct SkinCareProjectApp: App {
                         if firstTimeHere {
                             TabBarOnb()
                                 .environmentObject(vm)
+                                .environmentObject(userInfo)
                                 .navigationBarBackButtonHidden(true)
                         }
                         else {
                             ContentView()
                                 .environmentObject(vm)
+                                .environmentObject(userInfo)
                         }
                     } else {
                         SplashAnimation()

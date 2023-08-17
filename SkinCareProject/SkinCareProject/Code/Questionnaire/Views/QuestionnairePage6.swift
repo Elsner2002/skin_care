@@ -13,6 +13,8 @@ struct QuestionnairePage6: View {
     @EnvironmentObject var vm: CloudKitModel
     @State var buttonPressed: String = ""
     var buttonLabel: buttonLabels
+    @State var navigateToNext: Bool = false
+
 
     var body: some View {
         VStack {
@@ -29,7 +31,7 @@ struct QuestionnairePage6: View {
                 if buttonLabel == .next {
                     Button(action: {userInfo.userLocation = buttonPressed}) {
                         NavigationLink(destination:
-                                        QuestionnairePage7(buttonLabel: .next))
+                                        QuestionnairePage7(buttonLabel: .next, navigateToNext: navigateToNext))
                         {Text(buttonLabel.rawValue)}
                     }
                     .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
