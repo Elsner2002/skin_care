@@ -13,11 +13,12 @@ struct QuestionnairePage1: View {
     @StateObject var userInfo = UserInfo()
     @EnvironmentObject var vm: CloudKitModel
     var buttonLabel: buttonLabels
+    @State var buttonPressed: String = ""
     
     var body: some View {
         VStack {
             ProgressBar(progress: 10.0)
-            QuestionCard(buttonPressed: .constant(""), buttonType: .largeRounded,questionLabel: "Qual seu gênero?", buttonLabels: GenderQuestion.self)
+            QuestionCard(buttonPressed: $buttonPressed, buttonType: .largeRounded,questionLabel: "Qual seu gênero?", buttonLabels: GenderQuestion.self)
             WheelPicker(questionLabel: "Qual sua idade?")
                 .frame(height: 220)
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 51, trailing: 0))
