@@ -24,20 +24,23 @@ struct QuestionCard<T: RawHashIterableStringConvertible>: View where T.AllCases 
                     Image("QuestionnaireSymbol")
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
                     Text(questionLabel)
+                        .frame(maxHeight: .infinity)
                         .multilineTextAlignment(.leading)
                         .frame(height: 48)
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 33))
                 }
-                
+                ScrollView {
                     ForEach(buttonLabels.allCases, id: \.self) { label in
                         PrimaryButton(
                             label: label.rawValue,
                             description: label.description,
                             isPressed: buttonPressed == label.rawValue)
                         {self.buttonPressed = label.rawValue}
+                    }
                 }
             }
         }
     }
+
 }
 

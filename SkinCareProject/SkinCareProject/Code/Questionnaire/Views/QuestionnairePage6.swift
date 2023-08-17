@@ -14,46 +14,44 @@ struct QuestionnairePage6: View {
     @State var buttonPressed: String = ""
     var buttonLabel: buttonLabels
     @State var navigateToNext: Bool = false
+    @State var nextPage: Bool = false
+
 
 
     var body: some View {
         VStack {
-            ProgressView("", value: 80, total: 100)
-                .tint(.systemButton)
-                .frame(width: 243, height: 80, alignment: .center)
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
-            
+            ProgressBar(progress: 80)
+                .padding()
             QuestionCard(buttonPressed: $buttonPressed, buttonType: .largeRounded,
                          questionLabel: "Como você descreveria o lugar onde mais passa seu tempo?",
                          buttonLabels: EnvironmentQuestions.self)
-                .frame(width: 291, alignment: .topLeading)
             HStack(alignment: .center) {
                 if buttonLabel == .next {
-                    Button(action: {userInfo.userLocation = buttonPressed}) {
-                        NavigationLink(destination:
-                                        QuestionnairePage7(buttonLabel: .next, navigateToNext: navigateToNext))
-                        {Text(buttonLabel.rawValue)}
+                    Button(action: {
+                        userInfo.userLocation = buttonPressed
+                        self.nextPage = true
+                    }) {
+                        Text(buttonLabel.rawValue)
+                            .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
-                    .frame(width: 165, height: 35.71429, alignment: .center)
-                    .padding(EdgeInsets(top: 100, leading: 0, bottom: 0, trailing: 0))
                 } else {
                     Button(action: {
                         vm.updateUser(publicDb: false, appUser: vm.user[0], recordType: .User, userVegan: vm.user[0].vegan, userLocation: buttonPressed)
                         dismiss()
                     }, label: {
                         Text(buttonLabel.rawValue)
+                            .frame(maxWidth: .infinity)
                     })
                     .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
-                    .frame(width: 165, height: 35.71429, alignment: .center)
-                    .padding(EdgeInsets(top: 100, leading: 0, bottom: 0, trailing: 0))
                 }
 
             }
                 .frame(width: 162.14287, alignment: .center)
-                .padding(EdgeInsets(top: 200, leading: 0, bottom: 70, trailing: 0))
+                .padding()
         }
-        .padding(20)
+        .padding()
+        .navigationDestination(isPresented: $nextPage, destination: { QuestionnairePage7(buttonLabel: .next) })
     }
 }
 

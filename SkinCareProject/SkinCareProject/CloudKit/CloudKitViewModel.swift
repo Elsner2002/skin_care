@@ -10,14 +10,46 @@ import Combine
 import CloudKit
 
 class UserInfo: ObservableObject {
-    @Published var userVegan: Bool = false
-    @Published var userPhototype: String = "NaoAlterado"
-    @Published var userSkinType: String = "NaoAlterado"
-    @Published var userConditions: [String] = []
-    @Published var userImage: URL = CloudKitUtility.makeURLJPG(image: "ProfileDefault")
-    @Published var userAge: Int = -1
-    @Published var userGender: String = "NaoAlterado"
-    @Published var userLocation: String = "NaoAlterado"
+    @Published var userVegan: Bool = false {
+        didSet {
+            print(userVegan)
+        }
+    }
+    @Published var userPhototype: String = "NaoAlterado"{
+        didSet {
+            print(userPhototype)
+        }
+    }
+    @Published var userSkinType: String = "NaoAlterado"{
+        didSet {
+            print(userSkinType)
+        }
+    }
+    @Published var userConditions: [String] = []{
+        didSet {
+            print(userConditions)
+        }
+    }
+    @Published var userImage: URL = CloudKitUtility.makeURLJPG(image: "ProfileDefault"){
+        didSet {
+            print(userImage)
+        }
+    }
+    @Published var userAge: Int = -1{
+        didSet {
+            print(userAge)
+        }
+    }
+    @Published var userGender: String = "NaoAlterado"{
+        didSet {
+            print(userGender)
+        }
+    }
+    @Published var userLocation: String = "NaoAlterado"{
+        didSet {
+            print(userLocation)
+        }
+    }
 }
 
 class CloudKitModel: ObservableObject {

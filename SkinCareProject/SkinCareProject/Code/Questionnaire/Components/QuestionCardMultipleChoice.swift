@@ -17,19 +17,26 @@ struct QuestionCardMultipleChoice<T: RawHashIterableStringConvertible>: View whe
     var body: some View {
         VStack(alignment: .center) {
             VStack(alignment: .leading, spacing: 18) {
-                Text(questionLabel)
-                    .multilineTextAlignment(.leading)
-                    .frame(height: 48)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 33))
-                ForEach(buttonLabels.allCases, id: \.self) { label in
-                    SecondaryButton(
-                        label: label.rawValue,
-                        description: label.description,
-                        isPressed: buttonPressed.contains(label.rawValue))
-                    {if (buttonPressed.contains(label.rawValue)) {
-                        buttonPressed.remove(label.rawValue)
-                    } else {
-                        buttonPressed.insert(label.rawValue)}
+                HStack {
+                    Image("QuestionnaireSymbol")
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
+                    Text(questionLabel)
+                        .multilineTextAlignment(.leading)
+                        .frame(maxWidth: .infinity)
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
+                }
+
+                ScrollView {
+                    ForEach(buttonLabels.allCases, id: \.self) { label in
+                        SecondaryButton(
+                            label: label.rawValue,
+                            description: label.description,
+                            isPressed: buttonPressed.contains(label.rawValue))
+                        {if (buttonPressed.contains(label.rawValue)) {
+                            buttonPressed.remove(label.rawValue)
+                        } else {
+                            buttonPressed.insert(label.rawValue)}
+                        }
                     }
                 }
             }
