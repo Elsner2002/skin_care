@@ -44,17 +44,15 @@ struct CreateProductView: View {
         switch selectedCategory {
         case ProductCategory.moisturizer.rawValue:
             routine.categoryHidratante.append(newProduct)
-        case ProductCategory.cleanser.rawValue:
-            routine.categoryLimpeza.append(newProduct)
         case ProductCategory.treatment.rawValue:
             routine.categoryTratamentos.append(newProduct)
         case ProductCategory.sunscreen.rawValue:
             routine.categoryProtetor.append(newProduct)
         default:
-            print("Not added")
+            routine.categoryLimpeza.append(newProduct)
         }
         
-        
+        vm.fetchItems(publicDb: false, recordType: CloudKitUtility.CloudKitTypes.RoutineProduct)
     }
     
     var body: some View {
@@ -93,7 +91,6 @@ struct CreateProductView: View {
                 
                 ScrollView(showsIndicators: false){
                     VStack {
-                        
                         //camera
                         VStack{
                             ZStack {
@@ -171,7 +168,6 @@ struct CreateProductView: View {
                                     CircleDayButton(dayString: daysWeek[position], frequencyDescription: daysValue[position], frequency: $frequency)
                                 }
                             }
-                            
                         }
                         .padding(.all, 8)
                         

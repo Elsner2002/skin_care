@@ -11,7 +11,7 @@ struct RoutineView: View {
     @State private var showSheet: Bool = false
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var vm: CloudKitModel
-
+    
     @State var routine: Routine
     var scaleEffect: CGFloat = 1 //0.67 when smaller
     var offsetValue: CGFloat = -200 //define when smaller -300?
@@ -47,7 +47,6 @@ struct RoutineView: View {
                             .scaleEffect(scaleEffect)
                     }
                 }
-                
                 Button (""){
                 }
                 .sheet(isPresented: $showSheet){
@@ -62,7 +61,28 @@ struct RoutineView: View {
                         )
                 }
                 .onAppear {
+                    vm.routineProducts.forEach { product in
+                        let category: String = product.categories[0]
+                        if product.routine == routine.name {
+                            switch category {
+                            case ProductCategory.moisturizer.rawValue:
+                                routine.categoryHidratante.append(product)
+                            case ProductCategory.treatment.rawValue:
+                                routine.categoryTratamentos.append(product)
+                            case ProductCategory.sunscreen.rawValue:
+                                routine.categoryProtetor.append(product)
+                            default:
+                                routine.categoryLimpeza.append(product)
+                            }
+                        }
+                    }
                     showSheet = true
+                }
+                .onDisappear{
+                    routine.categoryHidratante.removeAll()
+                    routine.categoryLimpeza.removeAll()
+                    routine.categoryProtetor.removeAll()
+                    routine.categoryTratamentos.removeAll()
                 }
             }
         } .navigationBarBackButtonHidden(true)
@@ -78,10 +98,10 @@ struct RoutineView: View {
                                 .resizable()
                                 .frame(width: 12.5, height: 22)
                         }
-                    .foregroundColor(Color.black)
+                        .foregroundColor(Color.black)
+                    }
                 }
             }
-        }
     }
 }
 
@@ -89,7 +109,10 @@ struct SheetRoutine: View {
     @Binding var routine: Routine
     @EnvironmentObject var constants: Constants
     @EnvironmentObject var vm: CloudKitModel
-
+    
+    @State var completedProducts: Int = 0
+    @State var totalProducts: Int = 0
+    
     var listLimpeza: ListView
     var listTratamentos: ListView
     var listHidratante: ListView
@@ -101,7 +124,7 @@ struct SheetRoutine: View {
                 Color.systemBG.ignoresSafeArea()
                 ScrollView (showsIndicators: false) {
                     VStack(alignment: .center, spacing: 0) {
-                        RoutineProgress(title: routine.name, completion: routine.completition)
+                        RoutineProgress(title: routine.name, completion: routine.completition, totalProducts: totalProducts)
                             .padding(EdgeInsets(top: 38, leading: 24, bottom: 32, trailing: 24))
                         if routine.name == "Rotina Noturna" {
                             RoutineAlarm(title: "Noite", time: $constants.nightTime, isOn: $constants.nightNotification)
@@ -133,15 +156,27 @@ struct SheetRoutine: View {
                     .background(Color.systemBG)
                 }
             }
+            .onAppear{
+                vm.routineProducts.forEach { product in
+                    let category: String = product.categories[0]
+                    if product.routine == routine.name {
+                        totalProducts += 1
+                        if product.isCompleted {
+                            completedProducts += 1
+                        }
+                        routine.completition = completedProducts
+                    }
+                }
+            }
         }
     }
-}
-
-struct RoutineView_Previews: PreviewProvider {
-    static let url: URL = CloudKitUtility.makeURLJPG(image: "gato-cinza")
-    static let array: [RoutineProduct] = [RoutineProduct(image: url, name: "test", brand: "test", isCompleted: false, barcode: 12345, frequency: [1], categories: ["Limpeza"], routine: "Rotina Diurna")!]
     
-    static var previews: some View {
-        RoutineView(routine: Routine(name: "Rotina Diurna", completition: 2, categoryLimpeza: [], categoryTratamentos: [], categoryHidratante: [], categoryProtetor: []))
+    struct RoutineView_Previews: PreviewProvider {
+        static let url: URL = CloudKitUtility.makeURLJPG(image: "gato-cinza")
+        static let array: [RoutineProduct] = [RoutineProduct(image: url, name: "test", brand: "test", isCompleted: false, barcode: 12345, frequency: [1], categories: ["Limpeza"], routine: "Rotina Diurna")!]
+        
+        static var previews: some View {
+            RoutineView(routine: Routine(name: "Rotina Diurna", completition: 2, categoryLimpeza: [], categoryTratamentos: [], categoryHidratante: [], categoryProtetor: []))
+        }
     }
 }

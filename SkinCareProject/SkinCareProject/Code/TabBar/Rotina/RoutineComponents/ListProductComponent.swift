@@ -38,7 +38,10 @@ struct ListProductComponent: View {
             .frame(maxWidth: .infinity, minHeight: 44, maxHeight: 44, alignment: .leading)
             
             Button {
-                product.isCompleted.toggle()
+                withAnimation {
+                    product.isCompleted.toggle()
+                    HapticService.instance.impact(style: .light)
+                }
                 vm.updateItemCheck(publicDb: false, routineProduct: product, recordType: CloudKitUtility.CloudKitTypes.RoutineProduct, completition: product.isCompleted)
             } label: {
                 if product.isCompleted {

@@ -16,16 +16,16 @@ struct RoutineButton: View {
         HStack{
             image
                 .resizable()
-                .frame(width: 104, height: 104)
+                .frame(width: 124, height: 124)
                 .foregroundColor(color)
         }
         .font(.headline)
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 12)
-                .fill(Color.brandWhite)
+                .fill(Color.systemMaterialSecondary)
                 .shadow(
-                    color: Color.brandGray.opacity(0.15), radius: 10, x: 0, y: 0
+                    color: Color.black.opacity(0.07), radius: 0, x: 4, y: 4
                 )
         )
         .padding(.horizontal)

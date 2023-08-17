@@ -10,7 +10,6 @@ import SwiftUI
 struct AddProductView: View {
     
     @Environment(\.dismiss) var dismiss
-    
     @EnvironmentObject var vm: CloudKitModel
     @State private var searchText = ""
     @State private var isActive = false
@@ -29,7 +28,7 @@ struct AddProductView: View {
                     .ignoresSafeArea()
                     .foregroundColor(Color.systemBG)
                 VStack{
-                    HStack (alignment: .center){
+                    HStack (alignment: .center, spacing: 16){
                         Button {
                             dismiss()
                         } label: {
@@ -46,33 +45,32 @@ struct AddProductView: View {
                             .padding(.trailing, 16)
                             .foregroundColor(.black)
                         Spacer()
-                    }
-                    .padding(.leading, 20)
-                    .padding(.bottom, 20)
-                    .padding(.top, 20)
-                    
-                    VStack {
-                        SearchbarAddProduct(searchText: $searchText, routine: $routine, showCreateProduct: true, addRoutine: false)
-                            .padding(.bottom, -20)
-                            .padding(.top, 20)
-                        
                         NavigationLink {
                             CreateProductView(routine: $routine)
                                 .environmentObject(vm)
                         } label: {
-                            Text("Adicionar produto manualmente")
-                                .bold()
-                                .padding(.vertical)
-                                .padding(.horizontal, 50)
-                                .background(Color.systemMaterialSecondary)
-                                .foregroundColor(Color.systemLabelSecondary)
-                                .cornerRadius(10, corners: .allCorners)
+                            Image(systemName: "plus.circle.fill")
+                                .resizable()
+                                .frame(width: 25, height: 25)
+                                .foregroundColor(.black)
                         }
-                        .padding()
+                    }
+                    .padding(.leading, 20)
+                    .padding(.trailing, 20)
+                    .padding(.bottom, 20)
+                    .padding(.top, 20)
+                    
+                    VStack () {
+                        SearchbarAddProduct(searchText: $searchText, routine: $routine, showCreateProduct: true, addRoutine: false)
+                            .padding(.bottom, 10)
+                            .padding(.top, 20)
+                        
                         if self.isActive {
                             VerticalScrollProductsView(searchText: searchText, addRoutine: true)
                         } else {
-                            Text("Loading...")
+                            LottieView(name: "animationLoading")
+                                .frame(width: 60, height: 60)
+                                .padding(.top, 16)
                         }
                         Spacer()
                     }

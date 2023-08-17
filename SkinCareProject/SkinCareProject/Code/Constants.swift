@@ -12,6 +12,19 @@ class Constants: ObservableObject {
     static let shared: Constants = Constants()
     
     //routine variables
+    @Published var dayCompletion: Int = UserDefaults.standard.value(forKey: "dayCompletion") as? Int ?? 0 {
+       didSet {
+           UserDefaults.standard.set(dayCompletion, forKey: "dayCompletion")
+       }
+   }
+    
+    @Published var nightCompletion: Int = UserDefaults.standard.value(forKey: "nightCompletion") as? Int ?? 0 {
+       didSet {
+           UserDefaults.standard.set(nightCompletion, forKey: "nightCompletion")
+       }
+   }
+    
+    
     @Published var dayRoutine = Routine(name: "Rotina Diurna", completition: 0, categoryLimpeza: [], categoryTratamentos: [], categoryHidratante: [], categoryProtetor: [])
     
     @Published var nightRoutine = Routine(name: "Rotina Noturna", completition: 0, categoryLimpeza: [], categoryTratamentos: [], categoryHidratante: [], categoryProtetor: [])
@@ -26,6 +39,8 @@ class Constants: ObservableObject {
             randomTip = tipsData.getTips().randomElement()
             let encodedTip = try? JSONEncoder().encode(randomTip)
             UserDefaults.standard.set(encodedTip, forKey: "randomTip")
+            dayCompletion = 0
+            nightCompletion = 0
         }
         else{
             randomTip = try? JSONDecoder().decode(Tip.self, from: UserDefaults.standard.data(forKey: "randomTip")!)
@@ -55,6 +70,8 @@ class Constants: ObservableObject {
     init() {
         if lastDay == nil {
             lastDay = dayBefore
+            dayCompletion = 0
+            nightCompletion = 0
         }
         randomTipGenerator()
     }
