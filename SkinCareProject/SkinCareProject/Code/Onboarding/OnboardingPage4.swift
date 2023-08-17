@@ -30,7 +30,7 @@ struct OnboardingPage4: View {
                 .padding(.bottom, 140)
                 HStack(alignment: .center) {
                     Button(action: {}) {
-                        NavigationLink(destination: ContentView()
+                        NavigationLink(destination: QuestionnairePage1( buttonLabel: .next)
                             .environmentObject(vm))
                         {
                             Text("Próximo")
