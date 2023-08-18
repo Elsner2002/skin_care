@@ -17,14 +17,15 @@ struct CreateProductTextField: View {
         HStack(alignment: .top, spacing: 0) {
             Text(title)
                 .font(Font.custom("SF Pro", size: 17))
-                .foregroundColor(.black)
+                .foregroundColor(Color.systemLabelPrimary)
                 .frame(width: 100, height: 42, alignment: .center)
             TextField(subTitle, text: $productName)
+                .foregroundColor(Color.systemLabelPrimary)
                 .frame(maxWidth: .infinity, minHeight: 44, maxHeight: 44, alignment: .center)
         }
         .background(
             RoundedRectangle(cornerRadius: 12)
-                .fill(Color.brandWhite)
+                .fill(Color.systemMaterialSecondary)
                 .shadow(color: Color.gray.opacity(0.15), radius: 10, x: 0, y: 0)
         )
     }

@@ -25,7 +25,7 @@ struct CircleDayButton: View {
                             .frame(width: 40, height: 40)
                         Circle()
                             .stroke()
-                            .foregroundColor(.black)
+                            .foregroundColor(Color.systemLabelPrimary)
                             .frame(width: 40, height: 40)
                     } .onTapGesture {
                         if let index = frequency.firstIndex(of: frequencyDescription) {
@@ -38,7 +38,7 @@ struct CircleDayButton: View {
                     ZStack {
                         Circle()
                             .stroke()
-                            .foregroundColor(.black)
+                            .foregroundColor(Color.systemLabelPrimary)
                             .frame(width: 40, height: 40)
                     }
                     .onTapGesture {
@@ -48,7 +48,7 @@ struct CircleDayButton: View {
                 }
                 
                 Text(dayString)
-                    .foregroundColor(.black)
+                    .foregroundColor(Color.systemLabelPrimary)
             }
         }
     }

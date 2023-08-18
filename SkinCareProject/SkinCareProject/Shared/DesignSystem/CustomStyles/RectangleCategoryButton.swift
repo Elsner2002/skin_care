@@ -22,22 +22,20 @@ struct RectangleCategoryButton: View {
                             .foregroundColor(Color.systemButton)
                             .frame(width: 175, height: 73)
                         RoundedRectangle(cornerSize: CGSize(width: 8, height: 8))
-                            .stroke()
-                            .foregroundColor(.black)
+                            .foregroundColor(Color.systemButton)
                             .frame(width: 175, height: 73)
                         Text(categoryString)
-                            .foregroundColor(.black)
+                            .foregroundColor(Color.systemLabelPrimary)
                     } .onTapGesture {
                         self.selected = ""
                     }
                 }  else{
                     ZStack {
                         RoundedRectangle(cornerSize: CGSize(width: 8, height: 8))
-                            .stroke()
-                            .foregroundColor(.black)
+                            .foregroundColor(Color.systemMaterialSecondary)
                             .frame(width: 175, height: 73)
                         Text(categoryString)
-                            .foregroundColor(.black)
+                            .foregroundColor(Color.systemLabelPrimary)
                     } .onTapGesture {
                         self.selected = categoryString
                     }

@@ -10,7 +10,11 @@ import Lottie
 
 struct SplashAnimation: View {
     var body: some View {
-        LottieView(name: "animationSplash")
+        ZStack {
+            Color.systemBG
+                .ignoresSafeArea()
+            LottieView(name: "animationSplash")
+        }
     }
 }
 

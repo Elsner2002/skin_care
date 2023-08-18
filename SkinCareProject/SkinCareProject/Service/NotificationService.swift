@@ -31,7 +31,10 @@ class NotificationService {
     
     func dispatchNotification(identifier: String, hour: Int, minute: Int) {
         let title = "SkinCare App"
-        let body = "It's time to do your skincare routine!"
+        var body = "It's time to do your night skincare routine!"
+        if identifier == "morningTime"{
+            body = "It's time to do your morning skincare routine!"
+        }
         let isDaily = true
         
         let notificationCenter = UNUserNotificationCenter.current()
