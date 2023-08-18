@@ -4,7 +4,7 @@
 //
 //  Created by Felipe  Elsner Silva on 21/07/23.
 //
-
+import UIKit
 import SwiftUI
 
 struct DiaryView: View {
@@ -15,11 +15,17 @@ struct DiaryView: View {
         NavigationStack {
             ZStack {
                 Color.brandGreen.ignoresSafeArea()
+                Image("DiaryImage")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 417.99356, height: 445.81723)
                 GraphicPicker(selectedDate: $date)
+                    .accentColor(Color.brandPink)
                     .padding(EdgeInsets(top: -157, leading: 0, bottom: 0, trailing: 0))
                     .onChange(of: date, perform: { newValue in
                         showSheet = true
                     })
+                    .padding(.top, 10)
             
                 Button (""){
                     showSheet.toggle()
@@ -32,10 +38,10 @@ struct DiaryView: View {
                         .presentationBackgroundInteraction(
                             .enabled(upThrough: .large)
                         )
-                    
                 }
             }
             .navigationTitle("Diário")
+
         }
     }
 }
