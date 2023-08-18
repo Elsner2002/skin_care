@@ -10,9 +10,9 @@ import SwiftUI
 struct GraphicPicker: View {
     @Binding var selectedDate: Date
     var body: some View {
-        DatePicker("", selection: $selectedDate)
+        DatePicker("", selection: $selectedDate, displayedComponents: .date)
             .datePickerStyle(GraphicalDatePickerStyle())
-            .background(Color.brandMint)
+            .background(Color.systemBG)
             .cornerRadius(11.64)
             .frame(width: 350.4422, height: 386.36011, alignment: .topLeading)
     }
