@@ -13,22 +13,18 @@ struct RoutineButton: View {
     var color: Color
     
     var body: some View {
-        HStack{
+        ZStack {
             image
                 .resizable()
-                .frame(width: 104, height: 104)
+                .frame(width: 124, height: 124)
                 .foregroundColor(color)
+                .padding(.vertical, 10)
         }
-        .font(.headline)
-        .padding()
-        .background(
-            RoundedRectangle(cornerRadius: 12)
-                .fill(Color.brandWhite)
-                .shadow(
-                    color: Color.brandGray.opacity(0.15), radius: 10, x: 0, y: 0
-                )
-        )
-        .padding(.horizontal)
+        .padding(8.36378)
+        .frame(width: 154, height: 143, alignment: .center)
+        .background(Color.systemMaterialSecondary)
+        .cornerRadius(12.54566)
+        .shadow(color: Color.systemLabelTerciary.opacity(0.07), radius: 0, x: 4, y: 4)
     }
 }
 

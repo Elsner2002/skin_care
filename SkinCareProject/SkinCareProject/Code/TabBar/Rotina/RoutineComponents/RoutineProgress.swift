@@ -10,6 +10,7 @@ import SwiftUI
 struct RoutineProgress: View {
     let title: String
     let completion: Int
+    let totalProducts: Int
     
     var body: some View {
         ZStack {
@@ -34,7 +35,7 @@ struct RoutineProgress: View {
                         .foregroundColor(Color.systemLabelPrimary)
                 }
                 
-                RoutineProgressBar(progress: CGFloat(completion))
+                RoutineProgressBar(progress: CGFloat(completion), totalProgress: CGFloat(totalProducts))
                 
             }
             .padding(9.05714)
@@ -49,7 +50,8 @@ struct RoutineProgress_Previews: PreviewProvider {
     static var previews: some View {
         RoutineProgress(
             title: "Rotina Noturna",
-            completion: 2
+            completion: 2,
+            totalProducts: 5
         )
     }
 }

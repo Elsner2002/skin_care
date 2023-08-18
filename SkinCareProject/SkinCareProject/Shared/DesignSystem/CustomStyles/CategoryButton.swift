@@ -30,6 +30,7 @@ struct CategoryButton: View {
                                 .resizable()
                                 .frame(width: 70, height: 70)
                                 .clipShape(Circle())
+                                .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
                             Circle()
                                 .stroke(color, lineWidth: 5)
                                 .frame(width: 65, height: 65)
@@ -40,6 +41,7 @@ struct CategoryButton: View {
                             .resizable()
                             .frame(width: 70, height: 70)
                             .clipShape(Circle())
+                            .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
                     }
                     Text(label)
                         .bold()

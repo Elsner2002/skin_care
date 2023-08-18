@@ -10,7 +10,9 @@ import SwiftUI
 struct RoutineView: View {
     @State private var showSheet: Bool = false
     @Environment(\.dismiss) private var dismiss
-    let routine: Routine
+    @EnvironmentObject var vm: CloudKitModel
+    
+    @State var routine: Routine
     var scaleEffect: CGFloat = 1 //0.67 when smaller
     var offsetValue: CGFloat = -200 //define when smaller -300?
     
@@ -31,7 +33,6 @@ struct RoutineView: View {
                             .brightness(0.05)
                             .scaleEffect(scaleEffect)
                     }
-                    
                 } else {
                     Color(UIColor(Color.brandGreen))
                         .ignoresSafeArea()
@@ -46,11 +47,10 @@ struct RoutineView: View {
                             .scaleEffect(scaleEffect)
                     }
                 }
-                
                 Button (""){
                 }
                 .sheet(isPresented: $showSheet){
-                    SheetRoutine(routine: routine)
+                    SheetRoutine(routine: $routine, listLimpeza: ListView(description: "Primeiro passo: Comece higienizando seu rosto e retirando impurezas", category: "Limpeza", productList: $routine.categoryLimpeza, routine: $routine), listTratamentos: ListView(description: "Segundo passo: Use seu tônico e produtos de tratamento nesta etapa, adicione quantos você quiser", category: "Tônicos & Tratamentos", productList: $routine.categoryTratamentos,  routine: $routine), listHidratante: ListView(description: "Terceiro passo: Aplique seus produtos com componentes hidratantes", category: "Hidratante", productList: $routine.categoryHidratante,  routine: $routine), listProtetor: ListView(description: "Quarto passo: Aplique uma generosa camada do seu protetor solar e proteja-se contra os raios UVA e UVB", category: "Protetor Solar", productList: $routine.categoryProtetor,  routine: $routine))
                         .environmentObject(Constants())
                         .presentationDetents([.fraction(0.7), .medium])
                         .presentationDragIndicator(.hidden)
@@ -59,10 +59,30 @@ struct RoutineView: View {
                         .presentationBackgroundInteraction(
                             .enabled(upThrough: .medium)
                         )
-                    // .preferredColorScheme(.dark)
                 }
                 .onAppear {
+                    vm.routineProducts.forEach { product in
+                        let category: String = product.categories[0]
+                        if product.routine == routine.name {
+                            switch category {
+                            case ProductCategory.moisturizer.rawValue:
+                                routine.categoryHidratante.append(product)
+                            case ProductCategory.treatment.rawValue:
+                                routine.categoryTratamentos.append(product)
+                            case ProductCategory.sunscreen.rawValue:
+                                routine.categoryProtetor.append(product)
+                            default:
+                                routine.categoryLimpeza.append(product)
+                            }
+                        }
+                    }
                     showSheet = true
+                }
+                .onDisappear{
+                    routine.categoryHidratante.removeAll()
+                    routine.categoryLimpeza.removeAll()
+                    routine.categoryProtetor.removeAll()
+                    routine.categoryTratamentos.removeAll()
                 }
             }
         } .navigationBarBackButtonHidden(true)
@@ -70,7 +90,7 @@ struct RoutineView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
-                       dismiss()
+                        dismiss()
                         showSheet = false
                     } label: {
                         HStack{
@@ -82,29 +102,21 @@ struct RoutineView: View {
                     }
                 }
             }
-        
     }
 }
 
 struct SheetRoutine: View {
-    let routine: Routine
+    @Binding var routine: Routine
+    @EnvironmentObject var constants: Constants
+    @EnvironmentObject var vm: CloudKitModel
+    
+    @State var completedProducts: Int = 0
+    @State var totalProducts: Int = 0
+    
     var listLimpeza: ListView
     var listTratamentos: ListView
     var listHidratante: ListView
     var listProtetor: ListView
-    @EnvironmentObject var constants: Constants
-
-    
-    init(routine: Routine) {
-        self.routine = routine
-        self.listLimpeza = ListView(description: "Primeiro passo: Comece higienizando seu rosto e retirando impurezas", category: "Limpeza", routine: routine)
-        
-        self.listTratamentos = ListView(description: "Segundo passo: Use seu tônico e produtos de tratamento nesta etapa, adicione quantos você quiser", category: "Tônicos & Tratamentos", routine: routine)
-        
-        self.listHidratante = ListView(description: "Terceiro passo: Aplique seus produtos com componentes hidratantes", category: "Hidratante", routine: routine)
-        
-        self.listProtetor = ListView(description: "Quarto passo: Aplique uma generosa camada do seu protetor solar e proteja-se contra os raios UVA e UVB", category: "Protetor Solar", routine: routine)
-    }
     
     var body: some View {
         NavigationStack {
@@ -112,7 +124,7 @@ struct SheetRoutine: View {
                 Color.systemBG.ignoresSafeArea()
                 ScrollView (showsIndicators: false) {
                     VStack(alignment: .center, spacing: 0) {
-                        RoutineProgress(title: routine.name, completion: routine.completition)
+                        RoutineProgress(title: routine.name, completion: routine.completition, totalProducts: totalProducts)
                             .padding(EdgeInsets(top: 38, leading: 24, bottom: 32, trailing: 24))
                         if routine.name == "Rotina Noturna" {
                             RoutineAlarm(title: "Noite", time: $constants.nightTime, isOn: $constants.nightNotification)
@@ -144,16 +156,27 @@ struct SheetRoutine: View {
                     .background(Color.systemBG)
                 }
             }
+            .onAppear{
+                vm.routineProducts.forEach { product in
+                    let category: String = product.categories[0]
+                    if product.routine == routine.name {
+                        totalProducts += 1
+                        if product.isCompleted {
+                            completedProducts += 1
+                        }
+                        routine.completition = completedProducts
+                    }
+                }
+            }
         }
     }
-}
-
-struct RoutineView_Previews: PreviewProvider {
-    static let url: URL = CloudKitUtility.makeURLJPG(image: "gato-cinza")
-    static let array: [RoutineProduct] = [RoutineProduct(image: url, name: "test", brand: "test", isCompleted: false, barcode: 12345, frequency: [1], categories: ["Limpeza"])!]
     
-    static var previews: some View {
-        RoutineView(routine: Routine(name: "Rotina Diurna", completition: 2, categoryLimpeza: [], categoryTratamentos: [], categoryHidratante: [], categoryProtetor: []))
-        // .preferredColorScheme(.dark)
+    struct RoutineView_Previews: PreviewProvider {
+        static let url: URL = CloudKitUtility.makeURLJPG(image: "gato-cinza")
+        static let array: [RoutineProduct] = [RoutineProduct(image: url, name: "test", brand: "test", isCompleted: false, barcode: 12345, frequency: [1], categories: ["Limpeza"], routine: "Rotina Diurna")!]
+        
+        static var previews: some View {
+            RoutineView(routine: Routine(name: "Rotina Diurna", completition: 2, categoryLimpeza: [], categoryTratamentos: [], categoryHidratante: [], categoryProtetor: []))
+        }
     }
 }

@@ -19,8 +19,9 @@ struct ProductButton: View {
                 if let url = product.image, let data =  try? Data(contentsOf: url),  let imageProduct = UIImage(data: data) {
                     Image(uiImage: imageProduct)
                         .resizable()
-                        .frame(width: 96, height: 133)
-                        .cornerRadius(15, corners: [.topLeft, .bottomRight])
+                        .frame(width: 105, height: 150)
+                        .cornerRadius(15)
+                        .shadow(color: .black.opacity(0.07), radius: 0, x: 4, y: 4)
                 }
                 VStack{
                     Text(product.nickname)
@@ -44,11 +45,13 @@ struct ProductButton: View {
                     .padding([.leading, .bottom], 10)
                 }
                 .scaledToFit()
-                .frame(width: 96, alignment: .leading)
+                .frame(width: 105, alignment: .leading)
                 .background(Color.systemMaterialSecondary)
                 .cornerRadius(15, corners: [.topLeft, .bottomRight])
-                .offset(y: 55)
+                .offset(y: 40)
+                .padding(.horizontal, 7)
             }
+            .ignoresSafeArea()
         }
         
     }

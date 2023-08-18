@@ -9,7 +9,8 @@ import SwiftUI
 
 struct HorizontalScrollProductsView: View {
     
-    @StateObject var vm = CloudKitModel()
+    @EnvironmentObject var vm: CloudKitModel
+
     
     var body: some View {
         ZStack{
@@ -28,7 +29,7 @@ struct HorizontalScrollProductsView: View {
 //                        )
 //                )
             }
-            .padding(.horizontal, 15)
+            .padding(.horizontal, 8)
         }
     }
 }

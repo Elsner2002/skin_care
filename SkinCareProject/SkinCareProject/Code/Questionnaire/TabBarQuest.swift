@@ -9,10 +9,15 @@ import SwiftUI
 
 struct TabBarQuest: View {
     
+    @EnvironmentObject var vm: CloudKitModel
+    @EnvironmentObject var userInfo: UserInfo
+    
     var body: some View {
         NavigationStack {
-            QuestionnairePage1()
+            QuestionnairePage1(buttonLabel: .next)
         }
+        .navigationBarBackButtonHidden(true)
+
     }
 }
 

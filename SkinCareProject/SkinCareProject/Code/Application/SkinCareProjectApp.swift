@@ -11,35 +11,42 @@ import SwiftUI
 struct SkinCareProjectApp: App {
     @State var firstTimeHere: Bool = UserDefaults.standard.value(forKey: "firstTimeHere") as? Bool ?? true
     @State private var isActive = false
-    @State var fetch = false
+    @StateObject var vm = CloudKitModel()
+    @StateObject var userInfo = UserInfo()
+
+    
     
     var body: some Scene {
         WindowGroup {
             ZStack {
-                if self.isActive {
-                    ContentView()
-//                    if firstTimeHere {
-//                        TabBarOnb()
-//                    }
-//                    else {
-//                        ContentView()
-//                    }
-                }
-                else {
-                    Splashscreen()
+                if self.vm.isLoading {
+                    if self.isActive {
+                        if firstTimeHere {
+                            TabBarOnb()
+                                .environmentObject(vm)
+                                .environmentObject(userInfo)
+                                .navigationBarBackButtonHidden(true)
+                        }
+                        else {
+                            ContentView()
+                                .environmentObject(vm)
+                                .environmentObject(userInfo)
+                        }
+                    } else {
+                        SplashAnimation()
+                    }
                 }
             }
             .onAppear {
-                if !fetch {
-                    @StateObject var vm = CloudKitModel()
-                    fetch = true
+                if firstTimeHere {
+                    vm.addUser(publicDb: false, name: vm.userName, recordType: .User)
                 }
-                //Constants.shared.randomTipGenerator()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     withAnimation {
                         self.isActive = true
                     }
                 }
+                
             }
         }
     }

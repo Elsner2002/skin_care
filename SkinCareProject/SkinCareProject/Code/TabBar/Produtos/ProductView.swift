@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ProductView: View {
     @Environment(\.dismiss) private var dismiss
-    @StateObject var vm = CloudKitModel()
+    @EnvironmentObject var vm: CloudKitModel
+
     @State private var showSheet: Bool = false
     let product: ListProduct?
     var addRoutine: Bool

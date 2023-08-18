@@ -8,30 +8,55 @@
 import SwiftUI
 
 struct QuestionnairePage7: View {
+    @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var userInfo: UserInfo
+    @EnvironmentObject var vm: CloudKitModel
+    @State var buttonPressed: String = ""
+    var buttonLabel: buttonLabels
+    @State var navigateToNext: Bool = false
+    @State var nextPage: Bool = false
+
+
+    
     var body: some View {
         VStack {
-            ProgressView("", value: 100, total: 100)
-                .tint(.systemButton)
-                .frame(width: 243, height: 80, alignment: .center)
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
-            
-            QuestionCard(buttonType: .largeRounded,
+            ProgressBar(progress: 100)
+                .padding()
+            QuestionCard(buttonPressed: $buttonPressed, buttonType: .largeRounded,
                          questionLabel: "Você tem uma preferência por produtos?",
                          buttonLabels: PreferenceQuestions.self)
-                .frame(width: 291, alignment: .topLeading)
-            HStack {
-                NavigationLink(destination: HomeView(),
-                               label: {CustomButton(label: "Próximo", action: {}, description: "Description", buttonType: .smallRounded) })
+            HStack(alignment: .center) {
+                if buttonLabel == .next {
+                    Button(action: {
+                        userInfo.userVegan = buttonPressed == "Produtos Veganos"
+                        vm.NEW_updateUser(publicDb: false, appUser: vm.user[0], recordType: .User, userInfo: userInfo)
+                        self.nextPage = true
+                    }) {
+                        Text(buttonLabel.rawValue)
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
+
+                } else {
+                    Button(action: {
+                        vm.updateUser(publicDb: false, appUser: vm.user[0], recordType: .User, userVegan: buttonPressed == "Produtos Veganos")
+                        dismiss()
+                    }, label: {
+                        Text(buttonLabel.rawValue)
+                            .frame(maxWidth: .infinity)
+
+                    })
+                    .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
+
+                }
             }
-                .frame(width: 165, height: 35.71429, alignment: .topLeading)
-                .padding(EdgeInsets(top: 350, leading: 0, bottom: 70, trailing: 0))
+            .frame(width: 162.14287, alignment: .center)
+            .padding()
+                    }
+        .onAppear {
+            print(userInfo.userSkinType)
         }
         .padding(20)
-    }
-}
-
-struct QuestionnairePage7_Previews: PreviewProvider {
-    static var previews: some View {
-        QuestionnairePage7()
+        .navigationDestination(isPresented: $nextPage, destination: {ContentView() })
     }
 }

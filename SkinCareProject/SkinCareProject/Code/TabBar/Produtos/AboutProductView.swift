@@ -11,7 +11,11 @@ struct AboutProductView: View {
     
     var product: ListProduct
     var addRoutine: Bool
-    
+    @State var message = false
+    @EnvironmentObject var constants: Constants
+    @State private var showDay = false
+    @State private var showNight = false
+
     var body: some View {
         NavigationStack{
             ScrollView{
@@ -51,24 +55,54 @@ struct AboutProductView: View {
                                 }
                                 .padding(.horizontal, 10)
                             }
-                            Spacer()
+                            
+                            if product.vegan {
+                                VStack{
+                                    Image("Vegan")
+                                        .resizable()
+                                        .frame(width: 70, height: 70)
+                                        .clipShape(Circle())
+                                    Text("vegano")
+                                        .bold()
+                                        .foregroundColor(Color.brandGray)
+                                }
+                                .padding(.horizontal, 10)
+                            }
+                            
                         }
                         .padding(.horizontal, 12)
                     }
                     
                     if addRoutine {
-                        CustomButton(label: "Adicionar a minha rotina", action: {}, description: "", buttonType: .largeRounded)
+                        CustomButton(label: "Adicionar a minha rotina", description: "", buttonType: .largeRounded, action: {message.toggle()})
+
                             .padding(.top, 18)
                             .padding(.horizontal, 30)
+                            .confirmationDialog("", isPresented: $message, titleVisibility: .hidden) {
+                                Button("Rotina Diurna", role: .none) {
+                                    showDay.toggle()
+                                }
+                                Button("Rotina Noturna", role: .none) {
+                                    showNight.toggle()
+                                }
+                                Button("Cancelar", role: .cancel) {
+                                }
+                            }
                     }
+                }
+                .fullScreenCover(isPresented: $showDay){
+                    CreateProductView(routine: $constants.dayRoutine, ckName: product.name, ckBrand: product.brand, ckImage: product.image, ckCategory: product.categories[0])
+                }
+                .fullScreenCover(isPresented: $showNight){
+                    CreateProductView(routine: $constants.nightRoutine, ckName: product.nickname, ckBrand: product.brand, ckImage: product.image, ckCategory: product.categories[0])
                 }
             }
         }
     }
 }
 
-struct AboutProductView_Previews: PreviewProvider {
-    static var previews: some View {
-        AboutProductView(product: ListProduct(image: CloudKitUtility.makeURLJPG(image: "ProfileDefault"), name: "Niacinamida", nickname: "Niacinamida", explanation: "", brand: "Simple Organic", recomendedTime: [""], vegan: true, barcode: 123, priceRange: 100, SPF: 1, texture: "", ingredients: [""], categories: [""])!, addRoutine: true)
-    }
-}
+//struct AboutProductView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AboutProductView(product: ListProduct(image: CloudKitUtility.makeURLJPG(image: "ProfileDefault"), name: "Niacinamida", nickname: "Niacinamida", explanation: "", brand: "Simple Organic", recomendedTime: [""], vegan: true, barcode: 123, priceRange: 100, SPF: 1, texture: "", ingredients: [""], categories: [""])!, addRoutine: true)
+//    }
+//}

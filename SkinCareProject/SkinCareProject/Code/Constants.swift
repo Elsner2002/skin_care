@@ -11,23 +11,42 @@ import SwiftUI
 class Constants: ObservableObject {
     static let shared: Constants = Constants()
     
+    //routine variables
+    @Published var dayCompletion: Int = UserDefaults.standard.value(forKey: "dayCompletion") as? Int ?? 0 {
+       didSet {
+           UserDefaults.standard.set(dayCompletion, forKey: "dayCompletion")
+       }
+   }
+    
+    @Published var nightCompletion: Int = UserDefaults.standard.value(forKey: "nightCompletion") as? Int ?? 0 {
+       didSet {
+           UserDefaults.standard.set(nightCompletion, forKey: "nightCompletion")
+       }
+   }
+    
+    
+    @Published var dayRoutine = Routine(name: "Rotina Diurna", completition: 0, categoryLimpeza: [], categoryTratamentos: [], categoryHidratante: [], categoryProtetor: [])
+    
+    @Published var nightRoutine = Routine(name: "Rotina Noturna", completition: 0, categoryLimpeza: [], categoryTratamentos: [], categoryHidratante: [], categoryProtetor: [])
+    
     
     //MARK: create variables here
     //tips variables
-//    @ObservedObject var tipsData = TipsService()
-//    var randomTip: Tip?
-//    func randomTipGenerator(){
-//        if !compareDay(){
-//            randomTip = tipsData.tips.randomElement()
-//            let encodedTip = try? JSONEncoder().encode(randomTip)
-//            UserDefaults.standard.set(encodedTip, forKey: "randomTip")
-//        }
-//        else{
-//            //randomTip = try? JSONDecoder().decode(Tip.self, from: UserDefaults.standard.data(forKey: "randomTip")!)
-//            randomTip = Tip(title: "Tip 1", text: "Skin care é bom", image: "tipImage")
-//        }
-//        lastDay = Date.now
-//    }
+    @ObservedObject var tipsData = TipsService()
+    var randomTip: Tip?
+    func randomTipGenerator(){
+        if !compareDay(){
+            randomTip = tipsData.getTips().randomElement()
+            let encodedTip = try? JSONEncoder().encode(randomTip)
+            UserDefaults.standard.set(encodedTip, forKey: "randomTip")
+            dayCompletion = 0
+            nightCompletion = 0
+        }
+        else{
+            randomTip = try? JSONDecoder().decode(Tip.self, from: UserDefaults.standard.data(forKey: "randomTip")!)
+        }
+        lastDay = Date.now
+    }
     
     //days variables
     var dayBefore: Date {
@@ -51,8 +70,10 @@ class Constants: ObservableObject {
     init() {
         if lastDay == nil {
             lastDay = dayBefore
+            dayCompletion = 0
+            nightCompletion = 0
         }
-        //randomTipGenerator()
+        randomTipGenerator()
     }
     
     //price range
@@ -82,7 +103,7 @@ class Constants: ObservableObject {
             if !notification {
                 morningNotification = false
                 nightNotification = false
-
+                
             } else if notification {
                 morningNotification = true
                 nightNotification = true
@@ -127,7 +148,7 @@ class Constants: ObservableObject {
         didSet {
             UserDefaults.standard.set(nightNotification, forKey: "nightNotification")
         }
-    
+        
     }
     
     @Published var allowedNotification: Bool = UserDefaults.standard.value(forKey: "allowedNotification") as? Bool ?? false {
@@ -145,5 +166,18 @@ class Constants: ObservableObject {
             }
         }
         return list
+    }
+    
+    func saveImage(image: UIImage) {
+        guard let data = image.jpegData(compressionQuality: 0.5) else { return }
+        let encoded = try! PropertyListEncoder().encode(data)
+        UserDefaults.standard.set(encoded, forKey: "PROFILEIMAGE")
+    }
+
+    func loadImage() -> UIImage {
+        guard let data = UserDefaults.standard.data(forKey: "PROFILEIMAGE") else { return UIImage(named: "ProfileDefault")!}
+         let decoded = try! PropertyListDecoder().decode(Data.self, from: data)
+         let image = UIImage(data: decoded)
+        return image!
     }
 }

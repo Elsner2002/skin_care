@@ -11,10 +11,12 @@ struct RoutineProgressBar: View {
     var total: CGFloat = 293.45142 // width
     var lineHeight: CGFloat = 19.02 // height
     var progress: CGFloat = 0
+    var totalProgress: CGFloat = 0
+
     
     var body: some View {
         
-        let multiplier = total / 5
+        let multiplier = total / totalProgress
         
         ZStack(alignment: .leading) {
             Rectangle ()
@@ -31,7 +33,7 @@ struct RoutineProgressBar: View {
                         .frame(width: 14, height: 14)
                         .offset(x: 2)
                 }
-                else if progress == 5 {
+                else if progress == totalProgress {
                     Rectangle()
                         .foregroundColor(.clear)
                         .background(Color.brandGreen)
@@ -55,6 +57,6 @@ struct RoutineProgressBar: View {
 
 struct RoutineProgressBar_Previews: PreviewProvider {
     static var previews: some View {
-        RoutineProgressBar(progress: 5)
+        RoutineProgressBar(progress: 2, totalProgress: 7)
     }
 }

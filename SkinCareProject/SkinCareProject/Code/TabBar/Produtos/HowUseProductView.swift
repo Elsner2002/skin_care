@@ -39,6 +39,7 @@ struct HowUseProductView: View {
 //                }
 //            }
 //            .padding(.top, 60)
+            
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack{
                     ForEach(0..<(product.warnings?.count ?? 0)) { position in
@@ -56,6 +57,48 @@ struct HowUseProductView: View {
                 }
                 .padding(.all, 20)
             }
+            
+            ScrollView(.horizontal, showsIndicators: false){
+                HStack{
+                    VStack{
+                        Image(product.texture)
+                            .resizable()
+                            .frame(width: 70, height: 70)
+                            .clipShape(Circle())
+                        Text(product.texture)
+                            .bold()
+                            .foregroundColor(Color.brandGray)
+                    }
+                    .padding(.horizontal, 10)
+                    
+                    if product.recomendedTime.count == 2 {
+                        VStack{
+                            Image("DiaENoite")
+                                .resizable()
+                                .frame(width: 70, height: 70)
+                                .clipShape(Circle())
+                            Text("Dia e Noite")
+                                .bold()
+                                .foregroundColor(Color.brandGray)
+                        }
+                        .padding(.horizontal, 10)
+                    }
+                    else{
+                        VStack{
+                            Image(product.recomendedTime[0])
+                                .resizable()
+                                .frame(width: 70, height: 70)
+                                .clipShape(Circle())
+                            Text(product.recomendedTime[0])
+                                .bold()
+                                .foregroundColor(Color.brandGray)
+                        }
+                        .padding(.horizontal, 10)
+                    }
+                }
+                .padding(.horizontal, 12)
+            }
+
         }
     }
 }

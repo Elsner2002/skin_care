@@ -15,7 +15,6 @@ struct ProgressBar: View {
         ProgressView("", value: progress, total: 100)
             .tint(.brandGreen)
             .frame(width: 243, height: 44, alignment: .center)
-            .padding(EdgeInsets(top: 63, leading: 70, bottom: 35, trailing: 70))
     }
 }
 

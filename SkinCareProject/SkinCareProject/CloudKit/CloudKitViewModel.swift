@@ -9,6 +9,49 @@ import SwiftUI
 import Combine
 import CloudKit
 
+class UserInfo: ObservableObject {
+    @Published var userVegan: Bool = false {
+        didSet {
+            print(userVegan)
+        }
+    }
+    @Published var userPhototype: String = "NaoAlterado"{
+        didSet {
+            print(userPhototype)
+        }
+    }
+    @Published var userSkinType: String = "NaoAlterado"{
+        didSet {
+            print(userSkinType)
+        }
+    }
+    @Published var userConditions: [String] = []{
+        didSet {
+            print(userConditions)
+        }
+    }
+    @Published var userImage: URL = CloudKitUtility.makeURLJPG(image: "ProfileDefault"){
+        didSet {
+            print(userImage)
+        }
+    }
+    @Published var userAge: Int = -1{
+        didSet {
+            print(userAge)
+        }
+    }
+    @Published var userGender: String = "NaoAlterado"{
+        didSet {
+            print(userGender)
+        }
+    }
+    @Published var userLocation: String = "NaoAlterado"{
+        didSet {
+            print(userLocation)
+        }
+    }
+}
+
 class CloudKitModel: ObservableObject {
     
     @Published var isSignedToiCloud: Bool = false
@@ -19,12 +62,14 @@ class CloudKitModel: ObservableObject {
     @Published var listProducts: [ListProduct] = []
     @Published var diaryList: [Diary] = []
     @Published var tips: [Tip] = []
-    @Published var user: [AppUser] = []
+    @Published var dailyTip: [Tip] = []
+    @Published var user: [User] = []
     @Published var ingredients: [Ingredient] = []
+    @State var isLoading: Bool = true
     
-    @Published var defaultUser: AppUser = AppUser(profileImage: CloudKitUtility.makeURLJPG(image: "ProfileDefault"), vegan: false, phototype: Phototype.one.title, skinType: SkinType.oily.rawValue, conditions: [Condition.none.rawValue], concerns: [Concern.none.rawValue])!
+    @Published var defaultUser: User = User(profileImage: CloudKitUtility.makeURLJPG(image: "ProfileDefault"), vegan: false, phototype: Phototype.one.title, skinType: SkinType.oily.rawValue, conditions: [Condition.none.rawValue], concerns: [Concern.none.rawValue], gender: Gender.female.rawValue, age: 18, location: Location.dry.rawValue)!
     //set each variable in the questionnaire
-     let product: RoutineProduct = RoutineProduct(image: CloudKitUtility.makeURLJPG(image: "gato-cinza"), name: "test", brand: "test", isCompleted: false, barcode: 12345, frequency: [1], categories: ["Limpeza"])!
+     let product: RoutineProduct = RoutineProduct(image: CloudKitUtility.makeURLJPG(image: "gato-cinza"), name: "test", brand: "test", isCompleted: false, barcode: 12345, frequency: [1], categories: ["Limpeza"], routine: "Rotina Diurna")!
     
     
     var cancellables = Set<AnyCancellable>()
@@ -33,12 +78,9 @@ class CloudKitModel: ObservableObject {
         getiCloudStatus()
         requestPermission()
         getCurrentUserName()
-        fetchItems(publicDb: true, recordType: CloudKitUtility.CloudKitTypes.ListProduct)//, limit: 10)
-        fetchItems(publicDb: true, recordType: CloudKitUtility.CloudKitTypes.Tips)
-        fetchItems(publicDb: false, recordType: CloudKitUtility.CloudKitTypes.RoutineProduct)
-        fetchItems(publicDb: false, recordType: CloudKitUtility.CloudKitTypes.AppUser)
-        fetchItems(publicDb: false, recordType: CloudKitUtility.CloudKitTypes.Diary)
-        fetchItems(publicDb: true, recordType: CloudKitUtility.CloudKitTypes.Ingredient)
+        loadAll() {
+            self.isLoading = false
+        }
     }
     
     func addButtonPressed() {
@@ -74,6 +116,19 @@ class CloudKitModel: ObservableObject {
             .store(in: &cancellables)
     }
     
+    func loadAll(completion: () -> Void) {
+        self.isLoading = true
+        fetchItems(publicDb: true, recordType: CloudKitUtility.CloudKitTypes.ListProduct)//, limit: 10)
+        fetchItems(publicDb: false, recordType: CloudKitUtility.CloudKitTypes.RoutineProduct)
+        fetchItems(publicDb: false, recordType: CloudKitUtility.CloudKitTypes.User)
+        fetchItems(publicDb: false, recordType: CloudKitUtility.CloudKitTypes.Diary)
+        fetchItems(publicDb: true, recordType: CloudKitUtility.CloudKitTypes.Ingredient)
+
+        completion()
+    }
+    
+   
+    
     func requestPermission() {
         CloudKitUtility.requestApplicationPermission()
             .receive(on: DispatchQueue.main)
@@ -100,7 +155,7 @@ class CloudKitModel: ObservableObject {
     //MARK: CRUD
     
     //CREATE
-    private func addUser(publicDb: Bool, name: String, recordType: CloudKitUtility.CloudKitTypes){
+    func addUser(publicDb: Bool, name: String, recordType: CloudKitUtility.CloudKitTypes){
         CloudKitUtility.add(publicDb: publicDb, item: defaultUser) { result in
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.fetchItems(publicDb: publicDb, recordType: recordType)
@@ -108,19 +163,10 @@ class CloudKitModel: ObservableObject {
         }
     }
     
-    private func addProduct(publicDb: Bool, name: String, recordType: CloudKitUtility.CloudKitTypes, newProduct: RoutineProduct){
+    func addProduct(publicDb: Bool, name: String, recordType: CloudKitUtility.CloudKitTypes, newProduct: RoutineProduct){
         CloudKitUtility.add(publicDb: publicDb, item: newProduct) { result in
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.routineProducts.append(newProduct)
-                self.fetchItems(publicDb: publicDb, recordType: recordType)
-            }
-        }
-    }
-    
-    private func addTip(publicDb: Bool, name: String, recordType: CloudKitUtility.CloudKitTypes, newTip: Tip){
-        CloudKitUtility.add(publicDb: publicDb, item: newTip) { result in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.tips.append(newTip)
                 self.fetchItems(publicDb: publicDb, recordType: recordType)
             }
         }
@@ -170,22 +216,13 @@ class CloudKitModel: ObservableObject {
                     self?.routineProducts = returnedItem
                 }
                 .store(in: &cancellables)
-        case .AppUser:
-            CloudKitUtility.fetch(publicDb: publicDb, predicate: predicate, recordType: recordType)
+        case .User:
+              CloudKitUtility.fetch(publicDb: publicDb, predicate: predicate, recordType: recordType)
                 .receive(on: DispatchQueue.main)
                 .sink { _ in
                     
                 } receiveValue: { [weak self] returnedItem in
                     self?.user = returnedItem
-                }
-                .store(in: &cancellables)
-        case .Tips:
-            CloudKitUtility.fetch(publicDb: publicDb, predicate: predicate, recordType: recordType)
-                .receive(on: DispatchQueue.main)
-                .sink { _ in
-                    
-                } receiveValue: { [weak self] returnedItem in
-                    self?.tips = returnedItem
                 }
                 .store(in: &cancellables)
         case .Diary:
@@ -241,7 +278,30 @@ class CloudKitModel: ObservableObject {
         }
     }
     
-    func updateUser(publicDb: Bool, appUser: AppUser, recordType: CloudKitUtility.CloudKitTypes, userVegan: Bool, userPhototype: String = "NaoAlterado", userSkinType: String = "NaoAlterado", userConditions: [String] = [], userImage: URL = CloudKitUtility.makeURLJPG(image: "ProfileDefault")) {
+    func NEW_updateUser(publicDb: Bool, appUser: User, recordType: CloudKitUtility.CloudKitTypes, userInfo: UserInfo) {
+        var newUser = appUser
+        if userInfo.userVegan != appUser.vegan {
+            newUser = newUser.updateVegan(newVegan: userInfo.userVegan)!
+        }
+        if userInfo.userPhototype != "NaoAlterado" {
+            newUser = newUser.updatePhototype(newPhototype: userInfo.userPhototype)!
+        }
+        if userInfo.userSkinType != "NaoAlterado" {
+            newUser = newUser.updateSkinType(newSkinType: userInfo.userSkinType)!
+        }
+        if !userInfo.userConditions.isEmpty {
+            newUser = newUser.updateConditions(newConditions: userInfo.userConditions)!
+        }
+        if userInfo.userImage != CloudKitUtility.makeURLJPG(image: "ProfileDefault"){
+            newUser = newUser.updateImage(newImage: userInfo.userImage)!
+        }
+        CloudKitUtility.update(publicDb: publicDb, item: newUser) {[weak self] result in
+            print("update was successfull")
+            self?.fetchItems(publicDb: publicDb, recordType: recordType)
+        }
+    }
+    
+    func updateUser(publicDb: Bool, appUser: User, recordType: CloudKitUtility.CloudKitTypes, userVegan: Bool, userPhototype: String = "NaoAlterado", userSkinType: String = "NaoAlterado", userConditions: [String] = [], userImage: URL = CloudKitUtility.makeURLJPG(image: "ProfileDefault"), userGender: String = "NaoAlterado", userAge: Int = 0, userLocation: String = "NaoAlterado") {
         var newUser = appUser
         if userVegan != appUser.vegan {
             newUser = newUser.updateVegan(newVegan: userVegan)!
@@ -258,6 +318,16 @@ class CloudKitModel: ObservableObject {
         if userImage != CloudKitUtility.makeURLJPG(image: "ProfileDefault"){
             newUser = newUser.updateImage(newImage: userImage)!
         }
+        if userGender != "NaoAlterado" {
+            newUser = newUser.updateGender(newGender: userGender)!
+        }
+        if userAge != 0 {
+            newUser = newUser.updateAge(newAge: userAge)!
+        }
+        if userGender != "NaoAlterado" {
+            newUser = newUser.updateLocation(newLocation: userLocation)!
+        }
+        
         CloudKitUtility.update(publicDb: publicDb, item: newUser) {[weak self] result in
             print("update was successfull")
             self?.fetchItems(publicDb: publicDb, recordType: recordType)
@@ -286,9 +356,9 @@ class CloudKitModel: ObservableObject {
     }
     
     //DELETE
-    func deleteItem(publicDb: Bool, indexSet: IndexSet) {
-        guard let index = indexSet.first else {return}
-        let product = routineProducts[index]
+    func deleteItem(publicDb: Bool, product: RoutineProduct) {
+        //guard let index = indexSet.first else {return}
+       // let product = routineProducts[index]
         let record = product.record
         
         CloudKitUtility.delete(publicDb: publicDb, item: product)
@@ -296,13 +366,13 @@ class CloudKitModel: ObservableObject {
             .sink { _ in
                 
             } receiveValue: { [weak self] success in
-                self?.routineProducts.remove(at: index)
+                self?.routineProducts.removeAll(where: { $0.record == record })
             }
             .store(in: &cancellables)
         
         CKContainer.default().privateCloudDatabase.delete(withRecordID: record.recordID) { retunedRecordId, returnedError in
             DispatchQueue.main.async {
-                self.routineProducts.remove(at: index)
+                self.routineProducts.removeAll(where: { $0.record == record })
             }
         }
     }
@@ -327,13 +397,33 @@ class CloudKitModel: ObservableObject {
             }
         }
     }
+    
+    func deleteUser(publicDb: Bool) {
+        let user = user[0]
+        let record = user.record
+        
+        CloudKitUtility.delete(publicDb: publicDb, item: product)
+            .receive(on: DispatchQueue.main)
+            .sink { _ in
+                
+            } receiveValue: { [weak self] success in
+                self?.user.remove(at: 0)
+            }
+            .store(in: &cancellables)
+        
+        CKContainer.default().privateCloudDatabase.delete(withRecordID: record.recordID) { retunedRecordId, returnedError in
+            DispatchQueue.main.async {
+                self.user.remove(at: 0)
+            }
+        }
+    }
 }
 
 struct CloudKitViewModel: View {
     @StateObject private var vm = CloudKitModel()
     
     
-    @State var product: RoutineProduct = RoutineProduct(image: nil, name: "teste", brand: "test", isCompleted: false, barcode: 123, frequency: [1], categories: ["teste"])!
+    @State var product: RoutineProduct = RoutineProduct(image: nil, name: "teste", brand: "test", isCompleted: false, barcode: 123, frequency: [1], categories: ["teste"], routine: "Rotina Diurna")!
     
     var body: some View {
         VStack {
@@ -355,11 +445,11 @@ struct CloudKitViewModel: View {
 //                    .font(.headline)
 //            }
             
-            ListProductComponent(product: product)
+            //ListProductComponent(product: product)
         }
-        .onChange(of: self.vm.routineProducts, perform: { _ in
-            self.product = vm.routineProducts[0]
-        })
+//        .onChange(of: self.vm.routineProducts, perform: { _ in
+//            self.product = vm.routineProducts[0]
+//        })
     }
 }
 

@@ -11,88 +11,102 @@ struct ProductListView: View {
     
     @State private var searchText = ""
     
-    @StateObject var vm = CloudKitModel()
+    @EnvironmentObject var vm: CloudKitModel
     @State var categoryButtons = ProductCategory.allCases
     @State var selectedCategory: ProductCategory?
     
     var body: some View {
         NavigationStack {
-            VStack{
-                Searchbar(searchText: $searchText, showCreateProduct: false, addRoutine: false)
-                
-                if searchText.isEmpty {
-                    ScrollView(showsIndicators: false) {
-                        ScrollView(.horizontal, showsIndicators: false){
-                            HStack {
-                                ForEach(categoryButtons, id: \.self) { category in
-                                    CategoryButton(
-                                        selectedButton: category == selectedCategory,
-                                        image: Image(category.rawValue),
-                                        label: category.rawValue) {
-                                            if let selectedCategory, selectedCategory == category {
-                                                self.selectedCategory = nil
+            ZStack {
+                Color.systemBG
+                    .ignoresSafeArea()
+                VStack{
+                    Text("Lista de Produtos")
+                        .font(Font.custom("New York", size: 17))
+                        .fontDesign(.serif)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(Color.systemLabelPrimary)
+                        .padding(.top, 22)
+                    
+                    Searchbar(searchText: $searchText, showCreateProduct: false, addRoutine: false)
+                    
+                    if searchText.isEmpty {
+                        ScrollView(showsIndicators: false) {
+                            ScrollView(.horizontal, showsIndicators: false){
+                                HStack {
+                                    ForEach(categoryButtons, id: \.self) { category in
+                                        CategoryButton(
+                                            selectedButton: category == selectedCategory,
+                                            image: Image(category.rawValue),
+                                            label: category.rawValue) {
+                                                if let selectedCategory, selectedCategory == category {
+                                                    self.selectedCategory = nil
+                                                }
+                                                else {
+                                                    selectedCategory = category
+                                                }
                                             }
-                                            else {
-                                                selectedCategory = category
-                                            }
-                                        }
+                                    }
+                                    .padding(.trailing)
                                 }
-                                .padding(.trailing)
+                                .padding()
                             }
-                            .padding()
-                        }
-                        .padding(.horizontal, 15)
-                        
-                        if let selectedCategory {
-                            HStack{
-                                Text("Produtos de \(selectedCategory.rawValue)")
-                                    .bold()
-                                Spacer()
+                            .padding(.horizontal, 15)
+                            
+                            if let selectedCategory {
+                                HStack{
+                                    Text("Produtos de \(selectedCategory.rawValue)")
+                                        .bold()
+                                    Spacer()
+                                }
+                                .padding(.leading, 36)
+                                CategoryVerticalView(listOfProducts: Constants.shared.filter(category: selectedCategory, productList: vm.listProducts))
                             }
-                            .padding(.leading, 15)
-                            CategoryVerticalView(listOfProducts: Constants.shared.filter(category: selectedCategory, productList: vm.listProducts))
-                        }
-                        else {
-                            HStack{
-                                Text("Recomendados para seu tipo de pele")
-                                    .bold()
-                                Spacer()
-                            }
-                            .padding(.leading, 15)
-                            HorizontalScrollProductsView()
-                        }
-                        
-                        HStack{
-                            Text("Conheça Mais")
-                                .bold()
-                            Spacer()
-                            NavigationLink {
-                                AllProductsListView(addRoutine: false)
-                            } label: {
-                                Text("Ver Todos")
-                                    .foregroundColor(Color.brandGreen)
+                            else {
+                                HStack{
+                                    Text("Recomendados para você")
+                                        .font(Font.custom("SF Pro", size: 20)
+                                            .weight(.semibold))
+                                    Spacer()
+                                }
+                                .padding(.leading, 15)
+                                HorizontalScrollProductsView()
                             }
                             
+                            HStack{
+                                Text("Conheça Mais")
+                                    .bold()
+                                Spacer()
+                                NavigationLink {
+                                    AllProductsListView(addRoutine: false)
+                                } label: {
+                                    Text("Ver Todos")
+                                        .font(Font.custom("SF Pro", size: 12)
+                                            .weight(.medium))
+                                        .foregroundColor(Color.brandGreen)
+                                }
+                                
+                            }
+                            .padding(.horizontal, 15)
+                            HorizontalScrollProductsView()
+                            
+                            HStack{
+                                Text("Dica do Dia")
+                                    .bold()
+                                Spacer()
+                            }
+                            .padding(.leading, 15)
+                            TipsView(tip: Constants.shared.randomTip!)
+                            
                         }
-                        .padding(.horizontal, 15)
-                        HorizontalScrollProductsView()
-                        
-                        HStack{
-                            Text("Dica do Dia")
-                                .bold()
-                            Spacer()
-                        }
-                        .padding(.leading, 15)
-                        //TipsView(tip: Constants.shared.randomTip!)
-                        
+                    }
+                    else {
+                        VerticalScrollProductsView(searchText: searchText, addRoutine: false)
                     }
                 }
-                else {
-                    VerticalScrollProductsView(searchText: searchText, addRoutine: false)
-                }
             }
+            
         }
-        .navigationTitle("Lista de Produtos")
     }
 }
 

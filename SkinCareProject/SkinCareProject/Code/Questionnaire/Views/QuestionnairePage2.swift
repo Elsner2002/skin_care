@@ -7,32 +7,54 @@
 
 import Foundation
 import SwiftUI
-
 import Foundation
 import SwiftUI
 
-struct QuestionnairePage2: View, Hashable {
+
+struct QuestionnairePage2: View {
+    @EnvironmentObject var vm: CloudKitModel
+    @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var userInfo: UserInfo
+    @State var buttonPressed: String = ""
+    var buttonLabel: buttonLabels
+    @State var nextPage: Bool = false
+
+    
     var body: some View {
         VStack {
-            ProgressView("", value: 20, total: 100)
-                .tint(.systemButton)
-                .frame(width: 243, height: 80, alignment: .center)
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
-            QuestionCard(buttonType: .smallRounded, questionLabel: "Como sua pele fica após horas de exposição ao sol sem proteção solar?", buttonLabels: SkinType.self)
+            ProgressBar(progress: 20)
+            QuestionCard(buttonPressed: $buttonPressed, buttonType: .smallRounded, questionLabel: "Qual seu tipo de pele?", buttonLabels: SkinTypeQuestion.self)
                 .frame(width: 334, alignment: .topLeading)
             HStack {
-                NavigationLink(destination: QuestionnairePage3(), label: {CustomButton(label: "Próximo", action: {}, description: "Description", buttonType: .smallRounded) })
+                if buttonLabel == .next {
+                    Button(action: {
+                        userInfo.userSkinType = buttonPressed
+                        self.nextPage = true
+                    }) {
+                        Text(buttonLabel.rawValue)
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
+                } else {
+                    Button(action: {
+                        vm.updateUser(publicDb: false, appUser: vm.user[0], recordType: .User, userVegan: vm.user[0].vegan, userSkinType: buttonPressed)
+                        dismiss()
+                    }, label: {
+                        Text(buttonLabel.rawValue)
+                            .frame(maxWidth: .infinity)
+                    })
+                    .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
+                }
             }
-                .frame(width: 165, height: 35.71429, alignment: .topLeading)
-                .padding(EdgeInsets(top: 100, leading: 0, bottom: 0, trailing: 0))
-            Spacer(minLength: 70)
-
+            .frame(width: 165, height: 35.71429, alignment: .topLeading)
         }
-        .padding(20)
+        .padding(30)
+        .navigationDestination(isPresented: $nextPage, destination: { QuestionnairePage3(buttonLabel: .next) })
     }
 }
+
 struct QuestionnairePage2_Preview: PreviewProvider {
     static var previews: some View {
-        QuestionnairePage2()
+        QuestionnairePage2(buttonLabel: .save)
     }
 }

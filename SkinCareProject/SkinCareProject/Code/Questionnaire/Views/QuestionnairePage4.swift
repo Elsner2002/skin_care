@@ -8,26 +8,53 @@
 import SwiftUI
 
 struct QuestionnairePage4: View {
+    @EnvironmentObject var vm: CloudKitModel
+    @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var userInfo: UserInfo
+    @State var buttonPressed: Set<String> = []
+    var buttonLabel: buttonLabels
+    @State var nextPage: Bool = false
+
+    
     var body: some View {
         VStack {
-            ProgressView("", value: 40, total: 100)
-                .tint(.systemButton)
-                .frame(width: 243, height: 80, alignment: .center)
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
+            ProgressBar(progress: 40)
+                .padding()
             
-            QuestionCard(buttonType: .largeRounded, questionLabel: "Marque se você possui alguma das seguintes condições de pele:", buttonLabels: SkinConditionQuestion.self)
-            HStack {
-                NavigationLink(destination: QuestionnairePage5(), label: {CustomButton(label: "Próximo", action: {}, description: "Description", buttonType: .smallRounded) })
+            QuestionCardMultipleChoice(buttonPressed: $buttonPressed, questionLabel: "Marque se você possui alguma das seguintes condições de pele:", buttonLabels: SkinConditionQuestion.self)
+                .padding(EdgeInsets(top: 0, leading: 50, bottom: 0, trailing: 50))
+
+            HStack(alignment: .center) {
+                if buttonLabel == .next {
+                    Button(action: {
+                        userInfo.userConditions = Array(buttonPressed)
+                        self.nextPage = true
+                    }) {
+                        Text(buttonLabel.rawValue)
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
+                } else {
+                    Button(action: {
+                        vm.updateUser(publicDb: false, appUser: vm.user[0], recordType: .User, userVegan: vm.user[0].vegan, userConditions: Array(buttonPressed))
+                        dismiss()
+                    }, label: {
+                        Text(buttonLabel.rawValue)
+                            .frame(maxWidth: .infinity)
+                    })
+                    .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
+                }
             }
-                .frame(width: 165, height: 35.71429, alignment: .topLeading)
-                .padding(EdgeInsets(top: 160, leading: 0, bottom: 70, trailing: 0))
+            .frame(width: 165, height: 35.71429, alignment: .topLeading)
+            .padding()
         }
-        .padding(20)
+        .navigationDestination(isPresented: $nextPage, destination: { QuestionnairePage5(buttonLabel: .next) })
+
     }
 }
 
 struct QuestionnairePage4_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionnairePage4()
+        QuestionnairePage4(buttonLabel: .next)
     }
 }

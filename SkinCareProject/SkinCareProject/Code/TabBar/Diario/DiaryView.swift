@@ -4,27 +4,28 @@
 //
 //  Created by Felipe  Elsner Silva on 21/07/23.
 //
-
+import UIKit
 import SwiftUI
 
 struct DiaryView: View {
     @State private var showSheet: Bool = false
     @State var date: Date = Date.now
     
-    
-    init() {
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-    }
-
     var body: some View {
         NavigationStack {
             ZStack {
                 Color.brandGreen.ignoresSafeArea()
+                Image("DiaryImage")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 417.99356, height: 445.81723)
                 GraphicPicker(selectedDate: $date)
+                    .accentColor(Color.brandPink)
                     .padding(EdgeInsets(top: -157, leading: 0, bottom: 0, trailing: 0))
                     .onChange(of: date, perform: { newValue in
                         showSheet = true
                     })
+                    .padding(.top, 10)
             
                 Button (""){
                     showSheet.toggle()
@@ -37,10 +38,10 @@ struct DiaryView: View {
                         .presentationBackgroundInteraction(
                             .enabled(upThrough: .large)
                         )
-                    
                 }
             }
             .navigationTitle("Diário")
+
         }
     }
 }
@@ -50,7 +51,7 @@ struct SheetDiary: View {
     @State var notes: String = ""
     @State var dayRoutineProgress = 2
     @State var nightRoutineProgress = 0
-    @StateObject var vm = CloudKitModel()
+    @EnvironmentObject var vm: CloudKitModel
     var date: Date
 
     var body: some View {
@@ -67,8 +68,8 @@ struct SheetDiary: View {
                                 .foregroundColor(.systemLabelSecondary)
                                 .padding(EdgeInsets(top: 20, leading: 32, bottom: 10, trailing: 32))
                             VStack(spacing: 20) {
-                                RoutineProgress(title: "Rotina Diurna", completion: dayRoutineProgress)
-                                RoutineProgress(title: "Rotina Noturna", completion: nightRoutineProgress)
+                                RoutineProgress(title: "Rotina Diurna", completion: dayRoutineProgress, totalProducts: 5)
+                                RoutineProgress(title: "Rotina Noturna", completion: nightRoutineProgress, totalProducts: 5)
                             }
                         }
                         VStack(alignment: .leading) {
@@ -87,8 +88,8 @@ struct SheetDiary: View {
                         Spacer(minLength: 90)
                         
                         VStack {
-                            CustomButton(label: "Salvar", action: {}, description: "", buttonType: .largeRounded)
-                            CustomButton(label: "Excluir", action: {}, description: "", buttonType: .largeRounded)                         
+                            CustomButton(label: "Salvar", description: "", buttonType: .largeRounded, action: {})
+                            CustomButton(label: "Excluir", description: "", buttonType: .largeRounded, action: {})       
                         }
                         .frame(width: 324, alignment: .center)
                     }

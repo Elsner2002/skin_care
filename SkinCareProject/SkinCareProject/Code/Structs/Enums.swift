@@ -44,17 +44,24 @@ enum Condition: String {
     case dermatitis = "Dermatite"
     case vitiligo = "Vitiligo"
     case foliculitis = "Foliculite"
-    case none = ""
+    case none = "None"
 }
 
 enum Concern: String {
-    case pimples = "Espinhas"
-    case aging = "Envelhecimento"
+    case pimples = "Espinhas e Cravos"
+    case aging = "Rugas e Linhas de Expressão"
     case darkSpots = "Manchas"
-    case blackHeads = "Cravos"
     case redness = "Vermelhidão"
     case darkCircles = "Olheiras"
-    case none = ""
+    case stretchMarks = "Estrias e Cicatrizes"
+    case none = "None"
+}
+
+enum Location: String {
+    case dry = "Ambiente Seco"
+    case neutral = "Ambiente Neutro"
+    case humid = "Ambiente Úmido"
+    case none = "Não Sei"
 }
 
 enum Warning: String {
@@ -94,5 +101,10 @@ enum SkinConditionQuestions: String, CaseIterable {
     case vitiligo = "Vitiligo"
     case acne = "Acne"
     case melasma = "Melasma"
-    
+}
+
+
+enum buttonLabels: String {
+    case next = "Próximo"
+    case save = "Salvar"
 }

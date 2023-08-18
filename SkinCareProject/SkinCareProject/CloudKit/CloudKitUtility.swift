@@ -30,8 +30,7 @@ class CloudKitUtility {
     enum CloudKitTypes: String {
         case ListProduct = "ListProduct"
         case RoutineProduct = "RoutineProduct"
-        case AppUser = "AppUser"
-        case Tips = "Tips"
+        case User = "User"
         case Diary = "Diary"
         case Ingredient = "Ingredient"
     }
@@ -239,6 +238,7 @@ extension CloudKitUtility {
                 } else {
                     completion(.success(true))
                 }
+                print(returnedRecord)
             }
         }
         
@@ -279,6 +279,7 @@ extension CloudKitUtility {
 
 //MARK: Images
 extension CloudKitUtility {
+    //transforms URL from Cloudkit into an Image
     func image(url: URL?) -> UIImage? {
         if let url = url{
             if let data = try? Data(contentsOf: url),  let image = UIImage(data: data){
@@ -288,6 +289,7 @@ extension CloudKitUtility {
         return nil
     }
     
+    //transforms an image into URL to save to cloudkit
     static func makeURLJPG(image: String) -> URL {
         guard
             let image = UIImage(named: image),
@@ -305,6 +307,19 @@ extension CloudKitUtility {
     static func makeURLPNG(image: String) -> URL {
         guard
             let image = UIImage(named: image),
+            let url = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("\(image).png"),
+            let data = image.pngData() else {return URL(string: "")!}
+        
+        do {
+            try data.write(to: url)
+        } catch {
+            print(error)
+        }
+        return url
+    }
+    
+    static func makeURL(image: UIImage) -> URL {
+        guard
             let url = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("\(image).png"),
             let data = image.pngData() else {return URL(string: "")!}
         

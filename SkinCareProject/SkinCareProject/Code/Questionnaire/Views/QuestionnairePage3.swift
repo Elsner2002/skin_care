@@ -1,36 +1,62 @@
 //
-//  QuestionnairePage3.swift
+//  QuestionnairePage2.swift
 //  SkinCareProject
 //
 //  Created by Natalia Dal Pizzol on 03/08/23.
 //
 
+import Foundation
+import SwiftUI
+import Foundation
 import SwiftUI
 
+
 struct QuestionnairePage3: View {
+    @EnvironmentObject var vm: CloudKitModel
+    @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var userInfo: UserInfo
+    @State var buttonPressed: String = ""
+    var buttonLabel: buttonLabels
+    @State var nextPage: Bool = false
+
     var body: some View {
-        VStack {
-            ProgressView("", value: 30, total: 100)
-                .tint(.systemButton)
-                .frame(width: 243, height: 80, alignment: .center)
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
-            
-            QuestionCard(buttonType: .largeRounded, questionLabel: "Como sua pele fica após horas de exposição ao sol sem proteção solar?", buttonLabels: PhototypeQuestions.self)
-                .frame(width: 334, alignment: .topLeading)
-            HStack {
-                NavigationLink(destination: QuestionnairePage4(), label: {CustomButton(label: "Próximo", action: {}, description: "Description", buttonType: .smallRounded) })
+        VStack(spacing: 30) {
+            ProgressBar(progress: 30)
+            QuestionCard(buttonPressed: $buttonPressed, buttonType: .smallRounded, questionLabel: "Como sua pele fica após horas de exposição ao sol sem proteção ?", buttonLabels: PhototypeQuestion.self)
+            HStack(alignment: .center) {
+                if buttonLabel == .next {
+                    Button(action: {
+                        userInfo.userPhototype = buttonPressed
+                        self.nextPage = true
+                    }) {
+                        Text(buttonLabel.rawValue)
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
+ 
+                } else {
+                    Button(action: {
+                        vm.updateUser(publicDb: false, appUser: vm.user[0], recordType: .User, userVegan: vm.user[0].vegan, userPhototype: buttonPressed)
+                        dismiss()
+                    }, label: {
+                        Text(buttonLabel.rawValue)
+                            .frame(maxWidth: .infinity)
+
+                    })
+                    .buttonStyle(CustomButtonStyle(buttonType: .smallRounded))
+                }
             }
-                .frame(width: 165, height: 35.71429, alignment: .topLeading)
-                .padding(EdgeInsets(top: 60, leading: 0, bottom: 70, trailing: 0))
+            .frame(width: 165, height: 35.71429, alignment: .topLeading)
+            .padding()
 
         }
-        .padding(20)
+        .padding()
+        .navigationDestination(isPresented: $nextPage, destination: { QuestionnairePage4(buttonLabel: .next) })
     }
 }
-
-
-struct QuestionnairePage3_Previews: PreviewProvider {
+struct QuestionnairePage3_Preview: PreviewProvider {
     static var previews: some View {
-        QuestionnairePage3()
+        QuestionnairePage3(buttonLabel: .save)
     }
 }
+

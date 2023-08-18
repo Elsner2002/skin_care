@@ -1,46 +1,24 @@
 [
     {
-        "title": "Tip1",
-        "text": "Fazer skincare é importante",
-        "image": "ProfileDefault"
+        "title": "Conhece o Gua - Sha?",
+        "text": "O termo “Gua” significa “esfregar” ou “raspar”, enquanto “Sha” pode ser traduzido como “sangramento da pele”.\n\nEssa massagem facial é comumente realizada com pedras como a jade ou o quartzo e funciona promovendo a drenagem linfática nos pontos de pressão do rosto.\n\nAo estimular a circulação sanguíneas com movimentos no rosto, há a redução das inflamações e promove alivio para doenças musculoesqueléticas dolorosas.\n\nLembre-se sempre de movimentar as pedras começando do meio do rosto em direção à testa e orelhas\n\nInclua essa dica na sua rotina da pele!",
+        "subtitle": "A técnica milenar da medicina oriental asiática para drenagem facial",
+        "type": "Curiosidade",
+        "image": "tip1Image"
     },
     
     {
-        "title": "Tip2",
-        "text": "Use protetor solar durante o dia",
-        "image": "ProfileDefault"
+        "title": "Você conhece o Skin Minimalis?",
+        "text": "O SKIN MINIMALISM vêm transformando o mundo da beleza, método tende em diminuir as horas na frente do espelho e a quantidade de produtos gastos usando apenas o essencial\n\nO segredo do SKIN MINIMALISM é o uso de produtos MULTIFUNCIONAIS, produtos que desempenham mais de uma função ao mesmo tempo associando diversos ativos em suas fórmulas.\n\n O SKIN MINIMALISM é composto por 3 pasos básicos:\n1.Limpeza\n2.Hidratação\n3.Proteção Solar",
+        "subtitle": "Para fazer um exelente Skin Care com apenas 3 produtos",
+        "type": "Dica do Dia",
+        "image": "tip2Image"
     },
     {
-        "title": "Tip3",
-        "text": "Fazer skincare é importante",
-        "image": "ProfileDefault"
-    },
-    
-    {
-        "title": "Tip4",
-        "text": "Use protetor solar durante o dia",
-        "image": "ProfileDefault"
-    },
-    {
-        "title": "Tip5",
-        "text": "Fazer skincare é importante",
-        "image": "ProfileDefault"
-    },
-    
-    {
-        "title": "Tip6",
-        "text": "Use rotetor solar durante o dia",
-        "image": "ProfileDefault"
-    },
-    {
-        "title": "Tip7",
-        "text": "Fazer skincare é importante",
-        "image": "ProfileDefault"
-    },
-    
-    {
-        "title": "Tip8",
-        "text": "Use protetor solar durante o dia",
-        "image": "ProfileDefault"
+        "title": "Skin Care em cápsulas?",
+        "text": "Os tratamentos e procedimentos dermatológicos podem ser potencializados através de cápsulas chamadas nutricosméticos!\n\nOs nutricosméticos são pílulas que tratam a pele de dentro para fora, complementando a ação dos cremes no skincare.\n\nPor meio deles é possível:\ntratar o melasma;\nestimular a produção de colágeno;\nhidratação;\nclareamento de manchas;\nação cicatrizante e regeneradora ;\nanti flacidez;\nantienvelhecimento;\nação em cabelos e unhas;\ntratamento de acne;\n\nVocê pode tomar o que você aplica, e aplicar o que você toma!\n\nProcure o seu dermatologista para maiores informações!",
+        "subtitle": "O skin care que é feito de dentro para fora",
+        "type": "Dica do Dia",
+        "image": "tip3Image"
     }
 ]
