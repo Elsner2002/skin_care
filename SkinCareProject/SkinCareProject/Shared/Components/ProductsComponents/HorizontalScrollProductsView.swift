@@ -29,7 +29,7 @@ struct HorizontalScrollProductsView: View {
 //                        )
 //                )
             }
-            .padding(.horizontal, 15)
+            .padding(.horizontal, 8)
         }
     }
 }

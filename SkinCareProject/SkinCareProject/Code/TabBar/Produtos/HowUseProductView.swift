@@ -39,6 +39,25 @@ struct HowUseProductView: View {
 //                }
 //            }
 //            .padding(.top, 60)
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack{
+                    ForEach(0..<(product.warnings?.count ?? 0)) { position in
+                        if let warn = product.warnings?[position] {
+                            Text("• \(warn)")
+                                .font(
+                                    Font.custom("SF Pro Text", size: 14)
+                                        .weight(.medium)
+                                )
+                                .frame(maxWidth: .infinity, minHeight: 23, maxHeight: 23, alignment: .top)
+                                .background(Color.brandPink)
+                                .cornerRadius(12, corners: .allCorners)
+                        }
+                    }
+                }
+                .padding(.all, 20)
+            }
+            
             ScrollView(.horizontal, showsIndicators: false){
                 HStack{
                     VStack{
@@ -79,23 +98,7 @@ struct HowUseProductView: View {
                 }
                 .padding(.horizontal, 12)
             }
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack{
-                    ForEach(0..<(product.warnings?.count ?? 0)) { position in
-                        if let warn = product.warnings?[position] {
-                            Text("• \(warn)")
-                                .font(
-                                    Font.custom("SF Pro Text", size: 14)
-                                        .weight(.medium)
-                                )
-                                .frame(maxWidth: .infinity, minHeight: 23, maxHeight: 23, alignment: .top)
-                                .background(Color.brandPink)
-                                .cornerRadius(12, corners: .allCorners)
-                        }
-                    }
-                }
-                .padding(.all, 20)
-            }
+
         }
     }
 }
